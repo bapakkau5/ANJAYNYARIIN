@@ -39,3 +39,6 @@ https://growsoft.cc/android.txt
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=bapakkau5&label=VISITOR&color=ff0000&style=for-the-badge" />
 </p>
+<p align="center">
+  <img src="https://files.catbox.moe/6ghd1f.png" alt="GTRG Banner" />
+</p>
