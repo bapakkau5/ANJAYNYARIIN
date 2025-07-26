@@ -9,7 +9,8 @@
     * { margin:0; padding:0; box-sizing:border-box }
     body {
       font-family:'Poppins',sans-serif;
-      background:#050505;
+      background:#050505 url('https://files.catbox.moe/6ghd1f.png') center top no-repeat;
+      background-size:cover;
       color:#fff;
       display:flex;
       justify-content:center;
@@ -17,17 +18,13 @@
       min-height:100vh;
       overflow:hidden;
     }
-    canvas {
-      position:fixed; top:0; left:0; width:100%; height:100%; z-index:0;
-    }
+    canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0 }
 
-    /* Loading screen */
+    /* Loading */
     #loading {
       position:fixed; top:0; left:0; width:100%; height:100%;
-      background:#000;
-      z-index:20;
-      display:flex; flex-direction:column;
-      justify-content:center; align-items:center;
+      background:#000; z-index:20;
+      display:flex; flex-direction:column; justify-content:center; align-items:center;
     }
     #loading h1 {
       font-size:3em;
@@ -99,10 +96,8 @@
       cursor:pointer;
     }
 
-    /* Petir efek */
     .lightning {
-      position:fixed;
-      top:0; left:0; width:100%; height:100%;
+      position:fixed; top:0; left:0; width:100%; height:100%;
       background:rgba(255,255,255,0.8);
       display:none;
       z-index:15;
@@ -138,6 +133,9 @@
         91.134.85.13 www.growtopia2.com
       </div>
       <button class="btn" onclick="copyHost()">Copy Host Windows</button>
+
+      <!-- Tombol Discord -->
+      <a class="btn" href="https://discord.gg/QPu7GPXD" target="_blank">Join Discord 🔗</a>
     </div>
 
     <footer>© 2025 GTRG GTPS ULTIMATE</footer>
@@ -159,7 +157,7 @@
     window.onload = () => {
       setTimeout(()=>{
         document.getElementById("loading").style.display="none";
-        typeText("descText","Server GTPS paling FULL POWER dengan efek PETIR & RGB sejagat!");
+        typeText("descText","Server GTPS paling FULL POWER!");
         playThunder();
         document.getElementById("bgMusic").play().catch(()=>{});
       },1500);
