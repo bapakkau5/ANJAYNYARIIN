@@ -9,7 +9,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Status-ONLINE-brightgreen?style=for-the-badge&logo=serverless" />
   <img src="https://img.shields.io/badge/Version-THUNDER-red?style=for-the-badge&logo=zap" />
-  <img src="https://img.shields.io/github/last-commit/bapakkau5/GTRG-Website?style=for-the-badge&color=yellow" />
+  <img src="https://img.shields.io/github/last-commithttps://gtrg-website.vercel.appstyle=for-the-badge&color=yellow" />
 </p>
 
 ---
@@ -19,7 +19,7 @@
 **GTRG** HOST - HOW TO PLAY
 
 👉 **Langsung akses websitenya:**  
-### [🌐 (https://bapakkau5.github.io/GTRG-Website/)]
+### [🌐 (https://gtrg-website.vercel.app]
 
 ---
 
