@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTRG GTPS - ULTIMATE THUNDER</title>
+  <title>GTRG SERVER - ULTIMATE THUNDER</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
     * { margin:0; padding:0; box-sizing:border-box }
@@ -17,11 +17,6 @@
       align-items:center;
       min-height:100vh;
       overflow:hidden;
-      transition: background 0.5s, color 0.5s;
-    }
-    body.light {
-      background:#f3f3f3;
-      color:#000;
     }
     canvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0 }
 
@@ -53,21 +48,6 @@
       100%{text-shadow:-2px -2px #00ffff,2px 2px #ff0000}
     }
 
-    .top-controls {
-      position:fixed; top:15px; right:15px; z-index:100;
-      display:flex; gap:10px;
-    }
-    .control-btn {
-      background:rgba(0,0,0,0.6);
-      border:none;
-      padding:8px 12px;
-      border-radius:8px;
-      cursor:pointer;
-      font-size:14px;
-      color:#fff;
-    }
-    body.light .control-btn { background:rgba(255,255,255,0.8); color:#000 }
-
     .container {
       position:relative; z-index:2;
       max-width:900px; padding:30px;
@@ -77,11 +57,6 @@
       text-align:center;
       animation:fadeIn 1.5s ease;
     }
-    body.light .container {
-      background:rgba(255,255,255,0.8);
-      box-shadow:0 0 30px rgba(0,0,0,0.2);
-    }
-
     @keyframes fadeIn {
       from{opacity:0; transform:scale(0.8)}
       to{opacity:1; transform:scale(1)}
@@ -100,29 +75,22 @@
     .status { margin:20px 0 }
 
     .btn {
-      background:linear-gradient(90deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00ab,#ff0000);
-      background-size:400%;
-      color:#fff;
-      border:none;
-      padding:10px 20px;
-      margin:5px;
+      display:inline-block;
+      margin:8px; padding:10px 20px;
+      background:#111; border:1px solid #fff;
       border-radius:8px;
       cursor:pointer;
-      font-weight:bold;
+      color:#fff; text-decoration:none;
       transition:0.3s;
     }
-    .btn:hover { transform:scale(1.05) }
+    .btn:hover { background:#fff; color:#000 }
 
-    footer { margin-top:20px; font-size:0.9em; opacity:0.8 }
+    .discord { margin:20px 0; font-size:1.1em }
+    .discord a { color:#0ff; text-decoration:none; font-weight:bold }
+    .discord a:hover { text-decoration:underline }
   </style>
 </head>
 <body>
-  <!-- Top controls -->
-  <div class="top-controls">
-    <button class="control-btn" id="themeToggle">🌙</button>
-    <button class="control-btn" id="langToggle">🇮🇩</button>
-  </div>
-
   <div id="loading">
     <h1>GTRG SERVER</h1>
     <p>Memuat server ultimate...</p>
@@ -135,66 +103,85 @@
     <p class="description" id="descText"></p>
 
     <div class="status">
-      <h2 id="status-title">Status Server</h2>
+      <h2>Status Server</h2>
       <p id="status-text">🟢 ONLINE</p>
     </div>
 
-    <div class="links">
-      <button class="btn" onclick="copyText('https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file')" id="btn-vhost">Copy VHOST</button>
-      <button class="btn" onclick="copyText('https://bapakkau5.github.io/GTRGHOST/hosts.txt')" id="btn-ptunnel">Copy pTunnel (Android)</button>
-      <button class="btn" onclick="copyText('https://bapakkau5.github.io/GTRGIOS/ios.txt')" id="btn-ios">Copy iOS</button>
-      <button class="btn" onclick="copyHost()" id="btn-host">Copy Host Windows</button>
-      <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank" id="btn-discord">Join Discord 🔗</a>
+    <!-- discord + wa TOP -->
+    <div class="discord">
+      <a href="https://discord.gg/FFm37HvmVT" target="_blank">Join Discord 🔗</a> • 
+      <a href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O?mode=ems_share_c" target="_blank">Join WhatsApp 🔗</a>
     </div>
 
-    <footer>© 2025 GTRG SERVER ULTIMATE</footer>
-    <footer><a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank">Join Discord 🔗</a></footer>
+    <!-- platform tabs -->
+    <div class="actions" id="tabs">
+      <button class="btn tab active" data-tab="android">Android</button>
+      <button class="btn tab" data-tab="ios">iOS</button>
+      <button class="btn tab" data-tab="windows">Windows</button>
+      <button class="btn tab" data-tab="macos">MacOS</button>
+    </div>
+
+    <div class="tab-panels">
+      <div class="panel" id="android">
+        <button class="btn" onclick="copyText('https://bapakkau5.github.io/GTRGHOST/hosts.txt')">Copy pTunnel (Android)</button>
+      </div>
+      <div class="panel" id="ios" style="display:none">
+        <button class="btn" onclick="copyText('https://bapakkau5.github.io/GTRGIOS/ios.txt')">Copy iOS Config</button>
+      </div>
+      <div class="panel" id="windows" style="display:none">
+        <button class="btn" onclick="copyText('https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file')">Copy VHOST</button>
+        <div class="host-copy" id="hostText">
+          46.105.62.153 growtopia1.com <br>
+          46.105.62.153 growtopia2.com <br>
+          46.105.62.153 www.growtopia1.com <br>
+          46.105.62.153 www.growtopia2.com <br>
+          46.105.62.153 mpangpp.com
+        </div>
+        <button class="btn" onclick="copyHost()">Copy Host Windows</button>
+      </div>
+      <div class="panel" id="macos" style="display:none">
+        <div class="host-copy">
+          46.105.62.153 growtopia1.com <br>
+          46.105.62.153 growtopia2.com <br>
+          46.105.62.153 www.growtopia1.com <br>
+          46.105.62.153 www.growtopia2.com
+        </div>
+      </div>
+    </div>
+
+    <!-- discord + wa BOTTOM -->
+    <div class="discord">
+      <a href="https://discord.gg/FFm37HvmVT" target="_blank">Join Discord 🔗</a> • 
+      <a href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O?mode=ems_share_c" target="_blank">Join WhatsApp 🔗</a>
+    </div>
+
+    <footer>© 2025 GTRG SERVER • IP: <b>46.105.62.153</b></footer>
+    <button id="audioBtn" onclick="toggleAudio()">🔊</button>
   </div>
 
+  <!-- Musik & suara -->
   <audio id="bgMusic" loop>
     <source src="https://files.catbox.moe/y7ojv9.mp3" type="audio/mpeg">
   </audio>
+  <audio id="thunder">
+    <source src="https://files.catbox.moe/knhsk6.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
-    const langToggle=document.getElementById("langToggle");
-    const themeToggle=document.getElementById("themeToggle");
-    let currentLang="id";
+    const thunder = document.getElementById("thunder");
 
-    const textData={
-      id:{
-        loading:"loading...",
-        desc:"Server GTPS paling FULL POWER!",
-        status:"Status Server",
-        vhost:"Copy VHOST",
-        ptunnel:"Copy pTunnel (Android)",
-        ios:"Copy iOS",
-        host:"Copy Host Windows",
-        discord:"Join Discord 🔗"
-      },
-      en:{
-        loading:"Loading...",
-        desc:"The most FULL POWER GTPS Server!",
-        status:"Server Status",
-        vhost:"Copy VHOST",
-        ptunnel:"Copy pTunnel (Android)",
-        ios:"Copy iOS",
-        host:"Copy Windows Host",
-        discord:"Join Discord 🔗"
-      }
-    };
-
-    window.onload=()=>{
+    window.onload = () => {
       setTimeout(()=>{
         document.getElementById("loading").style.display="none";
-        typeText("descText",textData[currentLang].desc);
+        typeText("descText","Server GTPS paling FULL POWER!");
         document.getElementById("bgMusic").play().catch(()=>{});
       },1500);
     }
 
     function typeText(id,text){
       let i=0; let el=document.getElementById(id); el.innerHTML="";
-      let interval=setInterval(()=>{
-        el.innerHTML+=text.charAt(i);
+      let interval = setInterval(()=>{
+        el.innerHTML += text.charAt(i);
         i++;
         if(i>=text.length) clearInterval(interval);
       },50);
@@ -204,34 +191,54 @@
       alert("✅ Copy: "+text);
     }
     function copyHost(){
-      const text="46.105.62.153 growtopia1.com\n46.105.62.153 growtopia2.com\n46.105.62.153 www.growtopia1.com\n46.105.62.153 www.growtopia2.com\n46.105.62.153 mpangpp.com";
+      const text=document.getElementById('hostText').innerText;
       navigator.clipboard.writeText(text);
       alert("✅ Host Windows di-copy!");
     }
-
-    // Theme toggle
-    themeToggle.onclick=()=>{
-      document.body.classList.toggle("light");
-      themeToggle.textContent=document.body.classList.contains("light")?"☀️":"🌙";
+    function toggleAudio(){
+      const audio=document.getElementById("bgMusic");
+      const btn=document.getElementById("audioBtn");
+      if(audio.paused){audio.play();btn.innerText="🔊"}else{audio.pause();btn.innerText="🔇"}
     }
 
-    // Language toggle
-    langToggle.onclick=()=>{
-      currentLang=currentLang==="id"?"en":"id";
-      langToggle.textContent=currentLang==="id"?"🇮🇩":"🇬🇧";
-      updateLang();
-    }
+    // Tab switch
+    const tabs=document.querySelectorAll(".tab");
+    const panels=document.querySelectorAll(".panel");
+    tabs.forEach(tab=>{
+      tab.addEventListener("click",()=>{
+        tabs.forEach(t=>t.classList.remove("active"));
+        panels.forEach(p=>p.style.display="none");
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.tab).style.display="block";
+      });
+    });
 
-    function updateLang(){
-      document.querySelector("#loading p").textContent=textData[currentLang].loading;
-      document.getElementById("status-title").textContent=textData[currentLang].status;
-      document.getElementById("btn-vhost").textContent=textData[currentLang].vhost;
-      document.getElementById("btn-ptunnel").textContent=textData[currentLang].ptunnel;
-      document.getElementById("btn-ios").textContent=textData[currentLang].ios;
-      document.getElementById("btn-host").textContent=textData[currentLang].host;
-      document.getElementById("btn-discord").textContent=textData[currentLang].discord;
-      typeText("descText",textData[currentLang].desc);
+    // Partikel
+    const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
+    canvas.width=innerWidth;canvas.height=innerHeight;
+    const particles=[];
+    for(let i=0;i<100;i++){
+      particles.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        r:Math.random()*2+1,
+        dx:(Math.random()-0.5)*1,
+        dy:(Math.random()-0.5)*1
+      });
     }
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle='#fff';
+      particles.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+        p.x+=p.dx; p.y+=p.dy;
+        if(p.x<0||p.x>canvas.width) p.dx*=-1;
+        if(p.y<0||p.y>canvas.height) p.dy*=-1;
+      });
+      requestAnimationFrame(draw);
+    }draw();
   </script>
 </body>
 </html>
