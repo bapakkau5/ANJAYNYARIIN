@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTRG SERVER -⚡️</title>
+  <title>GTRG SERVER - ULTIMATE</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
     * { margin:0; padding:0; box-sizing:border-box }
@@ -28,7 +28,7 @@
     }
     #loading h1 {
       font-size:3em;
-      background:linear-gradient(90deg,red,yellow,lime,cyan,blue,magenta,red);
+      background:linear-gradient(90deg,#00c3ff,#006eff,#00c3ff);
       background-size:400% 400%;
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
@@ -42,10 +42,10 @@
       100%{background-position:0% 50%}
     }
     @keyframes glitch {
-      0%{text-shadow:2px 2px #ff0000,-2px -2px #00ffff}
-      25%{text-shadow:-2px 2px #ffff00,2px -2px #00ffff}
-      50%{text-shadow:2px -2px #ff00ff,-2px 2px #00ff00}
-      100%{text-shadow:-2px -2px #00ffff,2px 2px #ff0000}
+      0%{text-shadow:2px 2px #00c3ff,-2px -2px #006eff}
+      25%{text-shadow:-2px 2px #00ffff,2px -2px #00c3ff}
+      50%{text-shadow:2px -2px #006eff,-2px 2px #00ffff}
+      100%{text-shadow:-2px -2px #00ffff,2px 2px #00c3ff}
     }
 
     .container {
@@ -53,7 +53,7 @@
       max-width:900px; padding:30px;
       background:rgba(0,0,0,0.7);
       border-radius:15px;
-      box-shadow:0 0 30px rgba(255,255,255,0.2);
+      box-shadow:0 0 30px rgba(0,195,255,0.5);
       text-align:center;
       animation:fadeIn 1.5s ease;
     }
@@ -64,7 +64,7 @@
 
     .title {
       font-size:3em; margin-bottom:5px;
-      background:linear-gradient(90deg,red,yellow,lime,cyan,blue,magenta,red);
+      background:linear-gradient(90deg,#00c3ff,#006eff,#00c3ff);
       background-size:400% 400%;
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
@@ -73,30 +73,29 @@
     .description { font-size:1.2em; margin-bottom:20px }
 
     .status { margin:20px 0 }
+
     .btn {
       display:inline-block;
-      margin:8px;
-      padding:10px 20px;
-      background:#111;
-      color:#fff;
-      border:2px solid #fff;
+      margin:10px;
+      padding:12px 20px;
+      border:none;
       border-radius:8px;
+      background:linear-gradient(90deg,#00c3ff,#006eff);
+      color:#fff;
+      font-weight:bold;
       cursor:pointer;
       transition:0.3s;
+      text-decoration:none;
     }
-    .btn:hover { background:#fff; color:#000 }
-    footer { margin-top:20px; font-size:0.9em; color:#aaa }
-    #audioBtn {
-      position:absolute; top:15px; right:15px;
-      background:transparent; border:none;
-      font-size:1.5em; color:#fff; cursor:pointer;
-    }
+    .btn:hover { transform:scale(1.05); box-shadow:0 0 15px #00c3ff }
+    footer { margin-top:20px; color:#bbb; font-size:0.9em }
+    #audioBtn { position:absolute; top:20px; right:20px; background:#111; border-radius:50%; padding:10px }
   </style>
 </head>
 <body>
   <div id="loading">
     <h1>GTRG SERVER</h1>
-    <p>Loading Wait..</p>
+    <p>Memuat server ultimate...</p>
   </div>
 
   <canvas id="bg"></canvas>
@@ -113,10 +112,9 @@
     <div class="links">
       <button class="btn" onclick="copyText('https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file')">Copy VHOST</button>
       <button class="btn" onclick="copyText('https://bapakkau5.github.io/GTRGHOST/hosts.txt')">Copy pTunnel (Android)</button>
-      <button class="btn" onclick="copyText('https://bapakkau5.github.io/GTRGIOS/ios.txt')">Copy iOS Host</button>
+      <button class="btn" onclick="copyText('https://bapakkau5.github.io/GTRGIOS/ios.txt')">Copy iOS</button>
 
-      <div class="host-copy" id="hostText">
-        <b>Windows Host:</b><br>
+      <div class="host-copy" id="hostText" style="margin:15px 0">
         46.105.62.153 growtopia1.com <br>
         46.105.62.153 growtopia2.com <br>
         46.105.62.153 www.growtopia1.com <br>
@@ -125,8 +123,7 @@
       </div>
       <button class="btn" onclick="copyHost()">Copy Host Windows</button>
 
-      <div class="host-copy" id="hostMac">
-        <b>MacOS Host:</b><br>
+      <div class="host-copy" id="macText" style="margin:15px 0">
         46.105.62.153 growtopia1.com <br>
         46.105.62.153 growtopia2.com <br>
         46.105.62.153 www.growtopia1.com <br>
@@ -134,15 +131,16 @@
       </div>
       <button class="btn" onclick="copyMac()">Copy Host MacOS</button>
 
-      <!-- Tombol Discord -->
+      <!-- Tombol Discord & WhatsApp -->
       <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank">Join Discord 🔗</a>
+      <a class="btn" href="https://wa.me/6281234567890" target="_blank">Chat WhatsApp 💬</a>
     </div>
 
-    <footer>© 2020 GTRG REBORN</footer>
+    <footer>© 2025 GTRG SERVER ULTIMATE</footer>
     <button id="audioBtn" onclick="toggleAudio()">🔊</button>
   </div>
 
-  <!-- Musik & suara -->
+  <!-- Musik -->
   <audio id="bgMusic" loop>
     <source src="https://files.catbox.moe/y7ojv9.mp3" type="audio/mpeg">
   </audio>
@@ -174,7 +172,7 @@
       alert("✅ Host Windows di-copy!");
     }
     function copyMac(){
-      const text=document.getElementById('hostMac').innerText;
+      const text=document.getElementById('macText').innerText;
       navigator.clipboard.writeText(text);
       alert("✅ Host MacOS di-copy!");
     }
@@ -184,7 +182,7 @@
       if(audio.paused){audio.play();btn.innerText="🔊"}else{audio.pause();btn.innerText="🔇"}
     }
 
-    // Partikel background
+    // Partikel
     const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
     canvas.width=innerWidth;canvas.height=innerHeight;
     const particles=[];
@@ -213,4 +211,3 @@
   </script>
 </body>
 </html>
-      
