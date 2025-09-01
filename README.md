@@ -16,29 +16,14 @@
 
 ## ⚡ Tentang GTRG GTPS
 
-**GTRG** adalah **GTPS paling ultimate sejagat** dengan efek RGB + glitch + petir!  
-- 🌈 Efek **RGB** berjalan di semua teks  
-- ⚡ **Efek petir + suara ledakan** saat masuk  
-- 🎵 Musik epic & partikel warna-warni  
-- 🔥 VHOST & host copy 1 klik  
+**GTRG** HOST - HOW TO PLAY
 
 👉 **Langsung akses websitenya:**  
-### [🌐 https://bapakkau5.github.io/GTRG-Website/](https://bapakkau5.github.io/GTRG-Website/)
+### [🌐 (https://bapakkau5.github.io/GTRG-Website/)]
 
 ---
 
-## 🖥️ VHOST & Host Files
 
-### **VHOST**
-https://www.mediafire.com/file/w8uysh0isgorw8n/GTRG.txt.txt/file
-### **pTunnel (Android)**
-https://growsoft.cc/android.txt
-### **Windows Host**
-91.134.85.13 growtopia1.com
-91.134.85.13 growtopia2.com
-91.134.85.13 www.growtopia1.com
-91.134.85.13 www.growtopia2.com
----
 
 <p align="center">
   <a href="https://discord.gg/QPu7GPXD">
