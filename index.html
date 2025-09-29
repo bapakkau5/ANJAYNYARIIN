@@ -5,290 +5,214 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>⚡ GTRG SERVER</title>
   <meta name="theme-color" content="#000000" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0b0b0b;
-      --card:#121212;
-      --muted:#b7b7b7;
-      --btn:#1f1f1f;
-      --btn-active:#ff2fff;
-      --green:#22c55e;
+    :root {
+      --bg: #0b0b0b;
+      --card: #121212;
+      --muted: #b7b7b7;
+      --primary: #e11d48;
+      --green: #22c55e;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:#fff;
-      background:var(--bg);
-      overflow-x:hidden;
+    * { box-sizing: border-box; margin:0; padding:0 }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: #fff;
+      line-height: 1.6;
     }
+    a { text-decoration:none; color:inherit }
 
-    /* ---------- Loading ---------- */
-    #loading{
-      position:fixed; inset:0; z-index:99; display:flex; flex-direction:column; gap:.5rem;
-      align-items:center; justify-content:center; background:#000;
-    }
-    #loading h1{
-      margin:0;
-      font-size:clamp(28px,5vw,44px);
-      letter-spacing:1px;
-      background:linear-gradient(90deg, #ff006a,#ffa800,#35ff00,#00f0ff,#5c6cff,#ff00ea,#ff006a);
-      background-size:400% 400%;
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      animation:rgbFlow 6s linear infinite,glow 1.5s ease-in-out infinite alternate;
-    }
-    #loading p{margin:0;color:#ddd}
-    @keyframes rgbFlow{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-    @keyframes glow{from{text-shadow:0 0 10px #ff2fff}to{text-shadow:0 0 25px #00e5ff}}
-
-    /* ---------- Lightning flash ---------- */
-    .lightning{position:fixed; inset:0; background:radial-gradient(ellipse at center, rgba(255,255,255,.65), rgba(255,255,255,0) 60%); display:none; z-index:2; pointer-events:none}
-
-    /* ---------- Main card ---------- */
-    .wrap{position:relative; z-index:3; display:flex; justify-content:center; padding:40px 16px 80px}
-    .card{
-      width:min(980px,100%);
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:18px;
-      box-shadow:0 20px 60px rgba(0,0,0,.45);
-      padding:24px;
+    /* Navbar */
+    nav {
+      position: sticky; top:0; z-index:50;
+      background: rgba(18,18,18,.9);
       backdrop-filter: blur(8px);
+      padding: 12px 28px;
+      display:flex; justify-content:space-between; align-items:center;
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
+    nav .logo { font-size:20px; font-weight:700; color:#ff006a }
+    nav ul { list-style:none; display:flex; gap:18px }
+    nav ul li a { color:#ddd; font-weight:500; transition:.2s }
+    nav ul li a:hover { color:#fff }
 
-    .title{
-      display:flex; align-items:center; gap:.6rem; justify-content:center;
-      font-size:clamp(28px,5.6vw,48px); font-weight:800; margin:6px 0 2px;
-      background:linear-gradient(90deg, #ff006a,#ffa800,#35ff00,#00f0ff,#5c6cff,#ff00ea,#ff006a);
+    /* Hero */
+    .hero {
+      text-align:center; padding:80px 16px;
+      background: linear-gradient(180deg,#111,#0b0b0b);
+    }
+    .hero h1 {
+      font-size: clamp(34px,6vw,60px);
+      font-weight:800;
+      background:linear-gradient(90deg,#ff006a,#ffa800,#35ff00,#00f0ff,#5c6cff,#ff00ea,#ff006a);
       background-size:400% 400%;
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      animation:rgbFlow 8s linear infinite;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation: flow 8s linear infinite;
     }
-    .status{display:flex; align-items:center; justify-content:center; gap:.6rem; color:#ddd; margin:8px 0 20px}
-    .dot{width:14px; height:14px; border-radius:999px; background:var(--green); box-shadow:0 0 12px var(--green)}
+    @keyframes flow {
+      0%{background-position:0 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0 50%}
+    }
+    .status { margin:14px 0 28px; color:#ddd }
+    .dot { width:14px; height:14px; border-radius:50%; display:inline-block;
+      background:var(--green); box-shadow:0 0 12px var(--green) }
 
-    /* ---------- Actions top ---------- */
-    .actions{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:12px 0 18px}
-    .btn{
-      border:1px solid rgba(255,255,255,.12);
-      background:#111; color:#fff; padding:10px 14px; border-radius:12px;
-      font-weight:600; cursor:pointer; transition:.18s transform,.18s background,.18s border;
-      text-decoration:none; display:inline-flex; align-items:center; gap:.5rem;
+    .hero .btns { display:flex; flex-wrap:wrap; gap:12px; justify-content:center }
+    .btn {
+      background:#1b1b1b; border:1px solid rgba(255,255,255,.1);
+      padding:10px 16px; border-radius:10px;
+      font-weight:600; cursor:pointer;
+      transition:.2s; color:#fff;
     }
-    .btn:hover{transform:translateY(-2px); border-color:rgba(255,255,255,.25)}
-    .btn.primary{background:#20ff1d; color:#051a05; border-color:#20ff1d}
-    .btn.tab{background:#1b1b1b}
-    .btn.tab.active{background:#e11d48; border-color:#e11d48}
+    .btn:hover { transform:translateY(-2px); border-color:#fff }
+    .btn.primary { background:var(--primary); border-color:var(--primary) }
 
-    /* ---------- Tab content ---------- */
-    .tab-panels{background:#0f0f0f; border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:18px}
-    .panel{display:none}
-    .panel.active{display:block}
-    .platform{
-      display:flex; align-items:center; justify-content:center; gap:.6rem;
-      font-size:clamp(22px,4.5vw,34px); margin:6px 0 16px; font-weight:700
-    }
-    .box{background:#0c0c0c; border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:18px}
-    .host-block{
-      font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,"Liberation Mono","Courier New",monospace;
-      background:#0a0a0a; border:1px solid rgba(255,255,255,.1); border-radius:10px;
-      padding:12px; white-space:pre-wrap; line-height:1.5; color:#d7f8ff; margin:10px 0 12px
+    /* Sections */
+    section { padding:60px 20px; max-width:980px; margin:auto }
+    section h2 { text-align:center; font-size:28px; margin-bottom:24px }
+    .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px }
+    .card {
+      background:var(--card); border:1px solid rgba(255,255,255,.08);
+      border-radius:12px; padding:18px; text-align:center;
     }
 
-    .steps{color:#eaeaea}
-    .steps h4{margin:0 0 6px}
-    .steps ol{margin:0; padding-left:18px}
-    .steps li{margin:8px 0}
+    .steps ol { padding-left:20px }
+    .steps li { margin:10px 0 }
 
-    .center{display:flex; justify-content:center}
-    .discord{margin-top:18px; text-align:center}
-    .discord a{color:#93c5fd; text-decoration:underline}
+    .host-block {
+      background:#0a0a0a; padding:12px;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:8px; font-family:monospace; color:#d7f8ff;
+      white-space:pre-wrap;
+    }
 
-    footer{margin-top:18px; text-align:center; color:var(--muted); font-size:13px}
+    /* Social */
+    .social { text-align:center; margin-top:20px }
+    .social a {
+      margin:0 8px; color:#93c5fd; text-decoration:underline
+    }
 
-    /* floating audio toggle */
-    #audioBtn{
-      position:fixed; right:16px; bottom:16px; z-index:4; border-radius:50%;
-      width:46px; height:46px; border:none; cursor:pointer; font-size:18px;
-      background:#111; color:#fff; box-shadow:0 10px 30px rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.12)
+    footer {
+      text-align:center; font-size:13px;
+      color:var(--muted); padding:20px 0; border-top:1px solid rgba(255,255,255,.08)
     }
   </style>
 </head>
 <body>
-  <!-- Loading -->
-  <div id="loading">
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">⚡ GTRG</div>
+    <ul>
+      <li><a href="#features">Fitur</a></li>
+      <li><a href="#guide">Panduan</a></li>
+      <li><a href="#social">Sosial</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
     <h1>⚡ GTRG SERVER</h1>
-    <p>loading wait…</p>
+    <div class="status">Status: <span class="dot"></span> <b>ONLINE</b></div>
+    <div class="btns">
+      <a class="btn primary" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank">Download VHost</a>
+      <button class="btn" onclick="copyText('https://gtrghost.vercel.app/hosts.txt')">Copy Powertunnel</button>
+      <button class="btn" onclick="copyText('https://gtrgios.vercel.app/ios.txt')">Copy iOS Host</button>
+    </div>
   </div>
 
-  <!-- Effects -->
-  <div class="lightning" id="lightning"></div>
+  <!-- Features -->
+  <section id="features">
+    <h2>Kenapa Main di GTRG?</h2>
+    <div class="features">
+      <div class="card">⚡ Server Stabil & Cepat</div>
+      <div class="card">🛡️ Anti DC & Anti Lag</div>
+      <div class="card">🎉 Event Seru Setiap Minggu</div>
+      <div class="card">👑 Admin Aktif & Ramah</div>
+    </div>
+  </section>
 
-  <!-- Main -->
-  <div class="wrap">
-    <div class="card">
-      <div class="title">⚡ GTRG SERVER</div>
-      <div class="status">Status: <span class="dot"></span> <strong>ONLINE</strong></div>
+  <!-- Guide -->
+  <section id="guide">
+    <h2>Panduan Instalasi</h2>
 
-      <!-- top action buttons -->
-      <div class="actions">
-        <a class="btn primary" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank">Download Host (VHost)</a>
-        <button class="btn" onclick="copyText('https://gtrghost.vercel.app/hosts.txt')">Copy Powertunnel</button>
-        <button class="btn" onclick="copyText('https://gtrgios.vercel.app/ios.txt')">Copy iOS Host (Surge 5)</button>
-        <button class="btn" onclick="copyFrom('winHost')">Copy Windows Host text</button>
-        <button class="btn" onclick="copyFrom('macHost')">Copy MacOS Host text</button>
-        <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O?mode=ems_share_c" target="_blank">Join WhatsApp 📱</a>
-      </div>
+    <h3>🤖 Android</h3>
+    <div class="steps">
+      <ol>
+        <li>Unduh Powertunnel.</li>
+        <li>Klik tombol <b>Copy Powertunnel</b> di atas.</li>
+        <li>Buka Powertunnel → Host Settings → tempel URL.</li>
+        <li>Ubah host update period jadi <b>on start</b>.</li>
+        <li>Aktifkan lalu login Growtopia.</li>
+      </ol>
+    </div>
 
-      <!-- Tabs -->
-      <div class="actions" id="tabs">
-        <button class="btn tab active" data-tab="android">Android</button>
-        <button class="btn tab" data-tab="ios">iOS</button>
-        <button class="btn tab" data-tab="windows">Windows</button>
-        <button class="btn tab" data-tab="macos">MacOS</button>
-      </div>
+    <h3>🍏 iOS (Surge 5)</h3>
+    <div class="steps">
+      <ol>
+        <li>Install aplikasi <b>Surge 5</b> dari App Store.</li>
+        <li>Pilih <b>Default.conf</b> → <i>Import Profile from URL</i>.</li>
+        <li>Klik tombol <b>Copy iOS Host</b> lalu tempel di Surge.</li>
+        <li>Izinkan konfigurasi VPN lalu connect.</li>
+      </ol>
+    </div>
 
-      <div class="tab-panels">
-        <!-- ANDROID -->
-        <section class="panel active" id="panel-android">
-          <div class="platform">🤖 Android</div>
-          <div class="box steps">
-            <h4>Cara pakai Powertunnel</h4>
-            <ol>
-              <li>Unduh aplikasi Powertunnel.</li>
-              <li>Buka web ini lalu klik tombol <b>Copy Powertunnel</b> untuk menyalin URL host.</li>
-              <li>Buka aplikasi Powertunnel → ikon tiga garis → <i>Host Settings</i>.</li>
-              <li>Tempel URL host yang sudah disalin.</li>
-              <li>Ubah <i>host update period</i> jadi <b>on start</b>.</li>
-              <li>Aktifkan Powertunnel, kemudian login ke GTPS kamu.</li>
-            </ol>
-          </div>
-        </section>
-
-        <!-- iOS -->
-        <section class="panel" id="panel-ios">
-          <div class="platform">🍏 iOS</div>
-          <div class="box steps">
-            <ol>
-              <li>Install aplikasi <b>Surge 5</b> dari App Store.</li>
-              <li>Buka, pilih <b>Default.conf</b>.</li>
-              <li>Pergi ke <b>IMPORT</b> → <i>Download Profile from URL</i>.</li>
-              <li>Klik tombol <b>Copy iOS Host (Surge 5)</b> lalu tempel URL di Surge.</li>
-              <li>Izinkan konfigurasi VPN.</li>
-              <li>Selesai, connect ke Growtopia!</li>
-            </ol>
-          </div>
-        </section>
-
-        <!-- Windows -->
-        <section class="panel" id="panel-windows">
-          <div class="platform">🪟 Windows</div>
-          <div class="box">
-            <div class="steps">
-              <ol>
-                <li>Tekan <b>Win + R</b>, ketik <code>C:\Windows\System32\drivers\etc</code>.</li>
-                <li>Buka file <b>hosts</b> pakai Notepad.</li>
-                <li>Tambahkan baris IP berikut lalu Save.</li>
-              </ol>
-            </div>
-            <div id="winHost" class="host-block">46.105.62.153 growtopia1.com
+    <h3>🪟 Windows</h3>
+    <div class="steps">
+      <ol>
+        <li>Buka <code>C:\Windows\System32\drivers\etc</code>.</li>
+        <li>Edit file <b>hosts</b> pakai Notepad.</li>
+        <li>Tambahkan baris ini:</li>
+      </ol>
+      <div class="host-block" id="winHost">
+46.105.62.153 growtopia1.com
 46.105.62.153 growtopia2.com
 46.105.62.153 www.growtopia1.com
 46.105.62.153 www.growtopia2.com
 46.105.62.153 mpangpp.com</div>
-            <div class="center"><button class="btn primary" onclick="copyFrom('winHost')">Copy Host Windows</button></div>
-          </div>
-        </section>
+      <button class="btn" onclick="copyFrom('winHost')">Copy Host Windows</button>
+    </div>
 
-        <!-- MacOS -->
-        <section class="panel" id="panel-macos">
-          <div class="platform">🍎 MacOS</div>
-          <div class="box">
-            <div class="steps">
-              <ol>
-                <li>Buka Terminal: <code>sudo nano /etc/hosts</code></li>
-                <li>Masukkan password Mac kamu.</li>
-                <li>Tempel baris IP lalu simpan.</li>
-              </ol>
-            </div>
-            <div id="macHost" class="host-block">46.105.62.153 growtopia1.com
+    <h3>🍎 MacOS</h3>
+    <div class="steps">
+      <ol>
+        <li>Buka Terminal: <code>sudo nano /etc/hosts</code></li>
+        <li>Masukkan password Mac.</li>
+        <li>Tempel baris ini:</li>
+      </ol>
+      <div class="host-block" id="macHost">
+46.105.62.153 growtopia1.com
 46.105.62.153 growtopia2.com
 46.105.62.153 www.growtopia1.com
 46.105.62.153 www.growtopia2.com</div>
-            <div class="center"><button class="btn primary" onclick="copyFrom('macHost')">Copy Host MacOS</button></div>
-          </div>
-        </section>
-      </div>
-
-      <div class="discord">
-        <a href="https://discord.gg/FFm37HvmVT" target="_blank">Join Discord 🔗</a>
-      </div>
-
-      <footer>© 2025 GTRG SERVER • IP: <b>46.105.62.153</b></footer>
+      <button class="btn" onclick="copyFrom('macHost')">Copy Host Mac</button>
     </div>
-  </div>
+  </section>
 
-  <!-- Audio -->
-  <audio id="bgMusic" loop>
-    <source src="https://files.catbox.moe/y7ojv9.mp3" type="audio/mpeg">
-  </audio>
-  <audio id="thunder">
-    <source src="https://files.catbox.moe/knhsk6.mp3" type="audio/mpeg">
-  </audio>
-  <button id="audioBtn" onclick="toggleAudio()">🔊</button>
+  <!-- Social -->
+  <section id="social">
+    <h2>Join Komunitas</h2>
+    <div class="social">
+      <a href="https://discord.gg/FFm37HvmVT" target="_blank">Discord 🔗</a>
+      <a href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">WhatsApp 📱</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 GTRG SERVER • IP: <b>46.105.62.153</b>
+  </footer>
 
   <script>
-    const qs=(s,p=document)=>p.querySelector(s);
-    const qsa=(s,p=document)=>[...p.querySelectorAll(s)];
-
-    /* Loading */
-    window.addEventListener('load',()=>{
-      setTimeout(()=>{
-        qs('#loading').style.display='none';
-        qs('#bgMusic').play().catch(()=>{});
-        flash();
-      },500); // lebih cepat
-    });
-
-    /* Tabs */
-    qsa('.btn.tab').forEach(t=>{
-      t.addEventListener('click',()=>{
-        qsa('.btn.tab').forEach(x=>x.classList.remove('active'));
-        t.classList.add('active');
-        const k=t.dataset.tab;
-        qsa('.panel').forEach(p=>p.classList.remove('active'));
-        qs('#panel-'+k).classList.add('active');
-        flash();
-      });
-    });
-
-    /* Copy */
     function copyText(text){
-      navigator.clipboard.writeText(text).then(()=>alert('✅ Copied: '+text));
+      navigator.clipboard.writeText(text).then(()=>alert("✅ Copied: "+text));
     }
     function copyFrom(elId){
-      const text = qs('#'+elId).innerText.trim();
-      navigator.clipboard.writeText(text).then(()=>alert('✅ Copied!'));
-    }
-
-    /* Audio toggle */
-    function toggleAudio(){
-      const a=qs('#bgMusic'), b=qs('#audioBtn');
-      if(a.paused){ a.play(); b.textContent='🔊' } else { a.pause(); b.textContent='🔇' }
-    }
-    window.toggleAudio = toggleAudio;
-
-    /* Lightning flash */
-    const lightning=qs('#lightning');
-    const thunder=qs('#thunder');
-    function flash(){
-      lightning.style.display='block';
-      thunder.currentTime=0;
-      thunder.play().catch(()=>{});
-      setTimeout(()=>{lightning.style.display='none'},180);
+      const text=document.getElementById(elId).innerText.trim();
+      navigator.clipboard.writeText(text).then(()=>alert("✅ Copied!"));
     }
   </script>
 </body>
