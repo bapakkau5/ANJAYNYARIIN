@@ -39,7 +39,7 @@
 
     /* Hero */
     .hero {
-      text-align:center; padding:80px 16px;
+      text-align:center; padding:70px 16px 40px;
       background: linear-gradient(180deg,#111,#0b0b0b);
     }
     .hero h1 {
@@ -60,7 +60,7 @@
     .dot { width:14px; height:14px; border-radius:50%; display:inline-block;
       background:var(--green); box-shadow:0 0 12px var(--green) }
 
-    .hero .btns { display:flex; flex-wrap:wrap; gap:12px; justify-content:center }
+    .btns { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-bottom:15px }
     .btn {
       background:#1b1b1b; border:1px solid rgba(255,255,255,.1);
       padding:10px 16px; border-radius:10px;
@@ -70,14 +70,32 @@
     .btn:hover { transform:translateY(-2px); border-color:#fff }
     .btn.primary { background:var(--primary); border-color:var(--primary) }
 
+    .social { text-align:center; margin:10px 0 }
+    .social a { margin:0 8px; color:#93c5fd; text-decoration:underline }
+
     /* Sections */
-    section { padding:60px 20px; max-width:980px; margin:auto }
-    section h2 { text-align:center; font-size:28px; margin-bottom:24px }
-    .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px }
-    .card {
-      background:var(--card); border:1px solid rgba(255,255,255,.08);
-      border-radius:12px; padding:18px; text-align:center;
+    section { padding:40px 20px; max-width:900px; margin:auto }
+    section h2 { text-align:center; font-size:28px; margin-bottom:20px }
+
+    /* Accordion */
+    .accordion { margin:15px 0 }
+    .accordion button {
+      width:100%; text-align:left; padding:14px 18px;
+      background:var(--card); border:1px solid rgba(255,255,255,.1);
+      color:#fff; font-weight:600; border-radius:10px;
+      cursor:pointer; transition:.2s;
     }
+    .accordion button:hover { background:#1c1c1c }
+    .accordion button.active { border-color:var(--primary); color:#ff4d8d }
+    .panel {
+      max-height:0; overflow:hidden; transition:max-height .4s ease;
+      background:#101010; border-radius:0 0 10px 10px;
+      border-left:1px solid rgba(255,255,255,.08);
+      border-right:1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      padding:0 16px;
+    }
+    .panel.open { padding:16px; }
 
     .steps ol { padding-left:20px }
     .steps li { margin:10px 0 }
@@ -87,12 +105,7 @@
       border:1px solid rgba(255,255,255,.1);
       border-radius:8px; font-family:monospace; color:#d7f8ff;
       white-space:pre-wrap;
-    }
-
-    /* Social */
-    .social { text-align:center; margin-top:20px }
-    .social a {
-      margin:0 8px; color:#93c5fd; text-decoration:underline
+      margin-top:10px;
     }
 
     footer {
@@ -117,17 +130,26 @@
   <div class="hero">
     <h1>⚡ GTRG SERVER</h1>
     <div class="status">Status: <span class="dot"></span> <b>ONLINE</b></div>
+
+    <!-- semua tombol copy -->
     <div class="btns">
-      <a class="btn primary" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank">Download VHost</a>
-      <button class="btn" onclick="copyText('https://gtrghost.vercel.app/hosts.txt')">Copy Powertunnel</button>
-      <button class="btn" onclick="copyText('https://gtrgios.vercel.app/ios.txt')">Copy iOS Host</button>
+      <button class="btn" onclick="copyText('https://gtrghost.vercel.app/hosts.txt')">Copy Powertunnel (Android)</button>
+      <button class="btn" onclick="copyText('https://gtrgios.vercel.app/ios.txt')">Copy iOS Config</button>
+      <button class="btn" onclick="copyFrom('winHost')">Copy Host Windows</button>
+      <button class="btn" onclick="copyFrom('macHost')">Copy Host Mac</button>
+    </div>
+
+    <!-- discord wa di atas -->
+    <div class="social">
+      <a href="https://discord.gg/FFm37HvmVT" target="_blank">Discord 🔗</a>
+      <a href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">WhatsApp 📱</a>
     </div>
   </div>
 
   <!-- Features -->
   <section id="features">
     <h2>Kenapa Main di GTRG?</h2>
-    <div class="features">
+    <div class="features" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
       <div class="card">⚡ Server Stabil & Cepat</div>
       <div class="card">🛡️ Anti DC & Anti Lag</div>
       <div class="card">🎉 Event Seru Setiap Minggu</div>
@@ -135,70 +157,76 @@
     </div>
   </section>
 
-  <!-- Guide -->
+  <!-- Guide Accordion -->
   <section id="guide">
     <h2>Panduan Instalasi</h2>
 
-    <h3>🤖 Android</h3>
-    <div class="steps">
-      <ol>
-        <li>Unduh Powertunnel.</li>
-        <li>Klik tombol <b>Copy Powertunnel</b> di atas.</li>
-        <li>Buka Powertunnel → Host Settings → tempel URL.</li>
-        <li>Ubah host update period jadi <b>on start</b>.</li>
-        <li>Aktifkan lalu login Growtopia.</li>
-      </ol>
+    <div class="accordion">
+      <button>🤖 Android (Powertunnel)</button>
+      <div class="panel">
+        <div class="steps">
+          <ol>
+            <li>Unduh aplikasi Powertunnel.</li>
+            <li>Klik tombol Copy Powertunnel di atas.</li>
+            <li>Buka Powertunnel → Host Settings → tempel URL.</li>
+            <li>Ubah host update period → <b>on start</b>.</li>
+            <li>Aktifkan lalu login Growtopia.</li>
+          </ol>
+        </div>
+      </div>
     </div>
 
-    <h3>🍏 iOS (Surge 5)</h3>
-    <div class="steps">
-      <ol>
-        <li>Install aplikasi <b>Surge 5</b> dari App Store.</li>
-        <li>Pilih <b>Default.conf</b> → <i>Import Profile from URL</i>.</li>
-        <li>Klik tombol <b>Copy iOS Host</b> lalu tempel di Surge.</li>
-        <li>Izinkan konfigurasi VPN lalu connect.</li>
-      </ol>
+    <div class="accordion">
+      <button>🍏 iOS (Surge 5)</button>
+      <div class="panel">
+        <div class="steps">
+          <ol>
+            <li>Install aplikasi Surge 5 dari App Store.</li>
+            <li>Pilih Default.conf → Import Profile from URL.</li>
+            <li>Klik tombol Copy iOS Config di atas lalu tempel.</li>
+            <li>Izinkan VPN lalu connect.</li>
+          </ol>
+        </div>
+      </div>
     </div>
 
-    <h3>🪟 Windows</h3>
-    <div class="steps">
-      <ol>
-        <li>Buka <code>C:\Windows\System32\drivers\etc</code>.</li>
-        <li>Edit file <b>hosts</b> pakai Notepad.</li>
-        <li>Tambahkan baris ini:</li>
-      </ol>
-      <div class="host-block" id="winHost">
+    <div class="accordion">
+      <button>🪟 Windows</button>
+      <div class="panel">
+        <div class="steps">
+          <ol>
+            <li>Buka <code>C:\Windows\System32\drivers\etc</code>.</li>
+            <li>Edit file hosts pakai Notepad.</li>
+            <li>Tambahkan baris ini:</li>
+          </ol>
+          <div class="host-block" id="winHost">
 46.105.62.153 growtopia1.com
 46.105.62.153 growtopia2.com
 46.105.62.153 www.growtopia1.com
 46.105.62.153 www.growtopia2.com
 46.105.62.153 mpangpp.com</div>
-      <button class="btn" onclick="copyFrom('winHost')">Copy Host Windows</button>
+        </div>
+      </div>
     </div>
 
-    <h3>🍎 MacOS</h3>
-    <div class="steps">
-      <ol>
-        <li>Buka Terminal: <code>sudo nano /etc/hosts</code></li>
-        <li>Masukkan password Mac.</li>
-        <li>Tempel baris ini:</li>
-      </ol>
-      <div class="host-block" id="macHost">
+    <div class="accordion">
+      <button>🍎 MacOS</button>
+      <div class="panel">
+        <div class="steps">
+          <ol>
+            <li>Buka Terminal: <code>sudo nano /etc/hosts</code></li>
+            <li>Masukkan password Mac.</li>
+            <li>Tempel baris ini:</li>
+          </ol>
+          <div class="host-block" id="macHost">
 46.105.62.153 growtopia1.com
 46.105.62.153 growtopia2.com
 46.105.62.153 www.growtopia1.com
 46.105.62.153 www.growtopia2.com</div>
-      <button class="btn" onclick="copyFrom('macHost')">Copy Host Mac</button>
+        </div>
+      </div>
     </div>
-  </section>
 
-  <!-- Social -->
-  <section id="social">
-    <h2>Join Komunitas</h2>
-    <div class="social">
-      <a href="https://discord.gg/FFm37HvmVT" target="_blank">Discord 🔗</a>
-      <a href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">WhatsApp 📱</a>
-    </div>
   </section>
 
   <!-- Footer -->
@@ -214,6 +242,21 @@
       const text=document.getElementById(elId).innerText.trim();
       navigator.clipboard.writeText(text).then(()=>alert("✅ Copied!"));
     }
+
+    // Accordion JS
+    document.querySelectorAll(".accordion button").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        const panel=btn.nextElementSibling;
+        btn.classList.toggle("active");
+        if(panel.style.maxHeight){
+          panel.style.maxHeight=null;
+          panel.classList.remove("open");
+        } else {
+          panel.style.maxHeight=panel.scrollHeight+"px";
+          panel.classList.add("open");
+        }
+      });
+    });
   </script>
 </body>
 </html>
