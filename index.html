@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>⚡ GTRG (GROWTOPIA PRIVATE SERVER)</title>
+  <title>⚡ GTRG SERVER</title>
   <meta name="theme-color" content="#000000" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
@@ -11,11 +11,10 @@
       --bg:#0b0b0b;
       --card:#121212;
       --muted:#b7b7b7;
-      --btn:#1f1f1f;
-      --primary:#0b64c7;
+      --primary:#0b64c7; /* unused as dominant color remains dark - change if you want */
       --accent:#1fb6ff;
-      --accent-2:#e11d48;
       --green:#22c55e;
+      --neon-white: #ffffff;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
@@ -26,150 +25,176 @@
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       overflow-y:auto;
+      line-height:1.5;
     }
 
-    /* NAV */
+    /* NAVBAR (logo only) */
     nav{
-      position:sticky; top:0; z-index:60;
-      background:#0f0f0f;
-      border-bottom:1px solid rgba(255,255,255,0.06);
-      padding:12px 18px; display:flex; gap:12px; align-items:center; justify-content:space-between;
+      position:sticky; top:0; z-index:90;
+      background:rgba(10,10,10,0.6);
+      border-bottom:1px solid rgba(255,255,255,0.03);
+      padding:12px 18px; display:flex; align-items:center; justify-content:flex-start;
+      backdrop-filter: blur(6px);
     }
-    .logo{font-weight:800;font-size:18px;color:var(--accent)}
-    .nav-actions{display:flex;gap:8px;align-items:center}
-    .btn{
-      background:#1b1b1b;
-      border:1px solid rgba(255,255,255,0.06);
-      color:#fff;
-      padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer; font-size:14px;
-      text-decoration:none;
+    .logo{
+      display:flex; gap:10px; align-items:center; font-weight:800; font-size:18px; color:var(--accent)
     }
-    .btn.primary{background:var(--primary); border-color:var(--primary); color:#fff}
-    .btn.small{padding:6px 8px;font-size:13px}
-    .btn:hover{border-color:rgba(255,255,255,0.14)}
+    .logo .bolt{
+      font-size:20px;
+      filter:drop-shadow(0 6px 18px rgba(15,90,255,0.12));
+    }
 
     /* HERO */
-    .hero{padding:40px 18px 30px; text-align:center}
-    .hero h1{
-      font-size:clamp(28px,6vw,56px); 
-      font-weight:900; 
+    .hero{padding:36px 18px 14px; text-align:center; max-width:1100px; margin:0 auto}
+    .title {
+      font-size:clamp(28px,6vw,56px);
+      font-weight:900;
       letter-spacing:1px;
-      color:#fff;
-      text-shadow: 0 0 6px rgba(255,255,255,0.8),
-                   0 0 12px rgba(255,255,255,0.6),
-                   0 0 20px rgba(255,255,255,0.5);
+      color:var(--neon-white);
+      /* neon gradient + glow */
+      background: linear-gradient(90deg, #ffffff, #bfe8ff 20%, #ffffff 40%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-shadow:
+        0 0 6px rgba(255,255,255,0.35),
+        0 6px 24px rgba(3,150,255,0.06);
+      display:inline-block;
     }
-    .sub{color:var(--muted); margin-top:8px}
+    .title.neon {
+      animation: neonPulse 3s infinite;
+    }
+    @keyframes neonPulse{
+      0% { text-shadow: 0 0 6px rgba(255,255,255,0.35), 0 6px 24px rgba(3,150,255,0.06); }
+      50% { text-shadow: 0 0 12px rgba(255,255,255,0.55), 0 10px 30px rgba(3,150,255,0.10); }
+      100% { text-shadow: 0 0 6px rgba(255,255,255,0.35), 0 6px 24px rgba(3,150,255,0.06); }
+    }
+    .sub{color:var(--muted); margin-top:8px;font-weight:500}
+
     .status-row{display:flex;gap:10px;align-items:center;justify-content:center;margin-top:18px;flex-wrap:wrap}
     .status {
-      background:#0f0f0f;
-      border:1px solid rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.03);
       padding:10px 14px; border-radius:12px;
       display:flex; gap:10px; align-items:center; font-weight:700; color:#fff;
     }
-    .dot{width:12px;height:12px;border-radius:50%;background:var(--green); box-shadow:0 0 10px rgba(34,197,94,0.15)}
+    .dot{width:12px;height:12px;border-radius:50%;background:var(--green); box-shadow:0 0 10px rgba(34,197,94,0.16)}
 
     .hero .btns{margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .btn {
+      background:#111;
+      border:1px solid rgba(255,255,255,0.06);
+      color:#fff;
+      padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;
+      text-decoration:none; display:inline-flex; align-items:center; gap:10px;
+      transition: transform .14s ease, border-color .14s;
+    }
+    .btn:hover{ transform:translateY(-4px); border-color:rgba(255,255,255,0.12) }
+    .btn.primary{ background: linear-gradient(90deg,#0b64c7,#1fb6ff); border:1px solid rgba(255,255,255,0.06) }
+    .btn.copy{ background:#141414 }
 
-    /* MAIN CARD */
-    main{max-width:980px;margin:20px auto;padding:0 18px 60px}
+    /* MAIN LAYOUT */
+    main{max-width:1100px;margin:20px auto;padding:0 18px 60px}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:980px){ .grid{grid-template-columns:1fr 360px} }
+
     .card{
-      background:var(--card);
-      border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:18px; box-shadow:0 10px 30px rgba(0,0,0,.6)
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03); border-radius:14px; padding:18px; box-shadow:0 6px 30px rgba(0,0,0,0.6)
     }
 
-    h2{text-align:left;color:#fff;margin-bottom:12px}
-    .box{background:#0f0f0f; border-radius:10px; padding:14px; border:1px solid rgba(255,255,255,0.06)}
-    p, li { color: #ddd; }
+    h2{ color:#fff; margin-bottom:12px; font-size:20px }
+    .box{ background:rgba(255,255,255,0.01); border-radius:10px; padding:14px; border:1px solid rgba(255,255,255,0.02) }
+    p, li { color: #ddd; font-size:15px }
 
     /* Accordion */
-    .accordion{margin:8px 0}
-    .accordion button{width:100%;text-align:left;padding:12px 14px;background:#1b1b1b;border:1px solid rgba(255,255,255,0.06);color:#ccc;font-weight:700;border-radius:10px;cursor:pointer}
-    .accordion button.active{color:#fff;border-color:var(--primary); background:#232323}
-    .panel{max-height:0; overflow:hidden; transition:max-height .35s ease;padding:0 8px}
-    .panel.open{padding:12px 8px; overflow:auto; max-height:420px} 
+    .accordion{margin:10px 0}
+    .accordion button{
+      width:100%; text-align:left; padding:12px 14px; background:#101010; border:1px solid rgba(255,255,255,0.03);
+      color:#e3e3e3; font-weight:700; border-radius:10px; cursor:pointer; font-size:15px;
+    }
+    .accordion button.active{ color:#fff; border-color:rgba(31,182,255,0.14); background:linear-gradient(90deg, rgba(31,182,255,0.02), rgba(11,100,199,0.02)) }
+    .panel{ max-height:0; overflow:hidden; transition:max-height .36s ease; padding:0 8px }
+    .panel.open{ padding:12px 8px; overflow:auto; max-height:520px } /* scrollable for long content */
 
     .host-block{
-      background:#0a0a0a; padding:12px; border-radius:8px; margin-top:8px;
-      font-family: ui-monospace, monospace; color:#d7f8ff; white-space:pre-wrap;
-      border:1px solid rgba(255,255,255,0.06);
+      background: rgba(10,10,10,0.6); padding:12px; border-radius:8px; margin-top:8px;
+      font-family: ui-monospace, Menlo, Monaco, "Courier New", monospace; color:#cfefff; white-space:pre-wrap; border:1px solid rgba(255,255,255,0.02)
     }
 
-    /* floating circular menu kanan tengah */
-    .fab-wrap{position:fixed; right:18px; top:50%; transform:translateY(-50%); z-index:70; display:flex; flex-direction:column; gap:10px; align-items:center}
+    /* SIDE */
+    aside.side-card{
+      padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.02)
+    }
+    .side-card .btn{ width:100%; justify-content:center }
+
+    /* bottom area */
+    .bottom-row{ max-width:1100px; margin:18px auto 28px; padding:0 18px }
+
+    footer{ text-align:center; color:var(--muted); font-size:13px; padding:18px 0 }
+
+    /* FAB (floating circular menu) */
+    .fab-wrap{ position:fixed; right:18px; top:50%; transform:translateY(-50%); z-index:95; display:flex; flex-direction:column; gap:10px; align-items:center }
     .fab-main{
-      width:56px;height:56px;border-radius:50%;background:linear-gradient(180deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;
-      color:#fff;font-weight:800;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.5); border:2px solid rgba(255,255,255,0.06)
+      width:64px;height:64px;border-radius:50%; background:linear-gradient(180deg, #0b64c7, #1fb6ff);
+      display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; cursor:pointer;
+      box-shadow:0 10px 30px rgba(15,90,255,0.15); border:2px solid rgba(255,255,255,0.04); font-size:20px;
     }
-    .fab-menu{display:none;flex-direction:column;gap:10px;margin-bottom:6px}
-    .fab-menu.active{display:flex}
-    .fab-item{width:46px;height:46px;border-radius:50%;background:#1b1b1b;display:flex;align-items:center;justify-content:center;color:#fff; cursor:pointer;border:1px solid rgba(255,255,255,0.06); font-weight:700}
-    .fab-label{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
+    .fab-label{ font-size:13px; color:var(--muted); margin-top:6px; text-align:center }
 
-    /* grid layout */
-    .grid{display:grid;grid-template-columns:1fr;gap:14px}
-    @media(min-width:820px){ .grid{grid-template-columns:1fr 360px} }
+    .fab-menu{ display:none; flex-direction:column; gap:8px; align-items:center; margin-bottom:6px }
+    .fab-menu.active{ display:flex; }
 
-    .side-card{padding:12px;border-radius:10px;background:#121212; border:1px solid rgba(255,255,255,0.06)}
+    .fab-item{
+      width:52px;height:52px;border-radius:50%; background:#111; display:flex; align-items:center; justify-content:center;
+      color:#fff; cursor:pointer; border:1px solid rgba(255,255,255,0.03); font-weight:700; text-align:center;
+    }
+    .fab-item .label{ display:none } /* we show full text under item via small caption */
+    .fab-caption{ font-size:12px; color:#fff; margin-top:6px; background:rgba(255,255,255,0.03); padding:6px 10px; border-radius:8px; white-space:nowrap }
 
-    /* footer */
-    footer{margin-top:18px;text-align:center;color:var(--muted); font-size:13px;padding:18px 0}
-    .social-top{display:flex;gap:8px;align-items:center}
-
-    /* helpers */
-    .kbd{background:#1b1b1b; padding:4px 8px;border-radius:6px;font-family:monospace;color:#d7f8ff;border:1px solid rgba(255,255,255,0.06)}
-    html{scroll-behavior:smooth}
+    /* responsive tweaks */
+    @media(max-width:480px){
+      .fab-wrap{ right:12px; }
+      .fab-main{ width:56px; height:56px; font-size:18px }
+      .title{ font-size:32px }
+    }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- NAV (logo only) -->
   <nav>
-    <div class="logo">⚡GTRG</div>
-    <div class="nav-actions">
-      <div class="social-top" style="margin-right:10px">
-        <a class="btn small" href="https://discord.gg/FFm37HvmVT" target="_blank">Discord</a>
-        <a class="btn small" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">WhatsApp</a>
-      </div>
-      <button class="btn small" onclick="copyText('https://gtrghost.vercel.app/hosts.txt')">Copy Powertunnel</button>
-      <button class="btn small" onclick="copyText('https://gtrgios.vercel.app/ios.txt')">Copy iOS</button>
-      <button class="btn small" onclick="copyFrom('winHost')">Copy Host Win</button>
-      <button class="btn small" onclick="copyFrom('macHost')">Copy Host Mac</button>
+    <div class="logo">
+      <div class="bolt">⚡</div>
+      <div>GTRG</div>
     </div>
   </nav>
 
   <!-- HERO -->
-  <header class="hero">
-    <h1>⚡ GTRG SERVER</h1>
-    <div class="sub">Server GTPS • Private • Fast • Stabil</div>
+  <header class="hero" role="banner">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="title neon">⚡ GTRG SERVER</div>
+      <div class="sub">Server GTPS • Private • Fast • Stabil</div>
 
-    <div class="status-row">
-      <div class="status">
-        <span class="dot"></span>
-        <div id="onlineText">Online: <span id="onlineCount">25</span> pemain</div>
+      <div class="status-row" style="margin-top:18px">
+        <div class="status"><span class="dot"></span> <div id="onlineText">Online: <strong id="onlineCount">25</strong> pemain</div></div>
+        <div class="status"><div style="font-weight:700">IP:</div>&nbsp;<div style="color:var(--muted)">46.105.62.153</div></div>
+        <div class="status"><div style="font-weight:700">VHost:</div>&nbsp;<a style="color:var(--accent)" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank">Download</a></div>
       </div>
 
-      <div class="status">
-        <div style="font-weight:700">IP:</div>&nbsp;<div class="muted">46.105.62.153</div>
+      <div class="hero btns" style="margin-top:14px">
+        <button class="btn primary" onclick="copyText('https://gtrghost.vercel.app/hosts.txt')">Copy Powertunnel (Android)</button>
+        <button class="btn copy" onclick="copyText('https://gtrgios.vercel.app/ios.txt')">Copy iOS (Surge)</button>
+        <button class="btn copy" onclick="copyFrom('winHost')">Copy Host Windows</button>
+        <button class="btn copy" onclick="copyFrom('macHost')">Copy Host Mac</button>
       </div>
-
-      <div class="status">
-        <div style="font-weight:700">VHost:</div>&nbsp;<a class="muted" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank">Download</a>
-      </div>
-    </div>
-
-    <div class="hero btns" style="margin-top:14px">
-      <button class="btn primary" onclick="copyText('https://gtrghost.vercel.app/hosts.txt')">Copy Powertunnel (Android)</button>
-      <button class="btn" onclick="copyText('https://gtrgios.vercel.app/ios.txt')">Copy iOS (Surge)</button>
-      <button class="btn" onclick="copyFrom('winHost')">Copy Host Windows</button>
-      <button class="btn" onclick="copyFrom('macHost')">Copy Host Mac</button>
     </div>
   </header>
 
   <!-- MAIN -->
   <main>
     <div class="grid">
-      <div class="card">
+      <!-- left/main column -->
+      <div class="card" aria-live="polite">
         <h2 id="welcome">Welcome to GTRG</h2>
         <div class="box">
           <p>Selamat datang di <strong>GTRG</strong> — Growtopia Private Server terbaik dengan fitur lengkap, komunitas aktif, dan update rutin.</p>
@@ -179,62 +204,72 @@
             <li>🎉 Event menarik & hadiah</li>
             <li>🏆 Ekonomi pemain dan sistem perdagangan lengkap</li>
           </ul>
-          <p class="muted">Jika ada masalah pembelian, hubungi kami lewat Discord.</p>
+          <p style="color:var(--muted)">Jika ada masalah pembelian, hubungi kami lewat Discord atau WhatsApp (link di menu).</p>
         </div>
 
         <section style="margin-top:14px">
           <h2 id="guide">How to Play (Panduan)</h2>
 
+          <!-- Android -->
           <div class="accordion">
-            <button class="">🤖 Android (Powertunnel)</button>
+            <button type="button">🤖 Android (Powertunnel)</button>
             <div class="panel">
               <div class="box">
                 <ol>
-                  <li>Unduh Powertunnel di perangkat Android.</li>
-                  <li>Klik <strong>Copy Powertunnel</strong> di atas, tempel URL di Host Settings.</li>
-                  <li>Ubah <span class="kbd">host update period</span> ke <b>on start</b>.</li>
+                  <li>Unduh aplikasi <b>Powertunnel</b> di perangkat Android.</li>
+                  <li>Klik tombol <b>Copy Powertunnel (Android)</b> di atas untuk menyalin URL host.</li>
+                  <li>Buka Powertunnel → Menu → <i>Host Settings</i> → tempel URL.</li>
+                  <li>Ubah <span class="kbd">host update period</span> menjadi <b>on start</b>.</li>
                   <li>Aktifkan Powertunnel lalu buka Growtopia dan login.</li>
                 </ol>
               </div>
             </div>
           </div>
 
+          <!-- iOS -->
           <div class="accordion">
-            <button class="">🍏 iOS (Surge 5)</button>
+            <button type="button">🍏 iOS (Surge 5)</button>
             <div class="panel">
               <div class="box">
                 <ol>
                   <li>Install <b>Surge 5</b> dari App Store.</li>
-                  <li>Import profile via URL → gunakan tombol <strong>Copy iOS</strong> di atas.</li>
-                  <li>Izinkan konfigurasi VPN, lalu connect.</li>
+                  <li>Buka → pilih <b>Default.conf</b> → <b>IMPORT</b> → <i>Download Profile from URL</i>.</li>
+                  <li>Klik tombol <b>Copy iOS (Surge)</b> di atas, lalu tempelkan URL di Surge.</li>
+                  <li>Tekan <b>OK</b> → <b>Done</b>, lanjutkan ke <b>SETUP</b> dan izinkan konfigurasi VPN.</li>
+                  <li>Done — buka Growtopia dan connect!</li>
                 </ol>
+                <p style="margin-top:8px;color:var(--muted)">Profile URL: <span style="color:var(--accent)">https://gtrgios.vercel.app/ios.txt</span></p>
               </div>
             </div>
           </div>
 
+          <!-- Windows -->
           <div class="accordion">
-            <button class="">🪟 Windows (Hosts)</button>
+            <button type="button">🪟 Windows (Hosts)</button>
             <div class="panel">
               <div class="box">
-                <p>Buka file hosts (Notepad as admin) lalu tambahkan baris berikut:</p>
+                <p>Buka folder hosts: <span class="kbd">C:\Windows\System32\drivers\etc</span> → buka file <b>hosts</b> dengan Notepad (Run as admin) → tambahkan baris berikut lalu simpan:</p>
                 <div id="winHost" class="host-block">46.105.62.153 growtopia1.com
 46.105.62.153 growtopia2.com
 46.105.62.153 www.growtopia1.com
 46.105.62.153 www.growtopia2.com
 46.105.62.153 mpangpp.com</div>
+                <div style="margin-top:10px"><button class="btn" onclick="copyFrom('winHost')">Copy Host Windows</button></div>
               </div>
             </div>
           </div>
 
+          <!-- MacOS -->
           <div class="accordion">
-            <button class="">🍎 MacOS (Hosts)</button>
+            <button type="button">🍎 MacOS (Hosts)</button>
             <div class="panel">
               <div class="box">
-                <p>Terminal: <span class="kbd">sudo nano /etc/hosts</span> → tambahkan:</p>
+                <p>Buka Terminal: <span class="kbd">sudo nano /etc/hosts</span> → paste baris berikut → <kbd>Ctrl+O</kbd> → Enter → <kbd>Ctrl+X</kbd>:</p>
                 <div id="macHost" class="host-block">46.105.62.153 growtopia1.com
 46.105.62.153 growtopia2.com
 46.105.62.153 www.growtopia1.com
 46.105.62.153 www.growtopia2.com</div>
+                <div style="margin-top:10px"><button class="btn" onclick="copyFrom('macHost')">Copy Host Mac</button></div>
               </div>
             </div>
           </div>
@@ -244,21 +279,22 @@
         <section style="margin-top:18px">
           <h2 id="rules">Rules & Support</h2>
           <div class="box">
-            <p>Jika ada masalah pembelian, hubungi kami lewat Discord. <strong>⚠ Membuka chargeback akan berujung BAN permanen</strong>.</p>
-            <p class="muted">GTRG merupakan server privat, bukan afiliasi resmi Ubisoft.</p>
+            <p>Jika ada masalah pembelian, hubungi kami lewat Discord atau WhatsApp.</p>
+            <p><strong>⚠ Important:</strong> Membuka chargeback akan berujung pada <b>BAN permanen</b> dan banding chargeback tidak akan diproses.</p>
+            <p class="muted">GTRG adalah server privat — bukan afiliasi resmi Ubisoft.</p>
           </div>
         </section>
       </div>
 
-      <!-- SIDE -->
+      <!-- right/side column -->
       <aside class="side-card">
         <h2>Quick Links</h2>
-        <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px">
           <a class="btn" href="https://gtrghost.vercel.app/hosts.txt" target="_blank">Powertunnel (Android)</a>
           <a class="btn" href="https://gtrgios.vercel.app/ios.txt" target="_blank">iOS (Surge)</a>
           <a class="btn" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank">Download VHost</a>
-          <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank">Join Discord</a>
-          <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">Join WhatsApp</a>
+          <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank">Discord</a>
+          <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">WhatsApp</a>
         </div>
 
         <div style="margin-top:16px">
@@ -266,16 +302,15 @@
           <div class="box" style="padding:10px">
             <div><strong>IP</strong>: 46.105.62.153</div>
             <div style="margin-top:6px"><strong>Players</strong>: <span id="sideCount">25</span></div>
-            <div style="margin-top:6px"><strong>Status</strong>: <span style="color:#22c55e">Online</span></div>
+            <div style="margin-top:6px"><strong>Status</strong>: <span style="color:#b6ffca">Online</span></div>
           </div>
         </div>
       </aside>
-
     </div>
   </main>
 
-  <!-- bottom card -->
-  <div style="max-width:980px;margin:0 auto;padding:0 18px 28px">
+  <!-- bottom card area -->
+  <div class="bottom-row">
     <div class="card box" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
       <div>
         <div style="font-weight:800">Download & Setup</div>
@@ -288,71 +323,127 @@
     </div>
   </div>
 
-  <!-- footer -->
   <footer>
     © 2025 GTRG • IP: <b>46.105.62.153</b>
   </footer>
 
-  <!-- floating menu -->
-  <div class="fab-wrap" aria-hidden="false">
+  <!-- FAB: floating circular menu (right middle) -->
+  <div class="fab-wrap" aria-hidden="false" role="navigation" aria-label="Menu cepat">
     <div class="fab-menu" id="fabMenu">
-      <div class="fab-item" title="Welcome" onclick="scrollToId('welcome')">W</div>
-      <div class="fab-item" title="How to Play" onclick="scrollToId('guide')">H</div>
-      <div class="fab-item" title="Rules" onclick="scrollToId('rules')">R</div>
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div class="fab-item" onclick="scrollToId('welcome')" title="Welcome">W</div>
+        <div class="fab-caption">Welcome</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div class="fab-item" onclick="scrollToId('guide')" title="How to Play">H</div>
+        <div class="fab-caption">How to Play</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div class="fab-item" onclick="scrollToId('rules')" title="Rules">R</div>
+        <div class="fab-caption">Rules</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <a class="fab-item" href="https://discord.gg/FFm37HvmVT" title="Discord" target="_blank">D</a>
+        <div class="fab-caption">Discord</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <a class="fab-item" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" title="WhatsApp" target="_blank">W</a>
+        <div class="fab-caption">WhatsApp</div>
+      </div>
     </div>
+
     <div class="fab-main" id="fabMain" title="Menu">≡</div>
-    <div class="fab-label muted">Menu</div>
+    <div class="fab-label">Menu</div>
   </div>
 
   <script>
-    // copy helpers
-    function copyText(txt){ navigator.clipboard.writeText(txt).then(()=>alert("✅ Tersalin: "+txt)); }
-    function copyFrom(id){ const t = document.getElementById(id).innerText.trim(); navigator.clipboard.writeText(t).then(()=>alert("✅ Host tersalin!")); }
+    // ---------- helpers ----------
+    function copyText(txt){
+      navigator.clipboard.writeText(txt).then(()=>alert("✅ Tersalin: "+txt)).catch(()=>alert("Gagal menyalin ke clipboard"));
+    }
+    function copyFrom(id){
+      const el = document.getElementById(id);
+      if(!el) return alert('Sumber tidak ditemukan');
+      const txt = el.innerText.trim();
+      navigator.clipboard.writeText(txt).then(()=>alert("✅ Host tersalin!")).catch(()=>alert("Gagal menyalin host"));
+    }
 
-    // accordion behavior (scroll-safe)
+    // ---------- set static online value (25) ----------
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const fixed = '25';
+      const onEl = document.getElementById('onlineCount');
+      const sideEl = document.getElementById('sideCount');
+      if(onEl) onEl.textContent = fixed;
+      if(sideEl) sideEl.textContent = fixed;
+    });
+
+    // ---------- accordion behavior (scroll-safe) ----------
     document.querySelectorAll('.accordion button').forEach(btn=>{
       btn.addEventListener('click', ()=>{
         const wasActive = btn.classList.contains('active');
         // close all
         document.querySelectorAll('.accordion button').forEach(b=>b.classList.remove('active'));
-        document.querySelectorAll('.panel').forEach(p=>{ p.classList.remove('open'); p.style.maxHeight = null; });
+        document.querySelectorAll('.panel').forEach(p=>{
+          p.classList.remove('open');
+          p.style.maxHeight = null;
+        });
         if(!wasActive){
           btn.classList.add('active');
           const panel = btn.nextElementSibling;
-          panel.classList.add('open');
-          panel.style.maxHeight = panel.scrollHeight + "px";
-          // ensure panel fully visible on small screens
-          const r = panel.getBoundingClientRect();
-          if(r.top < 60 || r.bottom > window.innerHeight - 60){
-            const offset = window.scrollY + r.top - 80;
-            window.scrollTo({top: offset, behavior: 'smooth'});
+          if(panel){
+            panel.classList.add('open');
+            // set to scrollHeight to enable internal scroll if needed
+            panel.style.maxHeight = panel.scrollHeight + "px";
+            // ensure visible on small screens
+            const r = panel.getBoundingClientRect();
+            if(r.top < 60 || r.bottom > window.innerHeight - 60){
+              const offset = window.scrollY + r.top - 80;
+              window.scrollTo({top: offset, behavior: 'smooth'});
+            }
           }
         }
       });
     });
 
-    // floating menu toggle
+    // ensure open panels recalc height on resize (helps avoid stuck height)
+    window.addEventListener('resize', ()=>{
+      document.querySelectorAll('.panel.open').forEach(p=>{
+        p.style.maxHeight = p.scrollHeight + "px";
+      });
+    });
+
+    // ---------- fab (floating menu) ----------
     const fabMain = document.getElementById('fabMain');
     const fabMenu = document.getElementById('fabMenu');
-    fabMain.addEventListener('click', ()=> fabMenu.classList.toggle('active') );
-    // helper scroll
+    fabMain.addEventListener('click', ()=> fabMenu.classList.toggle('active'));
+    fabMain.tabIndex = 0;
+    fabMain.addEventListener('keyup', e=>{ if(e.key === 'Enter') fabMain.click(); });
+
     function scrollToId(id){
-      document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.scrollIntoView({behavior:'smooth', block:'start'});
       fabMenu.classList.remove('active');
     }
 
-    // keyboard accessible
-    fabMain.tabIndex = 0;
-    fabMain.addEventListener('keyup', e=>{ if(e.key === 'Enter' ) fabMain.click(); });
+    // Make fab menu close when clicking outside
+    document.addEventListener('click', (e)=>{
+      const target = e.target;
+      if(!fabMain.contains(target) && !fabMenu.contains(target)){
+        fabMenu.classList.remove('active');
+      }
+    }, {passive:true});
 
-    // ensure panels recalc on resize (avoid stuck height)
-    window.addEventListener('resize', ()=>{
-      document.querySelectorAll('.panel.open').forEach(p=> p.style.maxHeight = p.scrollHeight + "px");
-    });
-
-    // static online count 25
-    document.getElementById('onlineCount').textContent = '25';
-    document.getElementById('sideCount').textContent = '25';
+    // passive safe scroll listener to reduce jank
+    (function(){
+      let ticking = false;
+      window.addEventListener('scroll', function(){
+        if(!ticking){
+          window.requestAnimationFrame(()=>{ ticking = false; });
+          ticking = true;
+        }
+      }, {passive:true});
+    })();
   </script>
 </body>
 </html>
