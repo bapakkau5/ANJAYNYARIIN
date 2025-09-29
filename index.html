@@ -1,283 +1,159 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GTRG SERVER — Panduan & Host</title>
-  <meta name="theme-color" content="#0b63d6" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>⚡ GTRG SERVER</title>
+  <meta name="theme-color" content="#000000" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#07122b;
-      --card:#071a3a;
-      --accent:#0b63d6; /* utama biru */
-      --muted:#bcd7ff;
-      --glass: rgba(255,255,255,0.03);
-      --panel:#052036;
-      --button-bg: rgba(255,255,255,0.06);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%; margin:0; font-family:'Poppins',system-ui,Arial; background:linear-gradient(180deg,#041226 0%, #07122b 60%); color:#eaf6ff}
-    .container{max-width:980px; margin:28px auto; padding:22px; background:linear-gradient(180deg,var(--card), rgba(10,26,45,0.9)); border-radius:14px; border:1px solid rgba(255,255,255,0.05); box-shadow:0 10px 40px rgba(3,10,28,0.7)}
-    .brand{display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#1fb7ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:22px;box-shadow:0 6px 18px rgba(11,99,214,0.28)}
-    h1{font-size:clamp(22px,4vw,34px); margin:0; letter-spacing:0.6px}
-    p.lead{margin:6px 0 18px; color:var(--muted); text-align:center}
+    :root { --bg:#0b0b0b; --card:#121212; --muted:#b7b7b7; --primary:#e11d48; --green:#22c55e; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Poppins',sans-serif;background:var(--bg);color:#fff;line-height:1.6}
+    a{text-decoration:none;color:inherit}
 
-    /* top actions */
-    .top-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:12px 0 18px}
-    .btn{background:var(--button-bg); border:1px solid rgba(255,255,255,0.06); color:#eaf6ff;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
-    .btn:hover{transform:translateY(-3px); box-shadow:0 8px 28px rgba(3,10,28,0.3)}
-    .btn.primary{background:linear-gradient(90deg,var(--accent),#15b0ff); color:#001127; border:none}
-    .btn.copy{background:transparent}
+    nav{position:sticky;top:0;z-index:50;background:rgba(18,18,18,.9);backdrop-filter:blur(8px);
+      padding:12px 28px;display:flex;justify-content:space-between;align-items:center;
+      border-bottom:1px solid rgba(255,255,255,.08)}
+    nav .logo{font-size:20px;font-weight:700;color:#ff006a}
+    nav ul{list-style:none;display:flex;gap:18px}
+    nav ul li a{color:#ddd;font-weight:500;transition:.2s}
+    nav ul li a:hover{color:#fff}
 
-    /* tabs */
-    .tabs{display:flex;gap:8px;justify-content:center;margin:10px 0 18px;flex-wrap:wrap}
-    .tab {padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);cursor:pointer;color:var(--muted);font-weight:600}
-    .tab.active{background:rgba(255,255,255,0.06); color:#fff; border-color:rgba(11,99,214,0.6); box-shadow: 0 6px 18px rgba(11,99,214,0.12)}
+    .hero{text-align:center;padding:70px 16px 40px;background:linear-gradient(180deg,#111,#0b0b0b)}
+    .hero h1{font-size:clamp(34px,6vw,60px);font-weight:800;
+      background:linear-gradient(90deg,#ff006a,#ffa800,#35ff00,#00f0ff,#5c6cff,#ff00ea,#ff006a);
+      background-size:400% 400%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      animation:flow 8s linear infinite}
+    @keyframes flow{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+    .status{margin:14px 0 28px;color:#ddd}.dot{width:14px;height:14px;border-radius:50%;display:inline-block;background:var(--green);box-shadow:0 0 12px var(--green)}
+    .btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:15px}
+    .btn{background:#1b1b1b;border:1px solid rgba(255,255,255,.1);padding:10px 16px;border-radius:10px;font-weight:600;cursor:pointer;transition:.2s;color:#fff}
+    .btn:hover{transform:translateY(-2px);border-color:#fff}
+    .btn.primary{background:var(--primary);border-color:var(--primary)}
+    .social{text-align:center;margin:10px 0}.social a{margin:0 8px;color:#93c5fd;text-decoration:underline}
 
-    .grid{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:900px){ .grid{grid-template-columns: 1fr 420px} }
+    section{padding:50px 20px;max-width:950px;margin:auto}
+    section h2{text-align:center;font-size:28px;margin-bottom:20px}
+    .box{background:#121212;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px;margin:18px 0}
 
-    .card{background:var(--panel); padding:16px; border-radius:12px; border:1px solid rgba(255,255,255,0.03)}
-    .host-block{font-family:ui-monospace,monospace;background:rgba(0,0,0,0.15);padding:12px;border-radius:8px;color:#dff2ff;border:1px solid rgba(255,255,255,0.02);white-space:pre-wrap}
-    .section-title{font-weight:700;color:#dff2ff;margin-bottom:8px}
+    /* Accordion */
+    .accordion{margin:15px 0}
+    .accordion button{width:100%;text-align:left;padding:14px 18px;background:#1c1c1c;border:1px solid rgba(255,255,255,.1);
+      color:#fff;font-weight:600;border-radius:10px;cursor:pointer;transition:.2s}
+    .accordion button:hover{background:#2c2c2c}
+    .accordion button.active{border-color:var(--primary);color:#ff4d8d}
+    .panel{max-height:0;overflow:hidden;transition:max-height .4s ease;background:#101010;border-radius:0 0 10px 10px;
+      border-left:1px solid rgba(255,255,255,.08);border-right:1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid rgba(255,255,255,.08);padding:0 16px}
+    .panel.open{padding:16px;max-height:400px;overflow-y:auto}
+    .steps ol{padding-left:20px}.steps li{margin:10px 0}
+    .host-block{background:#0a0a0a;padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-family:monospace;color:#d7f8ff;white-space:pre-wrap;margin-top:10px}
 
-    /* accordion/panduan */
-    .accordion{margin-top:6px}
-    .acc-item{border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.04); margin-bottom:8px}
-    .acc-head{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));cursor:pointer}
-    .acc-head .title{font-weight:700}
-    .acc-body{padding:14px;background:linear-gradient(180deg, rgba(0,0,0,0.03), transparent); display:none; color:var(--muted)}
-    .acc-body ol{padding-left:18px}
-
-    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
-
-    /* small helpers */
-    .row{display:flex;gap:8px;flex-wrap:wrap}
-    .spacer{height:10px}
-    a.link{color:#aee1ff;text-decoration:underline}
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.04);font-weight:700;color:#cfeeff}
+    footer{text-align:center;font-size:13px;color:var(--muted);padding:20px 0;border-top:1px solid rgba(255,255,255,.08)}
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="brand">
-      <div class="logo">G</div>
-      <div style="text-align:center">
-        <h1>GTRG SERVER</h1>
-        <p class="lead">Selamat datang di GTRG — Panduan koneksi GTPS, host, dan file konfigurasi.</p>
-      </div>
+
+  <nav>
+    <div class="logo">⚡ GTRG</div>
+    <ul>
+      <li><a href="#welcome">Selamat Datang</a></li>
+      <li><a href="#guide">Panduan Main</a></li>
+      <li><a href="#rules">Aturan</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <h1>⚡ GTRG SERVER</h1>
+    <div class="status">Status: <span class="dot"></span> <b>ONLINE</b></div>
+    <div class="btns">
+      <button class="btn" onclick="copyText('https://gtrghost.vercel.app/hosts.txt')">Copy Powertunnel (Android)</button>
+      <button class="btn" onclick="copyText('https://gtrgios.vercel.app/ios.txt')">Copy iOS Config</button>
+      <button class="btn" onclick="copyFrom('winHost')">Copy Host Windows</button>
+      <button class="btn" onclick="copyFrom('macHost')">Copy Host Mac</button>
     </div>
-
-    <!-- TOP copy buttons + discord/wa -->
-    <div class="top-actions" style="margin-top:12px">
-      <a class="btn primary" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank">Download VHOST (VHost)</a>
-      <button class="btn copy" onclick="copyText('https://bapakkau5.github.io/GTRGHOST/hosts.txt')">Copy Powertunnel (Android)</button>
-      <button class="btn copy" onclick="copyText('https://bapakkau5.github.io/GTRGIOS/ios.txt')">Copy iOS (Surge 5)</button>
-      <button class="btn copy" onclick="copyFrom('winHost')">Copy Host (Windows)</button>
-      <button class="btn copy" onclick="copyFrom('macHost')">Copy Host (MacOS)</button>
-      <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank">Discord</a>
-      <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O?mode=ems_share_c" target="_blank">WhatsApp</a>
+    <div class="social">
+      <a href="https://discord.gg/FFm37HvmVT" target="_blank">Discord 🔗</a>
+      <a href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">WhatsApp 📱</a>
     </div>
+  </div>
 
-    <div class="tabs" role="tablist" aria-label="device tabs">
-      <div class="tab active" data-target="android">Android</div>
-      <div class="tab" data-target="ios">iOS</div>
-      <div class="tab" data-target="windows">Windows</div>
-      <div class="tab" data-target="macos">MacOS</div>
+  <section id="welcome">
+    <h2>Selamat Datang di GTRG</h2>
+    <div class="box">
+      <p>Selamat datang di <b>GTRG</b>, Growtopia Private Server terbaik! Kami menawarkan pengalaman server paling lengkap dan profesional di komunitas Growtopia. Dengan lebih dari 5 tahun berjalan, kami sudah membangun komunitas yang aktif dan solid.</p>
+      <h3>Kenapa Main di GTRG?</h3>
+      <ul>
+        <li>⭐ 1,000+ Item Custom – Farmables, gacha, collectible eksklusif</li>
+        <li>🛠️ Developer Profesional – Tim khusus untuk update & perbaikan</li>
+        <li>🚀 Update & Bugfix Harian – Game makin lancar tiap hari</li>
+        <li>🎉 Event & Reward Seru – Ikuti event dan menangkan hadiah</li>
+        <li>🏆 Komunitas Aktif – Trading & interaksi dengan banyak pemain</li>
+      </ul>
+      <p>Gabung sekarang dan nikmati pengalaman Growtopia yang beda dari biasanya!</p>
     </div>
+  </section>
 
-    <div class="grid">
-      <!-- LEFT: panduan / how to play -->
-      <div>
-        <div class="card">
-          <div class="section-title">How to Play — Panduan (Bahasa Indonesia)</div>
-
-          <!-- accordion per device -->
-          <div class="accordion" id="accordion">
-
-            <div class="acc-item" data-id="android">
-              <div class="acc-head"><div class="title">Android — Powertunnel</div><div class="badge">Klik untuk buka</div></div>
-              <div class="acc-body">
-                <ol>
-                  <li>Unduh aplikasi Powertunnel pada Android.</li>
-                  <li>Kembali ke halaman ini lalu klik tombol <b>Copy Powertunnel (Android)</b> di atas untuk menyalin URL host.</li>
-                  <li>Buka Powertunnel → ikon tiga garis (menu) → Host Settings.</li>
-                  <li>Paste URL host yang sudah disalin ke kolom host.</li>
-                  <li>Ubah <i>host update period</i> dari 12 jam → <b>on start</b>.</li>
-                  <li>Aktifkan Powertunnel lalu buka Growtopia dan login.</li>
-                </ol>
-              </div>
-            </div>
-
-            <div class="acc-item" data-id="ios">
-              <div class="acc-head"><div class="title">iOS — Surge 5</div><div class="badge">Klik untuk buka</div></div>
-              <div class="acc-body">
-                <ol>
-                  <li>Install aplikasi <b>Surge 5</b> dari App Store.</li>
-                  <li>Buka Surge → tekan <b>OK</b> → pilih <b>Default.conf</b>.</li>
-                  <li>Pilih <b>IMPORT</b> → <i>Download Profile from URL</i>.</li>
-                  <li>Kembali ke halaman ini lalu klik <b>Copy iOS (Surge 5)</b> untuk menyalin URL konfigurasi.</li>
-                  <li>Paste URL di Surge → OK → Done → Setup → izinkan konfigurasi VPN.</li>
-                  <li>Buka Growtopia dan Connect.</li>
-                </ol>
-                <p style="color:#cfeeff">Profile URL contoh: <b>https://bapakkau5.github.io/GTRGIOS/ios.txt</b></p>
-              </div>
-            </div>
-
-            <div class="acc-item" data-id="windows">
-              <div class="acc-head"><div class="title">Windows — Edit hosts</div><div class="badge">Klik untuk buka</div></div>
-              <div class="acc-body">
-                <ol>
-                  <li>Tekan <b>Win + R</b>, ketik: <code>C:\Windows\System32\drivers\etc</code> lalu Enter.</li>
-                  <li>Buka file <b>hosts</b> dengan Notepad (run as admin bila perlu).</li>
-                  <li>Tambahkan baris IP di bawah ini pada akhir file lalu simpan:</li>
-                </ol>
-                <div class="host-block" id="winHost">46.105.62.153 growtopia1.com
+  <section id="guide">
+    <h2>Panduan Main</h2>
+    <div class="accordion">
+      <button>🤖 Android (Powertunnel)</button>
+      <div class="panel"><div class="steps">
+        <ol><li>Download Powertunnel dari Playstore.</li><li>Klik tombol <b>Copy Powertunnel</b> di atas.</li><li>Paste di Host Settings.</li><li>Set update period ke <b>on start</b>.</li><li>Aktifkan lalu buka Growtopia.</li></ol>
+      </div></div>
+    </div>
+    <div class="accordion">
+      <button>🍏 iOS (Surge 5)</button>
+      <div class="panel"><div class="steps">
+        <ol><li>Install Surge 5 di App Store.</li><li>Buka Default.conf → Import Profile dari URL.</li><li>Klik tombol <b>Copy iOS Config</b> di atas.</li><li>Allow VPN → connect.</li></ol>
+      </div></div>
+    </div>
+    <div class="accordion">
+      <button>🪟 Windows</button>
+      <div class="panel"><div class="steps">
+        <ol><li>Buka folder: <code>C:\Windows\System32\drivers\etc</code></li><li>Edit file <b>hosts</b>.</li><li>Tambahkan baris ini:</li></ol>
+        <div class="host-block" id="winHost">46.105.62.153 growtopia1.com
 46.105.62.153 growtopia2.com
 46.105.62.153 www.growtopia1.com
 46.105.62.153 www.growtopia2.com
 46.105.62.153 mpangpp.com</div>
-                <div style="margin-top:10px"><button class="btn primary" onclick="copyFrom('winHost')">Copy daftar host</button></div>
-              </div>
-            </div>
-
-            <div class="acc-item" data-id="macos">
-              <div class="acc-head"><div class="title">MacOS — Edit /etc/hosts</div><div class="badge">Klik untuk buka</div></div>
-              <div class="acc-body">
-                <ol>
-                  <li>Buka Terminal dan jalankan: <code>sudo nano /etc/hosts</code></li>
-                  <li>Masukkan password akun Mac ketika diminta.</li>
-                  <li>Tempel baris berikut di akhir file lalu <b>Ctrl+O</b> → Enter → <b>Ctrl+X</b> untuk keluar:</li>
-                </ol>
-                <div class="host-block" id="macHost">46.105.62.153 growtopia1.com
+      </div></div>
+    </div>
+    <div class="accordion">
+      <button>🍎 MacOS</button>
+      <div class="panel"><div class="steps">
+        <ol><li>Buka Terminal: <code>sudo nano /etc/hosts</code></li><li>Paste baris ini:</li></ol>
+        <div class="host-block" id="macHost">46.105.62.153 growtopia1.com
 46.105.62.153 growtopia2.com
 46.105.62.153 www.growtopia1.com
 46.105.62.153 www.growtopia2.com</div>
-                <div style="margin-top:10px"><button class="btn primary" onclick="copyFrom('macHost')">Copy daftar host</button></div>
-              </div>
-            </div>
-
-          </div> <!-- accordion -->
-        </div>
-
-        <!-- small about / welcome -->
-        <div class="card" style="margin-top:12px">
-          <div class="section-title">Welcome to GTRG</div>
-          <p style="color:var(--muted);margin:0 0 8px">GTRG — Growtopia Private Server. Server kami menyediakan konten custom, event, dan dukungan komunitas.</p>
-          <ul style="color:var(--muted);margin:8px 0 0;padding-left:18px">
-            <li>⭐ 1.000+ custom item</li>
-            <li>🚀 Update & perbaikan rutin</li>
-            <li>🎉 Event & hadiah komunitas</li>
-          </ul>
-          <p style="margin-top:8px;color:var(--muted)">Butuh dukungan? Hubungi lewat Discord atau WhatsApp di atas.</p>
-        </div>
-      </div>
-
-      <!-- RIGHT: aksi cepat + footer info -->
-      <div>
-        <div class="card">
-          <div class="section-title">Aksi Cepat</div>
-          <div class="row" style="margin-bottom:10px">
-            <button class="btn" onclick="copyText('https://bapakkau5.github.io/GTRGHOST/hosts.txt')">Copy Powertunnel</button>
-            <button class="btn" onclick="copyText('https://bapakkau5.github.io/GTRGIOS/ios.txt')">Copy iOS</button>
-            <a class="btn" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank">Download VHOST</a>
-          </div>
-
-          <div style="margin-top:8px">
-            <div class="section-title">Status Server</div>
-            <p style="margin:6px 0"><span style="display:inline-block;width:12px;height:12px;background:#21c37a;border-radius:50%;margin-right:8px;vertical-align:middle"></span> ONLINE — IP publik:</p>
-            <div class="host-block">46.105.62.153 growtopia1.com
-46.105.62.153 growtopia2.com
-46.105.62.153 www.growtopia1.com
-46.105.62.153 www.growtopia2.com</div>
-            <div style="margin-top:8px"><button class="btn" onclick="copyFrom('winHost')">Copy semua Host</button></div>
-          </div>
-
-          <div style="margin-top:14px">
-            <div class="section-title">Gabung Komunitas</div>
-            <div class="row">
-              <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank">Join Discord</a>
-              <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O?mode=ems_share_c" target="_blank">Join WhatsApp</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:12px">
-          <div class="section-title">Aturan Singkat</div>
-          <p style="color:var(--muted);font-size:14px;margin:0">Jangan chargeback, jangan mem-bully, dan hormati komunitas. Pelanggaran berat dapat berujung banned permanen.</p>
-        </div>
-
-        <div class="card" style="margin-top:12px;text-align:center">
-          <div style="font-weight:700;margin-bottom:8px">Support & Pembelian</div>
-          <p style="color:var(--muted);margin:0 0 10px">Masalah pembelian? Hubungi admin di Discord. Chargeback = ban permanen.</p>
-          <div style="font-size:12px;color:var(--muted)">© 2025 GTRG • Tidak terkait resmi dengan pihak manapun.</div>
-        </div>
-      </div>
+      </div></div>
     </div>
+  </section>
 
-    <!-- footer duplicates (discord + wa) -->
-    <div style="display:flex;justify-content:center;gap:10px;margin-top:16px">
-      <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank">Discord</a>
-      <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O?mode=ems_share_c" target="_blank">WhatsApp</a>
+  <section id="rules">
+    <h2>Aturan & Support</h2>
+    <div class="box">
+      <p>Jika ada masalah pembelian, hubungi kami via Discord.</p>
+      <p><b>⚠ Penting:</b> Melakukan chargeback = banned permanen dari server & store.</p>
+      <p>GTRG bukan server resmi Growtopia. Hak cipta © 2025 GTRG.<br>Kami tidak berafiliasi dengan Ubisoft.</p>
     </div>
+  </section>
 
-    <footer>© 2025 GTRG — IP publik: <strong>46.105.62.153</strong></footer>
-  </div>
+  <footer>© 2025 GTRG SERVER • IP: <b>46.105.62.153</b></footer>
 
   <script>
-    // simple helpers
-    const $ = sel => document.querySelector(sel);
-    const $$ = sel => Array.from(document.querySelectorAll(sel));
-
-    // tabs
-    $$('.tab').forEach(tab=>{
-      tab.addEventListener('click', ()=>{
-        $$('.tab').forEach(t=>t.classList.remove('active'));
-        tab.classList.add('active');
-        // open corresponding accordion item
-        const target = tab.dataset.target;
-        // close all bodies
-        $$('.acc-body').forEach(b=>b.style.display='none');
-        // open the matching acc-item body
-        const item = document.querySelector('.acc-item[data-id="'+target+'"]');
-        if(item) item.querySelector('.acc-body').style.display = 'block';
-        // smooth scroll to left column (if mobile)
-        if(window.innerWidth < 900){
-          setTimeout(()=>{ document.querySelector('.card').scrollIntoView({behavior:'smooth'}); },50);
-        }
-      });
-    });
-
-    // accordion toggle
-    $$('.acc-item').forEach(item=>{
-      const head = item.querySelector('.acc-head');
-      head.addEventListener('click', ()=>{
-        const body = item.querySelector('.acc-body');
-        const open = body.style.display === 'block';
-        // close others
-        $$('.acc-body').forEach(b=>b.style.display='none');
-        if(!open) body.style.display = 'block';
-      });
-    });
-
-    // copy helpers
-    function copyText(text){
-      navigator.clipboard.writeText(text).then(()=>alert('✅ Tersalin: ' + text)).catch(()=>alert('Gagal menyalin'));
-    }
-    function copyFrom(id){
-      const el = document.getElementById(id);
-      if(!el) return alert('Tidak ditemukan');
-      const text = el.innerText.trim();
-      navigator.clipboard.writeText(text).then(()=>alert('✅ Daftar host disalin')).catch(()=>alert('Gagal menyalin'));
-    }
-
-    // auto-open Android accordion by default
-    (function init(){
-      const android = document.querySelector('.acc-item[data-id="android"]');
-      if(android) android.querySelector('.acc-body').style.display = 'block';
-    })();
+    function copyText(text){navigator.clipboard.writeText(text).then(()=>alert("✅ Tersalin: "+text));}
+    function copyFrom(id){const t=document.getElementById(id).innerText.trim();navigator.clipboard.writeText(t).then(()=>alert("✅ Host tersalin!"));}
+    document.querySelectorAll(".accordion button").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        const panel=btn.nextElementSibling;
+        btn.classList.toggle("active");
+        if(panel.style.maxHeight){panel.style.maxHeight=null;panel.classList.remove("open")}
+        else{panel.style.maxHeight=panel.scrollHeight+"px";panel.classList.add("open")}
+      })
+    })
   </script>
 </body>
 </html>
