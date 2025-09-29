@@ -1,201 +1,365 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>⚡ GTRG SERVER</title>
-  <meta name="theme-color" content="#000000" />
+  <meta name="theme-color" content="#0b64c7" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root { --bg:#0b0b0b; --card:#121212; --muted:#b7b7b7; --primary:#e11d48; --green:#22c55e; }
+    :root{
+      --bg:#061229;
+      --card:#072242;
+      --muted:#9fbce6;
+      --primary:#0b64c7; /* biru utama */
+      --accent:#1fb6ff;
+      --glass: rgba(255,255,255,0.03);
+      --glass-border: rgba(255,255,255,0.06);
+      --success: #34d399;
+    }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Poppins',sans-serif;background:var(--bg);color:#fff;line-height:1.6}
-    a{text-decoration:none;color:inherit}
-
-    .hero{text-align:center;padding:70px 16px 40px;background:linear-gradient(180deg,#111,#0b0b0b)}
-    .hero h1{font-size:clamp(34px,6vw,60px);font-weight:800;
-      background:linear-gradient(90deg,#ff006a,#ffa800,#35ff00,#00f0ff,#5c6cff,#ff00ea,#ff006a);
-      background-size:400% 400%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
-      animation:flow 8s linear infinite}
-    @keyframes flow{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-    .status{margin:14px 0 28px;color:#ddd}.dot{width:14px;height:14px;border-radius:50%;display:inline-block;background:var(--green);box-shadow:0 0 12px var(--green)}
-    .btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:15px}
-    .btn{background:#1b1b1b;border:1px solid rgba(255,255,255,.1);padding:10px 16px;border-radius:10px;font-weight:600;cursor:pointer;transition:.2s;color:#fff}
-    .btn:hover{transform:translateY(-2px);border-color:#fff}
-    .btn.primary{background:var(--primary);border-color:var(--primary)}
-    .social{text-align:center;margin:10px 0}.social a{margin:0 8px;color:#93c5fd;text-decoration:underline}
-
-    section{padding:50px 20px;max-width:950px;margin:auto}
-    section h2{text-align:center;font-size:28px;margin-bottom:20px}
-    .box{background:#121212;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:20px;margin:18px 0}
-
-    /* Accordion */
-    .accordion{margin:15px 0}
-    .accordion button{width:100%;text-align:left;padding:14px 18px;background:#1c1c1c;border:1px solid rgba(255,255,255,.1);
-      color:#fff;font-weight:600;border-radius:10px;cursor:pointer;transition:.2s}
-    .accordion button:hover{background:#2c2c2c}
-    .accordion button.active{border-color:var(--primary);color:#ff4d8d}
-    .panel{max-height:0;overflow:hidden;transition:max-height .4s ease;background:#101010;border-radius:0 0 10px 10px;
-      border-left:1px solid rgba(255,255,255,.08);border-right:1px solid rgba(255,255,255,.08);
-      border-bottom:1px solid rgba(255,255,255,.08);padding:0 16px}
-    .panel.open{padding:16px}
-    .steps ol{padding-left:20px}.steps li{margin:10px 0}
-    .host-block{background:#0a0a0a;padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-family:monospace;color:#d7f8ff;white-space:pre-wrap;margin-top:10px}
-
-    footer{text-align:center;font-size:13px;color:var(--muted);padding:20px 0;border-top:1px solid rgba(255,255,255,.08)}
-
-    /* Floating Menu Button */
-    .menu-btn {
-      position: fixed;
-      top: 18px;
-      right: 18px;
-      background: #ff006a;
-      color: #fff;
-      font-size: 22px;
-      font-weight: 700;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 1001;
-      box-shadow: 0 0 10px rgba(0,0,0,.5);
-      transition: 0.2s;
+    html,body{height:100%}
+    body{
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background: linear-gradient(180deg,#021029 0%, #081526 100%);
+      color:#eaf6ff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-y:auto;
     }
-    .menu-btn:hover { background:#ff3380; }
 
-    .side-menu {
-      position: fixed;
-      top: 0;
-      right: -250px;
-      width: 220px;
-      height: 100%;
-      background: #121212;
-      box-shadow: -4px 0 12px rgba(0,0,0,.6);
-      padding-top: 70px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      transition: right 0.3s ease;
-      z-index: 1000;
+    /* NAV */
+    nav{
+      position:sticky; top:0; z-index:60;
+      background: linear-gradient(180deg, rgba(2,18,41,0.88), rgba(2,18,41,0.75));
+      border-bottom:1px solid var(--glass-border);
+      padding:12px 18px; display:flex; gap:12px; align-items:center; justify-content:space-between;
+      backdrop-filter: blur(6px);
     }
-    .side-menu a {
-      padding: 12px 20px;
-      font-size: 16px;
-      color: #fff;
-      font-weight: 600;
-      border-bottom: 1px solid rgba(255,255,255,.1);
-      transition: 0.2s;
+    .logo{font-weight:800;color:var(--accent); font-size:18px}
+    .nav-actions{display:flex;gap:8px;align-items:center}
+    .btn{
+      background:transparent;border:1px solid var(--glass-border); color:var(--muted);
+      padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer; font-size:14px;
     }
-    .side-menu a:hover { background: #1f1f1f; color:#ff006a; }
-    .side-menu.open { right: 0; }
+    .btn.primary{background:var(--primary); border-color:var(--primary); color:#fff}
+    .btn.small{padding:6px 8px;font-size:13px}
+    .btn:active{transform:translateY(1px)}
+
+    /* HERO */
+    .hero{padding:40px 18px 30px; text-align:center}
+    .hero h1{
+      font-size:clamp(28px,6vw,56px); font-weight:900; letter-spacing:1px;
+      background:linear-gradient(90deg,#74c0ff,#0b64c7 40%, #7be0ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    .sub{color:var(--muted); margin-top:8px}
+    .status-row{display:flex;gap:10px;align-items:center;justify-content:center;margin-top:18px;flex-wrap:wrap}
+    .status {
+      background:var(--glass); border:1px solid var(--glass-border); padding:10px 14px; border-radius:12px;
+      display:flex; gap:10px; align-items:center; font-weight:700; color:#e7f6ff;
+    }
+    .dot{width:12px;height:12px;border-radius:50%;background:var(--success); box-shadow:0 0 10px rgba(52,211,153,0.15)}
+
+    .hero .btns{margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+    /* MAIN CARD */
+    main{max-width:980px;margin:20px auto;padding:0 18px 60px}
+    .card{
+      background:linear-gradient(180deg, rgba(11,102,199,0.06), rgba(2,18,41,0.12));
+      border:1px solid var(--glass-border); border-radius:14px; padding:18px; box-shadow:0 10px 30px rgba(2,10,28,0.6)
+    }
+
+    h2{text-align:left;color:#dff3ff;margin-bottom:12px}
+    .box{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:10px; padding:14px; border:1px solid rgba(255,255,255,0.03)}
+    p, li { color: #d9f1ff; }
+
+    /* Accordion / panels */
+    .accordion{margin:8px 0}
+    .accordion button{width:100%;text-align:left;padding:12px 14px;background:transparent;border:1px solid var(--glass-border);color:var(--muted);font-weight:700;border-radius:10px;cursor:pointer}
+    .accordion button.active{color:#fff;border-color:var(--primary); background: linear-gradient(90deg, rgba(11,100,199,0.06), rgba(31,182,255,0.02))}
+    .panel{max-height:0; overflow:hidden; transition:max-height .35s ease;padding:0 8px}
+    .panel.open{padding:12px 8px; overflow:auto; max-height:420px} /* scrollable */
+
+    .host-block{
+      background: rgba(4,27,44,0.6); padding:12px; border-radius:8px; margin-top:8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Courier New", monospace; color:#cfefff; white-space:pre-wrap;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    /* floating circular menu kanan tengah */
+    .fab-wrap{position:fixed; right:18px; top:50%; transform:translateY(-50%); z-index:70; display:flex; flex-direction:column; gap:10px; align-items:center}
+    .fab-main{
+      width:56px;height:56px;border-radius:50%;background:linear-gradient(180deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;
+      color:#fff;font-weight:800;cursor:pointer;box-shadow:0 10px 30px rgba(11,100,199,0.25); border:2px solid rgba(255,255,255,0.06)
+    }
+    .fab-menu{display:none;flex-direction:column;gap:10px;margin-bottom:6px}
+    .fab-menu.active{display:flex}
+    .fab-item{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;color:#dff; cursor:pointer;border:1px solid var(--glass-border); font-weight:700}
+    .fab-label{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
+
+    /* howto layout */
+    .grid{display:grid;grid-template-columns:1fr;gap:14px}
+    @media(min-width:820px){ .grid{grid-template-columns:1fr 360px} }
+
+    .side-card{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015)); border:1px solid rgba(255,255,255,0.02)}
+
+    /* footer */
+    footer{margin-top:18px;text-align:center;color:var(--muted); font-size:13px;padding:18px 0}
+    .social-top{display:flex;gap:8px;align-items:center}
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .kbd{background:rgba(255,255,255,0.03); padding:4px 8px;border-radius:6px;font-family:monospace;color:#cfefff;border:1px solid rgba(255,255,255,0.02)}
+    /* smooth scroll behavior */
+    html{scroll-behavior:smooth}
   </style>
 </head>
 <body>
+  <nav>
+    <div class="logo">⚡ GTRG</div>
+    <div class="nav-actions">
+      <div class="social-top muted" style="margin-right:10px">
+        <a class="btn small" href="https://discord.gg/FFm37HvmVT" target="_blank">Discord</a>
+        <a class="btn small" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">WhatsApp</a>
+      </div>
+      <button class="btn small" onclick="copyText('https://gtrghost.vercel.app/hosts.txt')">Copy Powertunnel</button>
+      <button class="btn small" onclick="copyText('https://gtrgios.vercel.app/ios.txt')">Copy iOS</button>
+      <button class="btn small" onclick="copyFrom('winHost')">Copy Host Win</button>
+      <button class="btn small" onclick="copyFrom('macHost')">Copy Host Mac</button>
+    </div>
+  </nav>
 
-  <!-- Tombol Bulat Menu -->
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-  <!-- Sidebar Menu -->
-  <div id="sideMenu" class="side-menu">
-    <a href="#welcome" onclick="toggleMenu()">🏠 GTRG Welcome</a>
-    <a href="#guide" onclick="toggleMenu()">📖 How to Play</a>
-    <a href="#rules" onclick="toggleMenu()">📜 Rules</a>
-  </div>
-
-  <div class="hero">
+  <header class="hero">
     <h1>⚡ GTRG SERVER</h1>
-    <div class="status">Status: <span class="dot"></span> <b>ONLINE</b></div>
-    <div class="btns">
-      <button class="btn" onclick="copyText('https://gtrghost.vercel.app/hosts.txt')">Copy Powertunnel (Android)</button>
-      <button class="btn" onclick="copyText('https://gtrgios.vercel.app/ios.txt')">Copy iOS Config</button>
+    <div class="sub">Server GTPS • Private • Fast • Stabil</div>
+
+    <div class="status-row">
+      <div class="status">
+        <span class="dot"></span>
+        <div id="onlineText">Online: <span id="onlineCount">--</span> pemain</div>
+      </div>
+
+      <div class="status">
+        <div style="font-weight:700">IP:</div>&nbsp;<div class="muted">46.105.62.153</div>
+      </div>
+
+      <div class="status">
+        <div style="font-weight:700">VHost:</div>&nbsp;<a class="muted" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank">Download</a>
+      </div>
+    </div>
+
+    <div class="hero btns" style="margin-top:14px">
+      <button class="btn primary" onclick="copyText('https://gtrghost.vercel.app/hosts.txt')">Copy Powertunnel (Android)</button>
+      <button class="btn" onclick="copyText('https://gtrgios.vercel.app/ios.txt')">Copy iOS (Surge)</button>
       <button class="btn" onclick="copyFrom('winHost')">Copy Host Windows</button>
       <button class="btn" onclick="copyFrom('macHost')">Copy Host Mac</button>
     </div>
-    <div class="social">
-      <a href="https://discord.gg/FFm37HvmVT" target="_blank">Discord 🔗</a>
-      <a href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">WhatsApp 📱</a>
-    </div>
-  </div>
+  </header>
 
-  <section id="welcome">
-    <h2>Selamat Datang di GTRG</h2>
-    <div class="box">
-      <p>Selamat datang di <b>GTRG</b>, Growtopia Private Server paling lengkap! Dengan pengalaman lebih dari 5 tahun, kami membangun komunitas yang solid dengan fitur profesional.</p>
-      <h3>Kenapa Main di GTRG?</h3>
-      <ul>
-        <li>⭐ 1,000+ Item Custom – Farmables, gachas, collectibles</li>
-        <li>🛠️ Developer Profesional – Update rutin & bug fix</li>
-        <li>🚀 Event & Reward Seru – Hadiah menarik tiap minggu</li>
-        <li>🏆 Komunitas Aktif – Trading & sosial ramai</li>
-      </ul>
-    </div>
-  </section>
+  <main>
+    <div class="grid">
+      <div class="card">
+        <h2 id="welcome">Welcome to GTRG</h2>
+        <div class="box">
+          <p>Selamat datang di <strong>GTRG</strong> — Growtopia Private Server terbaik dengan fitur lengkap, komunitas aktif, dan update rutin.</p>
+          <ul>
+            <li>⭐ 1.000+ item custom (farmables, gachas, dekorasi)</li>
+            <li>🛠️ Developer profesional & perbaikan rutin</li>
+            <li>🎉 Event menarik & hadiah</li>
+            <li>🏆 Ekonomi pemain dan sistem perdagangan lengkap</li>
+          </ul>
+          <p class="muted">Jika ada masalah pembelian, hubungi kami lewat Discord.</p>
+        </div>
 
-  <section id="guide">
-    <h2>Panduan Main</h2>
-    <div class="accordion">
-      <button>🤖 Android (Powertunnel)</button>
-      <div class="panel"><div class="steps">
-        <ol><li>Download Powertunnel.</li><li>Click tombol Copy Powertunnel di atas.</li><li>Paste di Host Settings.</li><li>Set update period ke <b>on start</b>.</li><li>Enable & login Growtopia.</li></ol>
-      </div></div>
-    </div>
-    <div class="accordion">
-      <button>🍏 iOS (Surge 5)</button>
-      <div class="panel"><div class="steps">
-        <ol><li>Install Surge 5 dari App Store.</li><li>Buka Default.conf → Import Profile from URL.</li><li>Click tombol Copy iOS Config di atas.</li><li>Allow VPN → connect.</li></ol>
-      </div></div>
-    </div>
-    <div class="accordion">
-      <button>🪟 Windows</button>
-      <div class="panel"><div class="steps">
-        <ol><li>Buka <code>C:\Windows\System32\drivers\etc</code></li><li>Edit hosts file.</li><li>Tambahkan baris ini:</li></ol>
-        <div class="host-block" id="winHost">46.105.62.153 growtopia1.com
+        <section style="margin-top:14px">
+          <h2 id="guide">How to Play (Panduan)</h2>
+
+          <div class="accordion">
+            <button class="">🤖 Android (Powertunnel)</button>
+            <div class="panel">
+              <div class="box">
+                <ol>
+                  <li>Unduh Powertunnel di perangkat Android.</li>
+                  <li>Buka tombol <strong>Copy Powertunnel</strong> di atas, tempel URL di Host Settings.</li>
+                  <li>Ubah <span class="kbd">host update period</span> ke <b>on start</b>.</li>
+                  <li>Aktifkan Powertunnel lalu buka Growtopia dan login.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="">🍏 iOS (Surge 5)</button>
+            <div class="panel">
+              <div class="box">
+                <ol>
+                  <li>Install <b>Surge 5</b> dari App Store.</li>
+                  <li>Import profile via URL → gunakan tombol <strong>Copy iOS</strong> di atas.</li>
+                  <li>Izinkan konfigurasi VPN, lalu connect.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="">🪟 Windows (Hosts)</button>
+            <div class="panel">
+              <div class="box">
+                <p>Buka file hosts (Notepad as admin) lalu tambahkan baris berikut:</p>
+                <div id="winHost" class="host-block">46.105.62.153 growtopia1.com
 46.105.62.153 growtopia2.com
 46.105.62.153 www.growtopia1.com
 46.105.62.153 www.growtopia2.com
 46.105.62.153 mpangpp.com</div>
-      </div></div>
-    </div>
-    <div class="accordion">
-      <button>🍎 MacOS</button>
-      <div class="panel"><div class="steps">
-        <ol><li>Buka Terminal: <code>sudo nano /etc/hosts</code></li><li>Paste ini:</li></ol>
-        <div class="host-block" id="macHost">46.105.62.153 growtopia1.com
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="">🍎 MacOS (Hosts)</button>
+            <div class="panel">
+              <div class="box">
+                <p>Terminal: <span class="kbd">sudo nano /etc/hosts</span> → tambahkan:</p>
+                <div id="macHost" class="host-block">46.105.62.153 growtopia1.com
 46.105.62.153 growtopia2.com
 46.105.62.153 www.growtopia1.com
 46.105.62.153 www.growtopia2.com</div>
-      </div></div>
-    </div>
-  </section>
+              </div>
+            </div>
+          </div>
 
-  <section id="rules">
-    <h2>Aturan & Support</h2>
-    <div class="box">
-      <p>Jika ada masalah pembelian, hubungi kami di Discord.</p>
-      <p><b>⚠ Penting:</b> Chargeback = banned permanen.</p>
-      <p>GTRG terpisah dari Growtopia resmi. © 2025 GTRG. Tidak berafiliasi dengan Ubisoft.</p>
-    </div>
-  </section>
+        </section>
 
-  <footer>© 2025 GTRG SERVER • IP: <b>46.105.62.153</b></footer>
+        <section style="margin-top:18px">
+          <h2 id="rules">Rules & Support</h2>
+          <div class="box">
+            <p>Jika ada masalah pembelian, hubungi kami lewat Discord. <strong>⚠ Membuka chargeback akan berujung BAN permanen</strong>.</p>
+            <p class="muted">GTRG merupakan server privat, bukan afiliasi resmi Ubisoft.</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- SIDE -->
+      <aside class="side-card">
+        <h2>Quick Links</h2>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+          <a class="btn" href="https://gtrghost.vercel.app/hosts.txt" target="_blank">Powertunnel (Android)</a>
+          <a class="btn" href="https://gtrgios.vercel.app/ios.txt" target="_blank">iOS (Surge)</a>
+          <a class="btn" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank">Download VHost</a>
+          <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank">Join Discord</a>
+          <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">Join WhatsApp</a>
+        </div>
+
+        <div style="margin-top:16px">
+          <h3 style="margin-bottom:8px">Server Info</h3>
+          <div class="box" style="padding:10px">
+            <div><strong>IP</strong>: 46.105.62.153</div>
+            <div style="margin-top:6px"><strong>Players</strong>: <span id="sideCount">--</span></div>
+            <div style="margin-top:6px"><strong>Status</strong>: <span style="color:#b6ffca">Online</span></div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <div style="max-width:980px;margin:0 auto;padding:0 18px 28px">
+    <div class="card box" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <div>
+        <div style="font-weight:800">Download & Setup</div>
+        <div class="muted" style="font-size:13px;margin-top:6px">Semua tombol copy di atas untuk mempermudah setup</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank">Discord</a>
+        <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 GTRG • IP: <b>46.105.62.153</b>
+  </footer>
+
+  <!-- floating menu -->
+  <div class="fab-wrap" aria-hidden="false">
+    <div class="fab-menu" id="fabMenu">
+      <div class="fab-item" title="Welcome" onclick="scrollToId('welcome')">W</div>
+      <div class="fab-item" title="How to Play" onclick="scrollToId('guide')">H</div>
+      <div class="fab-item" title="Rules" onclick="scrollToId('rules')">R</div>
+    </div>
+    <div class="fab-main" id="fabMain" title="Menu">≡</div>
+    <div class="fab-label muted">Menu</div>
+  </div>
 
   <script>
-    function copyText(text){navigator.clipboard.writeText(text).then(()=>alert("✅ Copied: "+text));}
-    function copyFrom(id){const t=document.getElementById(id).innerText.trim();navigator.clipboard.writeText(t).then(()=>alert("✅ Copied!"));}
-    document.querySelectorAll(".accordion button").forEach(btn=>{
-      btn.addEventListener("click",()=>{
-        const panel=btn.nextElementSibling;
-        btn.classList.toggle("active");
-        if(panel.style.maxHeight){panel.style.maxHeight=null;panel.classList.remove("open")}
-        else{panel.style.maxHeight=panel.scrollHeight+"px";panel.classList.add("open")}
-      })
-    })
-    function toggleMenu() {
-      document.getElementById("sideMenu").classList.toggle("open");
+    // copy helpers
+    function copyText(txt){ navigator.clipboard.writeText(txt).then(()=>alert("✅ Tersalin: "+txt)); }
+    function copyFrom(id){ const t = document.getElementById(id).innerText.trim(); navigator.clipboard.writeText(t).then(()=>alert("✅ Host tersalin!")); }
+
+    // dynamic online players (realistik) -- update every 3s, random between 15..25
+    const onlineEl = document.getElementById('onlineCount');
+    const sideEl = document.getElementById('sideCount');
+    function updateOnline(){
+      const n = Math.floor(Math.random() * (25 - 15 + 1)) + 15;
+      // small animation:
+      onlineEl.style.opacity = 0.2;
+      sideEl.style.opacity = 0.2;
+      setTimeout(()=>{
+        onlineEl.textContent = n;
+        sideEl.textContent = n;
+        onlineEl.style.opacity = 1;
+        sideEl.style.opacity = 1;
+      }, 180);
     }
+    updateOnline();
+    setInterval(updateOnline, 3000);
+
+    // accordion behavior (scroll-safe)
+    document.querySelectorAll('.accordion button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const wasActive = btn.classList.contains('active');
+        // close all
+        document.querySelectorAll('.accordion button').forEach(b=>b.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p=>{ p.classList.remove('open'); p.style.maxHeight = null; });
+        if(!wasActive){
+          btn.classList.add('active');
+          const panel = btn.nextElementSibling;
+          panel.classList.add('open');
+          panel.style.maxHeight = panel.scrollHeight + "px";
+          // ensure panel fully visible on small screens
+          const r = panel.getBoundingClientRect();
+          if(r.top < 60 || r.bottom > window.innerHeight - 60){
+            const offset = window.scrollY + r.top - 80;
+            window.scrollTo({top: offset, behavior: 'smooth'});
+          }
+        }
+      });
+    });
+
+    // floating menu toggle
+    const fabMain = document.getElementById('fabMain');
+    const fabMenu = document.getElementById('fabMenu');
+    fabMain.addEventListener('click', ()=> fabMenu.classList.toggle('active') );
+    // helper scroll
+    function scrollToId(id){
+      document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+      fabMenu.classList.remove('active');
+    }
+
+    // ensure panels collapse on resize to avoid stuck height bugs
+    window.addEventListener('resize', ()=>{
+      document.querySelectorAll('.panel.open').forEach(p=> p.style.maxHeight = p.scrollHeight + "px");
+    });
+
+    // accessibility: keyboard for fab
+    fabMain.tabIndex = 0;
+    fabMain.addEventListener('keyup', e=>{ if(e.key === 'Enter' ) fabMain.click(); });
+
+    // prevent howtoplay scroll stuck: use passive listeners & avoid heavy work on scroll
+    (function(){
+      let ticking = false;
+      window.addEventListener('scroll', function(){ if(!ticking){ window.requestAnimationFrame(()=>{ ticking=false; }); ticking = true; } }, {passive:true});
+    })();
   </script>
 </body>
 </html>
