@@ -4,25 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>⚡ GTRG SERVER</title>
-  <meta name="theme-color" content="#0b64c7" />
+  <meta name="theme-color" content="#000000" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#061229;
-      --card:#072242;
-      --muted:#9fbce6;
-      --primary:#0b64c7; /* biru utama */
+      --bg:#0b0b0b;
+      --card:#121212;
+      --muted:#b7b7b7;
+      --btn:#1f1f1f;
+      --primary:#0b64c7; /* jika mau ganti warna utama ubah di sini */
       --accent:#1fb6ff;
-      --glass: rgba(255,255,255,0.03);
-      --glass-border: rgba(255,255,255,0.06);
-      --success: #34d399;
+      --accent-2:#e11d48;
+      --green:#22c55e;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
       font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background: linear-gradient(180deg,#021029 0%, #081526 100%);
-      color:#eaf6ff;
+      background:var(--bg);
+      color:#fff;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       overflow-y:auto;
@@ -31,94 +31,98 @@
     /* NAV */
     nav{
       position:sticky; top:0; z-index:60;
-      background: linear-gradient(180deg, rgba(2,18,41,0.88), rgba(2,18,41,0.75));
-      border-bottom:1px solid var(--glass-border);
+      background:#0f0f0f;
+      border-bottom:1px solid rgba(255,255,255,0.06);
       padding:12px 18px; display:flex; gap:12px; align-items:center; justify-content:space-between;
-      backdrop-filter: blur(6px);
     }
-    .logo{font-weight:800;color:var(--accent); font-size:18px}
+    .logo{font-weight:800;font-size:18px;color:var(--accent)}
     .nav-actions{display:flex;gap:8px;align-items:center}
     .btn{
-      background:transparent;border:1px solid var(--glass-border); color:var(--muted);
+      background:#1b1b1b;
+      border:1px solid rgba(255,255,255,0.06);
+      color:#fff;
       padding:8px 12px;border-radius:10px;font-weight:600;cursor:pointer; font-size:14px;
+      text-decoration:none;
     }
     .btn.primary{background:var(--primary); border-color:var(--primary); color:#fff}
     .btn.small{padding:6px 8px;font-size:13px}
-    .btn:active{transform:translateY(1px)}
+    .btn:hover{border-color:rgba(255,255,255,0.14)}
 
     /* HERO */
     .hero{padding:40px 18px 30px; text-align:center}
     .hero h1{
       font-size:clamp(28px,6vw,56px); font-weight:900; letter-spacing:1px;
-      background:linear-gradient(90deg,#74c0ff,#0b64c7 40%, #7be0ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      color:var(--accent);
     }
     .sub{color:var(--muted); margin-top:8px}
     .status-row{display:flex;gap:10px;align-items:center;justify-content:center;margin-top:18px;flex-wrap:wrap}
     .status {
-      background:var(--glass); border:1px solid var(--glass-border); padding:10px 14px; border-radius:12px;
-      display:flex; gap:10px; align-items:center; font-weight:700; color:#e7f6ff;
+      background:#0f0f0f;
+      border:1px solid rgba(255,255,255,0.06);
+      padding:10px 14px; border-radius:12px;
+      display:flex; gap:10px; align-items:center; font-weight:700; color:#fff;
     }
-    .dot{width:12px;height:12px;border-radius:50%;background:var(--success); box-shadow:0 0 10px rgba(52,211,153,0.15)}
+    .dot{width:12px;height:12px;border-radius:50%;background:var(--green); box-shadow:0 0 10px rgba(34,197,94,0.15)}
 
     .hero .btns{margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 
     /* MAIN CARD */
     main{max-width:980px;margin:20px auto;padding:0 18px 60px}
     .card{
-      background:linear-gradient(180deg, rgba(11,102,199,0.06), rgba(2,18,41,0.12));
-      border:1px solid var(--glass-border); border-radius:14px; padding:18px; box-shadow:0 10px 30px rgba(2,10,28,0.6)
+      background:var(--card);
+      border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:18px; box-shadow:0 10px 30px rgba(0,0,0,.6)
     }
 
-    h2{text-align:left;color:#dff3ff;margin-bottom:12px}
-    .box{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:10px; padding:14px; border:1px solid rgba(255,255,255,0.03)}
-    p, li { color: #d9f1ff; }
+    h2{text-align:left;color:#fff;margin-bottom:12px}
+    .box{background:#0f0f0f; border-radius:10px; padding:14px; border:1px solid rgba(255,255,255,0.06)}
+    p, li { color: #ddd; }
 
-    /* Accordion / panels */
+    /* Accordion */
     .accordion{margin:8px 0}
-    .accordion button{width:100%;text-align:left;padding:12px 14px;background:transparent;border:1px solid var(--glass-border);color:var(--muted);font-weight:700;border-radius:10px;cursor:pointer}
-    .accordion button.active{color:#fff;border-color:var(--primary); background: linear-gradient(90deg, rgba(11,100,199,0.06), rgba(31,182,255,0.02))}
+    .accordion button{width:100%;text-align:left;padding:12px 14px;background:#1b1b1b;border:1px solid rgba(255,255,255,0.06);color:#ccc;font-weight:700;border-radius:10px;cursor:pointer}
+    .accordion button.active{color:#fff;border-color:var(--primary); background:#232323}
     .panel{max-height:0; overflow:hidden; transition:max-height .35s ease;padding:0 8px}
-    .panel.open{padding:12px 8px; overflow:auto; max-height:420px} /* scrollable */
+    .panel.open{padding:12px 8px; overflow:auto; max-height:420px} 
 
     .host-block{
-      background: rgba(4,27,44,0.6); padding:12px; border-radius:8px; margin-top:8px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Courier New", monospace; color:#cfefff; white-space:pre-wrap;
-      border:1px solid rgba(255,255,255,0.03);
+      background:#0a0a0a; padding:12px; border-radius:8px; margin-top:8px;
+      font-family: ui-monospace, monospace; color:#d7f8ff; white-space:pre-wrap;
+      border:1px solid rgba(255,255,255,0.06);
     }
 
     /* floating circular menu kanan tengah */
     .fab-wrap{position:fixed; right:18px; top:50%; transform:translateY(-50%); z-index:70; display:flex; flex-direction:column; gap:10px; align-items:center}
     .fab-main{
       width:56px;height:56px;border-radius:50%;background:linear-gradient(180deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;
-      color:#fff;font-weight:800;cursor:pointer;box-shadow:0 10px 30px rgba(11,100,199,0.25); border:2px solid rgba(255,255,255,0.06)
+      color:#fff;font-weight:800;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.5); border:2px solid rgba(255,255,255,0.06)
     }
     .fab-menu{display:none;flex-direction:column;gap:10px;margin-bottom:6px}
     .fab-menu.active{display:flex}
-    .fab-item{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;color:#dff; cursor:pointer;border:1px solid var(--glass-border); font-weight:700}
+    .fab-item{width:46px;height:46px;border-radius:50%;background:#1b1b1b;display:flex;align-items:center;justify-content:center;color:#fff; cursor:pointer;border:1px solid rgba(255,255,255,0.06); font-weight:700}
     .fab-label{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
 
-    /* howto layout */
+    /* grid layout */
     .grid{display:grid;grid-template-columns:1fr;gap:14px}
     @media(min-width:820px){ .grid{grid-template-columns:1fr 360px} }
 
-    .side-card{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015)); border:1px solid rgba(255,255,255,0.02)}
+    .side-card{padding:12px;border-radius:10px;background:#121212; border:1px solid rgba(255,255,255,0.06)}
 
     /* footer */
     footer{margin-top:18px;text-align:center;color:var(--muted); font-size:13px;padding:18px 0}
     .social-top{display:flex;gap:8px;align-items:center}
 
-    /* small helpers */
-    .muted{color:var(--muted)}
-    .kbd{background:rgba(255,255,255,0.03); padding:4px 8px;border-radius:6px;font-family:monospace;color:#cfefff;border:1px solid rgba(255,255,255,0.02)}
-    /* smooth scroll behavior */
+    /* helpers */
+    .kbd{background:#1b1b1b; padding:4px 8px;border-radius:6px;font-family:monospace;color:#d7f8ff;border:1px solid rgba(255,255,255,0.06)}
     html{scroll-behavior:smooth}
   </style>
 </head>
 <body>
+
+  <!-- NAV -->
   <nav>
     <div class="logo">⚡ GTRG</div>
     <div class="nav-actions">
-      <div class="social-top muted" style="margin-right:10px">
+      <div class="social-top" style="margin-right:10px">
         <a class="btn small" href="https://discord.gg/FFm37HvmVT" target="_blank">Discord</a>
         <a class="btn small" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">WhatsApp</a>
       </div>
@@ -129,6 +133,7 @@
     </div>
   </nav>
 
+  <!-- HERO -->
   <header class="hero">
     <h1>⚡ GTRG SERVER</h1>
     <div class="sub">Server GTPS • Private • Fast • Stabil</div>
@@ -136,7 +141,7 @@
     <div class="status-row">
       <div class="status">
         <span class="dot"></span>
-        <div id="onlineText">Online: <span id="onlineCount">--</span> pemain</div>
+        <div id="onlineText">Online: <span id="onlineCount">25</span> pemain</div>
       </div>
 
       <div class="status">
@@ -156,6 +161,7 @@
     </div>
   </header>
 
+  <!-- MAIN -->
   <main>
     <div class="grid">
       <div class="card">
@@ -180,7 +186,7 @@
               <div class="box">
                 <ol>
                   <li>Unduh Powertunnel di perangkat Android.</li>
-                  <li>Buka tombol <strong>Copy Powertunnel</strong> di atas, tempel URL di Host Settings.</li>
+                  <li>Klik <strong>Copy Powertunnel</strong> di atas, tempel URL di Host Settings.</li>
                   <li>Ubah <span class="kbd">host update period</span> ke <b>on start</b>.</li>
                   <li>Aktifkan Powertunnel lalu buka Growtopia dan login.</li>
                 </ol>
@@ -254,8 +260,8 @@
           <h3 style="margin-bottom:8px">Server Info</h3>
           <div class="box" style="padding:10px">
             <div><strong>IP</strong>: 46.105.62.153</div>
-            <div style="margin-top:6px"><strong>Players</strong>: <span id="sideCount">--</span></div>
-            <div style="margin-top:6px"><strong>Status</strong>: <span style="color:#b6ffca">Online</span></div>
+            <div style="margin-top:6px"><strong>Players</strong>: <span id="sideCount">25</span></div>
+            <div style="margin-top:6px"><strong>Status</strong>: <span style="color:#22c55e">Online</span></div>
           </div>
         </div>
       </aside>
@@ -263,6 +269,7 @@
     </div>
   </main>
 
+  <!-- bottom card -->
   <div style="max-width:980px;margin:0 auto;padding:0 18px 28px">
     <div class="card box" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
       <div>
@@ -276,6 +283,7 @@
     </div>
   </div>
 
+  <!-- footer -->
   <footer>
     © 2025 GTRG • IP: <b>46.105.62.153</b>
   </footer>
@@ -295,24 +303,6 @@
     // copy helpers
     function copyText(txt){ navigator.clipboard.writeText(txt).then(()=>alert("✅ Tersalin: "+txt)); }
     function copyFrom(id){ const t = document.getElementById(id).innerText.trim(); navigator.clipboard.writeText(t).then(()=>alert("✅ Host tersalin!")); }
-
-    // dynamic online players (realistik) -- update every 3s, random between 15..25
-    const onlineEl = document.getElementById('onlineCount');
-    const sideEl = document.getElementById('sideCount');
-    function updateOnline(){
-      const n = Math.floor(Math.random() * (25 - 15 + 1)) + 15;
-      // small animation:
-      onlineEl.style.opacity = 0.2;
-      sideEl.style.opacity = 0.2;
-      setTimeout(()=>{
-        onlineEl.textContent = n;
-        sideEl.textContent = n;
-        onlineEl.style.opacity = 1;
-        sideEl.style.opacity = 1;
-      }, 180);
-    }
-    updateOnline();
-    setInterval(updateOnline, 3000);
 
     // accordion behavior (scroll-safe)
     document.querySelectorAll('.accordion button').forEach(btn=>{
@@ -346,20 +336,24 @@
       fabMenu.classList.remove('active');
     }
 
-    // ensure panels collapse on resize to avoid stuck height bugs
+    // keyboard accessible
+    fabMain.tabIndex = 0;
+    fabMain.addEventListener('keyup', e=>{ if(e.key === 'Enter' ) fabMain.click(); });
+
+    // ensure panels recalc on resize (avoid stuck height)
     window.addEventListener('resize', ()=>{
       document.querySelectorAll('.panel.open').forEach(p=> p.style.maxHeight = p.scrollHeight + "px");
     });
 
-    // accessibility: keyboard for fab
-    fabMain.tabIndex = 0;
-    fabMain.addEventListener('keyup', e=>{ if(e.key === 'Enter' ) fabMain.click(); });
-
-    // prevent howtoplay scroll stuck: use passive listeners & avoid heavy work on scroll
+    // small protection for scroll heavy work
     (function(){
       let ticking = false;
       window.addEventListener('scroll', function(){ if(!ticking){ window.requestAnimationFrame(()=>{ ticking=false; }); ticking = true; } }, {passive:true});
     })();
+
+    // fix counts (static 25 as requested)
+    document.getElementById('onlineCount').textContent = '25';
+    document.getElementById('sideCount').textContent = '25';
   </script>
 </body>
 </html>
