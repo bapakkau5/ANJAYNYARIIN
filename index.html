@@ -12,14 +12,6 @@
     body{font-family:'Poppins',sans-serif;background:var(--bg);color:#fff;line-height:1.6}
     a{text-decoration:none;color:inherit}
 
-    nav{position:sticky;top:0;z-index:50;background:rgba(18,18,18,.9);backdrop-filter:blur(8px);
-      padding:12px 28px;display:flex;justify-content:space-between;align-items:center;
-      border-bottom:1px solid rgba(255,255,255,.08)}
-    nav .logo{font-size:20px;font-weight:700;color:#ff006a}
-    nav ul{list-style:none;display:flex;gap:18px}
-    nav ul li a{color:#ddd;font-weight:500;transition:.2s}
-    nav ul li a:hover{color:#fff}
-
     .hero{text-align:center;padding:70px 16px 40px;background:linear-gradient(180deg,#111,#0b0b0b)}
     .hero h1{font-size:clamp(34px,6vw,60px);font-weight:800;
       background:linear-gradient(90deg,#ff006a,#ffa800,#35ff00,#00f0ff,#5c6cff,#ff00ea,#ff006a);
@@ -46,23 +38,72 @@
     .panel{max-height:0;overflow:hidden;transition:max-height .4s ease;background:#101010;border-radius:0 0 10px 10px;
       border-left:1px solid rgba(255,255,255,.08);border-right:1px solid rgba(255,255,255,.08);
       border-bottom:1px solid rgba(255,255,255,.08);padding:0 16px}
-    .panel.open{padding:16px;max-height:400px;overflow-y:auto}
+    .panel.open{padding:16px}
     .steps ol{padding-left:20px}.steps li{margin:10px 0}
     .host-block{background:#0a0a0a;padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-family:monospace;color:#d7f8ff;white-space:pre-wrap;margin-top:10px}
 
     footer{text-align:center;font-size:13px;color:var(--muted);padding:20px 0;border-top:1px solid rgba(255,255,255,.08)}
+
+    /* Floating Menu Button */
+    .menu-btn {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      background: #ff006a;
+      color: #fff;
+      font-size: 22px;
+      font-weight: 700;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 0 10px rgba(0,0,0,.5);
+      transition: 0.2s;
+    }
+    .menu-btn:hover { background:#ff3380; }
+
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 220px;
+      height: 100%;
+      background: #121212;
+      box-shadow: -4px 0 12px rgba(0,0,0,.6);
+      padding-top: 70px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: right 0.3s ease;
+      z-index: 1000;
+    }
+    .side-menu a {
+      padding: 12px 20px;
+      font-size: 16px;
+      color: #fff;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      transition: 0.2s;
+    }
+    .side-menu a:hover { background: #1f1f1f; color:#ff006a; }
+    .side-menu.open { right: 0; }
   </style>
 </head>
 <body>
 
-  <nav>
-    <div class="logo">⚡ GTRG</div>
-    <ul>
-      <li><a href="#welcome">Selamat Datang</a></li>
-      <li><a href="#guide">Panduan Main</a></li>
-      <li><a href="#rules">Aturan</a></li>
-    </ul>
-  </nav>
+  <!-- Tombol Bulat Menu -->
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+  <!-- Sidebar Menu -->
+  <div id="sideMenu" class="side-menu">
+    <a href="#welcome" onclick="toggleMenu()">🏠 GTRG Welcome</a>
+    <a href="#guide" onclick="toggleMenu()">📖 How to Play</a>
+    <a href="#rules" onclick="toggleMenu()">📜 Rules</a>
+  </div>
 
   <div class="hero">
     <h1>⚡ GTRG SERVER</h1>
@@ -82,16 +123,14 @@
   <section id="welcome">
     <h2>Selamat Datang di GTRG</h2>
     <div class="box">
-      <p>Selamat datang di <b>GTRG</b>, Growtopia Private Server terbaik! Kami menawarkan pengalaman server paling lengkap dan profesional di komunitas Growtopia. Dengan lebih dari 5 tahun berjalan, kami sudah membangun komunitas yang aktif dan solid.</p>
+      <p>Selamat datang di <b>GTRG</b>, Growtopia Private Server paling lengkap! Dengan pengalaman lebih dari 5 tahun, kami membangun komunitas yang solid dengan fitur profesional.</p>
       <h3>Kenapa Main di GTRG?</h3>
       <ul>
-        <li>⭐ 1,000+ Item Custom – Farmables, gacha, collectible eksklusif</li>
-        <li>🛠️ Developer Profesional – Tim khusus untuk update & perbaikan</li>
-        <li>🚀 Update & Bugfix Harian – Game makin lancar tiap hari</li>
-        <li>🎉 Event & Reward Seru – Ikuti event dan menangkan hadiah</li>
-        <li>🏆 Komunitas Aktif – Trading & interaksi dengan banyak pemain</li>
+        <li>⭐ 1,000+ Item Custom – Farmables, gachas, collectibles</li>
+        <li>🛠️ Developer Profesional – Update rutin & bug fix</li>
+        <li>🚀 Event & Reward Seru – Hadiah menarik tiap minggu</li>
+        <li>🏆 Komunitas Aktif – Trading & sosial ramai</li>
       </ul>
-      <p>Gabung sekarang dan nikmati pengalaman Growtopia yang beda dari biasanya!</p>
     </div>
   </section>
 
@@ -100,19 +139,19 @@
     <div class="accordion">
       <button>🤖 Android (Powertunnel)</button>
       <div class="panel"><div class="steps">
-        <ol><li>Download Powertunnel dari Playstore.</li><li>Klik tombol <b>Copy Powertunnel</b> di atas.</li><li>Paste di Host Settings.</li><li>Set update period ke <b>on start</b>.</li><li>Aktifkan lalu buka Growtopia.</li></ol>
+        <ol><li>Download Powertunnel.</li><li>Click tombol Copy Powertunnel di atas.</li><li>Paste di Host Settings.</li><li>Set update period ke <b>on start</b>.</li><li>Enable & login Growtopia.</li></ol>
       </div></div>
     </div>
     <div class="accordion">
       <button>🍏 iOS (Surge 5)</button>
       <div class="panel"><div class="steps">
-        <ol><li>Install Surge 5 di App Store.</li><li>Buka Default.conf → Import Profile dari URL.</li><li>Klik tombol <b>Copy iOS Config</b> di atas.</li><li>Allow VPN → connect.</li></ol>
+        <ol><li>Install Surge 5 dari App Store.</li><li>Buka Default.conf → Import Profile from URL.</li><li>Click tombol Copy iOS Config di atas.</li><li>Allow VPN → connect.</li></ol>
       </div></div>
     </div>
     <div class="accordion">
       <button>🪟 Windows</button>
       <div class="panel"><div class="steps">
-        <ol><li>Buka folder: <code>C:\Windows\System32\drivers\etc</code></li><li>Edit file <b>hosts</b>.</li><li>Tambahkan baris ini:</li></ol>
+        <ol><li>Buka <code>C:\Windows\System32\drivers\etc</code></li><li>Edit hosts file.</li><li>Tambahkan baris ini:</li></ol>
         <div class="host-block" id="winHost">46.105.62.153 growtopia1.com
 46.105.62.153 growtopia2.com
 46.105.62.153 www.growtopia1.com
@@ -123,7 +162,7 @@
     <div class="accordion">
       <button>🍎 MacOS</button>
       <div class="panel"><div class="steps">
-        <ol><li>Buka Terminal: <code>sudo nano /etc/hosts</code></li><li>Paste baris ini:</li></ol>
+        <ol><li>Buka Terminal: <code>sudo nano /etc/hosts</code></li><li>Paste ini:</li></ol>
         <div class="host-block" id="macHost">46.105.62.153 growtopia1.com
 46.105.62.153 growtopia2.com
 46.105.62.153 www.growtopia1.com
@@ -135,17 +174,17 @@
   <section id="rules">
     <h2>Aturan & Support</h2>
     <div class="box">
-      <p>Jika ada masalah pembelian, hubungi kami via Discord.</p>
-      <p><b>⚠ Penting:</b> Melakukan chargeback = banned permanen dari server & store.</p>
-      <p>GTRG bukan server resmi Growtopia. Hak cipta © 2025 GTRG.<br>Kami tidak berafiliasi dengan Ubisoft.</p>
+      <p>Jika ada masalah pembelian, hubungi kami di Discord.</p>
+      <p><b>⚠ Penting:</b> Chargeback = banned permanen.</p>
+      <p>GTRG terpisah dari Growtopia resmi. © 2025 GTRG. Tidak berafiliasi dengan Ubisoft.</p>
     </div>
   </section>
 
   <footer>© 2025 GTRG SERVER • IP: <b>46.105.62.153</b></footer>
 
   <script>
-    function copyText(text){navigator.clipboard.writeText(text).then(()=>alert("✅ Tersalin: "+text));}
-    function copyFrom(id){const t=document.getElementById(id).innerText.trim();navigator.clipboard.writeText(t).then(()=>alert("✅ Host tersalin!"));}
+    function copyText(text){navigator.clipboard.writeText(text).then(()=>alert("✅ Copied: "+text));}
+    function copyFrom(id){const t=document.getElementById(id).innerText.trim();navigator.clipboard.writeText(t).then(()=>alert("✅ Copied!"));}
     document.querySelectorAll(".accordion button").forEach(btn=>{
       btn.addEventListener("click",()=>{
         const panel=btn.nextElementSibling;
@@ -154,6 +193,9 @@
         else{panel.style.maxHeight=panel.scrollHeight+"px";panel.classList.add("open")}
       })
     })
+    function toggleMenu() {
+      document.getElementById("sideMenu").classList.toggle("open");
+    }
   </script>
 </body>
 </html>
