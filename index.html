@@ -3,146 +3,254 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>⚡ GTRG SERVER</title>
+  <title>⚡ GTRG SERVER — Dark Cosmic</title>
 
   <!-- SEO -->
-  <meta name="description" content="GTRG — Growtopia Private Server cepat & stabil. Panduan setup Android/iOS/Windows/Mac, link host & komunitas." />
-  <meta name="theme-color" content="#0b0b0b" />
+  <meta name="description" content="GTRG — Growtopia Private Server cepat & stabil. Dark Cosmic UI. Panduan setup Android/iOS/Windows/Mac, link host & komunitas." />
+  <meta name="theme-color" content="#070A11" />
 
   <!-- Open Graph / Social Preview -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="⚡ GTRG SERVER — GTPS Cepat & Stabil">
-  <meta property="og:description" content="Panduan setup lengkap: Powertunnel, Surge iOS, file hosts Windows/Mac. Komunitas aktif, event, & update rutin.">
+  <meta property="og:title" content="⚡ GTRG SERVER — Dark Cosmic UI">
+  <meta property="og:description" content="Panduan setup lengkap, link komunitas, dan info server. Tema gelap futuristik dengan neon glow.">
   <meta property="og:url" content="https://gtrg-website.vercel.app/">
-  <meta property="og:image" content="https://gtrg-website.vercel.app/banner.png">
+  <meta property="og:image" content="https://gtrg-website.vercel.app/og-banner.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="⚡ GTRG SERVER — GTPS Cepat & Stabil">
+  <meta name="twitter:title" content="⚡ GTRG SERVER — Dark Cosmic UI">
   <meta name="twitter:description" content="Setup mudah untuk Android/iOS/Windows/Mac. Join Discord & WhatsApp komunitas.">
   <meta name="twitter:image" content="https://gtrg-website.vercel.app/og-banner.png">
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#0b0b0b;
-      --card:#121212;
-      --muted:#b7b7b7;
-      --accent:#1fb6ff;
+      --bg: #070A11;            /* Dark cosmic base */
+      --bg2: #0A1224;           /* Deeper space */
+      --card:#0E1422;           /* Glass card base */
+      --glass:#0b1220cc;        /* Glass overlay */
+      --muted:#a7b3c2;
+      --accent:#4fd1ff;         /* Neon cyan */
+      --accent-2:#7cf5ff;       /* Lighter cyan */
+      --highlight:#93e8ff;
       --green:#22c55e;
-      --neon-white:#ffffff;
+      --warning:#f59e0b;
+      --danger:#ef4444;
+      --white:#f6fbff;
+      --txt:#e8f3ff;
+      --edge:#182238;           /* subtle borders */
+      --edge-2:#223257;
+      --shadow: 0 12px 40px rgba(0,0,0,.45);
+      --ring: 0 0 0 1px rgba(148, 215, 255, 0.10), 0 0 22px rgba(79, 209, 255, 0.08);
+      --ring-strong: 0 0 0 1px rgba(148, 215, 255, 0.18), 0 0 30px rgba(79, 209, 255, 0.22);
+      --neon: drop-shadow(0 0 18px rgba(127, 239, 255, 0.65));
+      --radius: 14px;
     }
+
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
-      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg); color:#fff; line-height:1.5;
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--txt); line-height:1.55;
+      background:
+        radial-gradient(1200px 800px at 20% -10%, rgba(35, 124, 255, .15), transparent 60%),
+        radial-gradient(900px 600px at 120% 20%, rgba(127, 255, 233, .12), transparent 55%),
+        radial-gradient(700px 500px at 50% 120%, rgba(36, 219, 255, .10), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2) 55%, #060910 100%);
+      background-attachment: fixed;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Subtle moving star field */
+    .stars, .twinkle {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-repeat: repeat;
+      opacity: .35;
+    }
+    .stars {
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.35) 50%, transparent 53%),
+        radial-gradient(2px 2px at 80% 60%, rgba(255,255,255,.22) 50%, transparent 53%),
+        radial-gradient(1px 1px at 50% 80%, rgba(255,255,255,.18) 50%, transparent 53%);
+      animation: drift 90s linear infinite;
+    }
+    .twinkle {
+      background-image:
+        radial-gradient(1px 1px at 33% 45%, rgba(255,255,255,.22) 50%, transparent 53%),
+        radial-gradient(1px 1px at 70% 20%, rgba(255,255,255,.18) 50%, transparent 53%),
+        radial-gradient(2px 2px at 10% 80%, rgba(255,255,255,.25) 50%, transparent 53%);
+      animation: drift 140s linear infinite reverse;
+    }
+    @keyframes drift {
+      from { background-position: 0 0, 0 0, 0 0; }
+      to   { background-position: -2000px -1200px, -1600px -900px, -1200px -600px; }
     }
 
     /* NAVBAR */
     nav{
-      position:sticky; top:0; z-index:90;
-      background:rgba(10,10,10,0.6);
-      border-bottom:1px solid rgba(255,255,255,0.03);
-      padding:12px 18px; display:flex; align-items:center;
-      backdrop-filter: blur(6px);
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(9,14,26,.75), rgba(9,14,26,.40));
+      border-bottom:1px solid rgba(148,215,255,0.06);
+      padding:12px 18px; display:flex; align-items:center; justify-content:space-between;
+      box-shadow: var(--shadow);
     }
-    .logo{ display:flex; gap:10px; align-items:center; font-weight:800; font-size:18px; color:var(--accent) }
-    .logo .bolt{ font-size:20px; filter:drop-shadow(0 6px 18px rgba(15,90,255,0.12)); }
+    .logo{ display:flex; gap:12px; align-items:center; font-weight:800; font-size:18px; color:var(--accent) }
+    .logo .bolt{ font-size:20px; filter: var(--neon); }
+    .nav-right{ display:flex; gap:8px }
+    .chip{
+      background: linear-gradient(180deg, rgba(13,25,46,.7), rgba(12,22,42,.4));
+      border:1px solid rgba(148,215,255,0.10);
+      padding:6px 10px; border-radius:999px; color:#cdeaff; font-weight:700; font-size:12px;
+    }
 
     /* HERO */
-    .hero{ padding:36px 18px 14px; text-align:center; max-width:1100px; margin:0 auto }
+    header.hero{
+      position: relative;
+      padding:40px 18px 16px; text-align:center; max-width:1150px; margin:0 auto;
+      z-index: 1;
+    }
     .title {
-      font-size:clamp(28px,6vw,56px);
-      font-weight:900;
-      letter-spacing:1px;
-      background: linear-gradient(90deg, #ffffff, #bfe8ff 20%, #ffffff 40%);
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size:clamp(30px,6.7vw,62px);
+      font-weight:800; letter-spacing:.6px;
+      background: linear-gradient(90deg, #fff, #d8f6ff 20%, #bfe8ff 45%, #fff 70%);
       -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      text-shadow: 0 0 6px rgba(255,255,255,0.35), 0 6px 24px rgba(3,150,255,0.06);
-      display:inline-block;
-      animation: neonPulse 3s infinite;
+      text-shadow: 0 0 6px rgba(255,255,255,0.38), 0 7px 26px rgba(3,150,255,0.08);
+      display:inline-block; animation: neonPulse 3.5s ease-in-out infinite;
+      filter: var(--neon);
     }
     @keyframes neonPulse{
       0% { text-shadow: 0 0 6px rgba(255,255,255,0.35), 0 6px 24px rgba(3,150,255,0.06); }
-      50% { text-shadow: 0 0 12px rgba(255,255,255,0.55), 0 10px 30px rgba(3,150,255,0.10); }
+      50% { text-shadow: 0 0 14px rgba(255,255,255,0.6), 0 10px 34px rgba(3,150,255,0.12); }
       100% { text-shadow: 0 0 6px rgba(255,255,255,0.35), 0 6px 24px rgba(3,150,255,0.06); }
     }
-    .sub{color:var(--muted); margin-top:8px;font-weight:500}
+    .sub{color:var(--muted); margin-top:10px;font-weight:600}
 
-    .status-row{display:flex;gap:10px;align-items:center;justify-content:center;margin-top:18px;flex-wrap:wrap}
+    .status-row{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:20px;flex-wrap:wrap}
     .status{
-      background:rgba(255,255,255,0.02);
-      border:1px solid rgba(255,255,255,0.03);
+      background:linear-gradient(180deg, rgba(12,22,42,.7), rgba(11,20,38,.52));
+      border:1px solid rgba(148,215,255,0.10);
+      box-shadow: var(--ring);
       padding:10px 14px; border-radius:12px; display:flex; gap:10px; align-items:center; font-weight:700;
     }
-    .dot{width:12px;height:12px;border-radius:50%;background:var(--green); box-shadow:0 0 10px rgba(34,197,94,0.16)}
+    .dot{width:12px;height:12px;border-radius:50%;background:var(--green);
+      box-shadow:0 0 10px rgba(34,197,94,0.18), 0 0 28px rgba(34,197,94,0.12)}
 
-    .hero .btns{margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .hero .btns{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
     .btn {
-      background:#111; border:1px solid rgba(255,255,255,0.06);
-      color:#fff; padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer;
+      background:linear-gradient(180deg, #0A1325, #0B182C);
+      border:1px solid rgba(147, 216, 255, 0.08);
+      color:#eaf6ff; padding:11px 16px;border-radius:12px;font-weight:800;cursor:pointer;
       text-decoration:none; display:inline-flex; align-items:center; gap:10px;
-      transition: transform .14s ease, border-color .14s, box-shadow .14s;
+      transition: transform .18s ease, border-color .18s, box-shadow .18s, background .18s;
+      box-shadow: var(--ring);
+      letter-spacing:.2px;
     }
-    .btn:hover{ transform:translateY(-4px); border-color:rgba(255,255,255,0.12); box-shadow:0 8px 24px rgba(0,0,0,.25) }
-    .btn.primary{ background: linear-gradient(90deg,#0b64c7,#1fb6ff); border:1px solid rgba(255,255,255,0.06) }
-    .btn.copy{ background:#141414 }
+    .btn:hover{ transform:translateY(-4px); border-color:rgba(147,216,255,0.28); box-shadow: var(--ring-strong) }
+    .btn.primary{
+      background: linear-gradient(90deg,#0b64c7 0%,#1fb6ff 100%);
+      border:1px solid rgba(255,255,255,0.06)
+    }
+    .btn.copy{ background: linear-gradient(180deg, #0C1830, #0A1324) }
 
     /* MAIN */
-    main{max-width:1100px;margin:20px auto;padding:0 18px 60px}
+    main{max-width:1150px;margin:22px auto 70px;padding:0 18px}
     .grid{display:grid;grid-template-columns:1fr;gap:18px}
-    @media(min-width:980px){ .grid{grid-template-columns:1fr 360px} }
+    @media(min-width:1024px){ .grid{grid-template-columns:1fr 360px} }
 
     .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));
-      border:1px solid rgba(255,255,255,0.03); border-radius:14px; padding:18px; box-shadow:0 6px 30px rgba(0,0,0,0.6)
+      position: relative;
+      background: linear-gradient(180deg, rgba(20,30,52,0.55), rgba(10,16,30,0.45));
+      border:1px solid rgba(148,215,255,0.10);
+      border-radius:var(--radius);
+      padding:18px; box-shadow: var(--shadow);
+      overflow: hidden;
+      isolation: isolate;
     }
-    h2{ color:#fff; margin-bottom:12px; font-size:20px }
-    .box{ background:rgba(255,255,255,0.01); border-radius:10px; padding:14px; border:1px solid rgba(255,255,255,0.02) }
-    p, li { color: #ddd; font-size:15px }
+
+    /* Animated neon border for cards */
+    .card::before, .card::after{
+      content:''; position:absolute; inset:-1px;
+      border-radius: inherit; z-index:-1;
+      background: conic-gradient(from 0deg, rgba(61,175,255,.0), rgba(61,175,255,.25), rgba(61,175,255,.0));
+      filter: blur(16px);
+      opacity:.33; animation: spin 8s linear infinite;
+    }
+    .card::after{ animation-duration: 16s; opacity:.18; filter: blur(26px); }
+    @keyframes spin { to { transform: rotate(360deg) } }
+
+    h2{ color:#f2fbff; margin-bottom:12px; font-size:20px; letter-spacing:.2px }
+    .box{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));
+      border-radius:12px; padding:14px; border:1px solid rgba(148,215,255,0.08)
+    }
+    p, li { color: #d9eaff; font-size:15px }
 
     /* Accordion */
     .accordion{margin:10px 0}
     .accordion button{
-      width:100%; text-align:left; padding:12px 14px; background:#101010; border:1px solid rgba(255,255,255,0.03);
-      color:#e3e3e3; font-weight:700; border-radius:10px; cursor:pointer; font-size:15px;
+      width:100%; text-align:left; padding:12px 14px;
+      background:linear-gradient(180deg, #0D172C, #0C1424);
+      border:1px solid rgba(148,215,255,0.10);
+      color:#e3f1ff; font-weight:800; border-radius:12px; cursor:pointer; font-size:15px;
+      box-shadow: var(--ring);
+      transition: .2s ease;
     }
-    .accordion button.active{ color:#fff; border-color:rgba(31,182,255,0.14); background:linear-gradient(90deg, rgba(31,182,255,0.02), rgba(11,100,199,0.02)) }
-    .panel{ max-height:0; overflow:hidden; transition:max-height .36s ease; padding:0 8px }
-    .panel.open{ padding:12px 8px; overflow:auto; max-height:520px }
+    .accordion button.active{
+      color:#fff; border-color:rgba(31,182,255,0.35);
+      background:linear-gradient(90deg, rgba(31,182,255,0.06), rgba(11,100,199,0.07));
+      transform: translateY(-2px);
+    }
+    .panel{ max-height:0; overflow:hidden; transition:max-height .36s ease, padding .2s ease; padding:0 6px }
+    .panel.open{ padding:12px 6px; overflow:auto; max-height:520px }
 
     .host-block{
-      background: rgba(10,10,10,0.6); padding:12px; border-radius:8px; margin-top:8px;
-      font-family: ui-monospace, Menlo, Monaco, "Courier New", monospace; color:#cfefff; white-space:pre-wrap; border:1px solid rgba(255,255,255,0.02)
+      background: linear-gradient(180deg, rgba(7,12,24,.75), rgba(6,10,20,.75));
+      padding:12px; border-radius:10px; margin-top:8px;
+      font-family: ui-monospace, Menlo, Monaco, "Courier New", monospace;
+      color:#cfefff; white-space:pre-wrap;
+      border:1px solid rgba(148,215,255,0.08)
     }
 
     /* SIDE */
     aside.side-card{
-      padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.02)
+      padding:14px;border-radius:var(--radius);
+      background: linear-gradient(180deg, rgba(20,32,58,0.55), rgba(12,18,34,0.45));
+      border:1px solid rgba(148,215,255,0.10);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top:78px;
+      height: fit-content;
     }
     .side-card .btn{ width:100%; justify-content:center }
 
-    /* bottom */
-    .bottom-row{ max-width:1100px; margin:18px auto 28px; padding:0 18px }
+    /* BOTTOM CTA ROW */
+    .bottom-row{ max-width:1150px; margin:20px auto 28px; padding:0 18px }
     footer{ text-align:center; color:var(--muted); font-size:13px; padding:18px 0 }
 
     /* FAB */
-    .fab-wrap{ position:fixed; right:16px; top:50%; transform:translateY(-50%); z-index:95; display:flex; flex-direction:column; gap:10px; align-items:center }
+    .fab-wrap{ position:fixed; right:16px; top:50%; transform:translateY(-50%); z-index:15; display:flex; flex-direction:column; gap:10px; align-items:center }
     .fab-main{
-      width:64px;height:64px;border-radius:50%; background:linear-gradient(180deg, #0b64c7, #1fb6ff);
+      width:64px;height:64px;border-radius:50%;
+      background:radial-gradient(120px 120px at 30% 30%, #2aaaff 0%, #0f2b6a 80%);
       display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; cursor:pointer;
-      box-shadow:0 10px 30px rgba(15,90,255,0.15); border:2px solid rgba(255,255,255,0.04); font-size:20px;
+      box-shadow:0 10px 30px rgba(15,90,255,0.22), inset 0 2px 16px rgba(255,255,255,.15);
+      border:1px solid rgba(148,215,255,0.20); font-size:20px;
     }
     .fab-label{ font-size:13px; color:var(--muted); margin-top:6px; text-align:center }
 
     .fab-menu{ display:none; flex-direction:column; gap:8px; align-items:center; margin-bottom:6px }
     .fab-menu.active{ display:flex; }
     .fab-item{
-      width:52px;height:52px;border-radius:50%; background:#111; display:flex; align-items:center; justify-content:center;
-      color:#fff; cursor:pointer; border:1px solid rgba(255,255,255,0.03); font-weight:700; text-align:center;
+      width:52px;height:52px;border-radius:50%; background:linear-gradient(180deg, #0B1730, #0B1224);
+      display:flex; align-items:center; justify-content:center; color:#fff; cursor:pointer;
+      border:1px solid rgba(148,215,255,0.14); font-weight:800; text-align:center;
+      box-shadow: var(--ring);
+      transition: .16s ease;
     }
-    .fab-caption{ font-size:12px; color:#fff; margin-top:6px; background:rgba(255,255,255,0.03); padding:6px 10px; border-radius:8px; white-space:nowrap }
+    .fab-item:hover{ transform: translateY(-3px); border-color: rgba(148,215,255,0.35) }
+    .fab-caption{ font-size:12px; color:#fff; margin-top:6px; background:rgba(255,255,255,0.03); padding:6px 10px; border-radius:8px; white-space:nowrap; border:1px solid rgba(148,215,255,0.08) }
 
     @media(max-width:480px){
       .fab-wrap{ right:12px; }
@@ -152,41 +260,102 @@
 
     /* Toast (bottom-right) */
     .toast-wrap{
-      position:fixed; right:16px; bottom:16px; z-index:110; display:flex; flex-direction:column; gap:8px; align-items:flex-end;
+      position:fixed; right:16px; bottom:16px; z-index:20; display:flex; flex-direction:column; gap:8px; align-items:flex-end;
       pointer-events:none;
     }
     .toast{
-      background:#101317; color:#e9f2ff; border:1px solid rgba(255,255,255,0.06);
-      padding:10px 12px; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,.35);
-      font-size:14px; min-width:240px; max-width:320px; display:flex; gap:10px; align-items:center;
+      background:linear-gradient(180deg, #0C121C, #0A1018);
+      color:#e9f2ff; border:1px solid rgba(148,215,255,0.12);
+      padding:10px 12px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.45);
+      font-size:14px; min-width:240px; max-width:340px; display:flex; gap:10px; align-items:center;
       opacity:0; transform:translateY(8px); animation:toastIn .22s ease forwards;
       pointer-events:auto;
     }
     .toast.ok{ border-left:3px solid #22c55e }
     .toast.warn{ border-left:3px solid #f59e0b }
     @keyframes toastIn{ to { opacity:1; transform:translateY(0) } }
+
+    /* ====== NEW: Dark Cosmic 3 Glass Feature Cards ====== */
+    .feature-band{
+      max-width:1150px; margin:28px auto 0; padding:0 18px;
+      display:grid; gap:14px; grid-template-columns: 1fr; z-index:1; position:relative;
+    }
+    @media(min-width:900px){ .feature-band{ grid-template-columns: repeat(3, 1fr) } }
+
+    .gcard{
+      position:relative; border-radius:16px; overflow:hidden;
+      background: linear-gradient(180deg, rgba(14, 22, 40, .75), rgba(10, 16, 30, .65));
+      border:1px solid rgba(148,215,255,0.10);
+      box-shadow: var(--shadow);
+      padding:16px;
+      transition:.2s ease;
+      isolation:isolate;
+    }
+    .gcard::before{
+      content:''; position:absolute; inset:-1px; border-radius:inherit; z-index:-1;
+      background: conic-gradient(from 0deg, rgba(79,209,255,.0), rgba(79,209,255,.35), rgba(79,209,255,.0));
+      filter: blur(22px); opacity:.2; animation: spin 12s linear infinite;
+    }
+    .gcard:hover{ transform: translateY(-4px); border-color: rgba(148,215,255,.28) }
+    .gcard h3{
+      display:flex; align-items:center; gap:10px; font-size:18px; letter-spacing:.3px; margin-bottom:8px
+    }
+    .gcard .mini{
+      display:flex; align-items:center; gap:8px; color:#cbe9ff; font-size:13.5px;
+      background:linear-gradient(180deg, rgba(13,20,36,.8), rgba(12,19,34,.65));
+      border:1px solid rgba(148,215,255,0.10); padding:8px 10px; border-radius:10px; margin-top:8px
+    }
+    .gcard .cta{ margin-top:10px; display:flex; gap:8px; flex-wrap:wrap }
+    .gcard .cta .btn{ flex:1 1 auto; justify-content:center }
+
+    /* subtle section fades */
+    .fade-in{ opacity:0; transform: translateY(10px); animation: fadeIn .6s ease forwards }
+    @keyframes fadeIn{ to { opacity:1; transform:none } }
+
+    /* keyboard span */
+    .kbd{
+      background: #0E1A30;
+      border:1px solid rgba(148,215,255,0.20);
+      padding:.1em .4em; border-radius:6px; font-family: ui-monospace, Menlo, Monaco, "Courier New", monospace;
+      color:#cdeaff; font-size:.95em;
+    }
+
+    /* utility */
+    .muted{ color: var(--muted) }
+    .grid-2{ display:grid; gap:12px; grid-template-columns: 1fr }
+    @media(min-width:760px){ .grid-2{ grid-template-columns: repeat(2, 1fr) } }
+
+    /* Footer subtle border */
+    footer{ border-top:1px solid rgba(148,215,255,0.06) }
   </style>
 </head>
 <body>
+  <!-- background layers -->
+  <div class="stars"></div>
+  <div class="twinkle"></div>
 
   <!-- NAV -->
   <nav>
     <div class="logo">
       <div class="bolt">⚡️</div>
-      <div>𝙍𝙚𝙞𝙫𝙖𝙣𝙄𝙕 / 𝙈𝙥𝙖𝙣𝙂𝙋𝙋</div>
+      <div>GTRG • Dark Cosmic</div>
+    </div>
+    <div class="nav-right">
+      <div class="chip">Fast & Stable</div>
+      <div class="chip">Neon UI</div>
     </div>
   </nav>
 
   <!-- HERO -->
   <header class="hero" role="banner">
-    <div style="max-width:1100px;margin:0 auto">
+    <div style="max-width:1150px;margin:0 auto">
       <div class="title">⚡ GTRG SERVER</div>
-      <div class="sub">Server GTPS • Private • Fast • Stabil</div>
+      <div class="sub">Server GTPS • Private • Fast • Stabil • Dark Cosmic UI</div>
 
       <div class="status-row" style="margin-top:18px">
         <div class="status"><span class="dot"></span> <div id="onlineText">Online: <strong id="onlineCount">20</strong> pemain</div></div>
-        <div class="status"><div style="font-weight:700">IP:</div>&nbsp;<div style="color:var(--muted)">46.105.62.153</div></div>
-        <div class="status"><div style="font-weight:700">VHost:</div>&nbsp;<a style="color:var(--accent)" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank">Download</a></div>
+        <div class="status"><div style="font-weight:800">IP:</div>&nbsp;<div style="color:#def1ff">46.105.62.153</div></div>
+        <div class="status"><div style="font-weight:800">VHost:</div>&nbsp;<a style="color:var(--accent)" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank" rel="noopener">Download</a></div>
       </div>
 
       <div class="hero btns">
@@ -197,6 +366,42 @@
       </div>
     </div>
   </header>
+
+  <!-- 3 FEATURE CARDS -->
+  <section class="feature-band">
+    <!-- Card 1: How to Play -->
+    <div class="gcard fade-in" style="animation-delay:.05s">
+      <h3>🕹️ How to Play</h3>
+      <p class="muted">Panduan singkat untuk Android, iOS, Windows, dan Mac. Copas & langsung main tanpa ribet.</p>
+      <div class="mini">Tip: Untuk Powertunnel, set <span class="kbd">Host Update</span> ke <b>On Start</b>.</div>
+      <div class="cta">
+        <a class="btn" href="#guide">Open Guide</a>
+        <button class="btn" data-copy="https://gtrghost.vercel.app/hosts.txt">Copy PT Host</button>
+      </div>
+    </div>
+
+    <!-- Card 2: Community -->
+    <div class="gcard fade-in" style="animation-delay:.12s">
+      <h3>👥 Community</h3>
+      <p class="muted">Join Discord & WhatsApp untuk info event, update, dan support dari tim & player lain.</p>
+      <div class="mini">Ramai 24/7 • Support cepat • Event weekly</div>
+      <div class="cta">
+        <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank" rel="noopener">Discord</a>
+        <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- Card 3: Rules -->
+    <div class="gcard fade-in" style="animation-delay:.18s">
+      <h3>⚖️ Rules</h3>
+      <p class="muted">Baca aturan server untuk pengalaman bermain yang sehat & aman. Pelanggaran = sanksi.</p>
+      <div class="mini">No scam • No cheat • No chargeback • Respect others</div>
+      <div class="cta">
+        <a class="btn" href="#rules">Read Rules</a>
+        <a class="btn" href="#support">Support</a>
+      </div>
+    </div>
+  </section>
 
   <!-- MAIN -->
   <main>
@@ -212,7 +417,7 @@
             <li>🎉 Event menarik & hadiah</li>
             <li>🏆 Ekonomi pemain dan sistem perdagangan lengkap</li>
           </ul>
-          <p style="color:var(--muted)">Jika ada masalah pembelian, hubungi kami lewat Discord atau WhatsApp (link di menu).</p>
+          <p class="muted">Jika ada masalah pembelian, hubungi kami lewat Discord atau WhatsApp (link di menu).</p>
         </div>
 
         <section style="margin-top:14px">
@@ -225,7 +430,7 @@
               <div class="box">
                 <ol>
                   <li>Unduh aplikasi <b>Powertunnel</b> di perangkat Android.</li>
-                  <li>Klik tombol <b>Copy Powertunnel (Android)</b> untuk menyalin URL host.</li>
+                  <li>Tekan <b>Copy Powertunnel (Android)</b> untuk menyalin URL host.</li>
                   <li>Buka Powertunnel → Menu → <i>Host Settings</i> → tempel URL.</li>
                   <li>Ubah <span class="kbd">host update period</span> menjadi <b>on start</b>.</li>
                   <li>Aktifkan Powertunnel lalu buka Growtopia dan login.</li>
@@ -245,7 +450,7 @@
                   <li>Tekan <b>Copy iOS (Surge)</b> lalu tempel URL di Surge.</li>
                   <li>OK → Done → izinkan konfigurasi VPN, selesai.</li>
                 </ol>
-                <p style="margin-top:8px;color:var(--muted)">Profile URL: <span style="color:var(--accent)">https://gtrgios.vercel.app/ios.txt</span></p>
+                <p style="margin-top:8px;color:#bfe8ff">Profile URL: <span style="color:var(--accent)">https://gtrgios.vercel.app/ios.txt</span></p>
               </div>
             </div>
           </div>
@@ -283,7 +488,7 @@
 
         </section>
 
-        <section style="margin-top:18px">
+        <section id="support" style="margin-top:18px">
           <h2 id="rules">Rules & Support</h2>
           <div class="box">
             <p>Jika ada masalah pembelian, hubungi kami lewat Discord atau WhatsApp.</p>
@@ -296,12 +501,13 @@
       <!-- SIDE -->
       <aside class="side-card">
         <h2>Quick Links</h2>
-        <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px">
-          <a class="btn" href="https://gtrghost.vercel.app/hosts.txt" target="_blank">Powertunnel (Android)</a>
-          <a class="btn" href="https://gtrgios.vercel.app/ios.txt" target="_blank">iOS (Surge)</a>
-          <a class="btn" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank">Download VHost</a>
-          <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank">Discord</a>
-          <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">WhatsApp</a>
+        <div class="grid-2" style="margin-top:12px">
+          <a class="btn" href="https://gtrghost.vercel.app/hosts.txt" target="_blank" rel="noopener">Powertunnel (Android)</a>
+          <a class="btn" href="https://gtrgios.vercel.app/ios.txt" target="_blank" rel="noopener">iOS (Surge)</a>
+          <a class="btn" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank" rel="noopener">Download VHost</a>
+          <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank" rel="noopener">Discord</a>
+          <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="#guide">Guide</a>
         </div>
 
         <div style="margin-top:16px">
@@ -324,8 +530,8 @@
         <div class="muted" style="font-size:13px;margin-top:6px">Semua tombol copy di atas untuk mempermudah setup</div>
       </div>
       <div style="display:flex;gap:8px">
-        <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank">Discord</a>
-        <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">WhatsApp</a>
+        <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank" rel="noopener">Discord</a>
+        <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
   </div>
@@ -350,11 +556,11 @@
         <div class="fab-caption">Rules</div>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center">
-        <a class="fab-item" href="https://discord.gg/FFm37HvmVT" title="Discord" target="_blank">D</a>
+        <a class="fab-item" href="https://discord.gg/FFm37HvmVT" title="Discord" target="_blank" rel="noopener">D</a>
         <div class="fab-caption">Discord</div>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center">
-        <a class="fab-item" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" title="WhatsApp" target="_blank">W</a>
+        <a class="fab-item" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" title="WhatsApp" target="_blank" rel="noopener">W</a>
         <div class="fab-caption">WhatsApp</div>
       </div>
     </div>
@@ -370,7 +576,7 @@
     // ----- tiny helper -----
     const $ = s => document.querySelector(s);
 
-    // set static online = 20
+    // fix online = 20 (same behavior as before)
     document.addEventListener('DOMContentLoaded', ()=>{
       const fixed = '20';
       const onEl = $('#onlineCount');
@@ -474,7 +680,7 @@
       });
     });
 
-    // passive scroll listener (no-op, keeps UI smooth if needed later)
+    // passive scroll listener (no-op placeholder)
     (function(){
       let ticking = false;
       window.addEventListener('scroll', function(){
