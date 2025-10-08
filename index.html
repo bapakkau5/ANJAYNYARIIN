@@ -7,689 +7,242 @@
 
   <!-- SEO -->
   <meta name="description" content="GTRG — Growtopia Private Server cepat & stabil. Panduan setup Android/iOS/Windows/Mac, link host & komunitas." />
-  <meta name="theme-color" content="#070A11" />
+  <meta name="theme-color" content="#0a0a0f" />
 
-  <!-- Open Graph / Social Preview -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="⚡ GTRG SERVER — ECONOMY STABLE">
-  <meta property="og:description" content="Panduan setup lengkap, link komunitas, dan info server. Complete guide with host and how to play.">
-  <meta property="og:url" content="https://gtrg.my.id">
+  <meta property="og:title" content="⚡ GTRG SERVER — COSMIC EDITION">
+  <meta property="og:description" content="Panduan setup lengkap, link komunitas, dan info server dengan tema Cosmic Garou.">
   <meta property="og:image" content="https://gtrg.my.id/banner.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="⚡ GTRG SERVER — ECONOMY STABLE">
-  <meta name="twitter:description" content="Setup mudah untuk Android/iOS/Windows/Mac. Join Discord & WhatsApp komunitas.">
-  <meta name="twitter:image" content="https://gtrg.my.id/banner.png">
-  
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg: #070A11;            /* Dark cosmic base */
-      --bg2: #0A1224;           /* Deeper space */
-      --card:#0E1422;           /* Glass card base */
-      --glass:#0b1220cc;        /* Glass overlay */
-      --muted:#a7b3c2;
-      --accent:#4fd1ff;         /* Neon cyan */
-      --accent-2:#7cf5ff;       /* Lighter cyan */
-      --highlight:#93e8ff;
-      --green:#22c55e;
-      --warning:#f59e0b;
-      --danger:#ef4444;
-      --white:#f6fbff;
-      --txt:#e8f3ff;
-      --edge:#182238;           /* subtle borders */
-      --edge-2:#223257;
-      --shadow: 0 12px 40px rgba(0,0,0,.45);
-      --ring: 0 0 0 1px rgba(148, 215, 255, 0.10), 0 0 22px rgba(79, 209, 255, 0.08);
-      --ring-strong: 0 0 0 1px rgba(148, 215, 255, 0.18), 0 0 30px rgba(79, 209, 255, 0.22);
-      --neon: drop-shadow(0 0 18px rgba(127, 239, 255, 0.65));
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #151521;
+      --accent: #ff2b4f;       /* Garou Red */
+      --accent2: #8a2be2;      /* Cosmic Purple */
+      --txt: #f3f3f5;
+      --muted: #a3a3b3;
+      --card: #13131f;
+      --shadow: 0 10px 40px rgba(0,0,0,.6);
+      --ring: 0 0 0 1px rgba(255, 43, 79, 0.1), 0 0 22px rgba(138, 43, 226, 0.08);
+      --ring-strong: 0 0 0 1px rgba(255, 43, 79, 0.25), 0 0 32px rgba(138, 43, 226, 0.25);
       --radius: 14px;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
+    * {box-sizing:border-box;margin:0;padding:0}
+    html,body {height:100%}
+    body {
       font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--txt); line-height:1.55;
       background:
-        radial-gradient(1200px 800px at 20% -10%, rgba(35, 124, 255, .15), transparent 60%),
-        radial-gradient(900px 600px at 120% 20%, rgba(127, 255, 233, .12), transparent 55%),
-        radial-gradient(700px 500px at 50% 120%, rgba(36, 219, 255, .10), transparent 60%),
-        linear-gradient(180deg, var(--bg), var(--bg2) 55%, #060910 100%);
+        radial-gradient(900px 600px at 20% -10%, rgba(255, 43, 79, .18), transparent 60%),
+        radial-gradient(800px 600px at 120% 20%, rgba(138, 43, 226, .12), transparent 55%),
+        radial-gradient(700px 500px at 50% 120%, rgba(255, 0, 100, .10), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2) 60%, #0a0a0f 100%);
       background-attachment: fixed;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      color: var(--txt);
+      overflow-x:hidden;
     }
 
-    /* Subtle moving star field */
+    /* Stars */
     .stars, .twinkle {
-      position: fixed; inset: 0; pointer-events: none; z-index: 0;
-      background-repeat: repeat;
-      opacity: .35;
+      position: fixed; inset: 0; z-index: 0; pointer-events:none;
+      opacity:.4;
     }
     .stars {
       background-image:
-        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.35) 50%, transparent 53%),
-        radial-gradient(2px 2px at 80% 60%, rgba(255,255,255,.22) 50%, transparent 53%),
-        radial-gradient(1px 1px at 50% 80%, rgba(255,255,255,.18) 50%, transparent 53%);
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.25) 50%, transparent 53%),
+        radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,.15) 50%, transparent 53%);
       animation: drift 90s linear infinite;
     }
     .twinkle {
       background-image:
-        radial-gradient(1px 1px at 33% 45%, rgba(255,255,255,.22) 50%, transparent 53%),
-        radial-gradient(1px 1px at 70% 20%, rgba(255,255,255,.18) 50%, transparent 53%),
-        radial-gradient(2px 2px at 10% 80%, rgba(255,255,255,.25) 50%, transparent 53%);
+        radial-gradient(1px 1px at 50% 45%, rgba(255,100,180,.25) 50%, transparent 53%),
+        radial-gradient(1px 1px at 80% 20%, rgba(255,255,255,.15) 50%, transparent 53%);
       animation: drift 140s linear infinite reverse;
     }
     @keyframes drift {
-      from { background-position: 0 0, 0 0, 0 0; }
-      to   { background-position: -2000px -1200px, -1600px -900px, -1200px -600px; }
+      from {background-position:0 0,0 0;}
+      to {background-position:-2000px -1200px,-1500px -900px;}
     }
 
     /* NAVBAR */
-    nav{
+    nav {
       position:sticky; top:0; z-index:10;
       backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(9,14,26,.75), rgba(9,14,26,.40));
-      border-bottom:1px solid rgba(148,215,255,0.06);
+      background: linear-gradient(180deg, rgba(10,10,15,.85), rgba(10,10,15,.4));
+      border-bottom:1px solid rgba(255,255,255,0.05);
       padding:12px 18px; display:flex; align-items:center; justify-content:space-between;
       box-shadow: var(--shadow);
     }
-    .logo{ display:flex; gap:12px; align-items:center; font-weight:800; font-size:18px; color:var(--accent) }
-    .logo .bolt{ font-size:20px; filter: var(--neon); }
-    .nav-right{ display:flex; gap:8px }
-    .chip{
-      background: linear-gradient(180deg, rgba(13,25,46,.7), rgba(12,22,42,.4));
-      border:1px solid rgba(148,215,255,0.10);
-      padding:6px 10px; border-radius:999px; color:#cdeaff; font-weight:700; font-size:12px;
-    }
+    .logo {display:flex; align-items:center; gap:12px; color:var(--accent); font-weight:800; font-size:18px;}
+    .bolt {filter: drop-shadow(0 0 10px var(--accent2));}
 
     /* HERO */
-    header.hero{
-      position: relative;
-      padding:40px 18px 16px; text-align:center; max-width:1150px; margin:0 auto;
-      z-index: 1;
+    header.hero {
+      text-align:center; padding:40px 18px 16px; z-index:1; position:relative;
     }
     .title {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size:clamp(30px,6.7vw,62px);
-      font-weight:800; letter-spacing:.6px;
-      background: linear-gradient(90deg, #fff, #d8f6ff 20%, #bfe8ff 45%, #fff 70%);
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(30px,6.5vw,60px);
+      font-weight:800;
+      background:linear-gradient(90deg, #fff, var(--accent), var(--accent2), #fff);
       -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      text-shadow: 0 0 6px rgba(255,255,255,0.38), 0 7px 26px rgba(3,150,255,0.08);
-      display:inline-block; animation: neonPulse 3.5s ease-in-out infinite;
-      filter: var(--neon);
+      filter:drop-shadow(0 0 14px rgba(255,43,79,.4));
     }
-    @keyframes neonPulse{
-      0% { text-shadow: 0 0 6px rgba(255,255,255,0.35), 0 6px 24px rgba(3,150,255,0.06); }
-      50% { text-shadow: 0 0 14px rgba(255,255,255,0.6), 0 10px 34px rgba(3,150,255,0.12); }
-      100% { text-shadow: 0 0 6px rgba(255,255,255,0.35), 0 6px 24px rgba(3,150,255,0.06); }
-    }
-    .sub{color:var(--muted); margin-top:10px;font-weight:600}
+    .sub {color:var(--muted); margin-top:8px;font-weight:600;}
 
-    .status-row{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:20px;flex-wrap:wrap}
-    .status{
-      background:linear-gradient(180deg, rgba(12,22,42,.7), rgba(11,20,38,.52));
-      border:1px solid rgba(148,215,255,0.10);
-      box-shadow: var(--ring);
-      padding:10px 14px; border-radius:12px; display:flex; gap:10px; align-items:center; font-weight:700;
-    }
-    .dot{width:12px;height:12px;border-radius:50%;background:var(--green);
-      box-shadow:0 0 10px rgba(34,197,94,0.18), 0 0 28px rgba(34,197,94,0.12)}
-
-    .hero .btns{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    /* Buttons */
     .btn {
-      background:linear-gradient(180deg, #0A1325, #0B182C);
-      border:1px solid rgba(147, 216, 255, 0.08);
-      color:#eaf6ff; padding:11px 16px;border-radius:12px;font-weight:800;cursor:pointer;
-      text-decoration:none; display:inline-flex; align-items:center; gap:10px;
-      transition: transform .18s ease, border-color .18s, box-shadow .18s, background .18s;
-      box-shadow: var(--ring);
-      letter-spacing:.2px;
+      background:linear-gradient(180deg,#1a1a2a,#11111b);
+      border:1px solid rgba(255,255,255,0.08);
+      padding:11px 16px;border-radius:12px;font-weight:800;cursor:pointer;
+      text-decoration:none;display:inline-flex;align-items:center;justify-content:center;
+      color:var(--txt);transition:all .2s ease;box-shadow:var(--ring);
     }
-    .btn:hover{ transform:translateY(-4px); border-color:rgba(147,216,255,0.28); box-shadow: var(--ring-strong) }
-    .btn.primary{
-      background: linear-gradient(90deg,#0b64c7 0%,#1fb6ff 100%);
-      border:1px solid rgba(255,255,255,0.06)
-    }
-    .btn.copy{ background: linear-gradient(180deg, #0C1830, #0A1324) }
+    .btn:hover {transform:translateY(-4px);box-shadow:var(--ring-strong);}
+    .btn.primary {background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;}
 
-    /* MAIN */
-    main{max-width:1150px;margin:22px auto 70px;padding:0 18px}
-    .grid{display:grid;grid-template-columns:1fr;gap:18px}
-    @media(min-width:1024px){ .grid{grid-template-columns:1fr 360px} }
-
-    .card{
-      position: relative;
-      background: linear-gradient(180deg, rgba(20,30,52,0.55), rgba(10,16,30,0.45));
-      border:1px solid rgba(148,215,255,0.10);
-      border-radius:var(--radius);
-      padding:18px; box-shadow: var(--shadow);
-      overflow: hidden;
-      isolation: isolate;
+    /* Cards */
+    .card {
+      background:linear-gradient(180deg,rgba(20,20,30,.6),rgba(10,10,20,.45));
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);
+      position:relative;overflow:hidden;isolation:isolate;
     }
 
-    /* Animated neon border for cards */
-    .card::before, .card::after{
-      content:''; position:absolute; inset:-1px;
-      border-radius: inherit; z-index:-1;
-      background: conic-gradient(from 0deg, rgba(61,175,255,.0), rgba(61,175,255,.25), rgba(61,175,255,.0));
-      filter: blur(16px);
-      opacity:.33; animation: spin 8s linear infinite;
+    /* Feature band */
+    .feature-band {max-width:1150px;margin:28px auto;padding:0 18px;display:grid;gap:14px;}
+    @media(min-width:900px){.feature-band{grid-template-columns:repeat(3,1fr);}}
+    .gcard {
+      border-radius:16px;padding:16px;
+      background:linear-gradient(180deg,rgba(30,20,30,.7),rgba(20,10,20,.55));
+      border:1px solid rgba(255,255,255,0.06);
+      box-shadow:var(--shadow);
+      transition:.25s ease;
     }
-    .card::after{ animation-duration: 16s; opacity:.18; filter: blur(26px); }
-    @keyframes spin { to { transform: rotate(360deg) } }
+    .gcard:hover {transform:translateY(-5px);border-color:rgba(255,43,79,.25);}
 
-    h2{ color:#f2fbff; margin-bottom:12px; font-size:20px; letter-spacing:.2px }
-    .box{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));
-      border-radius:12px; padding:14px; border:1px solid rgba(148,215,255,0.08)
-    }
-    p, li { color: #d9eaff; font-size:15px }
-
-    /* Accordion */
-    .accordion{margin:10px 0}
-    .accordion button{
-      width:100%; text-align:left; padding:12px 14px;
-      background:linear-gradient(180deg, #0D172C, #0C1424);
-      border:1px solid rgba(148,215,255,0.10);
-      color:#e3f1ff; font-weight:800; border-radius:12px; cursor:pointer; font-size:15px;
-      box-shadow: var(--ring);
-      transition: .2s ease;
-    }
-    .accordion button.active{
-      color:#fff; border-color:rgba(31,182,255,0.35);
-      background:linear-gradient(90deg, rgba(31,182,255,0.06), rgba(11,100,199,0.07));
-      transform: translateY(-2px);
-    }
-    .panel{ max-height:0; overflow:hidden; transition:max-height .36s ease, padding .2s ease; padding:0 6px }
-    .panel.open{ padding:12px 6px; overflow:auto; max-height:520px }
-
-    .host-block{
-      background: linear-gradient(180deg, rgba(7,12,24,.75), rgba(6,10,20,.75));
-      padding:12px; border-radius:10px; margin-top:8px;
-      font-family: ui-monospace, Menlo, Monaco, "Courier New", monospace;
-      color:#cfefff; white-space:pre-wrap;
-      border:1px solid rgba(148,215,255,0.08)
-    }
-
-    /* SIDE */
-    aside.side-card{
-      padding:14px;border-radius:var(--radius);
-      background: linear-gradient(180deg, rgba(20,32,58,0.55), rgba(12,18,34,0.45));
-      border:1px solid rgba(148,215,255,0.10);
-      box-shadow: var(--shadow);
-      position: sticky;
-      top:78px;
-      height: fit-content;
-    }
-    .side-card .btn{ width:100%; justify-content:center }
-
-    /* BOTTOM CTA ROW */
-    .bottom-row{ max-width:1150px; margin:20px auto 28px; padding:0 18px }
-    footer{ text-align:center; color:var(--muted); font-size:13px; padding:18px 0 }
-
-    /* FAB */
-    .fab-wrap{ position:fixed; right:16px; top:50%; transform:translateY(-50%); z-index:15; display:flex; flex-direction:column; gap:10px; align-items:center }
-    .fab-main{
+    /* FAB MENU */
+    .fab-main {
+      position:fixed;right:18px;bottom:20px;z-index:20;
       width:64px;height:64px;border-radius:50%;
-      background:radial-gradient(120px 120px at 30% 30%, #2aaaff 0%, #0f2b6a 80%);
-      display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; cursor:pointer;
-      box-shadow:0 10px 30px rgba(15,90,255,0.22), inset 0 2px 16px rgba(255,255,255,.15);
-      border:1px solid rgba(148,215,255,0.20); font-size:20px;
+      background:radial-gradient(100px 100px at 30% 30%,var(--accent),#2a0a15);
+      color:#fff;display:flex;align-items:center;justify-content:center;
+      font-weight:900;cursor:pointer;font-size:22px;
+      box-shadow:0 10px 30px rgba(255,43,79,.25);
     }
-    .fab-label{ font-size:13px; color:var(--muted); margin-top:6px; text-align:center }
-
-    .fab-menu{ display:none; flex-direction:column; gap:8px; align-items:center; margin-bottom:6px }
-    .fab-menu.active{ display:flex; }
-    .fab-item{
-      width:52px;height:52px;border-radius:50%; background:linear-gradient(180deg, #0B1730, #0B1224);
-      display:flex; align-items:center; justify-content:center; color:#fff; cursor:pointer;
-      border:1px solid rgba(148,215,255,0.14); font-weight:800; text-align:center;
-      box-shadow: var(--ring);
-      transition: .16s ease;
+    .fab-panel {
+      position:fixed;top:0;right:-300px;height:100vh;width:280px;
+      background:rgba(15,15,25,.95);
+      border-left:1px solid rgba(255,255,255,0.1);
+      box-shadow:-10px 0 25px rgba(0,0,0,.6);
+      display:flex;flex-direction:column;gap:12px;padding:20px;
+      transition:right .35s ease;
+      z-index:19;
     }
-    .fab-item:hover{ transform: translateY(-3px); border-color: rgba(148,215,255,0.35) }
-    .fab-caption{ font-size:12px; color:#fff; margin-top:6px; background:rgba(255,255,255,0.03); padding:6px 10px; border-radius:8px; white-space:nowrap; border:1px solid rgba(148,215,255,0.08) }
-
-    @media(max-width:480px){
-      .fab-wrap{ right:12px; }
-      .fab-main{ width:56px; height:56px; font-size:18px }
-      .title{ font-size:32px }
+    .fab-panel.active {right:0;}
+    .fab-panel h3 {color:var(--accent);text-align:center;margin-bottom:10px;}
+    .fab-link {
+      display:flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:10px;font-weight:700;
+      color:var(--txt);text-decoration:none;
+      background:linear-gradient(180deg,#1a1a25,#121218);
+      border:1px solid rgba(255,255,255,0.06);
+      transition:all .2s ease;
     }
-
-    /* Toast (bottom-right) */
-    .toast-wrap{
-      position:fixed; right:16px; bottom:16px; z-index:20; display:flex; flex-direction:column; gap:8px; align-items:flex-end;
-      pointer-events:none;
-    }
-    .toast{
-      background:linear-gradient(180deg, #0C121C, #0A1018);
-      color:#e9f2ff; border:1px solid rgba(148,215,255,0.12);
-      padding:10px 12px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.45);
-      font-size:14px; min-width:240px; max-width:340px; display:flex; gap:10px; align-items:center;
-      opacity:0; transform:translateY(8px); animation:toastIn .22s ease forwards;
-      pointer-events:auto;
-    }
-    .toast.ok{ border-left:3px solid #22c55e }
-    .toast.warn{ border-left:3px solid #f59e0b }
-    @keyframes toastIn{ to { opacity:1; transform:translateY(0) } }
-
-    /* ====== NEW: Dark Cosmic 3 Glass Feature Cards ====== */
-    .feature-band{
-      max-width:1150px; margin:28px auto 0; padding:0 18px;
-      display:grid; gap:14px; grid-template-columns: 1fr; z-index:1; position:relative;
-    }
-    @media(min-width:900px){ .feature-band{ grid-template-columns: repeat(3, 1fr) } }
-
-    .gcard{
-      position:relative; border-radius:16px; overflow:hidden;
-      background: linear-gradient(180deg, rgba(14, 22, 40, .75), rgba(10, 16, 30, .65));
-      border:1px solid rgba(148,215,255,0.10);
-      box-shadow: var(--shadow);
-      padding:16px;
-      transition:.2s ease;
-      isolation:isolate;
-    }
-    .gcard::before{
-      content:''; position:absolute; inset:-1px; border-radius:inherit; z-index:-1;
-      background: conic-gradient(from 0deg, rgba(79,209,255,.0), rgba(79,209,255,.35), rgba(79,209,255,.0));
-      filter: blur(22px); opacity:.2; animation: spin 12s linear infinite;
-    }
-    .gcard:hover{ transform: translateY(-4px); border-color: rgba(148,215,255,.28) }
-    .gcard h3{
-      display:flex; align-items:center; gap:10px; font-size:18px; letter-spacing:.3px; margin-bottom:8px
-    }
-    .gcard .mini{
-      display:flex; align-items:center; gap:8px; color:#cbe9ff; font-size:13.5px;
-      background:linear-gradient(180deg, rgba(13,20,36,.8), rgba(12,19,34,.65));
-      border:1px solid rgba(148,215,255,0.10); padding:8px 10px; border-radius:10px; margin-top:8px
-    }
-    .gcard .cta{ margin-top:10px; display:flex; gap:8px; flex-wrap:wrap }
-    .gcard .cta .btn{ flex:1 1 auto; justify-content:center }
-
-    /* subtle section fades */
-    .fade-in{ opacity:0; transform: translateY(10px); animation: fadeIn .6s ease forwards }
-    @keyframes fadeIn{ to { opacity:1; transform:none } }
-
-    /* keyboard span */
-    .kbd{
-      background: #0E1A30;
-      border:1px solid rgba(148,215,255,0.20);
-      padding:.1em .4em; border-radius:6px; font-family: ui-monospace, Menlo, Monaco, "Courier New", monospace;
-      color:#cdeaff; font-size:.95em;
+    .fab-link:hover {
+      background:linear-gradient(90deg,var(--accent2),var(--accent));
+      color:#fff;transform:translateX(-5px);
+      box-shadow:var(--ring-strong);
     }
 
-    /* utility */
-    .muted{ color: var(--muted) }
-    .grid-2{ display:grid; gap:12px; grid-template-columns: 1fr }
-    @media(min-width:760px){ .grid-2{ grid-template-columns: repeat(2, 1fr) } }
-
-    /* Footer subtle border */
-    footer{ border-top:1px solid rgba(148,215,255,0.06) }
+    footer {
+      text-align:center;color:var(--muted);
+      font-size:13px;padding:18px 0;border-top:1px solid rgba(255,255,255,0.06);
+    }
   </style>
 </head>
+
 <body>
-  <!-- background layers -->
   <div class="stars"></div>
   <div class="twinkle"></div>
 
   <!-- NAV -->
   <nav>
     <div class="logo">
-      <div class="bolt">🔱</div>
-      <div>GTRG</div>
+      <div class="bolt">⚡</div> <div>GTRG</div>
     </div>
-    <div class="nav-right">
-      <div class="chip">GROWTOPIA</div>
-      <div class="chip">SERVER</div>
-    </div>
+    <div style="font-weight:700;color:var(--accent2)">COSMIC EDITION</div>
   </nav>
 
   <!-- HERO -->
-  <header class="hero" role="banner">
-    <div style="max-width:1150px;margin:0 auto">
-      <div class="title">⚡ GTRG SERVER</div>
-      <div class="sub">Server GTPS • Private • Fast • Stabil • ECONOMY STABLE</div>
+  <header class="hero">
+    <div class="title">⚡ GTRG SERVER</div>
+    <div class="sub">Server GTPS • Cosmic Garou Theme • Fast • Stabil</div>
 
-      <div class="status-row" style="margin-top:18px">
-        <div class="status"><span class="dot"></span> <div id="onlineText">Online: <strong id="onlineCount">20</strong> pemain</div></div>
-        <div class="status"><div style="font-weight:800">IP:</div>&nbsp;<div style="color:#def1ff">46.105.62.153</div></div>
-        <div class="status"><div style="font-weight:800">VHost:</div>&nbsp;<a style="color:var(--accent)" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank" rel="noopener">Download</a></div>
-      </div>
-
-      <div class="hero btns">
-        <button class="btn primary" data-copy="https://gtrghost.vercel.app/hosts.txt">Copy Powertunnel (Android)</button>
-        <button class="btn copy" data-copy="https://gtrgios.vercel.app/ios.txt">Copy iOS (Surge)</button>
-        <button class="btn copy" data-copy-target="#winHost">Copy Host Windows</button>
-        <button class="btn copy" data-copy-target="#macHost">Copy Host Mac</button>
-      </div>
+    <div style="margin-top:20px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
+      <button class="btn primary">Copy Powertunnel (Android)</button>
+      <button class="btn">Copy iOS (Surge)</button>
+      <button class="btn">Copy Host Windows</button>
+      <button class="btn">Copy Host Mac</button>
     </div>
   </header>
 
-  <!-- 3 FEATURE CARDS -->
+  <!-- FEATURE CARDS -->
   <section class="feature-band">
-    <!-- Card 1: How to Play -->
-    <div class="gcard fade-in" style="animation-delay:.05s">
-      <h3>🕹️ How to Play</h3>
-      <p class="muted">Panduan singkat untuk Android, iOS, Windows, dan Mac. Copas & langsung main tanpa ribet.</p>
-      <div class="mini">Tip: Untuk Powertunnel, set <span class="kbd">Host Update</span> ke <b>On Start</b>.</div>
-      <div class="cta">
-        <a class="btn" href="#guide">Open Guide</a>
-        <button class="btn" data-copy="https://gtrghost.vercel.app/hosts.txt">Copy PT Host</button>
+    <div class="gcard">
+      <h3>🎮 How to Play</h3>
+      <p>Setup mudah untuk Android, iOS, Windows, dan Mac.</p>
+      <a class="btn primary" href="#guide">Open Guide</a>
+    </div>
+    <div class="gcard">
+      <h3>💬 Community</h3>
+      <p>Join Discord & WhatsApp untuk update dan support.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank">Discord</a>
+        <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">WhatsApp</a>
       </div>
     </div>
-
-    <!-- Card 2: Community -->
-    <div class="gcard fade-in" style="animation-delay:.12s">
-      <h3>👥 Community</h3>
-      <p class="muted">Join Discord & WhatsApp untuk info event, update, dan support dari tim & player lain.</p>
-      <div class="mini">Ramai 24/7 • Support cepat • Event weekly</div>
-      <div class="cta">
-        <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank" rel="noopener">Discord</a>
-        <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
-    </div>
-
-    <!-- Card 3: Rules -->
-    <div class="gcard fade-in" style="animation-delay:.18s">
+    <div class="gcard">
       <h3>⚖️ Rules</h3>
-      <p class="muted">Baca aturan server untuk pengalaman bermain yang sehat & aman. Pelanggaran = sanksi.</p>
-      <div class="mini">No scam • No cheat • No chargeback • Respect others</div>
-      <div class="cta">
-        <a class="btn" href="#rules">Read Rules</a>
-        <a class="btn" href="#support">Support</a>
-      </div>
+      <p>Ikuti aturan server demi komunitas yang sehat.</p>
+      <a class="btn" href="#rules">Read Rules</a>
     </div>
   </section>
 
-  <!-- MAIN -->
-  <main>
-    <div class="grid">
-      <!-- MAIN COLUMN -->
-      <div class="card" aria-live="polite">
-        <h2 id="welcome">Welcome to GTRG</h2>
-        <div class="box">
-          <p>Selamat datang di <strong>GTRG</strong> — Growtopia Private Server terbaik dengan fitur lengkap, komunitas aktif, dan update rutin.</p>
-          <ul>
-            <li>⭐ 1.000+ item custom (farmables, gachas, dekorasi)</li>
-            <li>🛠️ Developer profesional & perbaikan rutin</li>
-            <li>🎉 Event menarik & hadiah</li>
-            <li>🏆 Ekonomi pemain dan sistem perdagangan lengkap</li>
-          </ul>
-          <p class="muted">Jika ada masalah pembelian, hubungi kami lewat Discord atau WhatsApp (link di menu).</p>
-        </div>
-
-        <section style="margin-top:14px">
-          <h2 id="guide">How to Play (Panduan)</h2>
-
-          <!-- Android -->
-          <div class="accordion">
-            <button type="button">🤖 Android (Powertunnel)</button>
-            <div class="panel">
-              <div class="box">
-                <ol>
-                  <li>Unduh aplikasi <b>Powertunnel</b> di perangkat Android.</li>
-                  <li>Tekan <b>Copy Powertunnel (Android)</b> untuk menyalin URL host.</li>
-                  <li>Buka Powertunnel → Menu → <i>Host Settings</i> → tempel URL.</li>
-                  <li>Ubah <span class="kbd">host update period</span> menjadi <b>on start</b>.</li>
-                  <li>Aktifkan Powertunnel lalu buka Growtopia dan login.</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-
-          <!-- iOS -->
-          <div class="accordion">
-            <button type="button">🍏 iOS (Surge 5)</button>
-            <div class="panel">
-              <div class="box">
-                <ol>
-                  <li>Install <b>Surge 5</b> dari App Store.</li>
-                  <li>Buka → pilih <b>Default.conf</b> → <b>IMPORT</b> → <i>Download Profile from URL</i>.</li>
-                  <li>Tekan <b>Copy iOS (Surge)</b> lalu tempel URL di Surge.</li>
-                  <li>OK → Done → izinkan konfigurasi VPN, selesai.</li>
-                </ol>
-                <p style="margin-top:8px;color:#bfe8ff">Profile URL: <span style="color:var(--accent)">https://gtrgios.vercel.app/ios.txt</span></p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Windows -->
-          <div class="accordion">
-            <button type="button">🪟 Windows (Hosts)</button>
-            <div class="panel">
-              <div class="box">
-                <p>Buka folder: <span class="kbd">C:\Windows\System32\drivers\etc</span> → buka file <b>hosts</b> dengan Notepad (Run as admin) → tambahkan baris berikut:</p>
-                <div id="winHost" class="host-block">46.105.62.153 growtopia1.com
-46.105.62.153 growtopia2.com
-46.105.62.153 www.growtopia1.com
-46.105.62.153 www.growtopia2.com
-46.105.62.153 mpangpp.com</div>
-                <div style="margin-top:10px"><button class="btn" data-copy-target="#winHost">Copy Host Windows</button></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- MacOS -->
-          <div class="accordion">
-            <button type="button">🍎 MacOS (Hosts)</button>
-            <div class="panel">
-              <div class="box">
-                <p>Buka Terminal: <span class="kbd">sudo nano /etc/hosts</span> → paste baris berikut → <kbd>Ctrl+O</kbd> → Enter → <kbd>Ctrl+X</kbd>:</p>
-                <div id="macHost" class="host-block">46.105.62.153 growtopia1.com
-46.105.62.153 growtopia2.com
-46.105.62.153 www.growtopia1.com
-46.105.62.153 www.growtopia2.com</div>
-                <div style="margin-top:10px"><button class="btn" data-copy-target="#macHost">Copy Host Mac</button></div>
-              </div>
-            </div>
-          </div>
-
-        </section>
-
-        <section id="support" style="margin-top:18px">
-          <h2 id="rules">Rules & Support</h2>
-          <div class="box">
-            <p>Jika ada masalah pembelian, hubungi kami lewat Discord atau WhatsApp.</p>
-            <p><strong>⚠ Penting:</strong> Chargeback = <b>BAN permanen</b> dan banding tidak diproses.</p>
-            <p class="muted">GTRG adalah server privat — bukan afiliasi resmi Ubisoft.</p>
-          </div>
-        </section>
-      </div>
-
-      <!-- SIDE -->
-      <aside class="side-card">
-        <h2>Quick Links</h2>
-        <div class="grid-2" style="margin-top:12px">
-          <a class="btn" href="https://gtrghost.vercel.app/hosts.txt" target="_blank" rel="noopener">Powertunnel (Android)</a>
-          <a class="btn" href="https://gtrgios.vercel.app/ios.txt" target="_blank" rel="noopener">iOS (Surge)</a>
-          <a class="btn" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank" rel="noopener">Download VHost</a>
-          <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank" rel="noopener">Discord</a>
-          <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank" rel="noopener">WhatsApp</a>
-          <a class="btn" href="#guide">Guide</a>
-        </div>
-
-        <div style="margin-top:16px">
-          <h3 style="margin-bottom:8px">Server Info</h3>
-          <div class="box" style="padding:10px">
-            <div><strong>IP</strong>: 46.105.62.153</div>
-            <div style="margin-top:6px"><strong>Players</strong>: <span id="sideCount">20</span></div>
-            <div style="margin-top:6px"><strong>Status</strong>: <span style="color:#b6ffca">Online</span></div>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </main>
-
-  <!-- BOTTOM -->
-  <div class="bottom-row">
-    <div class="card box" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-      <div>
-        <div style="font-weight:800">Download & Setup</div>
-        <div class="muted" style="font-size:13px;margin-top:6px">Semua tombol copy di atas untuk mempermudah setup</div>
-      </div>
-      <div style="display:flex;gap:8px">
-        <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank" rel="noopener">Discord</a>
-        <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
-    </div>
-  </div>
-
+  <!-- FOOTER -->
   <footer>
-    © 2020/2025 ReivanIZ - GTRG • IP: <b>46.105.62.153</b>
+    © 2025 ReivanIZ — GTRG Cosmic Edition
   </footer>
 
-  <!-- FAB -->
-  <div class="fab-wrap" aria-hidden="false" role="navigation" aria-label="Menu cepat">
-    <div class="fab-menu" id="fabMenu">
-      <div style="display:flex;flex-direction:column;align-items:center">
-        <div class="fab-item" data-scroll="#welcome" title="Welcome">W</div>
-        <div class="fab-caption">Welcome</div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center">
-        <div class="fab-item" data-scroll="#guide" title="How to Play">H</div>
-        <div class="fab-caption">How to Play</div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center">
-        <div class="fab-item" data-scroll="#rules" title="Rules">R</div>
-        <div class="fab-caption">Rules</div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center">
-        <a class="fab-item" href="https://discord.gg/FFm37HvmVT" title="Discord" target="_blank" rel="noopener">D</a>
-        <div class="fab-caption">Discord</div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center">
-        <a class="fab-item" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" title="WhatsApp" target="_blank" rel="noopener">W</a>
-        <div class="fab-caption">WhatsApp</div>
-      </div>
-    </div>
+  <!-- FAB MENU -->
+  <div class="fab-main" id="fabMain">≡</div>
 
-    <div class="fab-main" id="fabMain" title="Menu">≡</div>
-    <div class="fab-label">Menu</div>
+  <div class="fab-panel" id="fabPanel">
+    <h3>⚡ Menu Cepat</h3>
+    <a class="fab-link" href="#welcome">🏠 Welcome</a>
+    <a class="fab-link" href="#guide">🎮 How to Play</a>
+    <a class="fab-link" href="#rules">⚖️ Rules</a>
+    <a class="fab-link" href="https://discord.gg/FFm37HvmVT" target="_blank">💬 Discord</a>
+    <a class="fab-link" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">📱 WhatsApp</a>
   </div>
 
-  <!-- TOAST CONTAINER -->
-  <div class="toast-wrap" id="toastWrap" aria-live="polite" aria-atomic="true"></div>
-
   <script>
-    // ----- tiny helper -----
-    const $ = s => document.querySelector(s);
-
-    // fix online = 20 (same behavior as before)
-    document.addEventListener('DOMContentLoaded', ()=>{
-      const fixed = '20';
-      const onEl = $('#onlineCount');
-      const sideEl = $('#sideCount');
-      if(onEl) onEl.textContent = fixed;
-      if(sideEl) sideEl.textContent = fixed;
+    const fabMain = document.getElementById('fabMain');
+    const fabPanel = document.getElementById('fabPanel');
+    fabMain.addEventListener('click', () => {
+      fabPanel.classList.toggle('active');
     });
-
-    // Accordion
-    document.querySelectorAll('.accordion button').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const wasActive = btn.classList.contains('active');
-        document.querySelectorAll('.accordion button').forEach(b=>b.classList.remove('active'));
-        document.querySelectorAll('.panel').forEach(p=>{
-          p.classList.remove('open'); p.style.maxHeight = null;
-        });
-        if(!wasActive){
-          btn.classList.add('active');
-          const panel = btn.nextElementSibling;
-          if(panel){
-            panel.classList.add('open');
-            panel.style.maxHeight = panel.scrollHeight + "px";
-            const r = panel.getBoundingClientRect();
-            if(r.top < 60 || r.bottom > window.innerHeight - 60){
-              const offset = window.scrollY + r.top - 80;
-              window.scrollTo({top: offset, behavior: 'smooth'});
-            }
-          }
-        }
-      });
-    });
-    window.addEventListener('resize', ()=>{
-      document.querySelectorAll('.panel.open').forEach(p=>{
-        p.style.maxHeight = p.scrollHeight + "px";
-      });
-    });
-
-    // FAB toggle + scroll
-    const fabMain = $('#fabMain');
-    const fabMenu = $('#fabMenu');
-    fabMain.addEventListener('click', ()=> fabMenu.classList.toggle('active'));
-    fabMain.tabIndex = 0;
-    fabMain.addEventListener('keyup', e=>{ if(e.key === 'Enter') fabMain.click(); });
-    document.querySelectorAll('.fab-item[data-scroll]').forEach(el=>{
-      el.addEventListener('click', ()=>{
-        const id = el.getAttribute('data-scroll');
-        const target = document.querySelector(id);
-        if(!target) return;
-        target.scrollIntoView({behavior:'smooth', block:'start'});
-        fabMenu.classList.remove('active');
-      });
-    });
-    document.addEventListener('click', (e)=>{
-      const t = e.target;
-      if(!fabMain.contains(t) && !fabMenu.contains(t)){ fabMenu.classList.remove('active'); }
-    }, {passive:true});
-
-    // ---- toast notifications ----
-    function showToast(text, type='ok', ttl=2800){
-      const wrap = $('#toastWrap');
-      if(!wrap) return;
-      const el = document.createElement('div');
-      el.className = 'toast ' + type;
-      el.innerHTML = text;
-      wrap.appendChild(el);
-      const timer = setTimeout(()=>{ hide(); }, ttl);
-      function hide(){
-        el.style.transition = 'opacity .18s ease, transform .18s ease';
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(6px)';
-        setTimeout(()=>{ el.remove(); }, 200);
-        clearTimeout(timer);
+    document.addEventListener('click', (e) => {
+      if (!fabMain.contains(e.target) && !fabPanel.contains(e.target)) {
+        fabPanel.classList.remove('active');
       }
-      el.addEventListener('click', hide);
-    }
-
-    // copy helpers (with toast)
-    function copyText(txt){
-      navigator.clipboard.writeText(txt)
-        .then(()=> showToast('✅ Tersalin:<br><span style="color:#9ed0ff">'+txt+'</span>','ok'))
-        .catch(()=> showToast('Gagal menyalin. Periksa izin clipboard.','warn'));
-    }
-    function copyFrom(sel){
-      const el = typeof sel === 'string' ? document.querySelector(sel) : sel;
-      if(!el) return showToast('Sumber tidak ditemukan.','warn');
-      const txt = (el.innerText || el.textContent || '').trim();
-      if(!txt) return showToast('Konten kosong.','warn');
-      navigator.clipboard.writeText(txt)
-        .then(()=> showToast('✅ Host tersalin!','ok'))
-        .catch(()=> showToast('Gagal menyalin host.','warn'));
-    }
-
-    // attach to buttons
-    document.querySelectorAll('[data-copy]').forEach(btn=>{
-      btn.addEventListener('click', ()=> copyText(btn.getAttribute('data-copy')));
     });
-    document.querySelectorAll('[data-copy-target]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const sel = btn.getAttribute('data-copy-target');
-        copyFrom(sel);
-      });
-    });
-
-    // passive scroll listener (no-op placeholder)
-    (function(){
-      let ticking = false;
-      window.addEventListener('scroll', function(){
-        if(!ticking){
-          window.requestAnimationFrame(()=>{ ticking = false; });
-          ticking = true;
-        }
-      }, {passive:true});
-    })();
   </script>
 </body>
 </html>
+
