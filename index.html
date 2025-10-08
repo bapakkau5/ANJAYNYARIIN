@@ -3,430 +3,345 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>⚡ GTRG — COSMIC SERVER</title>
+  <title>⚡ GTRG — SERVER</title>
 
   <!-- SEO -->
-  <meta name="description" content="GTRG Cosmic — Growtopia Private Server bergaya galaksi multiverse. Tampilan cosmic biru-ungu nebula, panduan setup Android/iOS/Windows/Mac, komunitas aktif." />
-  <meta name="theme-color" content="#0b0b16" />
+  <meta name="description" content="GTRG — Growtopia Private Server cepat & stabil. Panduan setup Android/iOS/Windows/Mac, link host & komunitas." />
+  <meta name="theme-color" content="#070A11" />
 
   <!-- Open Graph / Social Preview -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="⚡ GTRG COSMIC SERVER — MULTIVERSE EDITION">
-  <meta property="og:description" content="Cosmic Garou Edition — visual galaksi ungu-biru. Setup cepat untuk Android, iOS, Windows, dan Mac. Join komunitas GTRG Multiverse.">
+  <meta property="og:title" content="⚡ GTRG SERVER — ECONOMY STABLE">
+  <meta property="og:description" content="Panduan setup lengkap, link komunitas, dan info server. Complete guide with host and how to play.">
   <meta property="og:url" content="https://gtrg.my.id">
   <meta property="og:image" content="https://gtrg.my.id/banner.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="⚡ GTRG COSMIC — MULTIVERSE SERVER">
-  <meta name="twitter:description" content="Growtopia server dengan tema cosmic multiverse, setup mudah dan komunitas aktif.">
+  <meta name="twitter:title" content="⚡ GTRG SERVER — ECONOMY STABLE">
+  <meta name="twitter:description" content="Setup mudah untuk Android/iOS/Windows/Mac. Join Discord & WhatsApp komunitas.">
   <meta name="twitter:image" content="https://gtrg.my.id/banner.png">
-
+  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #0b0b16;              /* Cosmic dark base */
-      --bg2: #101526;             /* Deeper galaxy tone */
-      --nebula1:#3b0764;          /* Deep purple nebula */
-      --nebula2:#1e3a8a;          /* Cosmic blue core */
-      --nebula3:#6d28d9;          /* Bright violet */
-      --star:#e0e9ff;             /* Soft star white */
-      --accent:#8b5cf6;           /* Purple cosmic accent */
-      --accent-2:#4fd1ff;         /* Light blue hue */
-      --highlight:#a78bfa;
-      --muted:#b4b7d0;
+      --bg: #070A11;            /* Dark cosmic base */
+      --bg2: #0A1224;           /* Deeper space */
+      --card:#0E1422;           /* Glass card base */
+      --glass:#0b1220cc;        /* Glass overlay */
+      --muted:#a7b3c2;
+      --accent:#4fd1ff;         /* Neon cyan */
+      --accent-2:#7cf5ff;       /* Lighter cyan */
+      --highlight:#93e8ff;
       --green:#22c55e;
-      --warning:#fbbf24;
+      --warning:#f59e0b;
       --danger:#ef4444;
       --white:#f6fbff;
-      --txt:#e9ebff;
-      --shadow:0 12px 40px rgba(0,0,0,.55);
+      --txt:#e8f3ff;
+      --edge:#182238;           /* subtle borders */
+      --edge-2:#223257;
+      --shadow: 0 12px 40px rgba(0,0,0,.45);
       --ring: 0 0 0 1px rgba(148, 215, 255, 0.10), 0 0 22px rgba(79, 209, 255, 0.08);
-      --ring-strong: 0 0 0 1px rgba(148, 215, 255, 0.22), 0 0 30px rgba(79, 209, 255, 0.28);
+      --ring-strong: 0 0 0 1px rgba(148, 215, 255, 0.18), 0 0 30px rgba(79, 209, 255, 0.22);
+      --neon: drop-shadow(0 0 18px rgba(127, 239, 255, 0.65));
       --radius: 14px;
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;scroll-behavior:smooth}
+    html,body{height:100%}
     body{
-      font-family: 'Poppins', system-ui, sans-serif;
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--txt); line-height:1.55;
       background:
-        radial-gradient(1200px 800px at 30% -10%, rgba(107,33,168,.25), transparent 60%),
-        radial-gradient(800px 600px at 110% 20%, rgba(56,189,248,.15), transparent 60%),
-        radial-gradient(600px 500px at 50% 120%, rgba(124,58,237,.12), transparent 60%),
-        linear-gradient(180deg, var(--bg), var(--bg2) 55%, #0a0a15 100%);
+        radial-gradient(1200px 800px at 20% -10%, rgba(35, 124, 255, .15), transparent 60%),
+        radial-gradient(900px 600px at 120% 20%, rgba(127, 255, 233, .12), transparent 55%),
+        radial-gradient(700px 500px at 50% 120%, rgba(36, 219, 255, .10), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2) 55%, #060910 100%);
       background-attachment: fixed;
-      overflow-x:hidden;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
-    /* Cosmic Nebula animated background */
-    .nebula{
-      position:fixed; inset:0; z-index:-2;
-      background:
-        radial-gradient(circle at 25% 40%, rgba(168,85,247,.12) 0%, transparent 70%),
-        radial-gradient(circle at 80% 60%, rgba(59,130,246,.10) 0%, transparent 65%),
-        radial-gradient(circle at 50% 100%, rgba(124,58,237,.10) 0%, transparent 60%);
-      animation: nebulaFlow 60s ease-in-out infinite alternate;
-      filter: blur(50px);
-    }
-    @keyframes nebulaFlow{
-      0%{transform:scale(1) translate(0,0);}
-      50%{transform:scale(1.3) translate(20px,-30px);}
-      100%{transform:scale(1.1) translate(-30px,20px);}
-    }
-
-    /* Starfield Layers */
+    /* Subtle moving star field */
     .stars, .twinkle {
-      position: fixed; inset: 0; pointer-events: none; z-index: -1;
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
       background-repeat: repeat;
       opacity: .35;
     }
     .stars {
       background-image:
-        radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,.35) 50%, transparent 53%),
-        radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,.25) 50%, transparent 53%),
-        radial-gradient(1px 1px at 50% 80%, rgba(255,255,255,.2) 50%, transparent 53%);
-      animation: drift 120s linear infinite;
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.35) 50%, transparent 53%),
+        radial-gradient(2px 2px at 80% 60%, rgba(255,255,255,.22) 50%, transparent 53%),
+        radial-gradient(1px 1px at 50% 80%, rgba(255,255,255,.18) 50%, transparent 53%);
+      animation: drift 90s linear infinite;
     }
     .twinkle {
       background-image:
         radial-gradient(1px 1px at 33% 45%, rgba(255,255,255,.22) 50%, transparent 53%),
         radial-gradient(1px 1px at 70% 20%, rgba(255,255,255,.18) 50%, transparent 53%),
         radial-gradient(2px 2px at 10% 80%, rgba(255,255,255,.25) 50%, transparent 53%);
-      animation: drift 180s linear infinite reverse;
+      animation: drift 140s linear infinite reverse;
     }
     @keyframes drift {
       from { background-position: 0 0, 0 0, 0 0; }
-      to   { background-position: -3000px -1500px, -1800px -1200px, -1200px -800px; }
+      to   { background-position: -2000px -1200px, -1600px -900px, -1200px -600px; }
     }
 
-    /* NAV cosmic */
+    /* NAVBAR */
     nav{
-      position:sticky;top:0;z-index:20;
-      backdrop-filter:blur(12px);
-      background:linear-gradient(180deg, rgba(20,15,40,.75), rgba(15,12,30,.55));
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(9,14,26,.75), rgba(9,14,26,.40));
       border-bottom:1px solid rgba(148,215,255,0.06);
-      padding:12px 18px;display:flex;align-items:center;justify-content:space-between;
-      box-shadow:var(--shadow);
+      padding:12px 18px; display:flex; align-items:center; justify-content:space-between;
+      box-shadow: var(--shadow);
     }
-    .logo{
-      display:flex;gap:12px;align-items:center;font-weight:800;font-size:18px;
-      color:var(--accent-2);letter-spacing:.4px;text-transform:uppercase;
-    }
-    .logo .bolt{font-size:22px;filter:drop-shadow(0 0 12px rgba(139,92,246,.65));}
-    .nav-right{display:flex;gap:8px}
+    .logo{ display:flex; gap:12px; align-items:center; font-weight:800; font-size:18px; color:var(--accent) }
+    .logo .bolt{ font-size:20px; filter: var(--neon); }
+    .nav-right{ display:flex; gap:8px }
     .chip{
-      background:linear-gradient(180deg, rgba(37,25,68,.8), rgba(22,15,48,.6));
+      background: linear-gradient(180deg, rgba(13,25,46,.7), rgba(12,22,42,.4));
       border:1px solid rgba(148,215,255,0.10);
-      padding:6px 10px;border-radius:999px;color:#dbeafe;font-weight:700;font-size:12px;
-      text-shadow:0 0 6px rgba(139,92,246,.3);
+      padding:6px 10px; border-radius:999px; color:#cdeaff; font-weight:700; font-size:12px;
     }
 
     /* HERO */
     header.hero{
-      position:relative;
-      padding:48px 18px 18px;text-align:center;max-width:1150px;margin:0 auto;
-      z-index:5;
+      position: relative;
+      padding:40px 18px 16px; text-align:center; max-width:1150px; margin:0 auto;
+      z-index: 1;
     }
-    .title{
-      font-family:'Space Grotesk',sans-serif;
+    .title {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
       font-size:clamp(30px,6.7vw,62px);
-      font-weight:800;letter-spacing:.6px;
-      background:linear-gradient(90deg,#fff,#c7b6ff 25%,#bdb4ff 45%,#fff 70%);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-      filter:drop-shadow(0 0 14px rgba(155,120,255,.4));
-      text-shadow:0 0 6px rgba(255,255,255,0.3),0 7px 26px rgba(124,58,237,0.15);
-      animation:glowPulse 3s ease-in-out infinite;
+      font-weight:800; letter-spacing:.6px;
+      background: linear-gradient(90deg, #fff, #d8f6ff 20%, #bfe8ff 45%, #fff 70%);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      text-shadow: 0 0 6px rgba(255,255,255,0.38), 0 7px 26px rgba(3,150,255,0.08);
+      display:inline-block; animation: neonPulse 3.5s ease-in-out infinite;
+      filter: var(--neon);
     }
-    @keyframes glowPulse{
-      0%{filter:drop-shadow(0 0 10px rgba(147,197,253,.4));}
-      50%{filter:drop-shadow(0 0 24px rgba(167,139,250,.75));}
-      100%{filter:drop-shadow(0 0 10px rgba(147,197,253,.4));}
+    @keyframes neonPulse{
+      0% { text-shadow: 0 0 6px rgba(255,255,255,0.35), 0 6px 24px rgba(3,150,255,0.06); }
+      50% { text-shadow: 0 0 14px rgba(255,255,255,0.6), 0 10px 34px rgba(3,150,255,0.12); }
+      100% { text-shadow: 0 0 6px rgba(255,255,255,0.35), 0 6px 24px rgba(3,150,255,0.06); }
     }
-    .sub{
-      color:var(--muted);
-      margin-top:10px;
-      font-weight:600;
-      text-shadow:0 0 10px rgba(147,197,253,.2);
-    }
+    .sub{color:var(--muted); margin-top:10px;font-weight:600}
 
-    .status-row{
-      display:flex;gap:12px;align-items:center;justify-content:center;margin-top:20px;flex-wrap:wrap
-    }
+    .status-row{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:20px;flex-wrap:wrap}
     .status{
-      background:linear-gradient(180deg,rgba(27,18,54,.7),rgba(15,12,30,.6));
+      background:linear-gradient(180deg, rgba(12,22,42,.7), rgba(11,20,38,.52));
       border:1px solid rgba(148,215,255,0.10);
-      box-shadow:var(--ring);
-      padding:10px 14px;border-radius:12px;display:flex;gap:10px;align-items:center;font-weight:700;
-      color:#e5e0ff;
+      box-shadow: var(--ring);
+      padding:10px 14px; border-radius:12px; display:flex; gap:10px; align-items:center; font-weight:700;
     }
-    .dot{
-      width:12px;height:12px;border-radius:50%;background:var(--green);
-      box-shadow:0 0 10px rgba(34,197,94,0.25),0 0 28px rgba(34,197,94,0.15)
-    }
+    .dot{width:12px;height:12px;border-radius:50%;background:var(--green);
+      box-shadow:0 0 10px rgba(34,197,94,0.18), 0 0 28px rgba(34,197,94,0.12)}
 
     .hero .btns{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-    .btn{
-      background:linear-gradient(180deg,#17142a,#0d0a18);
-      border:1px solid rgba(147,216,255,0.08);
-      color:#f0ebff;padding:11px 16px;border-radius:12px;font-weight:800;cursor:pointer;
-      text-decoration:none;display:inline-flex;align-items:center;gap:10px;
-      transition:transform .18s ease,border-color .18s,box-shadow .18s,background .18s;
-      box-shadow:var(--ring);
+    .btn {
+      background:linear-gradient(180deg, #0A1325, #0B182C);
+      border:1px solid rgba(147, 216, 255, 0.08);
+      color:#eaf6ff; padding:11px 16px;border-radius:12px;font-weight:800;cursor:pointer;
+      text-decoration:none; display:inline-flex; align-items:center; gap:10px;
+      transition: transform .18s ease, border-color .18s, box-shadow .18s, background .18s;
+      box-shadow: var(--ring);
       letter-spacing:.2px;
-      position:relative;overflow:hidden;isolation:isolate;
     }
-    .btn::before{
-      content:"";position:absolute;inset:0;z-index:-1;
-      background:radial-gradient(circle at 30% 0%,rgba(139,92,246,.22),transparent 70%);
-      opacity:.4;transition:opacity .2s ease;
-    }
-    .btn:hover{
-      transform:translateY(-4px);
-      border-color:rgba(167,139,250,.35);
-      box-shadow:var(--ring-strong);
-      color:#fff;
-    }
+    .btn:hover{ transform:translateY(-4px); border-color:rgba(147,216,255,0.28); box-shadow: var(--ring-strong) }
     .btn.primary{
-      background:linear-gradient(90deg,#6d28d9 0%,#2563eb 100%);
+      background: linear-gradient(90deg,#0b64c7 0%,#1fb6ff 100%);
       border:1px solid rgba(255,255,255,0.06)
     }
-    .btn.copy{
-      background:linear-gradient(180deg,#141026,#0d0920);
-    }
+    .btn.copy{ background: linear-gradient(180deg, #0C1830, #0A1324) }
 
-    /* MAIN cosmic layout */
-    main{max-width:1150px;margin:22px auto 70px;padding:0 18px;position:relative;z-index:5}
+    /* MAIN */
+    main{max-width:1150px;margin:22px auto 70px;padding:0 18px}
     .grid{display:grid;grid-template-columns:1fr;gap:18px}
-    @media(min-width:1024px){.grid{grid-template-columns:1fr 360px}}
+    @media(min-width:1024px){ .grid{grid-template-columns:1fr 360px} }
 
     .card{
-      position:relative;
-      background:linear-gradient(180deg,rgba(32,22,58,0.55),rgba(16,10,28,0.45));
+      position: relative;
+      background: linear-gradient(180deg, rgba(20,30,52,0.55), rgba(10,16,30,0.45));
       border:1px solid rgba(148,215,255,0.10);
       border-radius:var(--radius);
-      padding:18px;box-shadow:var(--shadow);
-      overflow:hidden;
-      isolation:isolate;
+      padding:18px; box-shadow: var(--shadow);
+      overflow: hidden;
+      isolation: isolate;
     }
-    .card::before,.card::after{
-      content:'';position:absolute;inset:-1px;
-      border-radius:inherit;z-index:-1;
-      background:conic-gradient(from 0deg,rgba(139,92,246,.0),rgba(139,92,246,.25),rgba(139,92,246,.0));
-      filter:blur(20px);opacity:.33;animation:spin 8s linear infinite;
-    }
-    .card::after{
-      animation-duration:16s;opacity:.18;filter:blur(28px);
-    }
-    @keyframes spin{to{transform:rotate(360deg)}}
 
-    h2{
-      color:#f2f1ff;margin-bottom:12px;font-size:20px;letter-spacing:.2px;
-      text-shadow:0 0 10px rgba(147,197,253,.25);
+    /* Animated neon border for cards */
+    .card::before, .card::after{
+      content:''; position:absolute; inset:-1px;
+      border-radius: inherit; z-index:-1;
+      background: conic-gradient(from 0deg, rgba(61,175,255,.0), rgba(61,175,255,.25), rgba(61,175,255,.0));
+      filter: blur(16px);
+      opacity:.33; animation: spin 8s linear infinite;
     }
+    .card::after{ animation-duration: 16s; opacity:.18; filter: blur(26px); }
+    @keyframes spin { to { transform: rotate(360deg) } }
+
+    h2{ color:#f2fbff; margin-bottom:12px; font-size:20px; letter-spacing:.2px }
     .box{
-      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.015));
-      border-radius:12px;padding:14px;
-      border:1px solid rgba(148,215,255,0.08);
-      box-shadow:inset 0 0 30px rgba(139,92,246,.08);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));
+      border-radius:12px; padding:14px; border:1px solid rgba(148,215,255,0.08)
     }
-    p,li{color:#e0e9ff;font-size:15px}
-    ul{margin-left:20px;margin-top:6px}
-    li::marker{color:var(--accent)}
+    p, li { color: #d9eaff; font-size:15px }
 
-    /* Accordion cosmic */
+    /* Accordion */
     .accordion{margin:10px 0}
     .accordion button{
-      width:100%;text-align:left;padding:12px 14px;
-      background:linear-gradient(180deg,#1b1536,#130f28);
+      width:100%; text-align:left; padding:12px 14px;
+      background:linear-gradient(180deg, #0D172C, #0C1424);
       border:1px solid rgba(148,215,255,0.10);
-      color:#e3f1ff;font-weight:800;border-radius:12px;cursor:pointer;font-size:15px;
-      box-shadow:var(--ring);
-      transition:.2s ease;
-      position:relative;
+      color:#e3f1ff; font-weight:800; border-radius:12px; cursor:pointer; font-size:15px;
+      box-shadow: var(--ring);
+      transition: .2s ease;
     }
     .accordion button.active{
-      color:#fff;
-      border-color:rgba(167,139,250,0.35);
-      background:linear-gradient(90deg,rgba(139,92,246,0.08),rgba(59,130,246,0.1));
-      transform:translateY(-2px);
+      color:#fff; border-color:rgba(31,182,255,0.35);
+      background:linear-gradient(90deg, rgba(31,182,255,0.06), rgba(11,100,199,0.07));
+      transform: translateY(-2px);
     }
-    .panel{
-      max-height:0;overflow:hidden;
-      transition:max-height .36s ease,padding .2s ease;
-      padding:0 6px;
-    }
-    .panel.open{
-      padding:12px 6px;overflow:auto;max-height:520px;
-      background:linear-gradient(180deg,rgba(18,16,40,.5),rgba(12,10,28,.4));
-      border-radius:10px;
-    }
+    .panel{ max-height:0; overflow:hidden; transition:max-height .36s ease, padding .2s ease; padding:0 6px }
+    .panel.open{ padding:12px 6px; overflow:auto; max-height:520px }
 
     .host-block{
-      background:linear-gradient(180deg,rgba(12,10,30,.85),rgba(10,8,24,.75));
-      padding:12px;border-radius:10px;margin-top:8px;
-      font-family:ui-monospace,Menlo,Monaco,"Courier New",monospace;
-      color:#cfefff;white-space:pre-wrap;
-      border:1px solid rgba(148,215,255,0.08);
-      box-shadow:inset 0 0 20px rgba(139,92,246,.1);
+      background: linear-gradient(180deg, rgba(7,12,24,.75), rgba(6,10,20,.75));
+      padding:12px; border-radius:10px; margin-top:8px;
+      font-family: ui-monospace, Menlo, Monaco, "Courier New", monospace;
+      color:#cfefff; white-space:pre-wrap;
+      border:1px solid rgba(148,215,255,0.08)
     }
 
-    /* Side cosmic info */
+    /* SIDE */
     aside.side-card{
       padding:14px;border-radius:var(--radius);
-      background:linear-gradient(180deg,rgba(28,22,52,0.55),rgba(18,14,36,0.45));
+      background: linear-gradient(180deg, rgba(20,32,58,0.55), rgba(12,18,34,0.45));
       border:1px solid rgba(148,215,255,0.10);
-      box-shadow:var(--shadow);
-      position:sticky;
+      box-shadow: var(--shadow);
+      position: sticky;
       top:78px;
-      height:fit-content;
+      height: fit-content;
     }
-    .side-card .btn{
-      width:100%;justify-content:center;
-      text-shadow:0 0 6px rgba(139,92,246,.3);
-    }
+    .side-card .btn{ width:100%; justify-content:center }
 
-    /* Footer cosmic glow */
-    footer{
-      border-top:1px solid rgba(148,215,255,0.06);
-      text-align:center;
-      color:var(--muted);
-      font-size:13px;
-      padding:18px 0;
-      text-shadow:0 0 8px rgba(124,58,237,.25);
-    }
+    /* BOTTOM CTA ROW */
+    .bottom-row{ max-width:1150px; margin:20px auto 28px; padding:0 18px }
+    footer{ text-align:center; color:var(--muted); font-size:13px; padding:18px 0 }
 
-    /* Floating Menu (FAB cosmic) */
-    .fab-wrap{
-      position:fixed;
-      right:16px;
-      top:50%;
-      transform:translateY(-50%);
-      z-index:15;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      align-items:center;
-    }
+    /* FAB */
+    .fab-wrap{ position:fixed; right:16px; top:50%; transform:translateY(-50%); z-index:15; display:flex; flex-direction:column; gap:10px; align-items:center }
     .fab-main{
       width:64px;height:64px;border-radius:50%;
-      background:radial-gradient(120px 120px at 30% 30%,#7c3aed 0%,#312e81 80%);
-      display:flex;align-items:center;justify-content:center;
-      color:#fff;font-weight:900;cursor:pointer;
-      box-shadow:0 10px 30px rgba(139,92,246,0.35),inset 0 2px 16px rgba(255,255,255,.15);
-      border:1px solid rgba(148,215,255,0.20);
-      font-size:20px;
-      transition:transform .2s ease,box-shadow .3s;
+      background:radial-gradient(120px 120px at 30% 30%, #2aaaff 0%, #0f2b6a 80%);
+      display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; cursor:pointer;
+      box-shadow:0 10px 30px rgba(15,90,255,0.22), inset 0 2px 16px rgba(255,255,255,.15);
+      border:1px solid rgba(148,215,255,0.20); font-size:20px;
     }
-    .fab-main:hover{
-      transform:scale(1.05);
-      box-shadow:0 0 20px rgba(167,139,250,0.6);
-    }
+    .fab-label{ font-size:13px; color:var(--muted); margin-top:6px; text-align:center }
 
-    .fab-label{
-      font-size:13px;
-      color:var(--muted);
-      margin-top:6px;
-      text-align:center;
-      text-shadow:0 0 6px rgba(147,197,253,.25);
-    }
-
-    /* Slide cosmic panel */
-    .fab-menu{
-      position:fixed;
-      top:0;right:-60%;
-      width:60%;
-      height:100%;
-      background:linear-gradient(180deg,rgba(19,16,40,.92),rgba(14,12,32,.95));
-      box-shadow:-6px 0 40px rgba(0,0,0,.6),0 0 80px rgba(124,58,237,.2);
-      backdrop-filter:blur(12px);
-      padding:40px 20px;
-      display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
-      gap:16px;
-      transition:right .4s ease;
-      z-index:50;
-    }
-    .fab-menu.active{
-      right:0;
-    }
+    .fab-menu{ display:none; flex-direction:column; gap:8px; align-items:center; margin-bottom:6px }
+    .fab-menu.active{ display:flex; }
     .fab-item{
-      width:90%;
-      padding:12px;
-      border-radius:12px;
-      text-align:center;
-      font-weight:700;
-      color:#f5f3ff;
-      border:1px solid rgba(139,92,246,.25);
-      background:linear-gradient(180deg,rgba(24,20,48,.8),rgba(16,12,36,.8));
-      box-shadow:var(--ring);
-      cursor:pointer;
-      transition:transform .16s ease,border-color .2s;
+      width:52px;height:52px;border-radius:50%; background:linear-gradient(180deg, #0B1730, #0B1224);
+      display:flex; align-items:center; justify-content:center; color:#fff; cursor:pointer;
+      border:1px solid rgba(148,215,255,0.14); font-weight:800; text-align:center;
+      box-shadow: var(--ring);
+      transition: .16s ease;
     }
-    .fab-item:hover{
-      transform:translateY(-3px);
-      border-color:rgba(167,139,250,.4);
-      color:#fff;
-      background:linear-gradient(90deg,rgba(139,92,246,.1),rgba(59,130,246,.1));
-    }
-    .fab-caption{
-      font-size:13px;
-      color:#cfcfff;
-      text-shadow:0 0 4px rgba(139,92,246,.25);
-    }
+    .fab-item:hover{ transform: translateY(-3px); border-color: rgba(148,215,255,0.35) }
+    .fab-caption{ font-size:12px; color:#fff; margin-top:6px; background:rgba(255,255,255,0.03); padding:6px 10px; border-radius:8px; white-space:nowrap; border:1px solid rgba(148,215,255,0.08) }
 
-    /* Responsive */
     @media(max-width:480px){
-      .fab-wrap{right:12px;}
-      .fab-main{width:56px;height:56px;font-size:18px}
-      .title{font-size:32px}
-      .fab-menu{width:80%}
+      .fab-wrap{ right:12px; }
+      .fab-main{ width:56px; height:56px; font-size:18px }
+      .title{ font-size:32px }
     }
 
-    /* Toast cosmic style */
+    /* Toast (bottom-right) */
     .toast-wrap{
-      position:fixed;right:16px;bottom:16px;z-index:100;
-      display:flex;flex-direction:column;gap:8px;align-items:flex-end;
+      position:fixed; right:16px; bottom:16px; z-index:20; display:flex; flex-direction:column; gap:8px; align-items:flex-end;
       pointer-events:none;
     }
     .toast{
-      background:linear-gradient(180deg,#16122e,#0f0d26);
-      color:#e9f2ff;
-      border:1px solid rgba(148,215,255,0.12);
-      padding:10px 12px;
-      border-radius:12px;
-      box-shadow:0 10px 30px rgba(0,0,0,.55);
-      font-size:14px;
-      min-width:240px;
-      max-width:340px;
-      display:flex;
-      gap:10px;
-      align-items:center;
-      opacity:0;
-      transform:translateY(8px);
-      animation:toastIn .22s ease forwards;
+      background:linear-gradient(180deg, #0C121C, #0A1018);
+      color:#e9f2ff; border:1px solid rgba(148,215,255,0.12);
+      padding:10px 12px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.45);
+      font-size:14px; min-width:240px; max-width:340px; display:flex; gap:10px; align-items:center;
+      opacity:0; transform:translateY(8px); animation:toastIn .22s ease forwards;
       pointer-events:auto;
     }
-    .toast.ok{border-left:3px solid var(--green)}
-    .toast.warn{border-left:3px solid var(--warning)}
-    @keyframes toastIn{to{opacity:1;transform:translateY(0)}}
+    .toast.ok{ border-left:3px solid #22c55e }
+    .toast.warn{ border-left:3px solid #f59e0b }
+    @keyframes toastIn{ to { opacity:1; transform:translateY(0) } }
+
+    /* ====== NEW: Dark Cosmic 3 Glass Feature Cards ====== */
+    .feature-band{
+      max-width:1150px; margin:28px auto 0; padding:0 18px;
+      display:grid; gap:14px; grid-template-columns: 1fr; z-index:1; position:relative;
+    }
+    @media(min-width:900px){ .feature-band{ grid-template-columns: repeat(3, 1fr) } }
+
+    .gcard{
+      position:relative; border-radius:16px; overflow:hidden;
+      background: linear-gradient(180deg, rgba(14, 22, 40, .75), rgba(10, 16, 30, .65));
+      border:1px solid rgba(148,215,255,0.10);
+      box-shadow: var(--shadow);
+      padding:16px;
+      transition:.2s ease;
+      isolation:isolate;
+    }
+    .gcard::before{
+      content:''; position:absolute; inset:-1px; border-radius:inherit; z-index:-1;
+      background: conic-gradient(from 0deg, rgba(79,209,255,.0), rgba(79,209,255,.35), rgba(79,209,255,.0));
+      filter: blur(22px); opacity:.2; animation: spin 12s linear infinite;
+    }
+    .gcard:hover{ transform: translateY(-4px); border-color: rgba(148,215,255,.28) }
+    .gcard h3{
+      display:flex; align-items:center; gap:10px; font-size:18px; letter-spacing:.3px; margin-bottom:8px
+    }
+    .gcard .mini{
+      display:flex; align-items:center; gap:8px; color:#cbe9ff; font-size:13.5px;
+      background:linear-gradient(180deg, rgba(13,20,36,.8), rgba(12,19,34,.65));
+      border:1px solid rgba(148,215,255,0.10); padding:8px 10px; border-radius:10px; margin-top:8px
+    }
+    .gcard .cta{ margin-top:10px; display:flex; gap:8px; flex-wrap:wrap }
+    .gcard .cta .btn{ flex:1 1 auto; justify-content:center }
+
+    /* subtle section fades */
+    .fade-in{ opacity:0; transform: translateY(10px); animation: fadeIn .6s ease forwards }
+    @keyframes fadeIn{ to { opacity:1; transform:none } }
+
+    /* keyboard span */
+    .kbd{
+      background: #0E1A30;
+      border:1px solid rgba(148,215,255,0.20);
+      padding:.1em .4em; border-radius:6px; font-family: ui-monospace, Menlo, Monaco, "Courier New", monospace;
+      color:#cdeaff; font-size:.95em;
+    }
+
+    /* utility */
+    .muted{ color: var(--muted) }
+    .grid-2{ display:grid; gap:12px; grid-template-columns: 1fr }
+    @media(min-width:760px){ .grid-2{ grid-template-columns: repeat(2, 1fr) } }
+
+    /* Footer subtle border */
+    footer{ border-top:1px solid rgba(148,215,255,0.06) }
   </style>
 </head>
 <body>
   <!-- background layers -->
-  <div class="nebula"></div>
   <div class="stars"></div>
   <div class="twinkle"></div>
 
   <!-- NAV -->
   <nav>
     <div class="logo">
-      <div class="bolt">⚛️</div>
-      <div>GTRG COSMIC</div>
+      <div class="bolt">🔱</div>
+      <div>GTRG</div>
     </div>
     <div class="nav-right">
-      <div class="chip">MULTIVERSE</div>
+      <div class="chip">GROWTOPIA</div>
       <div class="chip">SERVER</div>
     </div>
   </nav>
@@ -434,8 +349,8 @@
   <!-- HERO -->
   <header class="hero" role="banner">
     <div style="max-width:1150px;margin:0 auto">
-      <div class="title">🌌 GTRG COSMIC SERVER</div>
-      <div class="sub">Server GTPS • Private • Cosmic Galaxy • ECONOMY STABLE</div>
+      <div class="title">⚡ GTRG SERVER</div>
+      <div class="sub">Server GTPS • Private • Fast • Stabil • ECONOMY STABLE</div>
 
       <div class="status-row" style="margin-top:18px">
         <div class="status"><span class="dot"></span> <div id="onlineText">Online: <strong id="onlineCount">20</strong> pemain</div></div>
@@ -452,8 +367,9 @@
     </div>
   </header>
 
-  <!-- FEATURE CARDS -->
+  <!-- 3 FEATURE CARDS -->
   <section class="feature-band">
+    <!-- Card 1: How to Play -->
     <div class="gcard fade-in" style="animation-delay:.05s">
       <h3>🕹️ How to Play</h3>
       <p class="muted">Panduan singkat untuk Android, iOS, Windows, dan Mac. Copas & langsung main tanpa ribet.</p>
@@ -464,6 +380,7 @@
       </div>
     </div>
 
+    <!-- Card 2: Community -->
     <div class="gcard fade-in" style="animation-delay:.12s">
       <h3>👥 Community</h3>
       <p class="muted">Join Discord & WhatsApp untuk info event, update, dan support dari tim & player lain.</p>
@@ -474,6 +391,7 @@
       </div>
     </div>
 
+    <!-- Card 3: Rules -->
     <div class="gcard fade-in" style="animation-delay:.18s">
       <h3>⚖️ Rules</h3>
       <p class="muted">Baca aturan server untuk pengalaman bermain yang sehat & aman. Pelanggaran = sanksi.</p>
@@ -488,16 +406,16 @@
   <!-- MAIN -->
   <main>
     <div class="grid">
-      <!-- MAIN CARD -->
+      <!-- MAIN COLUMN -->
       <div class="card" aria-live="polite">
-        <h2 id="welcome">Welcome to GTRG Cosmic</h2>
+        <h2 id="welcome">Welcome to GTRG</h2>
         <div class="box">
-          <p>Selamat datang di <strong>GTRG COSMIC</strong> — Growtopia Private Server bertema galaksi, dengan efek nebula, fitur lengkap, komunitas aktif, dan update rutin.</p>
+          <p>Selamat datang di <strong>GTRG</strong> — Growtopia Private Server terbaik dengan fitur lengkap, komunitas aktif, dan update rutin.</p>
           <ul>
-            <li>✨ 1.000+ item custom (farmables, gachas, dekorasi cosmic)</li>
-            <li>⚙️ Developer profesional & perbaikan rutin</li>
-            <li>🎉 Event menarik & hadiah multiverse</li>
-            <li>💎 Ekonomi pemain stabil & sistem perdagangan lengkap</li>
+            <li>⭐ 1.000+ item custom (farmables, gachas, dekorasi)</li>
+            <li>🛠️ Developer profesional & perbaikan rutin</li>
+            <li>🎉 Event menarik & hadiah</li>
+            <li>🏆 Ekonomi pemain dan sistem perdagangan lengkap</li>
           </ul>
           <p class="muted">Jika ada masalah pembelian, hubungi kami lewat Discord atau WhatsApp (link di menu).</p>
         </div>
@@ -603,14 +521,13 @@
       </aside>
     </div>
   </main>
+
   <!-- BOTTOM -->
   <div class="bottom-row">
     <div class="card box" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
       <div>
         <div style="font-weight:800">Download & Setup</div>
-        <div class="muted" style="font-size:13px;margin-top:6px">
-          Semua tombol copy di atas untuk mempermudah setup cosmic host.
-        </div>
+        <div class="muted" style="font-size:13px;margin-top:6px">Semua tombol copy di atas untuk mempermudah setup</div>
       </div>
       <div style="display:flex;gap:8px">
         <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank" rel="noopener">Discord</a>
@@ -620,41 +537,46 @@
   </div>
 
   <footer>
-    © 2020/2025 ReivanIZ - GTRG COSMIC • IP: <b>46.105.62.153</b>
+    © 2020/2025 ReivanIZ - GTRG • IP: <b>46.105.62.153</b>
   </footer>
 
-  <!-- FAB (Cosmic Menu Panel) -->
+  <!-- FAB -->
   <div class="fab-wrap" aria-hidden="false" role="navigation" aria-label="Menu cepat">
-    <div class="fab-main" id="fabMain" title="Open Cosmic Menu">🤖</div>
-    <div class="fab-label">AI Menu</div>
-  </div>
-
-  <!-- SLIDE-IN COSMIC PANEL -->
-  <div class="fab-menu" id="fabMenu">
-    <h2 style="text-align:center;margin-bottom:20px;color:#cbd5ff;text-shadow:0 0 8px rgba(139,92,246,.4)">🚀 Cosmic Panel</h2>
-    
-    <div class="fab-item" data-scroll="#welcome">🏠 Home — Welcome</div>
-    <div class="fab-item" data-scroll="#guide">📖 Guide — How to Play</div>
-    <div class="fab-item" data-scroll="#rules">⚖️ Rules — Regulation</div>
-    
-    <a class="fab-item" href="https://discord.gg/FFm37HvmVT" target="_blank" rel="noopener">💬 Join Discord</a>
-    <a class="fab-item" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank" rel="noopener">📱 WhatsApp Group</a>
-    
-    <div class="fab-item" data-scroll="#support">🛠️ Support Center</div>
-    <div class="fab-item" onclick="showToast('🧠 AI Assistant aktif — Cosmic Mode','ok')">🤖 AI Cosmic Mode</div>
-
-    <div style="margin-top:24px;text-align:center;color:#aaa;font-size:12px">
-      <span class="muted">GTRG Multiverse — Cosmic Edition v6.1</span>
+    <div class="fab-menu" id="fabMenu">
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div class="fab-item" data-scroll="#welcome" title="Welcome">W</div>
+        <div class="fab-caption">Welcome</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div class="fab-item" data-scroll="#guide" title="How to Play">H</div>
+        <div class="fab-caption">How to Play</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div class="fab-item" data-scroll="#rules" title="Rules">R</div>
+        <div class="fab-caption">Rules</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <a class="fab-item" href="https://discord.gg/FFm37HvmVT" title="Discord" target="_blank" rel="noopener">D</a>
+        <div class="fab-caption">Discord</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <a class="fab-item" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" title="WhatsApp" target="_blank" rel="noopener">W</a>
+        <div class="fab-caption">WhatsApp</div>
+      </div>
     </div>
+
+    <div class="fab-main" id="fabMain" title="Menu">≡</div>
+    <div class="fab-label">Menu</div>
   </div>
 
   <!-- TOAST CONTAINER -->
   <div class="toast-wrap" id="toastWrap" aria-live="polite" aria-atomic="true"></div>
+
   <script>
-    // ===== Helper Selector =====
+    // ----- tiny helper -----
     const $ = s => document.querySelector(s);
 
-    // ===== FIXED ONLINE COUNTER =====
+    // fix online = 20 (same behavior as before)
     document.addEventListener('DOMContentLoaded', ()=>{
       const fixed = '20';
       const onEl = $('#onlineCount');
@@ -663,14 +585,13 @@
       if(sideEl) sideEl.textContent = fixed;
     });
 
-    // ===== ACCORDION SYSTEM =====
+    // Accordion
     document.querySelectorAll('.accordion button').forEach(btn=>{
       btn.addEventListener('click', ()=>{
         const wasActive = btn.classList.contains('active');
         document.querySelectorAll('.accordion button').forEach(b=>b.classList.remove('active'));
         document.querySelectorAll('.panel').forEach(p=>{
-          p.classList.remove('open');
-          p.style.maxHeight = null;
+          p.classList.remove('open'); p.style.maxHeight = null;
         });
         if(!wasActive){
           btn.classList.add('active');
@@ -693,27 +614,12 @@
       });
     });
 
-    // ===== COSMIC PANEL SLIDE =====
+    // FAB toggle + scroll
     const fabMain = $('#fabMain');
     const fabMenu = $('#fabMenu');
-
-    fabMain.addEventListener('click', ()=>{
-      fabMenu.classList.toggle('active');
-      if(fabMenu.classList.contains('active')){
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
-    });
-
-    document.addEventListener('click', (e)=>{
-      if(!fabMain.contains(e.target) && !fabMenu.contains(e.target)){
-        fabMenu.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-
-    // ===== SMOOTH SCROLL =====
+    fabMain.addEventListener('click', ()=> fabMenu.classList.toggle('active'));
+    fabMain.tabIndex = 0;
+    fabMain.addEventListener('keyup', e=>{ if(e.key === 'Enter') fabMain.click(); });
     document.querySelectorAll('.fab-item[data-scroll]').forEach(el=>{
       el.addEventListener('click', ()=>{
         const id = el.getAttribute('data-scroll');
@@ -721,11 +627,14 @@
         if(!target) return;
         target.scrollIntoView({behavior:'smooth', block:'start'});
         fabMenu.classList.remove('active');
-        document.body.style.overflow = '';
       });
     });
+    document.addEventListener('click', (e)=>{
+      const t = e.target;
+      if(!fabMain.contains(t) && !fabMenu.contains(t)){ fabMenu.classList.remove('active'); }
+    }, {passive:true});
 
-    // ===== TOAST SYSTEM =====
+    // ---- toast notifications ----
     function showToast(text, type='ok', ttl=2800){
       const wrap = $('#toastWrap');
       if(!wrap) return;
@@ -733,66 +642,54 @@
       el.className = 'toast ' + type;
       el.innerHTML = text;
       wrap.appendChild(el);
-      const timer = setTimeout(()=> hide(), ttl);
+      const timer = setTimeout(()=>{ hide(); }, ttl);
       function hide(){
         el.style.transition = 'opacity .18s ease, transform .18s ease';
         el.style.opacity = '0';
         el.style.transform = 'translateY(6px)';
-        setTimeout(()=> el.remove(), 200);
+        setTimeout(()=>{ el.remove(); }, 200);
         clearTimeout(timer);
       }
       el.addEventListener('click', hide);
     }
 
-    // ===== COPY BUTTONS =====
+    // copy helpers (with toast)
     function copyText(txt){
       navigator.clipboard.writeText(txt)
-        .then(()=> showToast('✅ Tersalin:<br><span style="color:#c0b8ff">'+txt+'</span>', 'ok'))
-        .catch(()=> showToast('❌ Gagal menyalin. Periksa izin clipboard.', 'warn'));
+        .then(()=> showToast('✅ Tersalin:<br><span style="color:#9ed0ff">'+txt+'</span>','ok'))
+        .catch(()=> showToast('Gagal menyalin. Periksa izin clipboard.','warn'));
     }
-
     function copyFrom(sel){
       const el = typeof sel === 'string' ? document.querySelector(sel) : sel;
-      if(!el) return showToast('Sumber tidak ditemukan.', 'warn');
+      if(!el) return showToast('Sumber tidak ditemukan.','warn');
       const txt = (el.innerText || el.textContent || '').trim();
-      if(!txt) return showToast('Konten kosong.', 'warn');
+      if(!txt) return showToast('Konten kosong.','warn');
       navigator.clipboard.writeText(txt)
-        .then(()=> showToast('✅ Host tersalin!', 'ok'))
-        .catch(()=> showToast('❌ Gagal menyalin host.', 'warn'));
+        .then(()=> showToast('✅ Host tersalin!','ok'))
+        .catch(()=> showToast('Gagal menyalin host.','warn'));
     }
 
+    // attach to buttons
     document.querySelectorAll('[data-copy]').forEach(btn=>{
       btn.addEventListener('click', ()=> copyText(btn.getAttribute('data-copy')));
     });
     document.querySelectorAll('[data-copy-target]').forEach(btn=>{
-      btn.addEventListener('click', ()=> copyFrom(btn.getAttribute('data-copy-target')));
+      btn.addEventListener('click', ()=>{
+        const sel = btn.getAttribute('data-copy-target');
+        copyFrom(sel);
+      });
     });
 
-    // ===== COSMIC BACKGROUND EFFECT (optional performance-heavy) =====
-    const nebula = document.createElement('div');
-    nebula.className = 'nebula-bg';
-    nebula.style.position = 'fixed';
-    nebula.style.inset = '0';
-    nebula.style.background = 'radial-gradient(ellipse at 40% 20%, rgba(167,139,250,0.2), transparent 70%), radial-gradient(ellipse at 70% 80%, rgba(59,130,246,0.15), transparent 60%), radial-gradient(ellipse at 10% 90%, rgba(236,72,153,0.1), transparent 70%)';
-    nebula.style.zIndex = '0';
-    nebula.style.pointerEvents = 'none';
-    nebula.style.transition = 'background 8s linear';
-    document.body.appendChild(nebula);
-
-    let hue = 0;
-    setInterval(()=>{
-      hue = (hue + 1) % 360;
-      nebula.style.filter = `hue-rotate(${hue}deg) brightness(1.1)`;
-    }, 120);
-
-    // ===== SCROLL FADE EFFECT =====
-    window.addEventListener('scroll', ()=>{
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const header = document.querySelector('.hero');
-      if(header){
-        header.style.opacity = Math.max(0.6, 1 - scrollTop / 600);
-      }
-    }, {passive:true});
+    // passive scroll listener (no-op placeholder)
+    (function(){
+      let ticking = false;
+      window.addEventListener('scroll', function(){
+        if(!ticking){
+          window.requestAnimationFrame(()=>{ ticking = false; });
+          ticking = true;
+        }
+      }, {passive:true});
+    })();
   </script>
 </body>
 </html>
