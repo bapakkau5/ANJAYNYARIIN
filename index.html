@@ -19,31 +19,25 @@
   <meta name="twitter:title" content="⚡ GTRG SERVER — ECONOMY STABLE">
   <meta name="twitter:description" content="Setup mudah untuk Android/iOS/Windows/Mac. Join Discord & WhatsApp komunitas.">
   <meta name="twitter:image" content="https://gtrg.my.id/banner.png">
-  
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #070A11;            /* Dark cosmic base */
-      --bg2: #0A1224;           /* Deeper space */
-      --card:#0E1422;           /* Glass card base */
-      --glass:#0b1220cc;        /* Glass overlay */
+      --bg: #070A11;
+      --bg2: #0A1224;
+      --glass:#0b1220cc;
       --muted:#a7b3c2;
-      --accent:#4fd1ff;         /* Neon cyan */
-      --accent-2:#7cf5ff;       /* Lighter cyan */
-      --highlight:#93e8ff;
+      --accent:#50d5ff;      /* Neon cyan */
+      --accent-soft:#9de9ff;
       --green:#22c55e;
-      --warning:#f59e0b;
-      --danger:#ef4444;
       --white:#f6fbff;
       --txt:#e8f3ff;
-      --edge:#182238;           /* subtle borders */
-      --edge-2:#223257;
-      --shadow: 0 12px 40px rgba(0,0,0,.45);
+      --edge:#1b2a4a;
       --ring: 0 0 0 1px rgba(148, 215, 255, 0.10), 0 0 22px rgba(79, 209, 255, 0.08);
-      --ring-strong: 0 0 0 1px rgba(148, 215, 255, 0.18), 0 0 30px rgba(79, 209, 255, 0.22);
-      --neon: drop-shadow(0 0 18px rgba(127, 239, 255, 0.65));
+      --ring-strong: 0 0 0 1px rgba(148, 215, 255, 0.22), 0 0 30px rgba(79, 209, 255, 0.28);
+      --shadow: 0 18px 50px rgba(0,0,0,.50);
       --radius: 14px;
     }
 
@@ -53,15 +47,27 @@
       font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--txt); line-height:1.55;
       background:
-        radial-gradient(1200px 800px at 20% -10%, rgba(35, 124, 255, .15), transparent 60%),
+        radial-gradient(1200px 800px at 20% -10%, rgba(35, 124, 255, .16), transparent 60%),
         radial-gradient(900px 600px at 120% 20%, rgba(127, 255, 233, .12), transparent 55%),
         radial-gradient(700px 500px at 50% 120%, rgba(36, 219, 255, .10), transparent 60%),
         linear-gradient(180deg, var(--bg), var(--bg2) 55%, #060910 100%);
       background-attachment: fixed;
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
     }
 
-    /* Subtle moving star field */
+    /* Aurora light effect */
+    .aurora{
+      position:fixed; inset:-10% -10% auto -10%; height:45vh; z-index:0;
+      background:
+        radial-gradient(35vw 35vh at 15% 60%, rgba(62,171,255,.18), transparent 60%),
+        radial-gradient(38vw 35vh at 85% 70%, rgba(115,251,255,.16), transparent 62%),
+        radial-gradient(30vw 25vh at 50% 100%, rgba(54,123,255,.12), transparent 60%);
+      filter: blur(10px);
+      pointer-events:none;
+    }
+
+    /* Star background */
     .stars, .twinkle {
       position: fixed; inset: 0; pointer-events: none; z-index: 0;
       background-repeat: repeat;
@@ -96,7 +102,7 @@
       box-shadow: var(--shadow);
     }
     .logo{ display:flex; gap:12px; align-items:center; font-weight:800; font-size:18px; color:var(--accent) }
-    .logo .bolt{ font-size:20px; filter: var(--neon); }
+    .logo .bolt{ font-size:20px; filter: drop-shadow(0 0 16px rgba(129,237,255,.6)); }
     .nav-right{ display:flex; gap:8px }
     .chip{
       background: linear-gradient(180deg, rgba(13,25,46,.7), rgba(12,22,42,.4));
@@ -104,10 +110,10 @@
       padding:6px 10px; border-radius:999px; color:#cdeaff; font-weight:700; font-size:12px;
     }
 
-    /* HERO */
+    /* HERO SECTION */
     header.hero{
       position: relative;
-      padding:40px 18px 16px; text-align:center; max-width:1150px; margin:0 auto;
+      padding:40px 18px 18px; text-align:center; max-width:1150px; margin:0 auto;
       z-index: 1;
     }
     .title {
@@ -118,7 +124,7 @@
       -webkit-background-clip:text; -webkit-text-fill-color:transparent;
       text-shadow: 0 0 6px rgba(255,255,255,0.38), 0 7px 26px rgba(3,150,255,0.08);
       display:inline-block; animation: neonPulse 3.5s ease-in-out infinite;
-      filter: var(--neon);
+      filter: drop-shadow(0 0 18px rgba(127, 239, 255, 0.45));
     }
     @keyframes neonPulse{
       0% { text-shadow: 0 0 6px rgba(255,255,255,0.35), 0 6px 24px rgba(3,150,255,0.06); }
@@ -137,204 +143,33 @@
     .dot{width:12px;height:12px;border-radius:50%;background:var(--green);
       box-shadow:0 0 10px rgba(34,197,94,0.18), 0 0 28px rgba(34,197,94,0.12)}
 
-    .hero .btns{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    /* BUTTON (Uiverse Neon Style) */
     .btn {
-      background:linear-gradient(180deg, #0A1325, #0B182C);
-      border:1px solid rgba(147, 216, 255, 0.08);
+      --glow: rgba(128, 229, 255, .55);
+      background:
+        radial-gradient(120px 50px at 10% 0%, rgba(100,180,255,.18), transparent 70%),
+        linear-gradient(180deg, #0A1325, #0B182C);
+      border:1px solid rgba(147, 216, 255, 0.12);
       color:#eaf6ff; padding:11px 16px;border-radius:12px;font-weight:800;cursor:pointer;
       text-decoration:none; display:inline-flex; align-items:center; gap:10px;
-      transition: transform .18s ease, border-color .18s, box-shadow .18s, background .18s;
+      transition: transform .18s ease, border-color .18s, box-shadow .18s, background .18s, filter .18s;
       box-shadow: var(--ring);
-      letter-spacing:.2px;
+      position: relative; overflow: hidden;
     }
-    .btn:hover{ transform:translateY(-4px); border-color:rgba(147,216,255,0.28); box-shadow: var(--ring-strong) }
+    .btn:hover{ transform:translateY(-4px); border-color:rgba(147,216,255,0.28); box-shadow: var(--ring-strong); filter: drop-shadow(0 0 14px var(--glow)); }
     .btn.primary{
-      background: linear-gradient(90deg,#0b64c7 0%,#1fb6ff 100%);
+      background:
+        radial-gradient(120px 60px at 0% 0%, rgba(129,237,255,.28), transparent 70%),
+        linear-gradient(90deg,#0b64c7 0%,#1fb6ff 100%);
       border:1px solid rgba(255,255,255,0.06)
     }
-    .btn.copy{ background: linear-gradient(180deg, #0C1830, #0A1324) }
-
-    /* MAIN */
-    main{max-width:1150px;margin:22px auto 70px;padding:0 18px}
-    .grid{display:grid;grid-template-columns:1fr;gap:18px}
-    @media(min-width:1024px){ .grid{grid-template-columns:1fr 360px} }
-
-    .card{
-      position: relative;
-      background: linear-gradient(180deg, rgba(20,30,52,0.55), rgba(10,16,30,0.45));
-      border:1px solid rgba(148,215,255,0.10);
-      border-radius:var(--radius);
-      padding:18px; box-shadow: var(--shadow);
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    /* Animated neon border for cards */
-    .card::before, .card::after{
-      content:''; position:absolute; inset:-1px;
-      border-radius: inherit; z-index:-1;
-      background: conic-gradient(from 0deg, rgba(61,175,255,.0), rgba(61,175,255,.25), rgba(61,175,255,.0));
-      filter: blur(16px);
-      opacity:.33; animation: spin 8s linear infinite;
-    }
-    .card::after{ animation-duration: 16s; opacity:.18; filter: blur(26px); }
-    @keyframes spin { to { transform: rotate(360deg) } }
-
-    h2{ color:#f2fbff; margin-bottom:12px; font-size:20px; letter-spacing:.2px }
-    .box{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));
-      border-radius:12px; padding:14px; border:1px solid rgba(148,215,255,0.08)
-    }
-    p, li { color: #d9eaff; font-size:15px }
-
-    /* Accordion */
-    .accordion{margin:10px 0}
-    .accordion button{
-      width:100%; text-align:left; padding:12px 14px;
-      background:linear-gradient(180deg, #0D172C, #0C1424);
-      border:1px solid rgba(148,215,255,0.10);
-      color:#e3f1ff; font-weight:800; border-radius:12px; cursor:pointer; font-size:15px;
-      box-shadow: var(--ring);
-      transition: .2s ease;
-    }
-    .accordion button.active{
-      color:#fff; border-color:rgba(31,182,255,0.35);
-      background:linear-gradient(90deg, rgba(31,182,255,0.06), rgba(11,100,199,0.07));
-      transform: translateY(-2px);
-    }
-    .panel{ max-height:0; overflow:hidden; transition:max-height .36s ease, padding .2s ease; padding:0 6px }
-    .panel.open{ padding:12px 6px; overflow:auto; max-height:520px }
-
-    .host-block{
-      background: linear-gradient(180deg, rgba(7,12,24,.75), rgba(6,10,20,.75));
-      padding:12px; border-radius:10px; margin-top:8px;
-      font-family: ui-monospace, Menlo, Monaco, "Courier New", monospace;
-      color:#cfefff; white-space:pre-wrap;
-      border:1px solid rgba(148,215,255,0.08)
-    }
-
-    /* SIDE */
-    aside.side-card{
-      padding:14px;border-radius:var(--radius);
-      background: linear-gradient(180deg, rgba(20,32,58,0.55), rgba(12,18,34,0.45));
-      border:1px solid rgba(148,215,255,0.10);
-      box-shadow: var(--shadow);
-      position: sticky;
-      top:78px;
-      height: fit-content;
-    }
-    .side-card .btn{ width:100%; justify-content:center }
-
-    /* BOTTOM CTA ROW */
-    .bottom-row{ max-width:1150px; margin:20px auto 28px; padding:0 18px }
-    footer{ text-align:center; color:var(--muted); font-size:13px; padding:18px 0 }
-
-    /* FAB */
-    .fab-wrap{ position:fixed; right:16px; top:50%; transform:translateY(-50%); z-index:15; display:flex; flex-direction:column; gap:10px; align-items:center }
-    .fab-main{
-      width:64px;height:64px;border-radius:50%;
-      background:radial-gradient(120px 120px at 30% 30%, #2aaaff 0%, #0f2b6a 80%);
-      display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; cursor:pointer;
-      box-shadow:0 10px 30px rgba(15,90,255,0.22), inset 0 2px 16px rgba(255,255,255,.15);
-      border:1px solid rgba(148,215,255,0.20); font-size:20px;
-    }
-    .fab-label{ font-size:13px; color:var(--muted); margin-top:6px; text-align:center }
-
-    .fab-menu{ display:none; flex-direction:column; gap:8px; align-items:center; margin-bottom:6px }
-    .fab-menu.active{ display:flex; }
-    .fab-item{
-      width:52px;height:52px;border-radius:50%; background:linear-gradient(180deg, #0B1730, #0B1224);
-      display:flex; align-items:center; justify-content:center; color:#fff; cursor:pointer;
-      border:1px solid rgba(148,215,255,0.14); font-weight:800; text-align:center;
-      box-shadow: var(--ring);
-      transition: .16s ease;
-    }
-    .fab-item:hover{ transform: translateY(-3px); border-color: rgba(148,215,255,0.35) }
-    .fab-caption{ font-size:12px; color:#fff; margin-top:6px; background:rgba(255,255,255,0.03); padding:6px 10px; border-radius:8px; white-space:nowrap; border:1px solid rgba(148,215,255,0.08) }
-
-    @media(max-width:480px){
-      .fab-wrap{ right:12px; }
-      .fab-main{ width:56px; height:56px; font-size:18px }
-      .title{ font-size:32px }
-    }
-
-    /* Toast (bottom-right) */
-    .toast-wrap{
-      position:fixed; right:16px; bottom:16px; z-index:20; display:flex; flex-direction:column; gap:8px; align-items:flex-end;
-      pointer-events:none;
-    }
-    .toast{
-      background:linear-gradient(180deg, #0C121C, #0A1018);
-      color:#e9f2ff; border:1px solid rgba(148,215,255,0.12);
-      padding:10px 12px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.45);
-      font-size:14px; min-width:240px; max-width:340px; display:flex; gap:10px; align-items:center;
-      opacity:0; transform:translateY(8px); animation:toastIn .22s ease forwards;
-      pointer-events:auto;
-    }
-    .toast.ok{ border-left:3px solid #22c55e }
-    .toast.warn{ border-left:3px solid #f59e0b }
-    @keyframes toastIn{ to { opacity:1; transform:translateY(0) } }
-
-    /* ====== NEW: Dark Cosmic 3 Glass Feature Cards ====== */
-    .feature-band{
-      max-width:1150px; margin:28px auto 0; padding:0 18px;
-      display:grid; gap:14px; grid-template-columns: 1fr; z-index:1; position:relative;
-    }
-    @media(min-width:900px){ .feature-band{ grid-template-columns: repeat(3, 1fr) } }
-
-    .gcard{
-      position:relative; border-radius:16px; overflow:hidden;
-      background: linear-gradient(180deg, rgba(14, 22, 40, .75), rgba(10, 16, 30, .65));
-      border:1px solid rgba(148,215,255,0.10);
-      box-shadow: var(--shadow);
-      padding:16px;
-      transition:.2s ease;
-      isolation:isolate;
-    }
-    .gcard::before{
-      content:''; position:absolute; inset:-1px; border-radius:inherit; z-index:-1;
-      background: conic-gradient(from 0deg, rgba(79,209,255,.0), rgba(79,209,255,.35), rgba(79,209,255,.0));
-      filter: blur(22px); opacity:.2; animation: spin 12s linear infinite;
-    }
-    .gcard:hover{ transform: translateY(-4px); border-color: rgba(148,215,255,.28) }
-    .gcard h3{
-      display:flex; align-items:center; gap:10px; font-size:18px; letter-spacing:.3px; margin-bottom:8px
-    }
-    .gcard .mini{
-      display:flex; align-items:center; gap:8px; color:#cbe9ff; font-size:13.5px;
-      background:linear-gradient(180deg, rgba(13,20,36,.8), rgba(12,19,34,.65));
-      border:1px solid rgba(148,215,255,0.10); padding:8px 10px; border-radius:10px; margin-top:8px
-    }
-    .gcard .cta{ margin-top:10px; display:flex; gap:8px; flex-wrap:wrap }
-    .gcard .cta .btn{ flex:1 1 auto; justify-content:center }
-
-    /* subtle section fades */
-    .fade-in{ opacity:0; transform: translateY(10px); animation: fadeIn .6s ease forwards }
-    @keyframes fadeIn{ to { opacity:1; transform:none } }
-
-    /* keyboard span */
-    .kbd{
-      background: #0E1A30;
-      border:1px solid rgba(148,215,255,0.20);
-      padding:.1em .4em; border-radius:6px; font-family: ui-monospace, Menlo, Monaco, "Courier New", monospace;
-      color:#cdeaff; font-size:.95em;
-    }
-
-    /* utility */
-    .muted{ color: var(--muted) }
-    .grid-2{ display:grid; gap:12px; grid-template-columns: 1fr }
-    @media(min-width:760px){ .grid-2{ grid-template-columns: repeat(2, 1fr) } }
-
-    /* Footer subtle border */
-    footer{ border-top:1px solid rgba(148,215,255,0.06) }
   </style>
 </head>
 <body>
-  <!-- background layers -->
+  <div class="aurora"></div>
   <div class="stars"></div>
   <div class="twinkle"></div>
 
-  <!-- NAV -->
   <nav>
     <div class="logo">
       <div class="bolt">🔱</div>
@@ -346,350 +181,200 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="hero" role="banner">
+  <header class="hero">
     <div style="max-width:1150px;margin:0 auto">
       <div class="title">⚡ GTRG SERVER</div>
-      <div class="sub">Server GTPS • Private • Fast • Stabil • ECONOMY STABLE</div>
+      <div class="sub">Server GTPS • Private • Fast • Stable • ECONOMY STABLE</div>
 
-      <div class="status-row" style="margin-top:18px">
-        <div class="status"><span class="dot"></span> <div id="onlineText">Online: <strong id="onlineCount">20</strong> pemain</div></div>
-        <div class="status"><div style="font-weight:800">IP:</div>&nbsp;<div style="color:#def1ff">46.105.62.153</div></div>
-        <div class="status"><div style="font-weight:800">VHost:</div>&nbsp;<a style="color:var(--accent)" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank" rel="noopener">Download</a></div>
-      </div>
-
-      <div class="hero btns">
-        <button class="btn primary" data-copy="https://gtrghost.vercel.app/hosts.txt">Copy Powertunnel (Android)</button>
-        <button class="btn copy" data-copy="https://gtrgios.vercel.app/ios.txt">Copy iOS (Surge)</button>
-        <button class="btn copy" data-copy-target="#winHost">Copy Host Windows</button>
-        <button class="btn copy" data-copy-target="#macHost">Copy Host Mac</button>
+      <div class="status-row">
+        <div class="status"><span class="dot"></span> Online: <strong>20</strong> pemain</div>
+        <div class="status">IP: <b>46.105.62.153</b></div>
+        <div class="status">VHost: <a href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" style="color:var(--accent)">Download</a></div>
       </div>
     </div>
   </header>
-
-  <!-- 3 FEATURE CARDS -->
-  <section class="feature-band">
-    <!-- Card 1: How to Play -->
-    <div class="gcard fade-in" style="animation-delay:.05s">
-      <h3>🕹️ How to Play</h3>
-      <p class="muted">Panduan singkat untuk Android, iOS, Windows, dan Mac. Copas & langsung main tanpa ribet.</p>
-      <div class="mini">Tip: Untuk Powertunnel, set <span class="kbd">Host Update</span> ke <b>On Start</b>.</div>
-      <div class="cta">
-        <a class="btn" href="#guide">Open Guide</a>
-        <button class="btn" data-copy="https://gtrghost.vercel.app/hosts.txt">Copy PT Host</button>
-      </div>
-    </div>
-
-    <!-- Card 2: Community -->
-    <div class="gcard fade-in" style="animation-delay:.12s">
-      <h3>👥 Community</h3>
-      <p class="muted">Join Discord & WhatsApp untuk info event, update, dan support dari tim & player lain.</p>
-      <div class="mini">Ramai 24/7 • Support cepat • Event weekly</div>
-      <div class="cta">
-        <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank" rel="noopener">Discord</a>
-        <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
-    </div>
-
-    <!-- Card 3: Rules -->
-    <div class="gcard fade-in" style="animation-delay:.18s">
-      <h3>⚖️ Rules</h3>
-      <p class="muted">Baca aturan server untuk pengalaman bermain yang sehat & aman. Pelanggaran = sanksi.</p>
-      <div class="mini">No scam • No cheat • No chargeback • Respect others</div>
-      <div class="cta">
-        <a class="btn" href="#rules">Read Rules</a>
-        <a class="btn" href="#support">Support</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- MAIN -->
   <main>
     <div class="grid">
-      <!-- MAIN COLUMN -->
-      <div class="card" aria-live="polite">
-        <h2 id="welcome">Welcome to GTRG</h2>
-        <div class="box">
-          <p>Selamat datang di <strong>GTRG</strong> — Growtopia Private Server terbaik dengan fitur lengkap, komunitas aktif, dan update rutin.</p>
-          <ul>
-            <li>⭐ 1.000+ item custom (farmables, gachas, dekorasi)</li>
-            <li>🛠️ Developer profesional & perbaikan rutin</li>
-            <li>🎉 Event menarik & hadiah</li>
-            <li>🏆 Ekonomi pemain dan sistem perdagangan lengkap</li>
-          </ul>
-          <p class="muted">Jika ada masalah pembelian, hubungi kami lewat Discord atau WhatsApp (link di menu).</p>
-        </div>
+      <!-- MAIN CONTENT -->
+      <div class="card" aria-live="polite" style="background:rgba(10,20,40,0.6);border:1px solid rgba(147,216,255,0.1);border-radius:16px;padding:20px;box-shadow:0 12px 30px rgba(0,0,0,.45)">
+        <h2 style="font-size:22px;margin-bottom:10px;color:#aef">Welcome to GTRG</h2>
+        <p>Selamat datang di <strong>GTRG</strong> — Growtopia Private Server terbaik dengan fitur lengkap, komunitas aktif, dan update rutin.</p>
+        <ul style="margin-top:10px;line-height:1.6">
+          <li>⭐ 1.000+ item custom (farmables, gachas, dekorasi)</li>
+          <li>🛠️ Developer profesional & perbaikan rutin</li>
+          <li>🎉 Event menarik & hadiah</li>
+          <li>🏆 Ekonomi pemain dan sistem perdagangan lengkap</li>
+        </ul>
+        <p style="color:#9dc9ff;margin-top:10px;">Jika ada masalah pembelian, hubungi kami lewat Discord atau WhatsApp (link di bawah).</p>
 
-        <section style="margin-top:14px">
-          <h2 id="guide">How to Play (Panduan)</h2>
+        <section style="margin-top:25px">
+          <h2 id="guide" style="font-size:20px;color:#b8ebff">How to Play (Panduan)</h2>
 
-          <!-- Android -->
-          <div class="accordion">
-            <button type="button">🤖 Android (Powertunnel)</button>
-            <div class="panel">
-              <div class="box">
-                <ol>
-                  <li>Unduh aplikasi <b>Powertunnel</b> di perangkat Android.</li>
-                  <li>Tekan <b>Copy Powertunnel (Android)</b> untuk menyalin URL host.</li>
-                  <li>Buka Powertunnel → Menu → <i>Host Settings</i> → tempel URL.</li>
-                  <li>Ubah <span class="kbd">host update period</span> menjadi <b>on start</b>.</li>
-                  <li>Aktifkan Powertunnel lalu buka Growtopia dan login.</li>
-                </ol>
-              </div>
-            </div>
+          <div style="margin-top:12px">
+            <button class="btn primary" data-copy="https://gtrghost.vercel.app/hosts.txt">Copy Powertunnel (Android)</button>
+            <button class="btn" data-copy="https://gtrgios.vercel.app/ios.txt">Copy iOS (Surge)</button>
           </div>
 
-          <!-- iOS -->
-          <div class="accordion">
-            <button type="button">🍏 iOS (Surge 5)</button>
-            <div class="panel">
-              <div class="box">
-                <ol>
-                  <li>Install <b>Surge 5</b> dari App Store.</li>
-                  <li>Buka → pilih <b>Default.conf</b> → <b>IMPORT</b> → <i>Download Profile from URL</i>.</li>
-                  <li>Tekan <b>Copy iOS (Surge)</b> lalu tempel URL di Surge.</li>
-                  <li>OK → Done → izinkan konfigurasi VPN, selesai.</li>
-                </ol>
-                <p style="margin-top:8px;color:#bfe8ff">Profile URL: <span style="color:var(--accent)">https://gtrgios.vercel.app/ios.txt</span></p>
-              </div>
+          <div style="margin-top:20px">
+            <div style="background:rgba(13,25,48,.55);padding:14px;border-radius:12px;border:1px solid rgba(148,215,255,0.1)">
+              <h3>🤖 Android (Powertunnel)</h3>
+              <ol style="margin-top:6px;margin-left:18px">
+                <li>Unduh aplikasi Powertunnel di perangkat Android.</li>
+                <li>Tekan tombol <b>Copy Powertunnel</b> untuk salin host.</li>
+                <li>Tempel URL di pengaturan Powertunnel → Host Settings.</li>
+                <li>Aktifkan dan buka Growtopia untuk login ke server.</li>
+              </ol>
             </div>
-          </div>
 
-          <!-- Windows -->
-          <div class="accordion">
-            <button type="button">🪟 Windows (Hosts)</button>
-            <div class="panel">
-              <div class="box">
-                <p>Buka folder: <span class="kbd">C:\Windows\System32\drivers\etc</span> → buka file <b>hosts</b> dengan Notepad (Run as admin) → tambahkan baris berikut:</p>
-                <div id="winHost" class="host-block">46.105.62.153 growtopia1.com
-46.105.62.153 growtopia2.com
-46.105.62.153 www.growtopia1.com
+            <div style="background:rgba(13,25,48,.55);padding:14px;border-radius:12px;border:1px solid rgba(148,215,255,0.1);margin-top:12px">
+              <h3>🍏 iOS (Surge 5)</h3>
+              <ol style="margin-top:6px;margin-left:18px">
+                <li>Install Surge 5 dari App Store.</li>
+                <li>Import profil dari URL → <b>Copy iOS (Surge)</b>.</li>
+                <li>Izinkan konfigurasi VPN, selesai.</li>
+              </ol>
+            </div>
+
+            <div style="background:rgba(13,25,48,.55);padding:14px;border-radius:12px;border:1px solid rgba(148,215,255,0.1);margin-top:12px">
+              <h3>🪟 Windows (Hosts)</h3>
+              <p>Tambahkan baris ini ke file <code>hosts</code> di folder <b>C:\Windows\System32\drivers\etc</b>:</p>
+              <div style="background:#0b1224;border:1px solid rgba(148,215,255,0.12);padding:10px;margin-top:6px;border-radius:8px;font-family:monospace;color:#cfefff;white-space:pre-line;">
+46.105.62.153 growtopia1.com  
+46.105.62.153 growtopia2.com  
+46.105.62.153 www.growtopia1.com  
+46.105.62.153 www.growtopia2.com  
+46.105.62.153 mpangpp.com
+              </div>
+              <button class="btn" data-copy-target="#winHost">Copy Host Windows</button>
+            </div>
+
+            <div style="background:rgba(13,25,48,.55);padding:14px;border-radius:12px;border:1px solid rgba(148,215,255,0.1);margin-top:12px">
+              <h3>🍎 MacOS (Hosts)</h3>
+              <p>Buka Terminal dan masukkan:</p>
+              <div style="background:#0b1224;border:1px solid rgba(148,215,255,0.12);padding:10px;margin-top:6px;border-radius:8px;font-family:monospace;color:#cfefff;white-space:pre-line;">
+sudo nano /etc/hosts  
+46.105.62.153 growtopia1.com  
+46.105.62.153 growtopia2.com  
+46.105.62.153 www.growtopia1.com  
 46.105.62.153 www.growtopia2.com
-46.105.62.153 mpangpp.com</div>
-                <div style="margin-top:10px"><button class="btn" data-copy-target="#winHost">Copy Host Windows</button></div>
               </div>
             </div>
           </div>
-
-          <!-- MacOS -->
-          <div class="accordion">
-            <button type="button">🍎 MacOS (Hosts)</button>
-            <div class="panel">
-              <div class="box">
-                <p>Buka Terminal: <span class="kbd">sudo nano /etc/hosts</span> → paste baris berikut → <kbd>Ctrl+O</kbd> → Enter → <kbd>Ctrl+X</kbd>:</p>
-                <div id="macHost" class="host-block">46.105.62.153 growtopia1.com
-46.105.62.153 growtopia2.com
-46.105.62.153 www.growtopia1.com
-46.105.62.153 www.growtopia2.com</div>
-                <div style="margin-top:10px"><button class="btn" data-copy-target="#macHost">Copy Host Mac</button></div>
-              </div>
-            </div>
-          </div>
-
         </section>
 
-        <section id="support" style="margin-top:18px">
-          <h2 id="rules">Rules & Support</h2>
-          <div class="box">
-            <p>Jika ada masalah pembelian, hubungi kami lewat Discord atau WhatsApp.</p>
-            <p><strong>⚠ Penting:</strong> Chargeback = <b>BAN permanen</b> dan banding tidak diproses.</p>
-            <p class="muted">GTRG adalah server privat — bukan afiliasi resmi Ubisoft.</p>
+        <section id="rules" style="margin-top:30px">
+          <h2 style="font-size:20px;color:#b8ebff">Rules & Support</h2>
+          <div style="background:rgba(13,25,48,.55);padding:16px;border-radius:12px;border:1px solid rgba(148,215,255,0.1)">
+            <p>⚠ <b>Harap patuhi aturan server:</b></p>
+            <ul style="margin-left:20px;margin-top:6px">
+              <li>No scam</li>
+              <li>No cheat</li>
+              <li>No chargeback</li>
+              <li>Respect other players</li>
+            </ul>
+            <p style="color:#9dc9ff;margin-top:8px;">Untuk masalah akun atau pembelian, hubungi tim melalui Discord/WhatsApp.</p>
           </div>
         </section>
       </div>
 
-      <!-- SIDE -->
-      <aside class="side-card">
-        <h2>Quick Links</h2>
-        <div class="grid-2" style="margin-top:12px">
-          <a class="btn" href="https://gtrghost.vercel.app/hosts.txt" target="_blank" rel="noopener">Powertunnel (Android)</a>
-          <a class="btn" href="https://gtrgios.vercel.app/ios.txt" target="_blank" rel="noopener">iOS (Surge)</a>
-          <a class="btn" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank" rel="noopener">Download VHost</a>
-          <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank" rel="noopener">Discord</a>
-          <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank" rel="noopener">WhatsApp</a>
+      <!-- SIDEBAR -->
+      <aside class="side-card" style="background:rgba(10,20,40,0.6);border:1px solid rgba(147,216,255,0.1);border-radius:16px;padding:16px;box-shadow:0 10px 26px rgba(0,0,0,.4)">
+        <h2 style="font-size:20px;color:#b8ebff">Quick Links</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
+          <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank">Discord</a>
+          <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank">WhatsApp</a>
+          <a class="btn" href="https://www.mediafire.com/file/bclpaib7fzz9n6n/GTRGVHOST.txt/file" target="_blank">VHost</a>
           <a class="btn" href="#guide">Guide</a>
         </div>
-
-        <div style="margin-top:16px">
-          <h3 style="margin-bottom:8px">Server Info</h3>
-          <div class="box" style="padding:10px">
-            <div><strong>IP</strong>: 46.105.62.153</div>
-            <div style="margin-top:6px"><strong>Players</strong>: <span id="sideCount">20</span></div>
-            <div style="margin-top:6px"><strong>Status</strong>: <span style="color:#b6ffca">Online</span></div>
+        <div style="margin-top:20px">
+          <h3 style="font-size:18px;margin-bottom:6px;color:#b8ebff">Server Info</h3>
+          <div style="background:rgba(13,25,48,.55);padding:10px;border-radius:10px;border:1px solid rgba(148,215,255,0.1)">
+            <div><strong>IP:</strong> 46.105.62.153</div>
+            <div style="margin-top:6px"><strong>Players:</strong> 20</div>
+            <div style="margin-top:6px"><strong>Status:</strong> <span style="color:#22c55e">Online</span></div>
           </div>
         </div>
       </aside>
     </div>
   </main>
-
-  <!-- BOTTOM -->
-  <div class="bottom-row">
-    <div class="card box" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-      <div>
-        <div style="font-weight:800">Download & Setup</div>
-        <div class="muted" style="font-size:13px;margin-top:6px">Semua tombol copy di atas untuk mempermudah setup</div>
-      </div>
-      <div style="display:flex;gap:8px">
-        <a class="btn" href="https://discord.gg/FFm37HvmVT" target="_blank" rel="noopener">Discord</a>
-        <a class="btn" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
+  <!-- FLOATING MENU (FAB) -->
+  <div class="fab-wrap" style="position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;align-items:center;gap:10px;">
+    <div class="fab-menu" id="fabMenu" style="display:none;flex-direction:column;align-items:center;gap:10px;">
+      <a class="fab-item" href="#guide" style="width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,#0B1730,#0B1224);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;border:1px solid rgba(148,215,255,0.14);box-shadow:0 0 12px rgba(79,209,255,.15);transition:.2s;">📘</a>
+      <a class="fab-item" href="#rules" style="width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,#0B1730,#0B1224);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;border:1px solid rgba(148,215,255,0.14);box-shadow:0 0 12px rgba(79,209,255,.15);transition:.2s;">⚖️</a>
+      <a class="fab-item" href="https://discord.gg/FFm37HvmVT" target="_blank" title="Join Discord" style="width:52px;height:52px;border-radius:50%;background:linear-gradient(180deg,#1d2242,#182b4a);display:flex;align-items:center;justify-content:center;color:#fff;border:1px solid rgba(148,215,255,0.2);font-size:24px;">💬</a>
     </div>
+    <div class="fab-main" id="fabMain" style="width:64px;height:64px;border-radius:50%;background:radial-gradient(120px 120px at 30% 30%,#2aaaff 0%,#0f2b6a 80%);display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:900;cursor:pointer;box-shadow:0 10px 30px rgba(15,90,255,0.22),inset 0 2px 16px rgba(255,255,255,.15);border:1px solid rgba(148,215,255,0.2);transition:.25s;">≡</div>
+    <div class="fab-label" style="font-size:13px;color:#9dc9ff;margin-top:6px;">Menu</div>
   </div>
 
-  <footer>
-    © 2020/2025 ReivanIZ - GTRG • IP: <b>46.105.62.153</b>
+  <!-- TOAST -->
+  <div class="toast-wrap" id="toastWrap" style="position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:10px;z-index:99;"></div>
+
+  <footer style="text-align:center;margin-top:60px;padding:18px 0;color:#9dc9ff;font-size:14px;border-top:1px solid rgba(148,215,255,0.08)">
+    © 2020 / 2025 ReivanIZ — GTRG • IP: <b>46.105.62.153</b> • <a href="https://discord.gg/FFm37HvmVT" style="color:#77ddff;text-decoration:none">Join Discord</a>
   </footer>
 
-  <!-- FAB -->
-  <div class="fab-wrap" aria-hidden="false" role="navigation" aria-label="Menu cepat">
-    <div class="fab-menu" id="fabMenu">
-      <div style="display:flex;flex-direction:column;align-items:center">
-        <div class="fab-item" data-scroll="#welcome" title="Welcome">W</div>
-        <div class="fab-caption">Welcome</div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center">
-        <div class="fab-item" data-scroll="#guide" title="How to Play">H</div>
-        <div class="fab-caption">How to Play</div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center">
-        <div class="fab-item" data-scroll="#rules" title="Rules">R</div>
-        <div class="fab-caption">Rules</div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center">
-        <a class="fab-item" href="https://discord.gg/FFm37HvmVT" title="Discord" target="_blank" rel="noopener">D</a>
-        <div class="fab-caption">Discord</div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center">
-        <a class="fab-item" href="https://chat.whatsapp.com/KvyQsULPX9EEpHyG6vic4O" title="WhatsApp" target="_blank" rel="noopener">W</a>
-        <div class="fab-caption">WhatsApp</div>
-      </div>
-    </div>
-
-    <div class="fab-main" id="fabMain" title="Menu">≡</div>
-    <div class="fab-label">Menu</div>
-  </div>
-
-  <!-- TOAST CONTAINER -->
-  <div class="toast-wrap" id="toastWrap" aria-live="polite" aria-atomic="true"></div>
-
   <script>
-    // ----- tiny helper -----
-    const $ = s => document.querySelector(s);
-
-    // fix online = 20 (same behavior as before)
-    document.addEventListener('DOMContentLoaded', ()=>{
-      const fixed = '20';
-      const onEl = $('#onlineCount');
-      const sideEl = $('#sideCount');
-      if(onEl) onEl.textContent = fixed;
-      if(sideEl) sideEl.textContent = fixed;
+    // ---- TOGGLE FAB MENU ----
+    const fabMain = document.getElementById('fabMain');
+    const fabMenu = document.getElementById('fabMenu');
+    fabMain.addEventListener('click', ()=>{
+      const open = fabMenu.style.display === 'flex';
+      fabMenu.style.display = open ? 'none' : 'flex';
+      fabMain.style.transform = open ? 'scale(1)' : 'rotate(90deg) scale(1.05)';
     });
 
-    // Accordion
-    document.querySelectorAll('.accordion button').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const wasActive = btn.classList.contains('active');
-        document.querySelectorAll('.accordion button').forEach(b=>b.classList.remove('active'));
-        document.querySelectorAll('.panel').forEach(p=>{
-          p.classList.remove('open'); p.style.maxHeight = null;
-        });
-        if(!wasActive){
-          btn.classList.add('active');
-          const panel = btn.nextElementSibling;
-          if(panel){
-            panel.classList.add('open');
-            panel.style.maxHeight = panel.scrollHeight + "px";
-            const r = panel.getBoundingClientRect();
-            if(r.top < 60 || r.bottom > window.innerHeight - 60){
-              const offset = window.scrollY + r.top - 80;
-              window.scrollTo({top: offset, behavior: 'smooth'});
-            }
-          }
-        }
-      });
-    });
-    window.addEventListener('resize', ()=>{
-      document.querySelectorAll('.panel.open').forEach(p=>{
-        p.style.maxHeight = p.scrollHeight + "px";
-      });
-    });
-
-    // FAB toggle + scroll
-    const fabMain = $('#fabMain');
-    const fabMenu = $('#fabMenu');
-    fabMain.addEventListener('click', ()=> fabMenu.classList.toggle('active'));
-    fabMain.tabIndex = 0;
-    fabMain.addEventListener('keyup', e=>{ if(e.key === 'Enter') fabMain.click(); });
-    document.querySelectorAll('.fab-item[data-scroll]').forEach(el=>{
-      el.addEventListener('click', ()=>{
-        const id = el.getAttribute('data-scroll');
-        const target = document.querySelector(id);
-        if(!target) return;
-        target.scrollIntoView({behavior:'smooth', block:'start'});
-        fabMenu.classList.remove('active');
-      });
-    });
-    document.addEventListener('click', (e)=>{
-      const t = e.target;
-      if(!fabMain.contains(t) && !fabMenu.contains(t)){ fabMenu.classList.remove('active'); }
-    }, {passive:true});
-
-    // ---- toast notifications ----
-    function showToast(text, type='ok', ttl=2800){
-      const wrap = $('#toastWrap');
-      if(!wrap) return;
-      const el = document.createElement('div');
-      el.className = 'toast ' + type;
-      el.innerHTML = text;
-      wrap.appendChild(el);
-      const timer = setTimeout(()=>{ hide(); }, ttl);
-      function hide(){
-        el.style.transition = 'opacity .18s ease, transform .18s ease';
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(6px)';
-        setTimeout(()=>{ el.remove(); }, 200);
-        clearTimeout(timer);
-      }
-      el.addEventListener('click', hide);
+    // ---- TOAST SYSTEM ----
+    function showToast(msg, type='ok'){
+      const wrap = document.getElementById('toastWrap');
+      const div = document.createElement('div');
+      div.className = 'toast';
+      div.style = "background:rgba(11,18,32,.9);color:#e9f7ff;border:1px solid rgba(148,215,255,.15);padding:10px 14px;border-radius:12px;min-width:220px;max-width:320px;box-shadow:0 10px 25px rgba(0,0,0,.45);opacity:0;transform:translateY(6px);transition:.2s;";
+      div.innerHTML = msg;
+      wrap.appendChild(div);
+      setTimeout(()=>{div.style.opacity='1';div.style.transform='translateY(0)';},10);
+      setTimeout(()=>{div.style.opacity='0';div.style.transform='translateY(6px)';setTimeout(()=>div.remove(),200);},3000);
     }
 
-    // copy helpers (with toast)
-    function copyText(txt){
-      navigator.clipboard.writeText(txt)
-        .then(()=> showToast('✅ Tersalin:<br><span style="color:#9ed0ff">'+txt+'</span>','ok'))
-        .catch(()=> showToast('Gagal menyalin. Periksa izin clipboard.','warn'));
-    }
-    function copyFrom(sel){
-      const el = typeof sel === 'string' ? document.querySelector(sel) : sel;
-      if(!el) return showToast('Sumber tidak ditemukan.','warn');
-      const txt = (el.innerText || el.textContent || '').trim();
-      if(!txt) return showToast('Konten kosong.','warn');
-      navigator.clipboard.writeText(txt)
-        .then(()=> showToast('✅ Host tersalin!','ok'))
-        .catch(()=> showToast('Gagal menyalin host.','warn'));
-    }
-
-    // attach to buttons
+    // ---- COPY FEATURE ----
     document.querySelectorAll('[data-copy]').forEach(btn=>{
-      btn.addEventListener('click', ()=> copyText(btn.getAttribute('data-copy')));
-    });
-    document.querySelectorAll('[data-copy-target]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const sel = btn.getAttribute('data-copy-target');
-        copyFrom(sel);
+      btn.addEventListener('click',()=>{
+        const txt = btn.getAttribute('data-copy');
+        navigator.clipboard.writeText(txt).then(()=>{
+          showToast('✅ Disalin ke clipboard');
+        }).catch(()=>{
+          showToast('❌ Gagal menyalin','warn');
+        });
       });
     });
 
-    // passive scroll listener (no-op placeholder)
-    (function(){
-      let ticking = false;
-      window.addEventListener('scroll', function(){
-        if(!ticking){
-          window.requestAnimationFrame(()=>{ ticking = false; });
-          ticking = true;
+    document.querySelectorAll('[data-copy-target]').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const sel = btn.getAttribute('data-copy-target');
+        const el = document.querySelector(sel);
+        if(el){
+          const txt = el.innerText || el.textContent;
+          navigator.clipboard.writeText(txt).then(()=>showToast('✅ Host tersalin!'));
         }
-      }, {passive:true});
-    })();
+      });
+    });
+
+    // ---- SMOOTH SCROLL ----
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',function(e){
+        e.preventDefault();
+        const target=document.querySelector(this.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth'});
+      });
+    });
+
+    // ---- WELCOME ANIMATION ----
+    window.addEventListener('load',()=>{
+      document.body.style.opacity='0';
+      document.body.style.transition='opacity .6s ease';
+      setTimeout(()=>{document.body.style.opacity='1';},100);
+    });
   </script>
 </body>
 </html>
