@@ -1360,27 +1360,4 @@
     });
   </script>
 </body>
-</html>
-    function copyFrom(sel){
-      const el = typeof sel === 'string' ? document.querySelector(sel) : sel;
-      if(!el) return showToast('Sumber tidak ditemukan.','warn');
-      const txt = (el.innerText || el.textContent || '').trim();
-      if(!txt) return showToast('Konten kosong.','warn');
-      navigator.clipboard.writeText(txt)
-        .then(()=> showToast('✅ Host tersalin!','ok'))
-        .catch(()=> showToast('Gagal menyalin host.','warn'));
-    }
-
-    document.querySelectorAll('[data-copy]').forEach(btn=>{
-      btn.addEventListener('click', ()=> copyText(btn.getAttribute('data-copy')));
-    });
-
-    document.querySelectorAll('[data-copy-target]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const sel = btn.getAttribute('data-copy-target');
-        copyFrom(sel);
-      });
-    });
-  </script>
-</body>
-</html>
+</html> 
