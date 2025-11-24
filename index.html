@@ -1,903 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MpanGPPxHuB STORE</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-  /* ============================================================
-     MPANGPPxHuB STORE — gak ada api mampus lu script di wa atau dc only
-     yang ngintip anak anjinggggg
-  ============================================================ */
-
-  :root {
-    --bg: #040607;
-    --bg2: #0c1012;
-    --card: #0f1416;
-    --panel: #12181b;
-
-    --green: #00ff9c;
-    --green2: #34ffb6;
-    --glowgreen: 0 0 18px rgba(0,255,170,0.55);
-
-    --border: #1a2426;
-    --border2: #223033;
-
-    --text: #e4fff3;
-    --muted: #94a7a0;
-
-    --radius: 14px;
-    --transition: 0.18s ease;
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", system-ui, sans-serif;
-  }
-
-  html, body {
-    background: var(--bg);
-    color: var(--text);
-    height: 100%;
-  }
-
-  body {
-    overflow-x: hidden;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  button {
-    font-family: inherit;
-  }
-
-  ::selection {
-    background: var(--green);
-    color: #02120a;
-  }
-
-  /* ========== LOGIN SCREEN ========== */
-
-  #login-screen {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:
-      radial-gradient(circle at 50% 0%, rgba(0,255,170,0.16), transparent 60%),
-      radial-gradient(circle at 10% 100%, rgba(0, 180, 255, 0.12), transparent 60%),
-      #040607;
-    padding: 24px;
-  }
-
-  .login-box {
-    width: 100%;
-    max-width: 420px;
-    background: var(--panel);
-    border-radius: var(--radius);
-    padding: 32px 26px 28px;
-    border: 1px solid var(--border2);
-    box-shadow: var(--glowgreen);
-  }
-
-  .login-title {
-    font-size: 26px;
-    font-weight: 800;
-    margin-bottom: 6px;
-    color: var(--green);
-    text-shadow: var(--glowgreen);
-  }
-
-  .login-tagline {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 18px;
-  }
-
-  .login-desc {
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 20px;
-  }
-
-  .login-input {
-    width: 100%;
-    padding: 12px 14px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border2);
-    background: #060909;
-    color: var(--text);
-    outline: none;
-    font-size: 14px;
-    margin-bottom: 12px;
-    transition: var(--transition);
-  }
-
-  .login-input:focus {
-    border-color: var(--green);
-    box-shadow: 0 0 14px rgba(0,255,170,0.6);
-  }
-
-  .login-btn {
-    width: 100%;
-    padding: 12px 16px;
-    border-radius: var(--radius);
-    border: none;
-    background: var(--green);
-    color: #04110d;
-    font-weight: 800;
-    cursor: pointer;
-    font-size: 15px;
-    transition: var(--transition);
-  }
-
-  .login-btn:hover {
-    background: var(--green2);
-    box-shadow: var(--glowgreen);
-    transform: translateY(-1px);
-  }
-
-  .login-note {
-    margin-top: 10px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  /* ========== LAYOUT DASHBOARD ========== */
-
-  #dashboard-root {
-    display: none;
-  }
-
-  .layout {
-    display: flex;
-    min-height: 100vh;
-  }
-
-  .sidebar {
-    width: 255px;
-    background: var(--panel);
-    border-right: 1px solid var(--border2);
-    padding: 26px 20px;
-    position: fixed;
-    inset-block: 0;
-    left: 0;
-    overflow-y: auto;
-  }
-
-  .sidebar-title {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--green);
-    text-shadow: var(--glowgreen);
-    margin-bottom: 4px;
-  }
-
-  .sidebar-sub {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 20px;
-  }
-
-  .user-chip {
-    font-size: 13px;
-    padding: 8px 10px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: #0a1010;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 18px;
-  }
-
-  .user-chip span {
-    font-weight: 600;
-  }
-
-  .sidebar-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 18px;
-  }
-
-  .sidebar-link {
-    padding: 10px 12px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    background: #060909;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-    cursor: pointer;
-    transition: var(--transition);
-    text-align: left;
-  }
-
-  .sidebar-link:hover {
-    border-color: var(--green);
-    box-shadow: var(--glowgreen);
-    background: #0a1010;
-  }
-
-  .sidebar-link.active {
-    background: #0f1715;
-    border-color: var(--green);
-    box-shadow: var(--glowgreen);
-  }
-
-  .sidebar-contact {
-    margin-top: 10px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .sidebar-contact b {
-    color: var(--green);
-  }
-
-  .main {
-    margin-left: 255px;
-    flex: 1;
-    padding: 32px 28px;
-  }
-
-  .page-header {
-    margin-bottom: 20px;
-  }
-
-  .page-title {
-    font-size: 26px;
-    font-weight: 800;
-    color: var(--green);
-    text-shadow: var(--glowgreen);
-    margin-bottom: 4px;
-  }
-
-  .page-sub {
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  /* ========== CARDS, GRID, BUTTONS ========== */
-
-  .card {
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: var(--card);
-    padding: 20px 18px;
-    margin-bottom: 18px;
-    box-shadow: 0 0 18px rgba(0,0,0,0.55);
-    transition: var(--transition);
-  }
-
-  .card:hover {
-    border-color: var(--green);
-    box-shadow: var(--glowgreen);
-  }
-
-  .card-title {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-
-  .card-sub {
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  .section {
-    display: none;
-  }
-
-  .section.active {
-    display: block;
-  }
-
-  .btn {
-    padding: 10px 14px;
-    border-radius: 999px;
-    border: none;
-    font-weight: 700;
-    cursor: pointer;
-    font-size: 13px;
-    transition: var(--transition);
-  }
-
-  .btn-green {
-    background: var(--green);
-    color: #04110d;
-  }
-
-  .btn-green:hover {
-    background: var(--green2);
-    box-shadow: var(--glowgreen);
-    transform: translateY(-1px);
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--green);
-    border: 1px solid var(--green);
-  }
-
-  .btn-outline:hover {
-    background: rgba(0,255,156,0.12);
-  }
-
-  .grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-  }
-
-  .grid-2 {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-  }
-
-  .pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 9px;
-    border-radius: 999px;
-    font-size: 11px;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
-  .price {
-    font-size: 16px;
-    font-weight: 800;
-    color: var(--green);
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  /* ========== EXECUTOR SECTION ========== */
-
-  .executor-card {
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: #070b0c;
-    padding: 16px 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .executor-name {
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .executor-desc {
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .executor-btns {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 6px;
-  }
-
-  /* ========== SCRIPT STORE ========== */
-
-  .script-card {
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: #060909;
-    padding: 16px 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .script-title {
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .script-game {
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .script-code {
-    font-family: "Fira Code", monospace;
-    font-size: 11px;
-    background: #020405;
-    border-radius: 8px;
-    padding: 8px;
-    border: 1px solid #10181a;
-    color: #ceffe8;
-    max-height: 120px;
-    overflow: auto;
-  }
-
-  .script-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .script-tag {
-    font-size: 11px;
-    color: var(--muted);
-  }
-
-  /* ========== FAQ (ACCORDION) ========== */
-
-  .faq-item {
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: #050909;
-    margin-bottom: 10px;
-    overflow: hidden;
-  }
-
-  .faq-q {
-    padding: 11px 14px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 600;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .faq-q span {
-    color: var(--muted);
-    font-size: 12px;
-  }
-
-  .faq-a {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 14px;
-    font-size: 12px;
-    color: var(--muted);
-    transition: max-height 0.22s ease;
-  }
-
-  .faq-item.open .faq-a {
-    max-height: 200px;
-    padding-bottom: 10px;
-    padding-top: 4px;
-  }
-
-  /* ========== CONTACT SECTION ========== */
-
-  .contact-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
-  }
-
-  .contact-info {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 6px;
-  }
-
-  /* ========== RESPONSIVE ========== */
-
-  @media (max-width: 960px) {
-    .grid-3 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (max-width: 780px) {
-    .sidebar {
-      position: fixed;
-      left: -260px;
-      top: 0;
-      transition: left 0.25s ease;
-    }
-
-    .sidebar.open {
-      left: 0;
-    }
-
-    .main {
-      margin-left: 0;
-      padding-top: 70px;
-    }
-
-    .mobile-toggle {
-      position: fixed;
-      top: 14px;
-      left: 14px;
-      z-index: 20;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: #050909;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 0 14px rgba(0,0,0,0.6);
-    }
-
-    .grid-3 {
-      grid-template-columns: 1fr;
-    }
-
-    .grid-2 {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (max-width: 520px) {
-    .card {
-      padding: 16px 14px;
-    }
-    .page-title {
-      font-size: 22px;
-    }
-  }
-
-  </style>
+<meta charset="UTF-8" />
+<title>MpanGPPxHuB STORE — v2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+/* ============================================================
+   MPANGPPxHuB STORE — SINGLE FILE (v2 UPGRADE)
+   Dark Green Hacker • No API • Frontend Only
+============================================================ */
+:root{
+  --bg:#040607; --panel:#0c1012; --card:#0f1416;
+  --text:#e4fff3; --muted:#94a7a0;
+  --border:#1a2426; --border2:#223033;
+  --green:#00ff9c; --green2:#34ffb6; --warning:#f59e0b; --danger:#ef4444; --blue:#26d8ff;
+  --radius:14px; --t:.18s ease; --glow:0 0 18px rgba(0,255,170,.55);
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Poppins,system-ui,sans-serif}
+html,body{height:100%}
+body{background:var(--bg);color:var(--text);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+
+/* ---------- global ui ---------- */
+.container{max-width:1200px;margin:0 auto;padding:24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:0 0 18px rgba(0,0,0,.55);transition:var(--t)}
+.card:hover{border-color:var(--green);box-shadow:var(--glow)}
+.btn{padding:10px 14px;border-radius:999px;border:none;font-weight:800;transition:var(--t)}
+.btn-green{background:var(--green);color:#04110d}
+.btn-green:hover{background:var(--green2);box-shadow:var(--glow);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--green);border:1px solid var(--green)}
+.btn-outline:hover{background:rgba(0,255,156,.12)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+@media(max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;font-size:11px;border:1px solid var(--border);color:var(--muted)}
+.badge-locked{display:inline-flex;align-items:center;padding:3px 8px;border-radius:999px;font-size:10px;background:#2a0909;color:#f97373;border:1px solid #7f1d1d;text-transform:uppercase;letter-spacing:.5px}
+.price{font-size:16px;font-weight:800;color:var(--green);margin:8px 0 6px}
+
+/* ---------- login ---------- */
+#login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:
+radial-gradient(600px 600px at 10% 0%, rgba(0,255,170,.16), transparent 60%),
+radial-gradient(800px 800px at 110% 90%, rgba(38,216,255,.10), transparent 60%),
+#040607;padding:24px}
+.login-box{width:100%;max-width:460px;background:var(--panel);border:1px solid var(--border2);border-radius:var(--radius);padding:28px;box-shadow:var(--glow)}
+.login-title{font-size:26px;font-weight:900;color:var(--green);text-shadow:var(--glow)}
+.login-sub{font-size:12px;color:var(--muted);margin-top:4px}
+.login-desc{margin:12px 0 16px;color:var(--muted);font-size:13px}
+.login-input{width:100%;padding:12px 14px;border-radius:var(--radius);background:#060909;border:1px solid var(--border2);color:var(--text);outline:none;margin-bottom:12px;transition:var(--t)}
+.login-input:focus{border-color:var(--green);box-shadow:0 0 14px rgba(0,255,170,.6)}
+.login-note{font-size:12px;color:var(--muted);margin-top:8px}
+
+/* ---------- layout ---------- */
+.layout{display:flex;min-height:100vh}
+.sidebar{width:255px;background:var(--panel);border-right:1px solid var(--border2);padding:26px 20px;position:fixed;inset-block:0;left:0;overflow-y:auto}
+.sidebar-title{font-size:22px;font-weight:900;color:var(--green);text-shadow:var(--glow)}
+.sidebar-sub{font-size:12px;color:var(--muted);margin:6px 0 12px}
+.user-chip{font-size:13px;padding:8px 10px;border-radius:999px;border:1px solid var(--border);background:#0a1010;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px}
+.sidebar-menu{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.sidebar-link{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#060909;font-size:14px;font-weight:700;color:var(--text);text-align:left}
+.sidebar-link:hover{border-color:var(--green);box-shadow:var(--glow);background:#0a1010}
+.sidebar-link.active{background:#0f1715;border-color:var(--green);box-shadow:var(--glow)}
+.sidebar-contact{font-size:12px;color:var(--muted)}
+.main{margin-left:255px;flex:1}
+.mobile-toggle{display:none}
+@media(max-width:820px){
+  .sidebar{left:-260px;transition:left .25s ease}
+  .sidebar.open{left:0}
+  .mobile-toggle{display:flex;position:fixed;top:14px;left:14px;z-index:20;width:44px;height:44px;border-radius:12px;border:1px solid var(--border);background:#050909;color:var(--text);align-items:center;justify-content:center;box-shadow:0 0 14px rgba(0,0,0,.6)}
+  .main{margin-left:0;padding-top:70px}
+}
+.page-header{padding:26px 24px 10px}
+.page-title{font-size:26px;font-weight:900;color:var(--green);text-shadow:var(--glow)}
+.page-sub{font-size:13px;color:var(--muted);margin-top:4px}
+
+/* ---------- status / announcement bar ---------- */
+.announce{margin:14px 24px 0}
+.announce .bar{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:10px 12px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.status-dot{width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 12px rgba(34,197,94,.45)}
+.announce .sep{opacity:.45}
+.announce .pill{border-color:#194739}
+.nowrap{white-space:nowrap}
+
+/* ---------- sections ---------- */
+.section{display:none}
+.section.active{display:block}
+
+/* ---------- scripts ---------- */
+.script-card{border-radius:var(--radius);border:1px solid var(--border);background:#060909;padding:16px 14px;display:flex;flex-direction:column;gap:8px}
+.script-title{font-size:14px;font-weight:900;display:flex;align-items:center;gap:8px}
+.script-game{font-size:12px;color:var(--muted)}
+.script-code{font-family:"Fira Code",monospace;font-size:11px;background:#020405;border-radius:8px;padding:10px;border:1px solid #10181a;color:#ceffe8;max-height:120px;overflow:auto;position:relative}
+.script-footer{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.script-tag{font-size:11px;color:var(--muted)}
+.no-copy{user-select:none;-webkit-user-select:none;-ms-user-select:none}
+.blur{filter:blur(2.2px)}
+.mask-overlay{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.15) 40%,transparent 100%)}
+
+/* ---------- faq ---------- */
+.faq-item{border-radius:var(--radius);border:1px solid var(--border);background:#050909;margin-bottom:10px;overflow:hidden}
+.faq-q{padding:11px 14px;cursor:pointer;font-size:13px;font-weight:800;display:flex;justify-content:space-between;align-items:center}
+.faq-q span{color:var(--muted);font-size:12px}
+.faq-a{max-height:0;overflow:hidden;padding:0 14px;font-size:12px;color:var(--muted);transition:max-height .22s ease}
+.faq-item.open .faq-a{max-height:420px;padding-bottom:10px;padding-top:4px}
+
+/* ---------- modal (buy/select channel) ---------- */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;z-index:60}
+.modal{background:#050909;border-radius:14px;border:1px solid var(--border2);padding:18px 16px;width:90%;max-width:380px;box-shadow:var(--glow)}
+.modal-title{font-size:16px;font-weight:900;margin-bottom:6px}
+.modal-text{font-size:13px;color:var(--muted);margin-bottom:14px}
+.modal-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+
+/* ---------- owner flair ---------- */
+.owner-chip{display:none;margin-left:8px;padding:4px 8px;border-radius:999px;border:1px solid #2b6b56;color:#7bffcf;background:#0c1714;font-size:10px;font-weight:900;letter-spacing:.4px}
+.owner-on .owner-chip{display:inline-flex}
+
+</style>
 </head>
-
 <body>
 
-<!-- ======================================
-     LOGIN SCREEN
-====================================== -->
+<!-- ================= LOGIN ================= -->
 <div id="login-screen">
   <div class="login-box">
     <div class="login-title">MpanGPPxHuB STORE</div>
-    <div class="login-tagline">Roblox Script & Executor Hub</div>
+    <div class="login-sub">Roblox Script & Executor Hub</div>
     <div class="login-desc">
-      Masukkan <b>username Roblox</b> kamu. Tidak pakai password, tidak pakai email.
+      <b>Masuk dengan username apapun</b> (bebas, bukan username Roblox). Ini hanya untuk tampilan di dashboard.
+      <br>Nama khusus (seperti <b>MpanGPP</b> / <b>ReivanIZ</b>) butuh key/password.
     </div>
-
-    <input id="usernameInput" class="login-input" placeholder="Roblox Username..." autocomplete="off" />
-    <button class="login-btn" onclick="login()">Masuk Dashboard</button>
-
-    <div class="login-note">
-      Username ini cuma dipakai display di dashboard MpanGPPxHuB, tidak ada API dan tidak tersimpan di server.
-    </div>
+    <input id="usernameInput" class="login-input" placeholder="Ketik username tampilan kamu..." autocomplete="off"/>
+    <button class="btn btn-green" style="width:100%" onclick="login()">Masuk Dashboard</button>
+    <div class="login-note">Tidak ada password / email. Tidak terhubung ke API. Frontend only.</div>
   </div>
 </div>
 
-<!-- ======================================
-     DASHBOARD ROOT
-====================================== -->
-<div id="dashboard-root" style="display:none;">
-
-  <!-- Mobile Sidebar Toggle -->
+<!-- ================= APP ================= -->
+<div id="app" style="display:none">
   <button class="mobile-toggle" onclick="toggleSidebar()">≡</button>
 
   <div class="layout">
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
-      <div class="sidebar-title">MpanGPPxHuB</div>
-      <div class="sidebar-sub">Roblox Exploits & Script Store</div>
-
-      <div class="user-chip">
-        User: <span class="username-display">Guest</span>
+      <div class="sidebar-title">
+        MpanGPPxHuB <span class="owner-chip">OWNER MODE</span>
       </div>
+      <div class="sidebar-sub">Roblox Exploits & Script Store</div>
+      <div class="user-chip">User: <b class="username-display">Guest</b></div>
 
       <nav class="sidebar-menu">
-        <button class="sidebar-link active" data-section="section-dashboard">Dashboard</button>
-        <button class="sidebar-link" data-section="section-scripts">Scripts</button>
-        <button class="sidebar-link" data-section="section-executor">Executors</button>
-        <button class="sidebar-link" data-section="section-premium">Premium Store</button>
-        <button class="sidebar-link" data-section="section-faq">FAQ</button>
-        <button class="sidebar-link" data-section="section-contact">Contact</button>
+        <button class="sidebar-link active" data-section="dashboard">Dashboard</button>
+        <button class="sidebar-link" data-section="scripts">Scripts</button>
+        <button class="sidebar-link" data-section="executors">Executors</button>
+        <button class="sidebar-link" data-section="premium">Premium Store</button>
+        <button class="sidebar-link" data-section="faq">FAQ</button>
+        <button class="sidebar-link" data-section="contact">Contact</button>
       </nav>
 
       <div class="sidebar-contact">
         Admin: <b>MpanGPP / ReivanIZ</b><br>
-        Discord: <span style="font-size:11px;">discord.gg/p8ke3JVUw9</span><br>
-        WhatsApp: <span style="font-size:11px;">081532098076</span>
+        Discord: <small>discord.gg/p8ke3JVUw9</small><br>
+        WhatsApp: <small>081532098076</small>
       </div>
     </aside>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN -->
     <main class="main">
-      <!-- DASHBOARD SECTION -->
-      <section id="section-dashboard" class="section active">
-        <header class="page-header">
-          <div class="page-title">Dashboard</div>
-          <div class="page-sub">
-            Selamat datang, <span class="username-display">Guest</span>. Kelola script & tier kamu di sini.
-          </div>
-        </header>
+      <!-- HEADER + STATUS -->
+      <header class="page-header">
+        <div class="page-title">Dashboard</div>
+        <div class="page-sub">
+          Selamat datang, <span class="username-display">Guest</span>.
+          Username ini hanya tampilan, bukan login Roblox.
+        </div>
+      </header>
 
+      <div class="announce">
+        <div class="bar">
+          <span class="status-dot"></span>
+          <b>Status:</b>&nbsp;<span class="nowrap">Online</span>
+          <span class="sep">•</span>
+          <b>Update:</b>&nbsp;<span id="updateDate" class="nowrap"></span>
+          <span class="sep">•</span>
+          <b>5+ fitur baru</b> ditambah (UI modal beli, badge LOCKED, owner key, script preview, status bar)
+          <span class="sep">•</span>
+          <span class="pill">No API • Frontend Only</span>
+        </div>
+      </div>
+
+      <!-- SECTIONS -->
+      <section id="section-dashboard" class="section active container">
         <div class="grid-3">
           <div class="card">
             <div class="card-title">Status Akun</div>
-            <div class="card-sub">
+            <div class="page-sub" style="margin-top:6px">
               Username: <b class="username-display">Guest</b><br>
-              Tier: <b>FREE</b><br>
-              Premium: Locked
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-title">Script Terdaftar</div>
-            <div class="card-sub">
-              Public scripts: <b>+10</b><br>
-              Premium scripts: <b>+5</b>
+              Tier: <b>FREE</b> (preview only)<br>
+              Premium: <b>Locked</b>
             </div>
           </div>
 
           <div class="card">
             <div class="card-title">Hub & Contact</div>
-            <div class="card-sub">
+            <div class="page-sub" style="margin-top:6px">
               Discord: <b>discord.gg/p8ke3JVUw9</b><br>
-              WhatsApp: <b>081532098076</b>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-title">Quick Actions</div>
-          <div class="card-sub" style="margin-bottom:10px;">
-            Akses cepat ke halaman penting MpanGPPxHuB STORE.
-          </div>
-          <div style="display:flex;flex-wrap:wrap;gap:10px;">
-            <button class="btn btn-green" onclick="openSection('section-premium')">Buka Premium Store</button>
-            <button class="btn btn-outline" onclick="openSection('section-scripts')">Lihat Script</button>
-            <button class="btn btn-outline" onclick="openSection('section-executor')">Executors</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- SCRIPTS SECTION -->
-      <section id="section-scripts" class="section">
-        <header class="page-header">
-          <div class="page-title">Script Store</div>
-          <div class="page-sub">
-            Public & contoh script. Premium script hanya deskripsi, beli di Premium Store.
-          </div>
-        </header>
-
-        <div class="grid-2">
-          <!-- Script 1 -->
-          <div class="script-card">
-            <div class="script-title">Universal Hub Example</div>
-            <div class="script-game">Any Game (Testing)</div>
-            <pre class="script-code" id="code1">loadstring(game:HttpGet("https://mpangpp-hub.test/universal.lua"))()</pre>
-            <div class="script-footer">
-              <span class="script-tag">Public Example</span>
-              <button class="btn btn-green" onclick="copyScript('code1')">Copy Script</button>
+              WhatsApp: <b>081532098076</b><br>
+              Support: 24/7 (fast response)
             </div>
           </div>
 
-          <!-- Script 2 -->
-          <div class="script-card">
-            <div class="script-title">Blox Fruits - Preview</div>
-            <div class="script-game">Blox Fruits</div>
-            <pre class="script-code" id="code2">-- Contoh preview script (tidak real)
-loadstring(game:HttpGet("https://mpangpp-premium/bloxfruits.lua"))()</pre>
-            <div class="script-footer">
-              <span class="script-tag">Premium Preview Only</span>
-              <button class="btn btn-outline" onclick="openSection('section-premium')">Upgrade untuk full</button>
-            </div>
-          </div>
-
-          <!-- Script 3 -->
-          <div class="script-card">
-            <div class="script-title">Doors Example</div>
-            <div class="script-game">DOORS</div>
-            <pre class="script-code" id="code3">loadstring(game:HttpGet("https://mpangpp-hub.test/doors.lua"))()</pre>
-            <div class="script-footer">
-              <span class="script-tag">Public Example</span>
-              <button class="btn btn-green" onclick="copyScript('code3')">Copy Script</button>
-            </div>
-          </div>
-
-          <!-- Script 4 -->
-          <div class="script-card">
-            <div class="script-title">Pet Simulator X Preview</div>
-            <div class="script-game">Pet Simulator X</div>
-            <pre class="script-code" id="code4">-- Premium preview only
-loadstring(game:HttpGet("https://mpangpp-premium/psx.lua"))()</pre>
-            <div class="script-footer">
-              <span class="script-tag">Premium</span>
-              <button class="btn btn-outline" onclick="openSection('section-premium')">Unlock via Premium</button>
+          <div class="card">
+            <div class="card-title">Quick Actions</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+              <button class="btn btn-green" onclick="openSection('premium')">Buka Premium Store</button>
+              <button class="btn btn-outline" onclick="openSection('scripts')">Lihat Scripts</button>
+              <button class="btn btn-outline" onclick="openSection('executors')">Executors</button>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- EXECUTOR SECTION -->
-      <section id="section-executor" class="section">
-        <header class="page-header">
-          <div class="page-title">Executors</div>
-          <div class="page-sub">
-            Kamu bisa pakai executor eksternal seperti Xeno, Delta, Solara, Arceus X, dsb. 
-            Tombol di bawah hanya redirect ke website resmi mereka.
-          </div>
-        </header>
+      <section id="section-scripts" class="section container">
+        <div class="page-title">Script Store (Preview)</div>
+        <div class="page-sub">Semua script di bawah ini <b>preview / locked</b>. Untuk full, pilih <b>Unlock</b> → pilih Discord/WA.</div>
 
-        <div class="grid-2">
-          <div class="executor-card">
-            <div class="executor-name">Xeno Executor</div>
-            <div class="executor-desc">Android / Windows executor populer, support banyak script hub.</div>
-            <div class="executor-btns">
-              <a href="https://xeno-executor.com" target="_blank">
-                <button class="btn btn-green">Go to Xeno</button>
-              </a>
+        <div class="grid-3" style="margin-top:16px">
+          <!-- 1) Universal Hub — MODS -->
+          <div class="script-card">
+            <div class="script-title">
+              Universal Hub — <span style="color:#8cf5d9">MODS Tier</span>
+              <span class="badge-locked">Locked</span>
+            </div>
+            <div class="script-game">Multi Game (Universal)</div>
+            <div class="script-code no-copy">
+              <div class="mask-overlay"></div>
+<code class="locked-line blur">
+-- Preview only (MODS Tier)
+loadstring(game:HttpGet("MPAN&#8203;GPPMODS&#8203;TIERLOCKED"))(-- truncated)
+</code>
+            </div>
+            <div class="script-footer">
+              <span class="script-tag">Unlock via MODS Tier</span>
+              <button class="btn btn-green" onclick="openUnlock('Universal Hub — MODS Tier')">Unlock</button>
             </div>
           </div>
 
-          <div class="executor-card">
-            <div class="executor-name">Delta Executor</div>
-            <div class="executor-desc">Executor modern dengan UI rapi, cocok untuk berbagai game.</div>
-            <div class="executor-btns">
-              <a href="https://deltaexploits.net" target="_blank">
-                <button class="btn btn-green">Go to Delta</button>
-              </a>
+          <!-- 2) Multi-Game Pack — ADMIN -->
+          <div class="script-card">
+            <div class="script-title">
+              Multi-Game Pack — <span style="color:#a8e4ff">ADMIN Tier</span>
+              <span class="badge-locked">Locked</span>
+            </div>
+            <div class="script-game">Blox Fruits • Doors • PSX • BedWars • Arsenal • Brookhaven • Evade • MM2 • Bee Swarm • ToH • BABFT • K.Legacy • Anime Fighters • Blade Ball • Lumber Tycoon 2 • Adopt Me</div>
+            <div class="script-code no-copy">
+              <div class="mask-overlay"></div>
+<code class="locked-line blur">
+-- Preview only (ADMIN Tier)
+loadstring(game:HttpGet("MPAN&#8203;GPPADMIN&#8203;TIERLOCKED"))(-- truncated)
+</code>
+            </div>
+            <div class="script-footer">
+              <span class="script-tag">Unlock via ADMIN Tier</span>
+              <button class="btn btn-green" onclick="openUnlock('Multi-Game Pack — ADMIN Tier')">Unlock</button>
             </div>
           </div>
 
-          <div class="executor-card">
-            <div class="executor-name">Arceus X</div>
-            <div class="executor-desc">Mobile executor yang sering dipakai user Roblox mobile.</div>
-            <div class="executor-btns">
-              <a href="https://arceusx.net" target="_blank">
-                <button class="btn btn-green">Go to Arceus X</button>
-              </a>
+          <!-- 3) Ultimate GOD Hub — GOD -->
+          <div class="script-card">
+            <div class="script-title">
+              Ultimate GOD Hub — <span style="color:#8dffcf">GOD Tier</span>
+              <span class="badge-locked">Locked</span>
             </div>
-          </div>
-
-          <div class="executor-card">
-            <div class="executor-name">Solara</div>
-            <div class="executor-desc">Salah satu executor baru dengan performa cukup stabil.</div>
-            <div class="executor-btns">
-              <a href="https://solara.host" target="_blank">
-                <button class="btn btn-green">Go to Solara</button>
-              </a>
+            <div class="script-game">All supported games + private config & priority</div>
+            <div class="script-code no-copy">
+              <div class="mask-overlay"></div>
+<code class="locked-line blur">
+-- Preview only (GOD Tier)
+loadstring(game:HttpGet("MPAN&#8203;GPPGOD&#8203;TIERLOCKED"))(-- truncated)
+</code>
+            </div>
+            <div class="script-footer">
+              <span class="script-tag">Unlock via GOD Tier</span>
+              <button class="btn btn-green" onclick="openUnlock('Ultimate GOD Hub — GOD Tier')">Unlock</button>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- PREMIUM STORE SECTION -->
-      <section id="section-premium" class="section">
-        <header class="page-header">
-          <div class="page-title">Premium Store</div>
-          <div class="page-sub">
-            Beli tier Premium langsung chat admin. Tidak ada sistem bayar otomatis, semuanya manual via Discord / WhatsApp.
+      <section id="section-executors" class="section container">
+        <div class="page-title">Executors</div>
+        <div class="page-sub">Pakai executor eksternal (redirect resmi): Xeno, Delta, Arceus X, Solara, dll.</div>
+        <div class="grid-2" style="margin-top:16px">
+          <div class="card">
+            <div class="card-title">Xeno Executor</div>
+            <div class="page-sub">Android / Windows. Populer & stabil.</div>
+            <div style="margin-top:10px"><a href="https://xeno-executor.com" target="_blank"><button class="btn btn-green">Go to Xeno</button></a></div>
           </div>
-        </header>
+          <div class="card">
+            <div class="card-title">Delta Executor</div>
+            <div class="page-sub">UI modern, support banyak game.</div>
+            <div style="margin-top:10px"><a href="https://deltaexploits.net" target="_blank"><button class="btn btn-green">Go to Delta</button></a></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Arceus X</div>
+            <div class="page-sub">Mobile executor andalan.</div>
+            <div style="margin-top:10px"><a href="https://arceusx.net" target="_blank"><button class="btn btn-green">Go to Arceus X</button></a></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Solara</div>
+            <div class="page-sub">Performa cukup stabil.</div>
+            <div style="margin-top:10px"><a href="https://solara.host" target="_blank"><button class="btn btn-green">Go to Solara</button></a></div>
+          </div>
+        </div>
+      </section>
 
-        <div class="grid-3">
+      <section id="section-premium" class="section container">
+        <div class="page-title">Premium Store</div>
+        <div class="page-sub">Beli tier Premium → pilih Discord/WA di modal. Semua manual via admin (no API).</div>
+
+        <div class="grid-3" style="margin-top:16px">
           <div class="card">
             <div class="card-title">MODS Tier</div>
-            <div class="card-sub">
-              Cocok untuk tester & helper. Akses beberapa script tambahan & early preview.
-              <div class="pill">Role: MODS</div>
+            <div class="page-sub" style="margin-top:8px">
+              🔹 Akses <b>Universal Hub</b> dan beberapa <b>game pack dasar</b><br>
+              🔹 <b>Early preview</b> build terbaru sebelum rilis publik<br>
+              🔹 <b>Support Lite</b> via Discord (prioritas medium)<br>
+              🔹 <b>Changelog private</b> & tips penggunaan<br>
+              🔹 Cocok untuk <b>helper</b> & <b>tester</b> yang mau cepat coba fitur baru
+              <div class="pill" style="margin-top:8px">Role: MODS</div>
             </div>
             <div class="price">Rp 15.000</div>
-            <button class="btn btn-green" onclick="openBuy('MODS Tier')">Beli via Discord / WA</button>
+            <button class="btn btn-green" onclick="openBuy('MODS Tier')">Beli</button>
           </div>
 
           <div class="card">
             <div class="card-title">ADMIN Tier</div>
-            <div class="card-sub">
-              Akses script premium & beberapa internal tools. 
-              <div class="pill">Role: ADMIN</div>
+            <div class="page-sub" style="margin-top:8px">
+              🔹 Semua fitur <b>MODS</b> + <b>Multi-Game Pack lengkap</b><br>
+              🔹 <b>Private config</b> + setting rekomendasi tiap game<br>
+              🔹 <b>Faster Support</b> & saran prioritas update<br>
+              🔹 <b>Whitelist slot</b> untuk akses cepat bila ada pembatasan<br>
+              🔹 Direkomendasikan untuk <b>power user</b> / admin komunitas
+              <div class="pill" style="margin-top:8px">Role: ADMIN</div>
             </div>
             <div class="price">Rp 40.000</div>
-            <button class="btn btn-green" onclick="openBuy('ADMIN Tier')">Beli via Discord / WA</button>
+            <button class="btn btn-green" onclick="openBuy('ADMIN Tier')">Beli</button>
           </div>
 
           <div class="card">
             <div class="card-title">GOD Tier</div>
-            <div class="card-sub">
-              Full akses script premium, prioritas support, dan akses penuh hub. 
-              <div class="pill">Role: GOD</div>
+            <div class="page-sub" style="margin-top:8px">
+              🔹 Semua fitur <b>ADMIN</b> + <b>Ultimate GOD Hub</b><br>
+              🔹 <b>White-glove support</b> (bantu setup sampai beres)<br>
+              🔹 <b>Priority request</b> (minta penambahan/game tertentu)<br>
+              🔹 <b>Private updates</b> & akses build eksperimental<br>
+              🔹 Pilihan terbaik buat yang pengen <b>full akses</b> & <b>prioritas tinggi</b>
+              <div class="pill" style="margin-top:8px">Role: GOD</div>
             </div>
             <div class="price">Rp 120.000</div>
-            <button class="btn btn-green" onclick="openBuy('GOD Tier')">Beli via Discord / WA</button>
+            <button class="btn btn-green" onclick="openBuy('GOD Tier')">Beli</button>
           </div>
         </div>
       </section>
 
-      <!-- FAQ SECTION -->
-      <section id="section-faq" class="section">
-        <header class="page-header">
-          <div class="page-title">FAQ</div>
-          <div class="page-sub">
-            Beberapa pertanyaan yang sering ditanya seputar script, executor, dan premium.
-          </div>
-        </header>
+      <section id="section-faq" class="section container">
+        <div class="page-title">FAQ</div>
+        <div class="page-sub">Pertanyaan umum soal script, executor, premium, dan keamanan.</div>
 
+        <!-- Banyak Q&A -->
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            Script di sini auto-support semua game?
-            <span>+</span>
-          </div>
+          <div class="faq-q" onclick="toggleFaq(this)">Ini bisa buat <b>all game</b>? <span>+</span></div>
           <div class="faq-a">
-            Tidak. Script biasanya khusus untuk game tertentu (Blox Fruits, Doors, PSX, dll).
-            Baca deskripsi script sebelum pakai.
+            Fokus utama mendukung banyak game populer: <b>Blox Fruits, DOORS, Pet Simulator X, BedWars, Arsenal, Brookhaven, Evade, Murder Mystery 2, Bee Swarm Simulator, Tower of Hell, Build A Boat For Treasure, King Legacy, Anime Fighters, Blade Ball, Lumber Tycoon 2, Adopt Me</b>, dan lainnya.
+            Dukungan “all game” berarti hub & pack kami terus ditambah; beberapa game mungkin butuh update berkala.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            Premium script itu apa?
-            <span>+</span>
-          </div>
+          <div class="faq-q" onclick="toggleFaq(this)">Script di web ini full code? <span>+</span></div>
           <div class="faq-a">
-            Script premium adalah script yang hanya bisa diakses member MODS / ADMIN / GOD.
-            Untuk beli, gunakan Premium Store lalu hubungi admin via Discord / WhatsApp.
+            Tidak. Semua script di halaman <b>Scripts</b> adalah <b>preview / locked</b>. 
+            Untuk full akses silakan <b>Unlock</b> lewat <b>Premium Store</b> dan hubungi admin via <b>Discord/WA</b>.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            Password / akun Roblox saya aman?
-            <span>+</span>
-          </div>
+          <div class="faq-q" onclick="toggleFaq(this)">Data saya aman? <span>+</span></div>
           <div class="faq-a">
-            Di web ini kamu hanya memasukkan <b>username Roblox</b> sebagai display.
-            Tidak ada password, email, ataupun data sensitif lainnya.
-            Tidak terhubung ke Roblox API.
+            Ya. Website ini <b>frontend only</b> (HTML/CSS/JS), tidak ada login server, tidak menyimpan data di backend.
+            Username yang kamu masukkan hanya untuk tampilan di dashboard (bukan username Roblox asli).
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            Pembayaran lewat apa?
-            <span>+</span>
-          </div>
+          <div class="faq-q" onclick="toggleFaq(this)">Pembayaran bagaimana? <span>+</span></div>
           <div class="faq-a">
-            Pembayaran diurus manual via admin MpanGPP / ReivanIZ.
-            Hubungi lewat Discord / WA. Metode bayar bisa beda-beda (e-wallet, dsb).
+            Semua pembayaran dilakukan secara <b>manual</b> melalui admin <b>MpanGPP / ReivanIZ</b>.
+            Klik tombol <b>Beli</b> di Premium Store → pilih <b>WhatsApp</b> atau <b>Discord</b>.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Kenapa username “MpanGPP/ReivanIZ” minta password? <span>+</span></div>
+          <div class="faq-a">
+            Itu <b>reserved username</b> khusus owner/staff. Jika seseorang mencoba login dengan nama tersebut, akan diminta <b>key/password</b>. Ini hanya proteksi UI, bukan login server.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Refund & Rules? <span>+</span></div>
+          <div class="faq-a">
+            Umum: <b>No refund</b> setelah akses premium diberikan, <b>no leak</b> / share script di publik, pelanggaran bisa <b>ban</b> akses.
+            Semua detail bisa ditanyakan langsung ke admin.
           </div>
         </div>
       </section>
 
-      <!-- CONTACT SECTION -->
-      <section id="section-contact" class="section">
-        <header class="page-header">
-          <div class="page-title">Contact</div>
+      <section id="section-contact" class="section container">
+        <div class="page-title">Contact</div>
+        <div class="page-sub">Hubungi admin untuk pembelian, request, atau kerjasama.</div>
+        <div class="card" style="margin-top:12px">
           <div class="page-sub">
-            Hubungi admin langsung untuk pembelian, komplain, request, atau kerjasama.
-          </div>
-        </header>
-
-        <div class="card">
-          <div class="card-title">Admin Contact</div>
-          <div class="contact-info">
-            Admin utama: <b>MpanGPP / ReivanIZ</b><br>
+            Admin: <b>MpanGPP / ReivanIZ</b><br>
             Discord: <b>discord.gg/p8ke3JVUw9</b><br>
             WhatsApp: <b>081532098076</b>
           </div>
-
-          <div class="contact-links">
-            <a href="https://discord.gg/p8ke3JVUw9" target="_blank">
-              <button class="btn btn-green">Join Discord</button>
-            </a>
-            <a href="https://wa.me/6281532098076" target="_blank">
-              <button class="btn btn-outline">Chat WhatsApp</button>
-            </a>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+            <a href="https://discord.gg/p8ke3JVUw9" target="_blank"><button class="btn btn-green">Join Discord</button></a>
+            <a href="https://wa.me/6281532098076" target="_blank"><button class="btn btn-outline">Chat WhatsApp</button></a>
           </div>
         </div>
       </section>
@@ -906,114 +436,172 @@ loadstring(game:HttpGet("https://mpangpp-premium/psx.lua"))()</pre>
   </div>
 </div>
 
+<!-- ========= BUY/UNLOCK MODAL ========= -->
+<div class="modal-backdrop" id="buy-modal">
+  <div class="modal">
+    <div class="modal-title" id="buy-modal-title">Konfirmasi</div>
+    <div class="modal-text" id="buy-modal-text">
+      Kamu akan dialihkan ke admin MpanGPPxHuB untuk pembelian.
+      Pilih mau lewat WhatsApp atau Discord.
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-outline" onclick="closeBuyModal()">Batal</button>
+      <button class="btn btn-outline" onclick="buyViaDiscord()">Discord</button>
+      <button class="btn btn-green" onclick="buyViaWhatsApp()">WhatsApp</button>
+    </div>
+  </div>
+</div>
+
 <script>
-  // ==========================
-  // LOGIN LOGIC
-  // ==========================
-  function setUsernameDisplay(name) {
-    document.querySelectorAll('.username-display').forEach(el => {
-      el.textContent = name || 'Guest';
-    });
-  }
+/* ============================================================
+   STATE & HELPERS
+============================================================ */
+const DISCORD = "https://discord.gg/p8ke3JVUw9";
+const WA = "https://wa.me/6281532098076";
 
-  function login() {
-    const input = document.getElementById('usernameInput');
-    const val = (input.value || '').trim();
-    if (!val) {
-      alert('Masukkan username Roblox dulu.');
-      return;
-    }
-    localStorage.setItem('mpangpp_username', val);
+let isOwner = false;
+let currentTier = null;     // for buy
+let currentUnlock = null;   // for unlock (scripts)
 
-    setUsernameDisplay(val);
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('dashboard-root').style.display = 'block';
-  }
+/* Reserved owner usernames that require a key */
+const reservedOwners = {
+  "mpangpp": { pass: "MPANG-OWNER-KEY-123" },   // ganti sesuai mau kamu
+  "reivaniz":{ pass: "REIVAN-OWNER-KEY-456" },  // ganti sesuai mau kamu
+  "owner":   { pass: "OWNER-SUPER-KEY-789" }
+};
 
-  // Auto login if stored
-  (function initLogin() {
-    const saved = localStorage.getItem('mpangpp_username');
-    if (saved) {
-      setUsernameDisplay(saved);
-      document.getElementById('login-screen').style.display = 'none';
-      document.getElementById('dashboard-root').style.display = 'block';
-    }
-  })();
-
-  // ==========================
-  // SIDEBAR NAVIGATION
-  // ==========================
-  const navLinks = document.querySelectorAll('.sidebar-link');
-  const sections = document.querySelectorAll('.section');
-
-  function openSection(id) {
-    sections.forEach(sec => {
-      sec.classList.toggle('active', sec.id === id);
-    });
-    navLinks.forEach(btn => {
-      const secId = btn.getAttribute('data-section');
-      btn.classList.toggle('active', secId === id);
-    });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  navLinks.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.getAttribute('data-section');
-      openSection(id);
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.remove('open');
-    });
+function setUsernameDisplay(name){
+  document.querySelectorAll('.username-display').forEach(el=> el.textContent = name || 'Guest');
+}
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+}
+function openSection(id){
+  document.querySelectorAll('.section').forEach(s=> s.classList.remove('active'));
+  document.getElementById('section-'+id).classList.add('active');
+  document.querySelectorAll('.sidebar-link').forEach(b=>{
+    b.classList.toggle('active', b.getAttribute('data-section') === id);
   });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 
-  // ==========================
-  // MOBILE SIDEBAR TOGGLE
-  // ==========================
-  function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('open');
+/* ============================================================
+   LOGIN (owner key for reserved names)
+============================================================ */
+function login(){
+  const input = document.getElementById('usernameInput');
+  const val = (input.value || '').trim();
+  if(!val){ alert('Masukkan username tampilan dulu.'); return; }
+
+  const lower = val.toLowerCase();
+  if(reservedOwners[lower]){
+    const pwd = prompt("Masukkan owner key/password untuk "+val+":");
+    if(!pwd){ alert('Login owner dibatalkan.'); return; }
+    if(pwd !== reservedOwners[lower].pass){ alert('Key/password salah.'); return; }
+    isOwner = true;
+    document.body.classList.add('owner-on');
   }
 
-  // ==========================
-  // COPY SCRIPT
-  // ==========================
-  function copyScript(id) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const text = el.innerText || el.textContent;
-    navigator.clipboard.writeText(text).then(() => {
-      alert('Script disalin ke clipboard.');
-    }).catch(() => {
-      alert('Gagal menyalin script. Coba manual.');
-    });
-  }
+  localStorage.setItem('mpangpp_username', val);
+  setUsernameDisplay(val);
 
-  // ==========================
-  // FAQ TOGGLE
-  // ==========================
-  function toggleFaq(qEl) {
-    const item = qEl.parentElement;
-    const open = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!open) item.classList.add('open');
-  }
+  // show app
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('app').style.display='block';
 
-  // ==========================
-  // BUY BUTTON (DISCORD / WA)
-  // ==========================
-  function openBuy(tierName) {
-    const discord = "https://discord.gg/p8ke3JVUw9";
-    const wa = "https://wa.me/6281532098076";
-    const msg = encodeURIComponent("Halo, saya mau beli " + tierName + " di MpanGPPxHuB STORE.");
-    const waFull = wa + "?text=" + msg;
-
-    const choice = confirm("Klik OK untuk chat via WhatsApp, atau Cancel untuk join Discord.");
-    if (choice) {
-      window.open(waFull, "_blank");
-    } else {
-      window.open(discord, "_blank");
-    }
+  // header text update (just in case)
+  if(isOwner){
+    const sub = document.querySelector('.sidebar-sub');
+    if(sub) sub.textContent = "OWNER MODE — MpanGPPxHuB";
   }
+}
+
+/* Auto login if stored */
+(function(){
+  const saved = localStorage.getItem('mpangpp_username');
+  if(saved){
+    setUsernameDisplay(saved);
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('app').style.display='block';
+  }
+  // status date
+  const d = new Date();
+  const f = d.toLocaleDateString(undefined, {year:'numeric', month:'short', day:'numeric'});
+  document.getElementById('updateDate').textContent = f;
+})();
+
+/* ============================================================
+   FAQ toggle
+============================================================ */
+function toggleFaq(el){
+  const item = el.parentElement;
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=> i.classList.remove('open'));
+  if(!open) item.classList.add('open');
+}
+
+/* ============================================================
+   BUY / UNLOCK MODAL
+============================================================ */
+function openBuy(tierName){
+  currentTier = tierName;
+  currentUnlock = null;
+  document.getElementById('buy-modal-title').textContent = "Pembelian "+tierName;
+  document.getElementById('buy-modal-text').innerHTML = 
+    'Kamu akan dialihkan ke admin untuk membeli <b>'+tierName+'</b>. Pilih WhatsApp atau Discord.';
+  document.getElementById('buy-modal').style.display='flex';
+}
+function openUnlock(itemName){
+  currentUnlock = itemName;
+  currentTier = null;
+  document.getElementById('buy-modal-title').textContent = "Unlock Script";
+  document.getElementById('buy-modal-text').innerHTML =
+    'Untuk membuka akses <b>'+itemName+'</b>, hubungi admin via WhatsApp/Discord.';
+  document.getElementById('buy-modal').style.display='flex';
+}
+function closeBuyModal(){
+  document.getElementById('buy-modal').style.display='none';
+}
+function buyViaWhatsApp(){
+  let msg = "Halo, saya mau ";
+  if(currentTier){ msg += "beli "+currentTier; }
+  else if(currentUnlock){ msg += "unlock script: "+currentUnlock; }
+  else { msg += "beli premium / unlock script"; }
+  msg += " di MpanGPPxHuB STORE.";
+  const url = WA + "?text=" + encodeURIComponent(msg);
+  window.open(url, "_blank");
+  closeBuyModal();
+}
+function buyViaDiscord(){
+  window.open(DISCORD, "_blank");
+  closeBuyModal();
+}
+
+/* ============================================================
+   Anti copy for locked code (best-effort only)
+============================================================ */
+document.addEventListener('copy', (e)=>{
+  const sel = window.getSelection();
+  if(!sel) return;
+  const anchor = sel.anchorNode && sel.anchorNode.parentElement;
+  if(anchor && (anchor.classList.contains('locked-line') || anchor.closest('.no-copy'))){
+    e.preventDefault();
+    alert('Script ini terkunci. Unlock via Discord/WA.');
+  }
+});
+document.querySelectorAll('.locked-line').forEach(el=>{
+  el.addEventListener('contextmenu', e=> e.preventDefault());
+});
+
+/* ============================================================
+   NAV LISTENERS
+============================================================ */
+document.querySelectorAll('.sidebar-link').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    openSection(btn.getAttribute('data-section'));
+    document.getElementById('sidebar').classList.remove('open');
+  });
+});
 </script>
 </body>
 </html>
