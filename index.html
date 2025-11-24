@@ -7,15 +7,7 @@
 
 <!--
 ================================================================================
-MpanGPPxHuB STORE — v3.5 UPGRADE (Single File, Frontend Only)
-Author  : MpanGPP / ReivanIZ
-Purpose : Static store UI for Roblox scripts/executors (no backend, no API)
-Notes   : 
- - Username bebas. Certain names (Owner/Premium Allowlist) require password at login panel.
- - Owner Panel to manage Premium Allowlist (client-side only) + Export/Import JSON.
- - Scripts are PREVIEW/LOCKED; Unlock triggers modal to choose Discord/WA contact.
- - Idle auto-logout, Theme toggle, Search, Favorites, Toasts, Status bar with auto-date.
- - This is a static demo UI; do not treat it as real security/auth.
+MADE BY MPANGPP API SCRIPT UNLOCKNYA DI WA TOLOL YANG NGINTIP ANAK ANJINKKKK WKWK
 ================================================================================
 -->
 
@@ -204,24 +196,24 @@ radial-gradient(800px 800px at 110% 90%, rgba(38,216,255,.10), transparent 60%),
     <div class="login-title">MpanGPPxHuB STORE</div>
     <div class="login-sub">Roblox Script & Executor Hub (Frontend Only)</div>
     <div class="login-desc">
-      <b>Masuk pakai username bebas</b> (bukan username Roblox). Hanya untuk tampilan dashboard.
-      <br/>Jika username kamu termasuk <b>Owner</b> / <b>Premium Allowlist</b>, kolom <b>Password</b> akan muncul otomatis.
+      <b>Masuk pakai username bebas</b> (bukan username Roblox). Username ini akan di pakai nantinya
+      <br/>Jika username kamu termasuk <b>TIER PREMIUM</b> / <b>Premium User TIER</b>, kolom <b>Password</b> akan muncul otomatis.
     </div>
 
     <label class="small">Username (bebas)</label>
-    <input id="usernameInput" class="input" placeholder="cth: bayu / noobkid / bebas..." autocomplete="off" oninput="onUsernameType()" />
+    <input id="usernameInput" class="input" placeholder="..." autocomplete="off" oninput="onUsernameType()" />
 
     <div id="reqMeta" class="req-meta small"></div>
 
     <div id="passwordRow" class="req-pass">
-      <label class="small">Password / Key (khusus Owner / Premium)</label>
+      <label class="small">Password / Key (BUYER TIER / Premium user)</label>
       <input id="passwordInput" type="password" class="input" placeholder="Masukkan key khusus..." autocomplete="off" />
-      <div class="small mt-8">Kalau kamu bukan Owner/Premium, abaikan kolom ini.</div>
+      <div class="small mt-8">Kalau kamu bukan Pengguna Tier/Premium buyer, abaikan kolom ini.</div>
     </div>
 
-    <button class="btn btn-green mt-12" style="width:100%" onclick="login()">Masuk Dashboard</button>
+    <button class="btn btn-green mt-12" style="width:100%" onclick="login()">Masuk</button>
     <div class="login-note">
-      Tidak ada email/pw, tidak terhubung ke server (frontend only). Owner key & premium key hanya proteksi UI.
+      Tidak perlu mengisi password untuk visitor jika anda sudah membeli premium atau upgrade tier nanti akan di beri password khusus.
     </div>
   </div>
 </div>
@@ -250,15 +242,15 @@ radial-gradient(800px 800px at 110% 90%, rgba(38,216,255,.10), transparent 60%),
       <div class="theme-row">
         <div class="theme-toggle">
           <input id="themeToggle" type="checkbox" />
-          <label for="themeToggle" class="small">Dim Theme</label>
+          <label for="themeToggle" class="small">HIGH</label>
         </div>
       </div>
 
       <div class="sidebar-contact mt-12">
-        Admin: <b>MpanGPP / ReivanIZ</b><br>
-        Discord: <small>discord.gg/p8ke3JVUw9</small><br>
-        WhatsApp: <small>081532098076</small><br>
-        <span class="small">* Fake login untuk UI saja.</span>
+        Owner: <b>MpanGPP / ReivanIZ</b><br>
+        Discord: <small>di contact</small><br>
+        WhatsApp: <small>di contact</small><br>
+        <span class="small">....</span>
       </div>
     </aside>
 
@@ -268,7 +260,7 @@ radial-gradient(800px 800px at 110% 90%, rgba(38,216,255,.10), transparent 60%),
         <div class="page-title">Dashboard</div>
         <div class="page-sub">
           Selamat datang, <span class="username-display">Guest</span>.
-          Username ini hanya tampilan, bukan login Roblox.
+          Username ini Username DASHBOARD, Bukan Username Roblox.
         </div>
       </header>
 
@@ -279,9 +271,9 @@ radial-gradient(800px 800px at 110% 90%, rgba(38,216,255,.10), transparent 60%),
           <span class="sep">•</span>
           <b>Update:</b>&nbsp;<span id="updateDate" class="nowrap"></span>
           <span class="sep">•</span>
-          <b>10+ fitur baru</b> ditambah (modal beli, LOCKED, owner/premium key at login, allowlist editor, status bar, search, favorites, theme, toasts, idle auto-logout)
+          <b>10+ fitur baru</b>READY YAA ( DIHARAPKAN MEMBACA RULES DAN KETENTUAN YANG BERLAKU TERIMAKASIH)
           <span class="sep">•</span>
-          <span class="pill">No API • Frontend Only</span>
+          <span class="pill">MpanGPP.exe</span>
         </div>
       </div>
 
@@ -292,7 +284,7 @@ radial-gradient(800px 800px at 110% 90%, rgba(38,216,255,.10), transparent 60%),
             <div class="card-title">Status Akun</div>
             <div class="small mt-8">
               Username: <b class="username-display">Guest</b><br>
-              Tier: <b id="tierDisplay2">FREE</b> (preview only)<br>
+              Tier: <b id="tierDisplay2">FREE</b>!<br>
               Premium: <b id="premiumState">Locked</b>
             </div>
             <div class="mt-12">
@@ -324,18 +316,18 @@ radial-gradient(800px 800px at 110% 90%, rgba(38,216,255,.10), transparent 60%),
               <button class="btn btn-outline" onclick="openSection('executors')">Executors</button>
               <button class="btn btn-ghost" onclick="openRedeem()">Redeem Code</button>
             </div>
-            <div class="small mt-8">* Redeem hanya placeholder (UI), bukan verifikasi server.</div>
+            <div class="small mt-8">* Redeem Code untuk tester bila ada upgrade.</div>
           </div>
         </div>
       </section>
 
       <!-- ================= SCRIPTS ================= -->
       <section id="section-scripts" class="section container">
-        <div class="page-title">Script Store (Preview)</div>
-        <div class="page-sub">Semua script di bawah <b>preview / locked</b>. Untuk full, klik <b>Unlock</b> dan pilih Discord/WA.</div>
+        <div class="page-title">Script MpanGPP</div>
+        <div class="page-sub">SEMUA SCRIPT PERMANENT & UPDATE , Semua script di bawah <b>preview / locked</b>. Untuk full, klik <b>Unlock</b> dan pilih Discord/WA.</div>
 
         <div class="script-toolbar">
-          <input id="scriptSearch" class="input" placeholder="Cari script / game..." style="max-width:320px" oninput="filterScripts()" />
+          <input id="scriptSearch" class="input" placeholder="Cari script / game... ( unlocked khusus tier user atau premium user)" style="max-width:320px" oninput="filterScripts()" />
           <div class="pill">Favorites: <b id="favCount2">0</b></div>
           <div class="pill">Result: <b id="resultCount">3</b></div>
         </div>
@@ -354,7 +346,7 @@ radial-gradient(800px 800px at 110% 90%, rgba(38,216,255,.10), transparent 60%),
             <div class="script-code no-copy">
               <div class="mask-overlay"></div>
 <code class="locked-line blur">
--- Preview only (MODS Tier)
+ -- (MODS TIER)
 loadstring(game:HttpGet("MPAN&#8203;GPPMODS&#8203;TIERLOCKED"))(-- truncated)
 </code>
             </div>
@@ -373,11 +365,11 @@ loadstring(game:HttpGet("MPAN&#8203;GPPMODS&#8203;TIERLOCKED"))(-- truncated)
               </div>
               <div class="favorite" title="Add to favorites" data-id="s2" onclick="toggleFav(this)">☆</div>
             </div>
-            <div class="script-game">Blox Fruits • DOORS • Pet Simulator X • BedWars • Arsenal • Brookhaven • Evade • MM2 • Bee Swarm • Tower of Hell • Build A Boat • King Legacy • Anime Fighters • Blade Ball • Lumber Tycoon 2 • Adopt Me</div>
+            <div class="script-game">MOUNT DAUN • ALL MOUNT • FISH IT • Blox Fruits • DOORS • Pet Simulator X • BedWars • Arsenal • Brookhaven • Evade • MM2 • Bee Swarm • Tower of Hell • Build A Boat • King Legacy • Anime Fighters • Blade Ball • Lumber Tycoon 2 • Adopt Me • And another • Dan lain lain Support ALL GAME</div>
             <div class="script-code no-copy">
               <div class="mask-overlay"></div>
 <code class="locked-line blur">
--- Preview only (ADMIN Tier)
+-- (ADMIN Tier)
 loadstring(game:HttpGet("MPAN&#8203;GPPADMIN&#8203;TIERLOCKED"))(-- truncated)
 </code>
             </div>
@@ -396,11 +388,11 @@ loadstring(game:HttpGet("MPAN&#8203;GPPADMIN&#8203;TIERLOCKED"))(-- truncated)
               </div>
               <div class="favorite" title="Add to favorites" data-id="s3" onclick="toggleFav(this)">☆</div>
             </div>
-            <div class="script-game">All supported games + private config & priority</div>
+            <div class="script-game">All supported games + OPEN ALL CONFIG TOOLS NOT DELAY LAGG & Permanent Update</div>
             <div class="script-code no-copy">
               <div class="mask-overlay"></div>
 <code class="locked-line blur">
--- Preview only (GOD Tier)
+-- (GOD Tier)
 loadstring(game:HttpGet("MPAN&#8203;GPPGOD&#8203;TIERLOCKED"))(-- truncated)
 </code>
             </div>
@@ -443,20 +435,20 @@ loadstring(game:HttpGet("MPAN&#8203;GPPGOD&#8203;TIERLOCKED"))(-- truncated)
       <!-- ================= PREMIUM ================= -->
       <section id="section-premium" class="section container">
         <div class="page-title">Premium Store</div>
-        <div class="page-sub">Beli tier Premium → pilih Discord/WA di modal. Semua manual via admin (no API).</div>
+        <div class="page-sub">Beli tier Premium → pilih Discord/WA</div>
 
         <div class="grid-3 mt-12">
           <div class="card">
             <div class="card-title">MODS Tier</div>
             <div class="small mt-8">
               🔹 Akses <b>Universal Hub</b> & <b>game pack dasar</b><br>
-              🔹 <b>Early preview</b> build sebelum rilis publik<br>
+              🔹 <b>Early power</b> lumayan gacor<br>
               🔹 <b>Support Lite</b> via Discord (prioritas medium)<br>
               🔹 <b>Changelog private</b> & tips penggunaan<br>
               🔹 Cocok untuk <b>helper/tester</b> yang pengen cepat coba fitur baru
               <div class="pill mt-8">Role: MODS</div>
             </div>
-            <div class="price">Rp 15.000</div>
+            <div class="price">Rp 100.000</div>
             <button class="btn btn-green" onclick="openBuy('MODS Tier')">Beli</button>
           </div>
 
@@ -464,13 +456,13 @@ loadstring(game:HttpGet("MPAN&#8203;GPPGOD&#8203;TIERLOCKED"))(-- truncated)
             <div class="card-title">ADMIN Tier</div>
             <div class="small mt-8">
               🔹 Semua fitur <b>MODS</b> + <b>Multi-Game Pack</b> lengkap<br>
-              🔹 <b>Private config</b> + setting rekomendasi tiap game<br>
+              🔹 <b>Private config</b> + setting cheat sendiri tiap game<br>
               🔹 <b>Faster Support</b> & saran prioritas update<br>
-              🔹 <b>Whitelist slot</b> bila ada pembatasan akses<br>
-              🔹 Direkomendasikan untuk <b>power user</b> / admin komunitas
+              🔹 <b>Whitelist slot</b> bila ada pembatasan akses tools<br>
+              🔹 Direkomendasikan untuk <b>power user</b> / req fitur
               <div class="pill mt-8">Role: ADMIN</div>
             </div>
-            <div class="price">Rp 40.000</div>
+            <div class="price">Rp 150.000</div>
             <button class="btn btn-green" onclick="openBuy('ADMIN Tier')">Beli</button>
           </div>
 
@@ -478,13 +470,13 @@ loadstring(game:HttpGet("MPAN&#8203;GPPGOD&#8203;TIERLOCKED"))(-- truncated)
             <div class="card-title">GOD Tier</div>
             <div class="small mt-8">
               🔹 Semua fitur <b>ADMIN</b> + <b>Ultimate GOD Hub</b><br>
-              🔹 <b>White-glove support</b> (bantu setup sampai beres)<br>
-              🔹 <b>Priority request</b> (minta game/fitur tertentu)<br>
-              🔹 <b>Private updates</b> & akses build eksperimental<br>
-              🔹 Untuk kamu yang pengen <b>full akses</b> & <b>prioritas tertinggi</b>
+              🔹 <b>White-glove support</b> (bantu setup cheat setiap upgrade sampai beres)<br>
+              🔹 <b>Priority request</b> (bebas minta fitur tertentu)<br>
+              🔹 <b>Private updates</b> & akses build eksperimental khusus god tier dan unlock all feature & all map<br>
+              🔹 Untuk kamu yang pengen <b>full akses</b> & <b>prioritas tertinggi terutama</b>
               <div class="pill mt-8">Role: GOD</div>
             </div>
-            <div class="price">Rp 120.000</div>
+            <div class="price">Rp 300.000</div>
             <button class="btn btn-green" onclick="openBuy('GOD Tier')">Beli</button>
           </div>
         </div>
@@ -498,7 +490,7 @@ loadstring(game:HttpGet("MPAN&#8203;GPPGOD&#8203;TIERLOCKED"))(-- truncated)
         <div class="faq-item">
           <div class="faq-q" onclick="toggleFaq(this)">Ini bisa buat <b>all game</b>? <span>+</span></div>
           <div class="faq-a">
-            Fokus mendukung banyak game populer: <b>Blox Fruits, DOORS, Pet Simulator X, BedWars, Arsenal, Brookhaven, Evade, Murder Mystery 2, Bee Swarm Simulator, Tower of Hell, Build A Boat For Treasure, King Legacy, Anime Fighters, Blade Ball, Lumber Tycoon 2, Adopt Me</b>, dll.
+            YA TENTU ALL GAME TERGANTUNG TIER KAMU , dan contoh Fokus mendukung banyak game besar: <b>GAME GUNUNG ALL MOUNT , Fish IT, Blox Fruits, DOORS, Pet Simulator X, BedWars, Arsenal, Brookhaven, Evade, Murder Mystery 2, Bee Swarm Simulator, Tower of Hell, Build A Boat For Treasure, King Legacy, Anime Fighters, Blade Ball, Lumber Tycoon 2, Adopt Me</b>, dll.
             “All game” artinya hub & pack kami terus ditambah, beberapa game butuh update berkala.
           </div>
         </div>
@@ -506,28 +498,28 @@ loadstring(game:HttpGet("MPAN&#8203;GPPGOD&#8203;TIERLOCKED"))(-- truncated)
         <div class="faq-item">
           <div class="faq-q" onclick="toggleFaq(this)">Script di web ini full code? <span>+</span></div>
           <div class="faq-a">
-            Tidak. Semua script di halaman <b>Scripts</b> adalah <b>preview / locked</b>. Untuk full akses, klik <b>Unlock</b> → pilih <b>Discord/WA</b> → admin akan kirimkan manual setelah verifikasi.
+            Tidak. Semua script di halaman <b>Scripts</b> adalah <b>preview / locked</b>. Untuk full akses, klik <b>Unlock</b> → pilih <b>Discord/WA</b> → admin akan kirimkan Password mu lalu login kembali ke web ini dan ambil link sesuai tier mu Setelah TerVerifikasi
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-q" onclick="toggleFaq(this)">Data saya aman? <span>+</span></div>
           <div class="faq-a">
-            Ya. Website ini <b>frontend only</b> (HTML/CSS/JS), tidak ada login server & tidak menyimpan data di backend. Username yang kamu masukkan hanya untuk tampilan di dashboard (bukan username Roblox).
+            Ya. Website ini <b>Tentu Aman</b> (Hanya DASHBOARD USER yang menggunakan script ini), tidak ada login server & tidak menyimpan data di backend. Username yang kamu masukkan hanya untuk WEB INI DAN WAJIB UNTUK UPGRADE BERSKALA (bukan username Roblox).
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-q" onclick="toggleFaq(this)">Cara beli / pembayaran? <span>+</span></div>
           <div class="faq-a">
-            Semua pembayaran dilakukan secara <b>manual</b> melalui admin <b>MpanGPP / ReivanIZ</b>. Klik <b>Beli</b> di Premium Store → pilih <b>WhatsApp</b> atau <b>Discord</b>.
+            Semua pembayaran dilakukan secara <b>manual ter verifikasi</b> melalui admin <b>MpanGPP / ReivanIZ</b>. Klik <b>Beli</b> di Premium Store → pilih <b>WhatsApp</b> atau <b>Discord</b>.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Kenapa username “MpanGPP/ReivanIZ” minta password? <span>+</span></div>
+          <div class="faq-q" onclick="toggleFaq(this)">Kenapa username tanpa password? <span>+</span></div>
           <div class="faq-a">
-            Itu <b>reserved username</b> khusus owner/staff & beberapa <b>Premium Allowlist</b>. Jika digunakan, sistem UI meminta <b>key/password</b>. Ini proteksi UI (client-side), bukan login server.
+            oke bagi yang belum paham jika sudah memesan atau purcashe tier<b>Owner atau admin</b> akan memberikan password khusus login untuk <b>USER TIER PREMIUM</b>. Jika telah mendaptkan <b>key/password</b>. Tinggal login menggunakan username mu sebelumnya dan password yang sudah di dapatkan lalu unlock tier premiumnya.
           </div>
         </div>
 
@@ -541,7 +533,7 @@ loadstring(game:HttpGet("MPAN&#8203;GPPGOD&#8203;TIERLOCKED"))(-- truncated)
         <div class="faq-item">
           <div class="faq-q" onclick="toggleFaq(this)">Apakah password premium aman di web ini? <span>+</span></div>
           <div class="faq-a">
-            Password/Key di web ini hanya untuk <b>proteksi UI</b> (client-side). Tidak dikirim ke server manapun. Keamanan sesungguhnya tetap dilakukan manual via Discord/WA oleh admin.
+            Password/Key di web ini tentu aman dan terlacak <b>proteksi account</b> bakalan terdeteksi jika ada yang menjualnya
           </div>
         </div>
       </section>
@@ -549,10 +541,10 @@ loadstring(game:HttpGet("MPAN&#8203;GPPGOD&#8203;TIERLOCKED"))(-- truncated)
       <!-- ================= CONTACT ================= -->
       <section id="section-contact" class="section container">
         <div class="page-title">Contact</div>
-        <div class="page-sub">Hubungi admin untuk pembelian, request, atau kerjasama.</div>
+        <div class="page-sub">Hubungi Owner untuk pembelian, request, atau kerjasama.</div>
         <div class="card mt-12">
           <div class="small">
-            Admin: <b>MpanGPP / ReivanIZ</b><br>
+            Owner: <b>MpanGPP / ReivanIZ</b><br>
             Discord: <b>discord.gg/p8ke3JVUw9</b><br>
             WhatsApp: <b>081532098076</b>
           </div>
@@ -659,9 +651,9 @@ loadstring(game:HttpGet("MPAN&#8203;GPPGOD&#8203;TIERLOCKED"))(-- truncated)
 
 <div class="modal-backdrop" id="redeem-modal">
   <div class="modal">
-    <div class="modal-title">Redeem Code (UI Demo)</div>
-    <div class="modal-text">Masukkan kode (UI demo, tidak verifikasi server).</div>
-    <input id="redeemInput" class="input" placeholder="cth: MPANG-REDEEM-123" />
+    <div class="modal-title">Redeem Code</div>
+    <div class="modal-text">Masukkan kode (tidak verifikasi server).</div>
+    <input id="redeemInput" class="input" placeholder="cth: CEWEAKUDEAA" />
     <div class="modal-actions mt-10">
       <button class="btn btn-ghost" onclick="closeRedeem()">Tutup</button>
       <button class="btn btn-green" onclick="doRedeem()">Redeem</button>
@@ -686,10 +678,10 @@ let currentUnlock = null;   // for unlock modal
 let idleTimer = null;
 let favs = new Set();
 
-/* Reserved owners (require key) */
+
 const reservedOwners = {
-  "mpangpp": { pass: "MPANG-OWNER-KEY-123" },   // ganti sesuai kebutuhan
-  "reivaniz":{ pass: "REIVAN-OWNER-KEY-456" }   // ganti sesuai kebutuhan
+  "mpangpp": { pass: "yanglihatanjeng" },   
+  "reivaniz":{ pass: "yanglihatanjeng" }   
 };
 
 /* Allowlist storage key */
@@ -989,7 +981,7 @@ function closeRedeem(){ document.getElementById('redeem-modal').style.display='n
 function doRedeem(){
   const code = (document.getElementById('redeemInput').value||'').trim();
   if(!code) return toast("Masukkan kode dulu.","warn");
-  toast("Kode diterima (UI demo). Hubungi admin untuk validasi.","ok");
+  toast("Kode diterima Hubungi admin untuk validasi.","ok");
   closeRedeem();
 }
 
