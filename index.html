@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MpanGPPxHUB - CLIMB AND JUMP</title>
+    <title>MPANGGPxHUB - KEY GENERATOR</title>
     
- 
+    <!-- FAVICON -->
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/96/000000/roblox.png">
     
-   
+    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-   
+    <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+        /* ===== CSS SAMA PERSIS ===== */
         * {
             margin: 0;
             padding: 0;
@@ -52,7 +53,7 @@
             background-image: radial-gradient(circle at 10% 20%, rgba(157,78,221,0.05) 0%, transparent 40%);
         }
 
-       
+        /* LOADING SCREEN */
         #loading {
             position: fixed;
             top: 0;
@@ -66,7 +67,6 @@
             justify-content: center;
             z-index: 9999;
             transition: opacity 0.3s;
-            pointer-events: none;
         }
 
         .loading-logo {
@@ -239,11 +239,6 @@
             outline: none;
             border-color: var(--primary);
             box-shadow: var(--glow);
-        }
-
-        .input-field[readonly] {
-            background: rgba(157,78,221,0.15);
-            cursor: not-allowed;
         }
 
         .btn {
@@ -495,7 +490,7 @@
     </style>
 </head>
 <body>
-
+    <!-- LOADING SCREEN -->
     <div id="loading">
         <div class="loading-logo">
             <img src="https://img.icons8.com/color/96/000000/roblox.png" alt="MPANGGPxHUB">
@@ -505,22 +500,21 @@
     </div>
 
     <script>
-      
+        // ===== FORCE HIDE LOADING =====
         (function() {
-            var loading = document.getElementById('loading');
-            if (loading) {
-         
-                setTimeout(function() {
+            setTimeout(function() {
+                var loading = document.getElementById('loading');
+                if (loading) {
                     loading.style.opacity = '0';
                     setTimeout(function() {
                         loading.style.display = 'none';
-                    }, 100);
-                }, 100);
-            }
+                    }, 200);
+                }
+            }, 300);
         })();
     </script>
 
-
+    <!-- HEADER -->
     <header class="header">
         <div class="container">
             <a href="#" class="logo" onclick="location.reload(); return false;">
@@ -532,41 +526,45 @@
         </div>
     </header>
 
-  
+    <!-- MAIN CONTENT -->
     <main class="main">
         <div class="container">
             <div class="key-card">
                 <h1 class="card-title">🔐 KEY GENERATOR</h1>
-                <p class="card-subtitle">3x Generate • 5 Hour Expired</p>
+                <p class="card-subtitle">3x Generate • 5 Hour Expiry • Anti-Bypass</p>
 
-           
+                <!-- REDIRECT NOTICE -->
                 <div id="redirectNotice" class="hidden">
                     <div class="warning-box">
                         <i class="fas fa-external-link-alt"></i>
-                        <span id="redirectMessage">Redirecting to GET KEY...</span>
+                        <span id="redirectMessage">Redirecting to Linkvertise...</span>
                     </div>
                     <div class="loading-bar" style="width: 100%;"></div>
                 </div>
 
-         
-                <div id="usernameForm" class="hidden">
+                <!-- FORM INPUT USERNAME (HANYA INI YANG MUNCUL AWAL) -->
+                <div id="usernameForm">
                     <div class="input-group">
                         <label class="input-label">
-                            <i class="fas fa-user"></i> VERIFIED USERNAME
+                            <i class="fas fa-user"></i> MASUKKAN USERNAME ROBLOX ANDA
                         </label>
-                        <input type="text" class="input-field" id="usernameInput" readonly>
-                        <div class="warning-box" style="margin-top: 10px;">
-                            <i class="fas fa-check-circle" style="color: var(--success);"></i>
-                            <span>Username terverifikasi dari Linkvertise</span>
-                        </div>
+                        <input type="text" class="input-field" id="usernameInput" placeholder="Contoh: MpanGPP" autocomplete="off">
+                        <small style="color: var(--text-muted); display: block; margin-top: 8px;">
+                            Username akan digunakan untuk mengikat key anda.
+                        </small>
                     </div>
 
                     <button class="btn btn-primary" onclick="submitUsername()">
-                        <i class="fas fa-arrow-right"></i> GENERATE KEY
+                        <i class="fas fa-arrow-right"></i> VERIFIKASI & AMBIL KEY
                     </button>
+
+                    <div class="warning-box">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Setelah verifikasi, anda akan diarahkan ke Linkvertise untuk mendapatkan key.</span>
+                    </div>
                 </div>
 
-            
+                <!-- KEY PAGE (MUNCUL SETELAH VERIFIKASI) -->
                 <div id="keyPage" class="hidden">
                     <div class="user-info-box">
                         <div class="user-avatar">
@@ -578,24 +576,24 @@
                         </div>
                     </div>
 
-            
+                    <!-- TIMER -->
                     <div class="timer-box" id="timerBox">
                         <i class="fas fa-hourglass-half timer-icon"></i>
                         <span class="timer-text" id="timerDisplay">05:00:00</span>
                     </div>
 
-                
+                    <!-- KEY DISPLAY -->
                     <div class="key-container">
                         <div class="key-label">🔑 ACCESS KEY</div>
                         <div class="key-value" id="keyDisplay">MPG-XXXX-XXXX-XXXX</div>
                     </div>
 
-
+                    <!-- GENERATE COUNT -->
                     <div class="history-limit text-center" id="generateCount">
                         Generations: 1/3
                     </div>
 
-                  
+                    <!-- BUTTONS -->
                     <div class="btn-group">
                         <button class="btn btn-primary" onclick="copyKey()">
                             <i class="fas fa-copy"></i> COPY
@@ -617,28 +615,24 @@
                         </div>
                         <div class="history-list" id="keyHistory"></div>
                     </div>
-
-                    <button class="btn btn-secondary mt-3" onclick="changeUsername()">
-                        <i class="fas fa-exchange-alt"></i> CHANGE USERNAME
-                    </button>
                 </div>
             </div>
         </div>
     </main>
 
- 
+    <!-- TOAST CONTAINER -->
     <div class="toast-container" id="toastContainer"></div>
 
     <script>
-       
+        // ===== CONFIGURATION =====
         const CONFIG = {
-            LINKVERTISE_URL: 'https://link-target.net/3800099/yTrt7oadSrBu', 
+            LINKVERTISE_URL: 'https://link-target.net/3800099/yTrt7oadSrBu', // LINK LO!
             MAX_GENERATES: 3,
-            KEY_DURATION: 5 * 60 * 60 * 1000, 
-            SESSION_TOKEN: 'mpanggp_secure_v3'
+            KEY_DURATION: 5 * 60 * 60 * 1000, // 5 jam
+            SESSION_TOKEN: 'mpanggp_secure_final'
         };
 
- 
+        // ===== UTILITY FUNCTIONS =====
         function getUrlParameter(name) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name);
@@ -687,7 +681,7 @@
                 countdown--;
                 if (countdown < 0) {
                     clearInterval(interval);
-                    window.location.href = CONFIG.LINKVERTISE_URL;
+                    window.location.href = CONFIG.LINKVERTISE_URL + '?redirect=' + encodeURIComponent(window.location.href);
                 }
             }, 1000);
         }
@@ -717,62 +711,70 @@
             }, 1000);
         }
 
-      
-        function initializePage() {
-            const username = getUrlParameter('username');
-            
-            if (username) {
-
-                if (!/^[a-zA-Z0-9_]+$/.test(username)) {
-                    redirectToLinkvertise('Invalid username format!');
-                    return;
-                }
-                
-                
-                sessionStorage.setItem('verified_user', username);
-                
-                document.getElementById('usernameInput').value = username;
-                document.getElementById('usernameForm').classList.remove('hidden');
-                showToast('Username verified from Linkvertise!', 'success');
-            } else {
-             
-                const isApiRequest = window.location.search.includes('apikey=validate');
-                
-                if (!isApiRequest) {
-                    redirectToLinkvertise('Access only via Linkvertise!');
-                }
-            }
-        }
-
+        // ===== CORE FUNCTIONS =====
         function submitUsername() {
             const username = document.getElementById('usernameInput').value.trim();
             
             if (!username) {
-                showToast('Invalid username!', 'error');
+                showToast('Masukkan username Roblox anda!', 'error');
                 return;
             }
 
-          
+            if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+                showToast('Username hanya boleh huruf, angka, dan underscore!', 'error');
+                return;
+            }
+
+            // Simpan username di session
+            sessionStorage.setItem('pending_username', username);
+            
+            // Redirect ke Linkvertise
+            redirectToLinkvertise('Mengalihkan ke Linkvertise...');
+        }
+
+        // ===== VERIFIKASI KEMBALI DARI LINKVERTISE =====
+        function verifyFromLinkvertise() {
+            const pendingUsername = sessionStorage.getItem('pending_username');
+            
+            if (!pendingUsername) {
+                // Tidak ada pending username, kembali ke form
+                return false;
+            }
+
+            // Hapus pending username
+            sessionStorage.removeItem('pending_username');
+
+            // Buat data user baru
             const userData = {
-                username: username,
+                username: pendingUsername,
                 keys: [],
                 generateCount: 0,
                 createdAt: Date.now(),
                 expiryTime: Date.now() + CONFIG.KEY_DURATION
             };
             
-            sessionStorage.setItem('user_' + username, JSON.stringify(userData));
-            sessionStorage.setItem('current_user', username);
+            sessionStorage.setItem('user_' + pendingUsername, JSON.stringify(userData));
+            sessionStorage.setItem('current_user', pendingUsername);
 
-            loadUserData(username);
-            
+            // Update UI
             document.getElementById('usernameForm').classList.add('hidden');
             document.getElementById('keyPage').classList.remove('hidden');
-            document.getElementById('displayUsername').textContent = username;
-            document.getElementById('warningText').innerHTML = `Key only for <strong>${username}</strong>`;
+            document.getElementById('displayUsername').textContent = pendingUsername;
+            document.getElementById('warningText').innerHTML = `Key only for <strong>${pendingUsername}</strong>`;
             
-            generateNewKey();
+            // Generate key pertama
+            const newKey = generateKey();
+            document.getElementById('keyDisplay').textContent = newKey;
+            
+            userData.keys.unshift(newKey);
+            userData.generateCount++;
+            sessionStorage.setItem('user_' + pendingUsername, JSON.stringify(userData));
+            
+            loadUserData(pendingUsername);
             startTimer(userData.expiryTime);
+            
+            showToast(`Selamat datang ${pendingUsername}!`, 'success');
+            return true;
         }
 
         function loadUserData(username) {
@@ -810,8 +812,9 @@
             }
             
             if (Date.now() > userData.expiryTime) {
-                showToast('Session expired! Get new key via Linkvertise', 'warning');
-                changeUsername();
+                showToast('Session expired! Start over', 'warning');
+                sessionStorage.clear();
+                window.location.href = window.location.pathname;
                 return;
             }
             
@@ -831,7 +834,6 @@
             navigator.clipboard.writeText(key).then(() => {
                 showToast('Key copied!', 'success');
             }).catch(() => {
-               
                 const textarea = document.createElement('textarea');
                 textarea.value = key;
                 document.body.appendChild(textarea);
@@ -862,12 +864,7 @@
             showToast('Key deleted', 'info');
         }
 
-        function changeUsername() {
-            sessionStorage.clear();
-            redirectToLinkvertise('Changing username...');
-        }
-
-        
+        // ===== API VALIDATION (untuk script Roblox) =====
         window.validateKey = function(username, key) {
             const userData = JSON.parse(sessionStorage.getItem('user_' + username));
             if (!userData) return false;
@@ -875,22 +872,56 @@
             return userData.keys.includes(key);
         };
 
-       
+        // Handle API request dari script
         if (window.location.search.includes('apikey=validate')) {
             const username = getUrlParameter('username');
             const key = getUrlParameter('key');
             const valid = username && key && window.validateKey(username, key);
             
-            
             document.open();
             document.write(valid ? 'valid' : 'invalid');
             document.close();
-            
-           
             throw new Error('API response sent');
         }
 
-      
+        // ===== INIT =====
+        function initializePage() {
+            // Cek apakah user kembali dari Linkvertise (ada parameter dari linkvertise)
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Jika ada parameter 'from_lv', berarti kembali dari Linkvertise
+            if (urlParams.has('from_lv')) {
+                const verified = verifyFromLinkvertise();
+                if (!verified) {
+                    // Gagal verifikasi, kembali ke form
+                    window.location.href = window.location.pathname;
+                }
+            } else {
+                // Pastikan tidak ada yang login
+                if (!sessionStorage.getItem('current_user')) {
+                    document.getElementById('usernameForm').classList.remove('hidden');
+                    document.getElementById('keyPage').classList.add('hidden');
+                } else {
+                    // Auto login jika session masih ada
+                    const username = sessionStorage.getItem('current_user');
+                    const userData = JSON.parse(sessionStorage.getItem('user_' + username));
+                    
+                    if (userData && Date.now() < userData.expiryTime) {
+                        document.getElementById('usernameForm').classList.add('hidden');
+                        document.getElementById('keyPage').classList.remove('hidden');
+                        document.getElementById('displayUsername').textContent = username;
+                        document.getElementById('warningText').innerHTML = `Key only for <strong>${username}</strong>`;
+                        document.getElementById('keyDisplay').textContent = userData.keys[0] || 'MPG-XXXX-XXXX-XXXX';
+                        loadUserData(username);
+                        startTimer(userData.expiryTime);
+                    } else {
+                        sessionStorage.clear();
+                    }
+                }
+            }
+        }
+
+        // Jalankan initialize
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initializePage);
         } else {
