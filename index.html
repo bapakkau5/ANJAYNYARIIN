@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MPANGGPxHUB - KEY GENERATOR</title>
+    <title>MpanGPPxHUB - CLIMB AND JUMP</title>
     
-    <!-- FAVICON -->
+
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/96/000000/roblox.png">
     
-    <!-- FONT AWESOME -->
+  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <!-- GOOGLE FONTS -->
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* ===== CSS SAMA PERSIS ===== */
         * {
             margin: 0;
             padding: 0;
@@ -32,8 +31,9 @@
             --warning: #FFD60A;
             
             --gradient-primary: linear-gradient(135deg, #9D4EDD, #7B2CBF, #C77DFF);
+            --gradient-secondary: linear-gradient(135deg, #FF6BFF, #9D4EDD);
             --bg-main: #0A0A0F;
-            --bg-card: rgba(30, 15, 50, 0.7);
+            --bg-card: rgba(30, 15, 50, 0.8);
             --text: #FFFFFF;
             --text-muted: #B8B8D1;
             --border: rgba(157, 78, 221, 0.3);
@@ -50,10 +50,77 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background-image: radial-gradient(circle at 10% 20%, rgba(157,78,221,0.05) 0%, transparent 40%);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(157,78,221,0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255,107,255,0.1) 0%, transparent 40%);
         }
 
-        /* LOADING SCREEN */
+        
+        .glitch-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(157,78,221,0.2) 2px, rgba(157,78,221,0.2) 4px);
+            animation: glitchShift 8s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes glitchShift {
+            0%,100% { transform: translate(0); }
+            25% { transform: translate(-3px, 2px); }
+            50% { transform: translate(3px, -2px); }
+            75% { transform: translate(-2px, -3px); }
+        }
+
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+            box-shadow: 0 0 10px var(--primary-light);
+            animation: scan 8s linear infinite;
+            z-index: 9998;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { top: -10px; }
+            100% { top: 110vh; }
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            animation: particleFloat linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-1000px); opacity: 0; }
+        }
+
+    
         #loading {
             position: fixed;
             top: 0;
@@ -76,17 +143,16 @@
             animation: pulse 2s infinite;
         }
 
-        .loading-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 0 30px rgba(157,78,221,0.7));
+        .loading-logo i {
+            font-size: 80px;
+            color: var(--primary);
         }
 
         .loading-text {
             font-family: var(--font-tech);
             color: var(--primary-light);
             margin-bottom: 20px;
+            letter-spacing: 3px;
         }
 
         .loading-bar {
@@ -134,11 +200,9 @@
             animation: pulse 3s infinite;
         }
 
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 0 15px rgba(157,78,221,0.6));
+        .logo-icon i {
+            font-size: 40px;
+            color: var(--primary);
         }
 
         .logo-text {
@@ -149,6 +213,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            letter-spacing: 2px;
         }
 
         .main {
@@ -160,35 +225,43 @@
         }
 
         .container {
-            max-width: 500px;
+            max-width: 550px;
             width: 100%;
+            margin: 0 auto;
         }
 
-        .key-card {
+        .glitch-card {
             background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 24px;
+            border: 2px solid var(--primary);
+            border-radius: 30px;
             padding: 40px 30px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             box-shadow: var(--glow);
             position: relative;
             overflow: hidden;
         }
 
-        .key-card::before {
+        .glitch-card::before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(157,78,221,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(157,78,221,0.15) 0%, transparent 70%);
             animation: rotate 20s linear infinite;
         }
 
-        .key-card > * {
-            position: relative;
-            z-index: 2;
+        .glitch-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transform: translateX(-100%);
+            animation: shine 4s infinite;
         }
 
         @keyframes rotate {
@@ -196,9 +269,20 @@
             to { transform: rotate(360deg); }
         }
 
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            20% { transform: translateX(100%); }
+            100% { transform: translateX(200%); }
+        }
+
+        .glitch-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
         .card-title {
             font-family: var(--font-tech);
-            font-size: 2rem;
+            font-size: 2.2rem;
             text-align: center;
             margin-bottom: 10px;
             background: var(--gradient-primary);
@@ -228,8 +312,8 @@
             width: 100%;
             padding: 15px 20px;
             background: rgba(157,78,221,0.08);
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            border: 2px solid var(--border);
+            border-radius: 50px;
             color: var(--text);
             font-size: 1rem;
             transition: 0.3s;
@@ -242,10 +326,9 @@
         }
 
         .btn {
-            width: 100%;
             padding: 15px 25px;
-            border-radius: 30px;
-            font-weight: 600;
+            border-radius: 50px;
+            font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
             border: none;
@@ -256,62 +339,79 @@
             position: relative;
             overflow: hidden;
             transition: 0.3s;
-            margin: 10px 0;
+            font-family: var(--font-tech);
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.6s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn-primary {
             background: var(--gradient-primary);
             color: white;
+            box-shadow: 0 0 20px rgba(157,78,221,0.5);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--glow);
+            transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba(157,78,221,0.8);
         }
 
         .btn-secondary {
-            background: rgba(157,78,221,0.1);
-            border: 1px solid var(--border);
+            background: rgba(157,78,221,0.15);
+            border: 2px solid var(--primary);
             color: white;
         }
 
         .btn-secondary:hover {
-            background: rgba(157,78,221,0.2);
-            transform: translateY(-3px);
+            background: rgba(157,78,221,0.3);
+            transform: translateY(-5px);
             box-shadow: var(--glow);
         }
 
         .btn-group {
             display: flex;
-            gap: 10px;
+            gap: 15px;
+            margin: 20px 0;
         }
 
         .btn-group .btn {
-            width: auto;
             flex: 1;
         }
 
         .user-info-box {
-            background: rgba(10,10,15,0.6);
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            background: rgba(0,0,0,0.3);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
             padding: 20px;
             margin: 20px 0;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
 
         .user-avatar {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background: rgba(157,78,221,0.2);
             border: 2px solid var(--primary-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: var(--primary-light);
         }
 
@@ -321,20 +421,44 @@
 
         .user-details-label {
             color: var(--text-muted);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             margin-bottom: 5px;
+            letter-spacing: 1px;
         }
 
         .user-details-value {
             font-family: var(--font-tech);
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             color: var(--primary-light);
+        }
+
+        .timer-box {
+            background: rgba(0,0,0,0.3);
+            border: 2px solid var(--warning);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-size: 1.3rem;
+        }
+
+        .timer-icon {
+            color: var(--warning);
+        }
+
+        .timer-text {
+            font-family: var(--font-tech);
+            color: var(--warning);
+            letter-spacing: 2px;
         }
 
         .key-container {
             background: linear-gradient(145deg, #1a1a2a, #0f0f1a);
             border: 2px solid var(--primary);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 30px;
             margin: 20px 0;
             text-align: center;
@@ -354,14 +478,10 @@
             animation: shine 3s infinite;
         }
 
-        @keyframes shine {
-            0% { left: -100%; }
-            100% { left: 200%; }
-        }
-
         .key-label {
             color: var(--text-muted);
             margin-bottom: 15px;
+            letter-spacing: 1px;
         }
 
         .key-value {
@@ -373,43 +493,21 @@
             text-shadow: 0 0 15px var(--success);
         }
 
-        .timer-box {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 15px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 1.2rem;
-        }
-
-        .timer-icon {
-            color: var(--warning);
-        }
-
-        .timer-text {
-            font-family: var(--font-tech);
-            color: var(--warning);
-        }
-
         .warning-box {
             background: rgba(255,214,10,0.1);
-            border: 1px solid var(--warning);
-            border-radius: 8px;
+            border: 2px solid var(--warning);
+            border-radius: 15px;
             padding: 15px;
-            margin: 15px 0;
+            margin: 20px 0;
             color: var(--warning);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
 
         .history-box {
             margin-top: 30px;
-            border-top: 1px solid var(--border);
+            border-top: 2px solid var(--border);
             padding-top: 20px;
         }
 
@@ -419,18 +517,20 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 1rem;
         }
 
         .history-list {
-            max-height: 200px;
+            max-height: 150px;
             overflow-y: auto;
+            padding: 5px;
         }
 
         .history-item {
-            background: rgba(157,78,221,0.08);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 10px 15px;
+            background: rgba(157,78,221,0.1);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 15px;
             margin-bottom: 8px;
             display: flex;
             align-items: center;
@@ -440,78 +540,70 @@
         .history-key {
             color: var(--success);
             font-family: monospace;
+            font-size: 0.9rem;
         }
 
         .history-delete {
             color: var(--danger);
             cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0 8px;
+        }
+
+        .history-delete:hover {
+            transform: scale(1.2);
         }
 
         .history-limit {
             color: var(--warning);
-            font-size: 0.9rem;
+            font-size: 1rem;
+            margin: 10px 0;
+            font-family: var(--font-tech);
         }
-
-        .toast-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-        }
-
-        .toast {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 15px 20px;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            backdrop-filter: blur(10px);
-            animation: slideIn 0.3s;
-            min-width: 300px;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .toast.success { border-left: 4px solid var(--success); }
-        .toast.error { border-left: 4px solid var(--danger); }
 
         .hidden {
             display: none !important;
         }
 
-        .mt-3 { margin-top: 20px; }
-        .text-center { text-align: center; }
+        .mt-3 {
+            margin-top: 20px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        @media (max-width: 500px) {
+            .glitch-card { padding: 25px 20px; }
+            .card-title { font-size: 1.8rem; }
+            .key-value { font-size: 1.4rem; }
+            .btn-group { flex-direction: column; }
+        }
     </style>
 </head>
 <body>
-    <!-- LOADING SCREEN -->
+  
+    <div class="glitch-bg"></div>
+    <div class="scanline"></div>
+    <div class="particles" id="particles"></div>
+
+    
     <div id="loading">
         <div class="loading-logo">
-            <img src="https://img.icons8.com/color/96/000000/roblox.png" alt="MPANGGPxHUB">
+            <i class="fas fa-crown"></i>
         </div>
         <div class="loading-text">INITIALIZING SYSTEM...</div>
         <div class="loading-bar"></div>
     </div>
 
     <script>
-        // ===== FORCE HIDE LOADING =====
-        (function() {
-            setTimeout(function() {
-                var loading = document.getElementById('loading');
-                if (loading) {
-                    loading.style.opacity = '0';
-                    setTimeout(function() {
-                        loading.style.display = 'none';
-                    }, 200);
-                }
-            }, 300);
-        })();
+    
+        setTimeout(() => {
+            document.getElementById('loading').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+            }, 200);
+        }, 400);
     </script>
 
     <!-- HEADER -->
@@ -519,81 +611,69 @@
         <div class="container">
             <a href="#" class="logo" onclick="location.reload(); return false;">
                 <div class="logo-icon">
-                    <img src="https://img.icons8.com/color/96/000000/roblox.png" alt="MPANGGP">
+                    <i class="fas fa-crown"></i>
                 </div>
-                <div class="logo-text">MPANGGPxHUB</div>
+                <div class="logo-text">MpanGPP HUB</div>
             </a>
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
+ 
     <main class="main">
         <div class="container">
-            <div class="key-card">
-                <h1 class="card-title">🔐 KEY GENERATOR</h1>
-                <p class="card-subtitle">3x Generate • 5 Hour Expiry • Anti-Bypass</p>
+            <div class="glitch-card">
+                <h1 class="card-title" id="mainTitle">🔐 KEY GENERATOR</h1>
+                <p class="card-subtitle" id="mainSubtitle">3x Generated • 5 EXPIRED</p>
 
-                <!-- REDIRECT NOTICE -->
-                <div id="redirectNotice" class="hidden">
-                    <div class="warning-box">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span id="redirectMessage">Redirecting to Linkvertise...</span>
-                    </div>
-                    <div class="loading-bar" style="width: 100%;"></div>
-                </div>
-
-                <!-- FORM INPUT USERNAME (HANYA INI YANG MUNCUL AWAL) -->
+             
                 <div id="usernameForm">
                     <div class="input-group">
                         <label class="input-label">
-                            <i class="fas fa-user"></i> MASUKKAN USERNAME ROBLOX ANDA
+                            <i class="fas fa-user"></i> USERNAME ROBLOX ACC
                         </label>
                         <input type="text" class="input-field" id="usernameInput" placeholder="Contoh: MpanGPP" autocomplete="off">
-                        <small style="color: var(--text-muted); display: block; margin-top: 8px;">
-                            Username akan digunakan untuk mengikat key anda.
-                        </small>
                     </div>
 
                     <button class="btn btn-primary" onclick="submitUsername()">
-                        <i class="fas fa-arrow-right"></i> VERIFIKASI & AMBIL KEY
+                        <i class="fas fa-arrow-right"></i> VERIFY & GET KEY
                     </button>
 
                     <div class="warning-box">
                         <i class="fas fa-shield-alt"></i>
-                        <span>Setelah verifikasi, anda akan diarahkan ke Linkvertise untuk mendapatkan key.</span>
+                        <span>The username will be tied to the key. It cannot be transferred to another account!</span>
                     </div>
                 </div>
 
-                <!-- KEY PAGE (MUNCUL SETELAH VERIFIKASI) -->
+                <!-- KEY PAGE -->
                 <div id="keyPage" class="hidden">
                     <div class="user-info-box">
                         <div class="user-avatar">
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="user-details">
-                            <div class="user-details-label">USERNAME TERVERIFIKASI</div>
+                            <div class="user-details-label">USERNAME</div>
                             <div class="user-details-value" id="displayUsername">-</div>
                         </div>
                     </div>
 
-                    <!-- TIMER -->
+                  
                     <div class="timer-box" id="timerBox">
                         <i class="fas fa-hourglass-half timer-icon"></i>
                         <span class="timer-text" id="timerDisplay">05:00:00</span>
                     </div>
 
-                    <!-- KEY DISPLAY -->
+                    
                     <div class="key-container">
-                        <div class="key-label">🔑 ACCESS KEY</div>
+                        <div class="key-label">🔐 ACCESS KEY</div>
                         <div class="key-value" id="keyDisplay">MPG-XXXX-XXXX-XXXX</div>
                     </div>
 
-                    <!-- GENERATE COUNT -->
+                    
                     <div class="history-limit text-center" id="generateCount">
                         Generations: 1/3
                     </div>
 
-                    <!-- BUTTONS -->
+              
                     <div class="btn-group">
                         <button class="btn btn-primary" onclick="copyKey()">
                             <i class="fas fa-copy"></i> COPY
@@ -605,7 +685,7 @@
 
                     <div class="warning-box">
                         <i class="fas fa-shield-alt"></i>
-                        <span id="warningText">Key for <strong>-</strong> only</span>
+                        <span id="warningText">Key khusus untuk username <strong>-</strong></span>
                     </div>
 
                     <div class="history-box">
@@ -620,19 +700,16 @@
         </div>
     </main>
 
-    <!-- TOAST CONTAINER -->
-    <div class="toast-container" id="toastContainer"></div>
-
     <script>
-        // ===== CONFIGURATION =====
+      
         const CONFIG = {
-            LINKVERTISE_URL: 'https://link-target.net/3800099/yTrt7oadSrBu', // LINK LO!
+            LINKVERTISE_URL: 'https://link-target.net/3800099/yTrt7oadSrBu',
             MAX_GENERATES: 3,
-            KEY_DURATION: 5 * 60 * 60 * 1000, // 5 jam
-            SESSION_TOKEN: 'mpanggp_secure_final'
+            KEY_DURATION: 5 * 60 * 60 * 1000, 
+            SESSION_KEY: 'mpanggp_user'
         };
 
-        // ===== UTILITY FUNCTIONS =====
+       
         function getUrlParameter(name) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name);
@@ -648,58 +725,171 @@
             return key;
         }
 
-        function showToast(message, type = 'info') {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = `toast ${type}`;
-            
-            const icons = { success: '✓', error: '✗', warning: '⚠', info: 'ℹ' };
-            
-            toast.innerHTML = `
-                <div class="toast-icon">${icons[type] || icons.info}</div>
-                <div class="toast-content">
-                    <div class="toast-title">${type.toUpperCase()}</div>
-                    <div class="toast-message">${message}</div>
-                </div>
-                <button class="toast-close" onclick="this.parentElement.remove()">×</button>
-            `;
-            
-            container.appendChild(toast);
-            setTimeout(() => toast.remove(), 5000);
+        function showToast(msg) {
+            alert(msg);
         }
 
-        function redirectToLinkvertise(message) {
-            document.getElementById('redirectNotice').classList.remove('hidden');
+        function saveUserData(username, data) {
+            localStorage.setItem('user_' + username, JSON.stringify(data));
+        }
+
+        function loadUserData(username) {
+            const data = localStorage.getItem('user_' + username);
+            if (data) {
+                return JSON.parse(data);
+            }
+            return null;
+        }
+
+       
+        function submitUsername() {
+            const username = document.getElementById('usernameInput').value.trim();
+            
+            if (!username) {
+                showToast('Masukkan username Roblox anda!');
+                return;
+            }
+
+            if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+                showToast('Username hanya huruf, angka, underscore!');
+                return;
+            }
+
+          
+            sessionStorage.setItem(CONFIG.SESSION_KEY, username);
+            
+           
+            window.location.href = CONFIG.LINKVERTISE_URL + '?redirect=' + encodeURIComponent(window.location.origin + '?from_lv=true');
+        }
+
+        function verifyFromLinkvertise() {
+            const username = sessionStorage.getItem(CONFIG.SESSION_KEY);
+            
+            if (!username) {
+                return false;
+            }
+
+            
+            let userData = loadUserData(username);
+            if (!userData) {
+                userData = {
+                    username: username,
+                    keys: [],
+                    generateCount: 0,
+                    createdAt: Date.now(),
+                    expiryTime: Date.now() + CONFIG.KEY_DURATION
+                };
+                saveUserData(username, userData);
+            }
+
+    
             document.getElementById('usernameForm').classList.add('hidden');
-            document.getElementById('keyPage').classList.add('hidden');
+            document.getElementById('keyPage').classList.remove('hidden');
+            document.getElementById('displayUsername').textContent = username;
+            document.getElementById('warningText').innerHTML = `Key khusus untuk username <strong>${username}</strong>`;
             
-            const msgEl = document.getElementById('redirectMessage');
-            let countdown = 3;
+          
+            generateNewKey();
+            startTimer(userData.expiryTime);
             
-            const interval = setInterval(() => {
-                msgEl.textContent = `Redirecting to Linkvertise in ${countdown}...`;
-                countdown--;
-                if (countdown < 0) {
-                    clearInterval(interval);
-                    window.location.href = CONFIG.LINKVERTISE_URL + '?redirect=' + encodeURIComponent(window.location.href);
-                }
-            }, 1000);
+            return true;
         }
 
-        // ===== TIMER FUNCTIONS =====
+        function generateNewKey() {
+            const username = sessionStorage.getItem(CONFIG.SESSION_KEY);
+            if (!username) return;
+            
+            const userData = loadUserData(username);
+            if (!userData) return;
+            
+            if (userData.generateCount >= CONFIG.MAX_GENERATES) {
+                showToast('Maximum generations reached!');
+                return;
+            }
+            
+            if (Date.now() > userData.expiryTime) {
+                showToast('Session expired!');
+                sessionStorage.removeItem(CONFIG.SESSION_KEY);
+                window.location.reload();
+                return;
+            }
+            
+            const newKey = generateKey();
+            document.getElementById('keyDisplay').textContent = newKey;
+            
+            userData.keys.unshift(newKey);
+            userData.generateCount++;
+            saveUserData(username, userData);
+            
+            document.getElementById('generateCount').textContent = `Generations: ${userData.generateCount}/${CONFIG.MAX_GENERATES}`;
+            document.getElementById('generateBtn').disabled = userData.generateCount >= CONFIG.MAX_GENERATES;
+            
+            updateHistory(username);
+        }
+
+        function updateHistory(username) {
+            const userData = loadUserData(username);
+            if (!userData) return;
+            
+            const historyDiv = document.getElementById('keyHistory');
+            
+            if (userData.keys.length === 0) {
+                historyDiv.innerHTML = '<div class="history-item">Belum ada key</div>';
+            } else {
+                historyDiv.innerHTML = userData.keys.slice(0,5).map(key => `
+                    <div class="history-item">
+                        <span class="history-key">${key}</span>
+                        <span class="history-delete" onclick="deleteKey('${key}')">&times;</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function copyKey() {
+            const key = document.getElementById('keyDisplay').textContent;
+            navigator.clipboard.writeText(key).then(() => {
+                showToast('Key copied!');
+            }).catch(() => {
+                const textarea = document.createElement('textarea');
+                textarea.value = key;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('Key copied!');
+            });
+        }
+
+        function deleteKey(key) {
+            const username = sessionStorage.getItem(CONFIG.SESSION_KEY);
+            if (!username) return;
+            
+            const userData = loadUserData(username);
+            userData.keys = userData.keys.filter(k => k !== key);
+            saveUserData(username, userData);
+            
+            updateHistory(username);
+            
+            if (document.getElementById('keyDisplay').textContent === key) {
+                if (userData.keys.length > 0) {
+                    document.getElementById('keyDisplay').textContent = userData.keys[0];
+                } else {
+                    generateNewKey();
+                }
+            }
+        }
+
         function startTimer(expiryTime) {
             const timerDisplay = document.getElementById('timerDisplay');
             
             const interval = setInterval(() => {
-                const now = Date.now();
-                const diff = expiryTime - now;
+                const diff = expiryTime - Date.now();
                 
                 if (diff <= 0) {
                     clearInterval(interval);
                     timerDisplay.textContent = 'EXPIRED';
                     document.getElementById('keyDisplay').textContent = 'KEY EXPIRED';
                     document.getElementById('generateBtn').disabled = true;
-                    showToast('Keys expired! Get new ones.', 'warning');
                     return;
                 }
                 
@@ -711,217 +901,71 @@
             }, 1000);
         }
 
-        // ===== CORE FUNCTIONS =====
-        function submitUsername() {
-            const username = document.getElementById('usernameInput').value.trim();
-            
-            if (!username) {
-                showToast('Masukkan username Roblox anda!', 'error');
-                return;
-            }
-
-            if (!/^[a-zA-Z0-9_]+$/.test(username)) {
-                showToast('Username hanya boleh huruf, angka, dan underscore!', 'error');
-                return;
-            }
-
-            // Simpan username di session
-            sessionStorage.setItem('pending_username', username);
-            
-            // Redirect ke Linkvertise
-            redirectToLinkvertise('Mengalihkan ke Linkvertise...');
-        }
-
-        // ===== VERIFIKASI KEMBALI DARI LINKVERTISE =====
-        function verifyFromLinkvertise() {
-            const pendingUsername = sessionStorage.getItem('pending_username');
-            
-            if (!pendingUsername) {
-                // Tidak ada pending username, kembali ke form
-                return false;
-            }
-
-            // Hapus pending username
-            sessionStorage.removeItem('pending_username');
-
-            // Buat data user baru
-            const userData = {
-                username: pendingUsername,
-                keys: [],
-                generateCount: 0,
-                createdAt: Date.now(),
-                expiryTime: Date.now() + CONFIG.KEY_DURATION
-            };
-            
-            sessionStorage.setItem('user_' + pendingUsername, JSON.stringify(userData));
-            sessionStorage.setItem('current_user', pendingUsername);
-
-            // Update UI
-            document.getElementById('usernameForm').classList.add('hidden');
-            document.getElementById('keyPage').classList.remove('hidden');
-            document.getElementById('displayUsername').textContent = pendingUsername;
-            document.getElementById('warningText').innerHTML = `Key only for <strong>${pendingUsername}</strong>`;
-            
-            // Generate key pertama
-            const newKey = generateKey();
-            document.getElementById('keyDisplay').textContent = newKey;
-            
-            userData.keys.unshift(newKey);
-            userData.generateCount++;
-            sessionStorage.setItem('user_' + pendingUsername, JSON.stringify(userData));
-            
-            loadUserData(pendingUsername);
-            startTimer(userData.expiryTime);
-            
-            showToast(`Selamat datang ${pendingUsername}!`, 'success');
-            return true;
-        }
-
-        function loadUserData(username) {
-            const userData = JSON.parse(sessionStorage.getItem('user_' + username));
-            if (!userData) return;
-            
-            const historyDiv = document.getElementById('keyHistory');
-            const generateCount = document.getElementById('generateCount');
-            
-            generateCount.textContent = `Generations: ${userData.generateCount}/${CONFIG.MAX_GENERATES}`;
-            
-            if (userData.keys.length === 0) {
-                historyDiv.innerHTML = '<div class="history-item">No keys generated yet</div>';
-            } else {
-                historyDiv.innerHTML = userData.keys.slice(0,5).map(key => `
-                    <div class="history-item">
-                        <span class="history-key">${key}</span>
-                        <span class="history-delete" onclick="deleteKey('${key}')">&times;</span>
-                    </div>
-                `).join('');
-            }
-            
-            document.getElementById('generateBtn').disabled = userData.generateCount >= CONFIG.MAX_GENERATES;
-        }
-
-        function generateNewKey() {
-            const username = sessionStorage.getItem('current_user');
-            if (!username) return;
-            
-            const userData = JSON.parse(sessionStorage.getItem('user_' + username));
-            
-            if (userData.generateCount >= CONFIG.MAX_GENERATES) {
-                showToast('Maximum generations reached!', 'warning');
-                return;
-            }
-            
-            if (Date.now() > userData.expiryTime) {
-                showToast('Session expired! Start over', 'warning');
-                sessionStorage.clear();
-                window.location.href = window.location.pathname;
-                return;
-            }
-            
-            const newKey = generateKey();
-            document.getElementById('keyDisplay').textContent = newKey;
-            
-            userData.keys.unshift(newKey);
-            userData.generateCount++;
-            sessionStorage.setItem('user_' + username, JSON.stringify(userData));
-            
-            loadUserData(username);
-            showToast('New key generated!', 'success');
-        }
-
-        function copyKey() {
-            const key = document.getElementById('keyDisplay').textContent;
-            navigator.clipboard.writeText(key).then(() => {
-                showToast('Key copied!', 'success');
-            }).catch(() => {
-                const textarea = document.createElement('textarea');
-                textarea.value = key;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                showToast('Key copied!', 'success');
-            });
-        }
-
-        function deleteKey(key) {
-            const username = sessionStorage.getItem('current_user');
-            const userData = JSON.parse(sessionStorage.getItem('user_' + username));
-            
-            userData.keys = userData.keys.filter(k => k !== key);
-            sessionStorage.setItem('user_' + username, JSON.stringify(userData));
-            
-            loadUserData(username);
-            
-            if (document.getElementById('keyDisplay').textContent === key) {
-                if (userData.keys.length > 0) {
-                    document.getElementById('keyDisplay').textContent = userData.keys[0];
-                } else {
-                    generateNewKey();
-                }
-            }
-            
-            showToast('Key deleted', 'info');
-        }
-
-        // ===== API VALIDATION (untuk script Roblox) =====
+   
         window.validateKey = function(username, key) {
-            const userData = JSON.parse(sessionStorage.getItem('user_' + username));
+            const userData = loadUserData(username);
             if (!userData) return false;
             if (Date.now() > userData.expiryTime) return false;
             return userData.keys.includes(key);
         };
 
-        // Handle API request dari script
-        if (window.location.search.includes('apikey=validate')) {
-            const username = getUrlParameter('username');
-            const key = getUrlParameter('key');
-            const valid = username && key && window.validateKey(username, key);
-            
-            document.open();
-            document.write(valid ? 'valid' : 'invalid');
-            document.close();
-            throw new Error('API response sent');
-        }
 
-        // ===== INIT =====
         function initializePage() {
-            // Cek apakah user kembali dari Linkvertise (ada parameter dari linkvertise)
             const urlParams = new URLSearchParams(window.location.search);
             
-            // Jika ada parameter 'from_lv', berarti kembali dari Linkvertise
+        
             if (urlParams.has('from_lv')) {
                 const verified = verifyFromLinkvertise();
                 if (!verified) {
-                    // Gagal verifikasi, kembali ke form
                     window.location.href = window.location.pathname;
                 }
-            } else {
-                // Pastikan tidak ada yang login
-                if (!sessionStorage.getItem('current_user')) {
-                    document.getElementById('usernameForm').classList.remove('hidden');
-                    document.getElementById('keyPage').classList.add('hidden');
-                } else {
-                    // Auto login jika session masih ada
-                    const username = sessionStorage.getItem('current_user');
-                    const userData = JSON.parse(sessionStorage.getItem('user_' + username));
-                    
-                    if (userData && Date.now() < userData.expiryTime) {
-                        document.getElementById('usernameForm').classList.add('hidden');
-                        document.getElementById('keyPage').classList.remove('hidden');
-                        document.getElementById('displayUsername').textContent = username;
-                        document.getElementById('warningText').innerHTML = `Key only for <strong>${username}</strong>`;
-                        document.getElementById('keyDisplay').textContent = userData.keys[0] || 'MPG-XXXX-XXXX-XXXX';
-                        loadUserData(username);
-                        startTimer(userData.expiryTime);
-                    } else {
-                        sessionStorage.clear();
-                    }
+                return;
+            }
+
+           
+            const username = sessionStorage.getItem(CONFIG.SESSION_KEY);
+            if (username) {
+                const userData = loadUserData(username);
+                if (userData && Date.now() < userData.expiryTime) {
+                    document.getElementById('usernameForm').classList.add('hidden');
+                    document.getElementById('keyPage').classList.remove('hidden');
+                    document.getElementById('displayUsername').textContent = username;
+                    document.getElementById('warningText').innerHTML = `Key khusus untuk username <strong>${username}</strong>`;
+                    document.getElementById('keyDisplay').textContent = userData.keys[0] || 'MPG-XXXX-XXXX-XXXX';
+                    document.getElementById('generateCount').textContent = `Generations: ${userData.generateCount}/${CONFIG.MAX_GENERATES}`;
+                    document.getElementById('generateBtn').disabled = userData.generateCount >= CONFIG.MAX_GENERATES;
+                    updateHistory(username);
+                    startTimer(userData.expiryTime);
+                    return;
                 }
             }
+
+       
+            document.getElementById('usernameForm').classList.remove('hidden');
+            document.getElementById('keyPage').classList.add('hidden');
+            sessionStorage.removeItem(CONFIG.SESSION_KEY);
         }
 
-        // Jalankan initialize
+
+        function createParticles() {
+            const container = document.querySelector('.particles');
+            for (let i = 0; i < 30; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.cssText = `
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    width: ${Math.random() * 4 + 1}px;
+                    height: ${Math.random() * 4 + 1}px;
+                    animation-duration: ${Math.random() * 20 + 10}s;
+                    animation-delay: ${Math.random() * 5}s;
+                `;
+                container.appendChild(p);
+            }
+        }
+        createParticles();
+
+      
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initializePage);
         } else {
