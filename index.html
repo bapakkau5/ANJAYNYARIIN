@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MpanGPPxHUB - KEY GENERATOR</title>
+    <title>MpanGPPxHUB - CLIMB AND JUMP SCRIPT</title>
     
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/96/000000/roblox.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* ===== SEMUA CSS TETEP SAMA ===== */
         * {
             margin: 0;
             padding: 0;
@@ -51,7 +50,6 @@
                 radial-gradient(circle at 90% 80%, rgba(255,107,255,0.1) 0%, transparent 40%);
         }
 
-        /* GLITCH BACKGROUND */
         .glitch-bg {
             position: fixed;
             top: 0;
@@ -585,7 +583,7 @@
         <div class="loading-logo">
             <i class="fas fa-crown"></i>
         </div>
-        <div class="loading-text">MPANGGPxHUB</div>
+        <div class="loading-text">MpanGPPxHUB</div>
         <div class="loading-bar"></div>
     </div>
 
@@ -598,7 +596,6 @@
         }, 400);
     </script>
 
-    <!-- HEADER -->
     <header class="header">
         <div class="container">
             <a href="#" class="logo" onclick="location.reload(); return false;">
@@ -614,14 +611,14 @@
         <div class="container">
             <div class="glitch-card">
                 <h1 class="card-title" id="mainTitle">🔐 KEY GENERATOR</h1>
-                <p class="card-subtitle" id="mainSubtitle">3x Generate • 5 Jam Expiry</p>
+                <p class="card-subtitle" id="mainSubtitle">3x Generated • 5 expired susu basi</p>
 
                 <div id="usernameForm">
                     <div class="input-group">
                         <label class="input-label">
-                            <i class="fas fa-user"></i> USERNAME ROBLOX
+                            <i class="fas fa-user"></i> YOUR USERNAME ROBLOX 
                         </label>
-                        <input type="text" class="input-field" id="usernameInput" placeholder="Contoh: MpanGPP" autocomplete="off">
+                        <input type="text" class="input-field" id="usernameInput" placeholder="Example: MpanGPP" autocomplete="off">
                     </div>
 
                     <button class="btn btn-primary" onclick="submitUsername()">
@@ -630,7 +627,7 @@
 
                     <div class="warning-box">
                         <i class="fas fa-shield-alt"></i>
-                        <span>Username akan terikat dengan key. Tidak bisa dipindah ke akun lain!</span>
+                        <span>The username will be tied to the key. It cannot be transferred to another account!</span>
                     </div>
                 </div>
 
@@ -670,7 +667,7 @@
 
                     <div class="warning-box">
                         <i class="fas fa-shield-alt"></i>
-                        <span id="warningText">Key khusus untuk username <strong>-</strong></span>
+                        <span id="warningText">Special key for username<strong>-</strong></span>
                     </div>
 
                     <div class="history-box">
@@ -726,12 +723,12 @@
             const username = document.getElementById('usernameInput').value.trim();
             
             if (!username) {
-                showToast('Masukkan username Roblox anda!');
+                showToast('Enter your Roblox username!');
                 return;
             }
 
             if (!/^[a-zA-Z0-9_]+$/.test(username)) {
-                showToast('Username hanya huruf, angka, underscore!');
+                showToast('Username only letters, numbers, underscore!');
                 return;
             }
 
