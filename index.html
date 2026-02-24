@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MpanGPPxHUB - CLIMB AND JUMP KEY</title>
+    <title>MpanGPPxHUB - KEY GENERATOR</title>
     
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/96/000000/roblox.png">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+        /* ===== SEMUA CSS TETEP SAMA ===== */
         * {
             margin: 0;
             padding: 0;
@@ -52,6 +51,7 @@
                 radial-gradient(circle at 90% 80%, rgba(255,107,255,0.1) 0%, transparent 40%);
         }
 
+        /* GLITCH BACKGROUND */
         .glitch-bg {
             position: fixed;
             top: 0;
@@ -797,7 +797,9 @@
             if (Date.now() > userData.expiryTime) {
                 showToast('Session expired!');
                 sessionStorage.removeItem(CONFIG.SESSION_KEY);
-                window.location.reload();
+                // Hapus window.location.reload() biar gak refresh paksa
+                document.getElementById('usernameForm').classList.remove('hidden');
+                document.getElementById('keyPage').classList.add('hidden');
                 return;
             }
             
@@ -912,7 +914,11 @@
             if (urlParams.has('from_lv')) {
                 const verified = verifyFromLinkvertise();
                 if (!verified) {
-                    window.location.href = window.location.pathname;
+                    // GANTI: JANGAN REDIRECT!
+                    showToast('Session tidak ditemukan. Silakan isi username lagi.');
+                    document.getElementById('usernameForm').classList.remove('hidden');
+                    document.getElementById('keyPage').classList.add('hidden');
+                    sessionStorage.removeItem(CONFIG.SESSION_KEY);
                 }
                 return;
             }
