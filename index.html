@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MpanGPPxHUB - CLIMB AND JUMP SCRIPT</title>
+    <title>MPANGGPxHUB - PREMIUM KEY GENERATOR</title>
     
+
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/96/000000/roblox.png">
+    
+   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+   
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+     
+
         * {
             margin: 0;
             padding: 0;
@@ -21,23 +28,42 @@
             --primary-dark: #7B2CBF;
             --primary-light: #C77DFF;
             --secondary: #FF6BFF;
+            --accent: #00F5FF;
             --success: #00FF9D;
             --danger: #FF006E;
             --warning: #FFD60A;
+            --neon: #E0AAFF;
             
             --gradient-primary: linear-gradient(135deg, #9D4EDD, #7B2CBF, #C77DFF);
-            --gradient-secondary: linear-gradient(135deg, #FF6BFF, #9D4EDD);
+            --gradient-secondary: linear-gradient(135deg, #FF6BFF, #9D4EDD, #00F5FF);
+            --gradient-dark: linear-gradient(135deg, #0A0A0F, #1A0B2E);
+            
             --bg-main: #0A0A0F;
-            --bg-card: rgba(30, 15, 50, 0.8);
+            --bg-darker: #07070C;
+            --bg-card: rgba(30, 15, 50, 0.85);
+            --bg-glass: rgba(157, 78, 221, 0.1);
+            
             --text: #FFFFFF;
             --text-muted: #B8B8D1;
+            --text-dim: #8A8AA3;
+            
             --border: rgba(157, 78, 221, 0.3);
+            --border-glow: rgba(157, 78, 221, 0.6);
             --glow: 0 0 25px rgba(157, 78, 221, 0.6);
+            --glow-strong: 0 0 40px rgba(157, 78, 221, 0.8);
+            
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --radius-full: 9999px;
             
             --font-main: 'Montserrat', sans-serif;
             --font-tech: 'Orbitron', monospace;
         }
 
+    
         body {
             font-family: var(--font-main);
             background: var(--bg-main);
@@ -45,11 +71,11 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(157,78,221,0.1) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(255,107,255,0.1) 0%, transparent 40%);
+            position: relative;
+            overflow-x: hidden;
         }
 
+      
         .glitch-bg {
             position: fixed;
             top: 0;
@@ -57,19 +83,24 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.1;
-            background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(157,78,221,0.2) 2px, rgba(157,78,221,0.2) 4px);
+            opacity: 0.15;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(157,78,221,0.2) 2px, rgba(157,78,221,0.2) 4px),
+                radial-gradient(circle at 30% 40%, rgba(157,78,221,0.3) 0%, transparent 30%),
+                radial-gradient(circle at 70% 60%, rgba(255,107,255,0.3) 0%, transparent 30%);
             animation: glitchShift 8s infinite;
-            pointer-events: none;
         }
 
         @keyframes glitchShift {
-            0%,100% { transform: translate(0); }
-            25% { transform: translate(-3px, 2px); }
-            50% { transform: translate(3px, -2px); }
-            75% { transform: translate(-2px, -3px); }
+            0% { transform: translate(0); opacity: 0.15; }
+            20% { transform: translate(-2px, 3px); opacity: 0.2; }
+            40% { transform: translate(3px, -2px); opacity: 0.15; }
+            60% { transform: translate(-3px, -1px); opacity: 0.2; }
+            80% { transform: translate(2px, 2px); opacity: 0.15; }
+            100% { transform: translate(0); opacity: 0.15; }
         }
 
+      
         .scanline {
             position: fixed;
             top: 0;
@@ -88,6 +119,7 @@
             100% { top: 110vh; }
         }
 
+       
         .particles {
             position: fixed;
             top: 0;
@@ -108,25 +140,26 @@
         }
 
         @keyframes particleFloat {
-            0% { transform: translateY(0); opacity: 0; }
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
             10% { opacity: 1; }
             90% { opacity: 1; }
-            100% { transform: translateY(-1000px); opacity: 0; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
         }
 
+      
         #loading {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--bg-main);
+            background: var(--bg-darker);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: opacity 0.3s;
+            transition: opacity 0.5s;
         }
 
         .loading-logo {
@@ -134,6 +167,7 @@
             height: 100px;
             margin-bottom: 30px;
             animation: pulse 2s infinite;
+            filter: drop-shadow(0 0 30px rgba(157,78,221,0.7));
         }
 
         .loading-logo i {
@@ -146,6 +180,12 @@
             color: var(--primary-light);
             margin-bottom: 20px;
             letter-spacing: 3px;
+            animation: neon-flicker 2s infinite;
+        }
+
+        @keyframes neon-flicker {
+            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 72%, 100% { opacity: 1; }
+            20%, 21.999%, 63%, 63.999%, 65%, 71.999% { opacity: 0.4; }
         }
 
         .loading-bar {
@@ -175,9 +215,12 @@
             50% { transform: scale(1.1); }
         }
 
+  
         .header {
             padding: 20px;
             text-align: center;
+            position: relative;
+            z-index: 10;
         }
 
         .logo {
@@ -185,29 +228,57 @@
             align-items: center;
             gap: 15px;
             text-decoration: none;
+            position: relative;
         }
 
         .logo-icon {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             animation: pulse 3s infinite;
         }
 
         .logo-icon i {
-            font-size: 40px;
+            font-size: 50px;
             color: var(--primary);
+            filter: drop-shadow(0 0 15px rgba(157,78,221,0.6));
         }
 
         .logo-text {
             font-family: var(--font-tech);
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 800;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             letter-spacing: 2px;
+            position: relative;
         }
+
+        .logo-text::before {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: glitchText 0.3s infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes glitchText {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(2px, 2px); }
+            100% { transform: translate(0); }
+        }
+
 
         .main {
             flex: 1;
@@ -215,6 +286,8 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            position: relative;
+            z-index: 10;
         }
 
         .container {
@@ -223,15 +296,17 @@
             margin: 0 auto;
         }
 
+       
         .glitch-card {
             background: var(--bg-card);
-            border: 2px solid var(--primary);
-            border-radius: 30px;
+            border: 2px solid var(--border-glow);
+            border-radius: var(--radius-lg);
             padding: 40px 30px;
-            backdrop-filter: blur(15px);
-            box-shadow: var(--glow);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--glow-strong), 0 0 60px rgba(157,78,221,0.3);
             position: relative;
             overflow: hidden;
+            animation: cardFloat 6s ease-in-out infinite;
         }
 
         .glitch-card::before {
@@ -241,7 +316,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(157,78,221,0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(157,78,221,0.2) 0%, transparent 70%);
             animation: rotate 20s linear infinite;
         }
 
@@ -268,6 +343,11 @@
             100% { transform: translateX(200%); }
         }
 
+        @keyframes cardFloat {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
         .glitch-card > * {
             position: relative;
             z-index: 2;
@@ -275,21 +355,26 @@
 
         .card-title {
             font-family: var(--font-tech);
-            font-size: 2.2rem;
+            font-size: 2.5rem;
+            font-weight: 800;
             text-align: center;
             margin-bottom: 10px;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            letter-spacing: 2px;
         }
 
         .card-subtitle {
             text-align: center;
             color: var(--text-muted);
             margin-bottom: 30px;
+            font-size: 1rem;
+            letter-spacing: 1px;
         }
 
+      
         .input-group {
             margin-bottom: 20px;
         }
@@ -298,31 +383,44 @@
             display: block;
             margin-bottom: 8px;
             color: var(--text);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        .input-label i {
+            color: var(--primary-light);
+            margin-right: 8px;
         }
 
         .input-field {
             width: 100%;
             padding: 15px 20px;
-            background: rgba(157,78,221,0.08);
+            background: rgba(20, 10, 30, 0.6);
             border: 2px solid var(--border);
-            border-radius: 50px;
+            border-radius: var(--radius-full);
             color: var(--text);
             font-size: 1rem;
-            transition: 0.3s;
+            transition: var(--transition);
+            font-family: var(--font-main);
         }
 
         .input-field:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: var(--glow);
+            background: rgba(30, 15, 40, 0.8);
         }
 
+        .input-field::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+
+       
         .btn {
             padding: 15px 25px;
-            border-radius: 50px;
+            border-radius: var(--radius-full);
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
             border: none;
             display: inline-flex;
@@ -331,9 +429,11 @@
             gap: 10px;
             position: relative;
             overflow: hidden;
-            transition: 0.3s;
+            transition: var(--transition);
+            margin: 10px 0;
             font-family: var(--font-tech);
             letter-spacing: 1px;
+            width: 100%;
         }
 
         .btn::before {
@@ -358,7 +458,7 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
             box-shadow: 0 0 30px rgba(157,78,221,0.8);
         }
 
@@ -381,18 +481,21 @@
         }
 
         .btn-group .btn {
+            width: auto;
             flex: 1;
         }
 
+       
         .user-info-box {
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.4);
             border: 2px solid var(--primary);
-            border-radius: 20px;
+            border-radius: var(--radius-md);
             padding: 20px;
             margin: 20px 0;
             display: flex;
             align-items: center;
             gap: 20px;
+            backdrop-filter: blur(5px);
         }
 
         .user-avatar {
@@ -425,10 +528,53 @@
             color: var(--primary-light);
         }
 
+      
+        .key-container {
+            background: linear-gradient(145deg, #1a1a2a, #0f0f1a);
+            border: 2px solid var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--glow-strong);
+        }
+
+        .key-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(157,78,221,0.4), transparent);
+            animation: shine 3s infinite;
+        }
+
+        .key-label {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+
+        .key-value {
+            font-family: var(--font-tech);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--success);
+            letter-spacing: 3px;
+            word-break: break-all;
+            text-shadow: 0 0 15px var(--success);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+ 
         .timer-box {
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.4);
             border: 2px solid var(--warning);
-            border-radius: 15px;
+            border-radius: var(--radius-md);
             padding: 15px;
             margin: 20px 0;
             display: flex;
@@ -448,56 +594,25 @@
             letter-spacing: 2px;
         }
 
-        .key-container {
-            background: linear-gradient(145deg, #1a1a2a, #0f0f1a);
-            border: 2px solid var(--primary);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 20px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--glow);
-        }
-
-        .key-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(157,78,221,0.3), transparent);
-            animation: shine 3s infinite;
-        }
-
-        .key-label {
-            color: var(--text-muted);
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        .key-value {
-            font-family: var(--font-tech);
-            font-size: 1.8rem;
-            color: var(--success);
-            letter-spacing: 3px;
-            word-break: break-all;
-            text-shadow: 0 0 15px var(--success);
-        }
-
+ 
         .warning-box {
             background: rgba(255,214,10,0.1);
             border: 2px solid var(--warning);
-            border-radius: 15px;
+            border-radius: var(--radius-md);
             padding: 15px;
             margin: 20px 0;
             color: var(--warning);
             display: flex;
             align-items: center;
             gap: 15px;
+            font-size: 0.95rem;
         }
 
+        .warning-box i {
+            font-size: 1.5rem;
+        }
+
+      
         .history-box {
             margin-top: 30px;
             border-top: 2px solid var(--border);
@@ -522,18 +637,24 @@
         .history-item {
             background: rgba(157,78,221,0.1);
             border: 2px solid var(--border);
-            border-radius: 12px;
+            border-radius: var(--radius-sm);
             padding: 12px 15px;
             margin-bottom: 8px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .history-item:hover {
+            background: rgba(157,78,221,0.2);
+            border-color: var(--primary);
         }
 
         .history-key {
             color: var(--success);
             font-family: monospace;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .history-delete {
@@ -541,6 +662,7 @@
             cursor: pointer;
             font-size: 1.2rem;
             padding: 0 8px;
+            transition: var(--transition);
         }
 
         .history-delete:hover {
@@ -554,6 +676,7 @@
             font-family: var(--font-tech);
         }
 
+   
         .hidden {
             display: none !important;
         }
@@ -566,59 +689,77 @@
             text-align: center;
         }
 
+ 
         @media (max-width: 500px) {
-            .glitch-card { padding: 25px 20px; }
-            .card-title { font-size: 1.8rem; }
-            .key-value { font-size: 1.4rem; }
-            .btn-group { flex-direction: column; }
+            .glitch-card {
+                padding: 25px 20px;
+            }
+            .card-title {
+                font-size: 2rem;
+            }
+            .key-value {
+                font-size: 1.4rem;
+            }
+            .btn-group {
+                flex-direction: column;
+            }
+            .logo-text {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
+    
     <div class="glitch-bg"></div>
     <div class="scanline"></div>
     <div class="particles" id="particles"></div>
 
+  
     <div id="loading">
         <div class="loading-logo">
             <i class="fas fa-crown"></i>
         </div>
-        <div class="loading-text">MpanGPPxHUB</div>
+        <div class="loading-text">MPANGGPxHUB</div>
         <div class="loading-bar"></div>
     </div>
 
     <script>
+     
         setTimeout(() => {
             document.getElementById('loading').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('loading').style.display = 'none';
-            }, 200);
-        }, 400);
+            }, 300);
+        }, 1000);
     </script>
 
+   
     <header class="header">
         <div class="container">
             <a href="#" class="logo" onclick="location.reload(); return false;">
                 <div class="logo-icon">
                     <i class="fas fa-crown"></i>
                 </div>
-                <div class="logo-text">MpanGPP HUB</div>
+                <div class="logo-text" data-text="MPANGGPxHUB">MPANGGPxHUB</div>
             </a>
         </div>
     </header>
 
+    
     <main class="main">
         <div class="container">
             <div class="glitch-card">
-                <h1 class="card-title" id="mainTitle">🔐 KEY GENERATOR</h1>
-                <p class="card-subtitle" id="mainSubtitle">3x Generated • 5 expired susu basi</p>
+                <h1 class="card-title">🔐 KEY GENERATOR</h1>
+                <p class="card-subtitle">3x Generate • 5 Jam Expiry • Anti-Bypass</p>
 
+                
                 <div id="usernameForm">
                     <div class="input-group">
                         <label class="input-label">
-                            <i class="fas fa-user"></i> YOUR USERNAME ROBLOX 
+                            <i class="fas fa-user"></i> USERNAME ROBLOX
                         </label>
-                        <input type="text" class="input-field" id="usernameInput" placeholder="Example: MpanGPP" autocomplete="off">
+                        <input type="text" class="input-field" id="usernameInput" placeholder="Contoh: MpanGPP" autocomplete="off">
                     </div>
 
                     <button class="btn btn-primary" onclick="submitUsername()">
@@ -627,35 +768,41 @@
 
                     <div class="warning-box">
                         <i class="fas fa-shield-alt"></i>
-                        <span>The username will be tied to the key. It cannot be transferred to another account!</span>
+                        <span>Username akan terikat dengan key. Tidak bisa dipindah ke akun lain!</span>
                     </div>
                 </div>
 
+             
                 <div id="keyPage" class="hidden">
+                
                     <div class="user-info-box">
                         <div class="user-avatar">
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="user-details">
-                            <div class="user-details-label">USERNAME</div>
+                            <div class="user-details-label">VERIFIED USER</div>
                             <div class="user-details-value" id="displayUsername">-</div>
                         </div>
                     </div>
 
+                
                     <div class="timer-box" id="timerBox">
                         <i class="fas fa-hourglass-half timer-icon"></i>
                         <span class="timer-text" id="timerDisplay">05:00:00</span>
                     </div>
 
+                
                     <div class="key-container">
-                        <div class="key-label">🔐 ACCESS KEY</div>
+                        <div class="key-label">🔑 ACCESS KEY</div>
                         <div class="key-value" id="keyDisplay">MPG-XXXX-XXXX-XXXX</div>
                     </div>
 
+             
                     <div class="history-limit text-center" id="generateCount">
                         Generations: 1/3
                     </div>
 
+               
                     <div class="btn-group">
                         <button class="btn btn-primary" onclick="copyKey()">
                             <i class="fas fa-copy"></i> COPY
@@ -665,11 +812,13 @@
                         </button>
                     </div>
 
+           
                     <div class="warning-box">
                         <i class="fas fa-shield-alt"></i>
-                        <span id="warningText">Special key for username<strong>-</strong></span>
+                        <span id="warningText">Key khusus untuk username <strong>-</strong></span>
                     </div>
 
+                  
                     <div class="history-box">
                         <div class="history-title">
                             <i class="fas fa-history"></i>
@@ -677,25 +826,33 @@
                         </div>
                         <div class="history-list" id="keyHistory"></div>
                     </div>
+
+                 
+                    <p class="text-center" style="color: var(--text-dim); font-size: 0.8rem; margin-top: 15px;">
+                        <i class="fas fa-info-circle"></i> Data tersimpan di browser Anda
+                    </p>
                 </div>
             </div>
         </div>
     </main>
 
+ 
     <script>
+  
         const CONFIG = {
-            LINKVERTISE_URL: 'https://link-target.net/3800099/yTrt7oadSrBu',
+            LINKVERTISE_URL: 'https://link-target.net/3800099/yTrt7oadSrBu', 
             MAX_GENERATES: 3,
             KEY_DURATION: 5 * 60 * 60 * 1000, 
-            SESSION_KEY: 'mpanggp_user'
+            STORAGE_KEY: 'mpanggp_user_data'
         };
 
+     
         function getUrlParameter(name) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name);
         }
 
-        function generateKey() {
+      function generateKey() {
             const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
             let key = 'MPG-';
             for (let i = 0; i < 12; i++) {
@@ -705,35 +862,59 @@
             return key;
         }
 
-        function showToast(msg) {
-            alert(msg);
-        }
-
+   
         function saveUserData(username, data) {
-            localStorage.setItem('user_' + username, JSON.stringify(data));
+            const storageKey = 'user_' + username;
+            localStorage.setItem(storageKey, JSON.stringify(data));
+            
+
+            localStorage.setItem('current_username', username);
         }
 
         function loadUserData(username) {
-            const data = localStorage.getItem('user_' + username);
-            if (data) return JSON.parse(data);
-            return null;
+            const storageKey = 'user_' + username;
+            const data = localStorage.getItem(storageKey);
+            return data ? JSON.parse(data) : null;
+        }
+
+        function showToast(msg) {
+            alert(msg);
         }
 
         function submitUsername() {
             const username = document.getElementById('usernameInput').value.trim();
             
             if (!username) {
-                showToast('Enter your Roblox username!');
+                showToast('Masukkan username Roblox anda!');
                 return;
             }
 
+         
             if (!/^[a-zA-Z0-9_]+$/.test(username)) {
-                showToast('Username only letters, numbers, underscore!');
+                showToast('Username hanya boleh huruf, angka, dan underscore!');
                 return;
             }
 
-            sessionStorage.setItem(CONFIG.SESSION_KEY, username);
+        
+            localStorage.setItem('pending_username', username);
             
+          
+            window.location.href = CONFIG.LINKVERTISE_URL;
+        }
+
+     
+        function verifyUser() {
+          
+            const username = localStorage.getItem('pending_username');
+            
+            if (!username) {
+                return false;
+            }
+
+        
+            localStorage.removeItem('pending_username');
+
+        
             let userData = loadUserData(username);
             if (!userData) {
                 userData = {
@@ -745,74 +926,73 @@
                 };
                 saveUserData(username, userData);
             }
-            
-            window.location.href = CONFIG.LINKVERTISE_URL + '?redirect=' + encodeURIComponent(window.location.origin + '?from_lv=true');
-        }
 
-        function verifyFromLinkvertise() {
-            const username = sessionStorage.getItem(CONFIG.SESSION_KEY);
-            
-            if (!username) {
-                return false;
-            }
-
-            const userData = loadUserData(username);
-            if (!userData) return false;
-
+           
             document.getElementById('usernameForm').classList.add('hidden');
             document.getElementById('keyPage').classList.remove('hidden');
             document.getElementById('displayUsername').textContent = username;
             document.getElementById('warningText').innerHTML = `Key khusus untuk username <strong>${username}</strong>`;
             
+           
             if (userData.keys.length > 0) {
                 document.getElementById('keyDisplay').textContent = userData.keys[0];
             } else {
                 generateNewKey();
             }
             
+            
             document.getElementById('generateCount').textContent = `Generations: ${userData.generateCount}/${CONFIG.MAX_GENERATES}`;
             document.getElementById('generateBtn').disabled = userData.generateCount >= CONFIG.MAX_GENERATES;
             
+         
             updateHistory(username);
             startTimer(userData.expiryTime);
             
             return true;
         }
 
+      
         function generateNewKey() {
-            const username = sessionStorage.getItem(CONFIG.SESSION_KEY);
-            if (!username) return;
+            const username = localStorage.getItem('current_username');
+            if (!username) {
+                location.reload();
+                return;
+            }
             
             const userData = loadUserData(username);
             if (!userData) return;
             
+          
             if (userData.generateCount >= CONFIG.MAX_GENERATES) {
                 showToast('Maximum generations reached!');
                 return;
             }
             
+          
             if (Date.now() > userData.expiryTime) {
-                showToast('Session expired!');
-                sessionStorage.removeItem(CONFIG.SESSION_KEY);
-                // Hapus window.location.reload() biar gak refresh paksa
-                document.getElementById('usernameForm').classList.remove('hidden');
-                document.getElementById('keyPage').classList.add('hidden');
+                showToast('Session expired! Silakan generate key baru.');
+                localStorage.removeItem('current_username');
+                location.reload();
                 return;
             }
             
+         
             const newKey = generateKey();
             document.getElementById('keyDisplay').textContent = newKey;
             
+           
             userData.keys.unshift(newKey);
             userData.generateCount++;
             saveUserData(username, userData);
             
+          
             document.getElementById('generateCount').textContent = `Generations: ${userData.generateCount}/${CONFIG.MAX_GENERATES}`;
             document.getElementById('generateBtn').disabled = userData.generateCount >= CONFIG.MAX_GENERATES;
             
             updateHistory(username);
         }
 
+      
         function updateHistory(username) {
             const userData = loadUserData(username);
             if (!userData) return;
@@ -822,7 +1002,7 @@
             if (userData.keys.length === 0) {
                 historyDiv.innerHTML = '<div class="history-item">Belum ada key</div>';
             } else {
-                historyDiv.innerHTML = userData.keys.slice(0,5).map(key => `
+                historyDiv.innerHTML = userData.keys.slice(0, 5).map(key => `
                     <div class="history-item">
                         <span class="history-key">${key}</span>
                         <span class="history-delete" onclick="deleteKey('${key}')">&times;</span>
@@ -831,11 +1011,13 @@
             }
         }
 
+      
         function copyKey() {
             const key = document.getElementById('keyDisplay').textContent;
             navigator.clipboard.writeText(key).then(() => {
                 showToast('Key copied!');
             }).catch(() => {
+              
                 const textarea = document.createElement('textarea');
                 textarea.value = key;
                 document.body.appendChild(textarea);
@@ -846,8 +1028,9 @@
             });
         }
 
+        
         function deleteKey(key) {
-            const username = sessionStorage.getItem(CONFIG.SESSION_KEY);
+            const username = localStorage.getItem('current_username');
             if (!username) return;
             
             const userData = loadUserData(username);
@@ -855,6 +1038,7 @@
             saveUserData(username, userData);
             
             updateHistory(username);
+            
             
             if (document.getElementById('keyDisplay').textContent === key) {
                 if (userData.keys.length > 0) {
@@ -865,6 +1049,7 @@
             }
         }
 
+       
         function startTimer(expiryTime) {
             const timerDisplay = document.getElementById('timerDisplay');
             
@@ -883,10 +1068,11 @@
                 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((diff % (1000 * 60)) / 1000);
                 
-                timerDisplay.textContent = `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+                timerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
             }, 1000);
         }
 
+       
         window.validateKey = function(username, key) {
             const userData = loadUserData(username);
             if (!userData) return false;
@@ -894,36 +1080,41 @@
             return userData.keys.includes(key);
         };
 
+       
         if (window.location.search.includes('apikey=validate')) {
             const username = getUrlParameter('username');
             const key = getUrlParameter('key');
             const valid = username && key && window.validateKey(username, key);
             
+           
             document.open();
             document.write(valid ? 'valid' : 'invalid');
             document.close();
             throw new Error('API response sent');
         }
 
+       
         function initializePage() {
             const urlParams = new URLSearchParams(window.location.search);
             
+          
             if (urlParams.has('from_lv')) {
-                const verified = verifyFromLinkvertise();
+                const verified = verifyUser();
                 if (!verified) {
-                    // GANTI: JANGAN REDIRECT!
-                    showToast('Session tidak ditemukan. Silakan isi username lagi.');
+                   
                     document.getElementById('usernameForm').classList.remove('hidden');
                     document.getElementById('keyPage').classList.add('hidden');
-                    sessionStorage.removeItem(CONFIG.SESSION_KEY);
+                    showToast('Silakan isi username terlebih dahulu.');
                 }
                 return;
             }
 
-            const username = sessionStorage.getItem(CONFIG.SESSION_KEY);
+          
+            const username = localStorage.getItem('current_username');
             if (username) {
                 const userData = loadUserData(username);
                 if (userData && Date.now() < userData.expiryTime) {
+                 
                     document.getElementById('usernameForm').classList.add('hidden');
                     document.getElementById('keyPage').classList.remove('hidden');
                     document.getElementById('displayUsername').textContent = username;
@@ -937,11 +1128,15 @@
                 }
             }
 
+        
             document.getElementById('usernameForm').classList.remove('hidden');
             document.getElementById('keyPage').classList.add('hidden');
-            sessionStorage.removeItem(CONFIG.SESSION_KEY);
+            
+          
+            localStorage.removeItem('pending_username');
         }
 
+    
         function createParticles() {
             const container = document.querySelector('.particles');
             for (let i = 0; i < 30; i++) {
@@ -952,6 +1147,7 @@
                     top: ${Math.random() * 100}%;
                     width: ${Math.random() * 4 + 1}px;
                     height: ${Math.random() * 4 + 1}px;
+                    background: ${Math.random() > 0.5 ? 'var(--primary-light)' : 'var(--secondary)'};
                     animation-duration: ${Math.random() * 20 + 10}s;
                     animation-delay: ${Math.random() * 5}s;
                 `;
@@ -960,6 +1156,7 @@
         }
         createParticles();
 
+      
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initializePage);
         } else {
