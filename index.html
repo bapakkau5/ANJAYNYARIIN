@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MpanGPPxHUB - CLIMB AND JUMP</title>
+    <title>MpanGPPxHUB - CLIMB AND JUMP KEY</title>
     
-
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/96/000000/roblox.png">
     
-  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
@@ -55,7 +52,6 @@
                 radial-gradient(circle at 90% 80%, rgba(255,107,255,0.1) 0%, transparent 40%);
         }
 
-        
         .glitch-bg {
             position: fixed;
             top: 0;
@@ -120,7 +116,6 @@
             100% { transform: translateY(-1000px); opacity: 0; }
         }
 
-    
         #loading {
             position: fixed;
             top: 0;
@@ -582,22 +577,19 @@
     </style>
 </head>
 <body>
-  
     <div class="glitch-bg"></div>
     <div class="scanline"></div>
     <div class="particles" id="particles"></div>
 
-    
     <div id="loading">
         <div class="loading-logo">
             <i class="fas fa-crown"></i>
         </div>
-        <div class="loading-text">INITIALIZING SYSTEM...</div>
+        <div class="loading-text">MPANGGPxHUB</div>
         <div class="loading-bar"></div>
     </div>
 
     <script>
-    
         setTimeout(() => {
             document.getElementById('loading').style.opacity = '0';
             setTimeout(() => {
@@ -618,18 +610,16 @@
         </div>
     </header>
 
- 
     <main class="main">
         <div class="container">
             <div class="glitch-card">
                 <h1 class="card-title" id="mainTitle">🔐 KEY GENERATOR</h1>
-                <p class="card-subtitle" id="mainSubtitle">3x Generated • 5 EXPIRED</p>
+                <p class="card-subtitle" id="mainSubtitle">3x Generate • 5 Jam Expiry</p>
 
-             
                 <div id="usernameForm">
                     <div class="input-group">
                         <label class="input-label">
-                            <i class="fas fa-user"></i> USERNAME ROBLOX ACC
+                            <i class="fas fa-user"></i> USERNAME ROBLOX
                         </label>
                         <input type="text" class="input-field" id="usernameInput" placeholder="Contoh: MpanGPP" autocomplete="off">
                     </div>
@@ -640,11 +630,10 @@
 
                     <div class="warning-box">
                         <i class="fas fa-shield-alt"></i>
-                        <span>The username will be tied to the key. It cannot be transferred to another account!</span>
+                        <span>Username akan terikat dengan key. Tidak bisa dipindah ke akun lain!</span>
                     </div>
                 </div>
 
-                <!-- KEY PAGE -->
                 <div id="keyPage" class="hidden">
                     <div class="user-info-box">
                         <div class="user-avatar">
@@ -656,24 +645,20 @@
                         </div>
                     </div>
 
-                  
                     <div class="timer-box" id="timerBox">
                         <i class="fas fa-hourglass-half timer-icon"></i>
                         <span class="timer-text" id="timerDisplay">05:00:00</span>
                     </div>
 
-                    
                     <div class="key-container">
                         <div class="key-label">🔐 ACCESS KEY</div>
                         <div class="key-value" id="keyDisplay">MPG-XXXX-XXXX-XXXX</div>
                     </div>
 
-                    
                     <div class="history-limit text-center" id="generateCount">
                         Generations: 1/3
                     </div>
 
-              
                     <div class="btn-group">
                         <button class="btn btn-primary" onclick="copyKey()">
                             <i class="fas fa-copy"></i> COPY
@@ -701,7 +686,6 @@
     </main>
 
     <script>
-      
         const CONFIG = {
             LINKVERTISE_URL: 'https://link-target.net/3800099/yTrt7oadSrBu',
             MAX_GENERATES: 3,
@@ -709,7 +693,6 @@
             SESSION_KEY: 'mpanggp_user'
         };
 
-       
         function getUrlParameter(name) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name);
@@ -735,13 +718,10 @@
 
         function loadUserData(username) {
             const data = localStorage.getItem('user_' + username);
-            if (data) {
-                return JSON.parse(data);
-            }
+            if (data) return JSON.parse(data);
             return null;
         }
 
-       
         function submitUsername() {
             const username = document.getElementById('usernameInput').value.trim();
             
@@ -755,20 +735,7 @@
                 return;
             }
 
-          
             sessionStorage.setItem(CONFIG.SESSION_KEY, username);
-            
-           
-            window.location.href = CONFIG.LINKVERTISE_URL + '?redirect=' + encodeURIComponent(window.location.origin + '?from_lv=true');
-        }
-
-        function verifyFromLinkvertise() {
-            const username = sessionStorage.getItem(CONFIG.SESSION_KEY);
-            
-            if (!username) {
-                return false;
-            }
-
             
             let userData = loadUserData(username);
             if (!userData) {
@@ -781,15 +748,35 @@
                 };
                 saveUserData(username, userData);
             }
+            
+            window.location.href = CONFIG.LINKVERTISE_URL + '?redirect=' + encodeURIComponent(window.location.origin + '?from_lv=true');
+        }
 
-    
+        function verifyFromLinkvertise() {
+            const username = sessionStorage.getItem(CONFIG.SESSION_KEY);
+            
+            if (!username) {
+                return false;
+            }
+
+            const userData = loadUserData(username);
+            if (!userData) return false;
+
             document.getElementById('usernameForm').classList.add('hidden');
             document.getElementById('keyPage').classList.remove('hidden');
             document.getElementById('displayUsername').textContent = username;
             document.getElementById('warningText').innerHTML = `Key khusus untuk username <strong>${username}</strong>`;
             
-          
-            generateNewKey();
+            if (userData.keys.length > 0) {
+                document.getElementById('keyDisplay').textContent = userData.keys[0];
+            } else {
+                generateNewKey();
+            }
+            
+            document.getElementById('generateCount').textContent = `Generations: ${userData.generateCount}/${CONFIG.MAX_GENERATES}`;
+            document.getElementById('generateBtn').disabled = userData.generateCount >= CONFIG.MAX_GENERATES;
+            
+            updateHistory(username);
             startTimer(userData.expiryTime);
             
             return true;
@@ -901,7 +888,6 @@
             }, 1000);
         }
 
-   
         window.validateKey = function(username, key) {
             const userData = loadUserData(username);
             if (!userData) return false;
@@ -909,11 +895,20 @@
             return userData.keys.includes(key);
         };
 
+        if (window.location.search.includes('apikey=validate')) {
+            const username = getUrlParameter('username');
+            const key = getUrlParameter('key');
+            const valid = username && key && window.validateKey(username, key);
+            
+            document.open();
+            document.write(valid ? 'valid' : 'invalid');
+            document.close();
+            throw new Error('API response sent');
+        }
 
         function initializePage() {
             const urlParams = new URLSearchParams(window.location.search);
             
-        
             if (urlParams.has('from_lv')) {
                 const verified = verifyFromLinkvertise();
                 if (!verified) {
@@ -922,7 +917,6 @@
                 return;
             }
 
-           
             const username = sessionStorage.getItem(CONFIG.SESSION_KEY);
             if (username) {
                 const userData = loadUserData(username);
@@ -940,12 +934,10 @@
                 }
             }
 
-       
             document.getElementById('usernameForm').classList.remove('hidden');
             document.getElementById('keyPage').classList.add('hidden');
             sessionStorage.removeItem(CONFIG.SESSION_KEY);
         }
-
 
         function createParticles() {
             const container = document.querySelector('.particles');
@@ -965,7 +957,6 @@
         }
         createParticles();
 
-      
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initializePage);
         } else {
