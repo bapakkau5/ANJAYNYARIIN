@@ -1,5 +1,3 @@
-
-
 (async function() {
     const CONFIG = {
         turnstileSiteKey: '0x4AAAAAAC-yQLvq8Dniy2h1', 
